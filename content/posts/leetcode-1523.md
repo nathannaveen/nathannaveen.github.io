@@ -1,7 +1,6 @@
 ---
 title: "Leetcode 1523"
 date: 2021-02-24T17:03:24-05:00
-draft: true
 toc: false
 images:
 tags: [leetcode, golang, math]
