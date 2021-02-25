@@ -1,4 +1,25 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 24 Feb 2021 17:03:24 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1523</title><link>https://nathannaveen.dev/posts/leetcode-1523/</link><pubDate>Wed, 24 Feb 2021 17:03:24 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1523/</guid><description>1523. Count Odd Numbers in an Interval Range
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 25 Feb 2021 13:50:15 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 976</title><link>https://nathannaveen.dev/posts/leetcode-976/</link><pubDate>Thu, 25 Feb 2021 13:50:15 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-976/</guid><description>976. Largest Perimeter Triangle
+The idea of this solution is to sort the array and then keep on checking the largest three side lengths.
+In the problem it asks us to &amp;ldquo;return the largest perimeter of a triangle with non-zero area.&amp;rdquo; Non-zero area means a triangle with the two smaller side lengths that add up to be greater than the greatest side length. This can be show in a couple images</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/largest-perimeter-triangle">976. Largest Perimeter Triangle</a></p>
+<p>The idea of this solution is to sort the array and then keep on checking the largest three side lengths.</p>
+<p>In the problem it asks us to &ldquo;return the largest perimeter of a triangle with non-zero area.&rdquo; Non-zero area means a triangle with the two smaller side lengths that add up to be greater than the greatest side length. This can be show in a couple images</p>
+<p><img src="https://i.imgur.com/YOk3LWq.jpg" alt="">
+<em>The triangle above is a proper triangle with an area greater than zero and we know that because the two smaller lengths, <code>5</code> and <code>5</code> added together is <code>10 &gt; 7</code>.</em>
+<img src="https://i.imgur.com/HlspeLO.jpg" alt="">
+<em>In the image above we can see that this is not a proper triangle because the area is zero. We know that this is not a proper triangle because the two smaller sides lengths are <code>4</code> and <code>3</code>. Four plus three is <code>7</code> and <code>7</code> is the length of the greatest triangle. So we don&rsquo;t have a triangle.</em></p>
+<p><img src="https://i.imgur.com/LRxVW4L.jpg" alt="">
+<img src="https://i.imgur.com/H1ySPp7.jpg" alt=""></p>
+<p><em>The two images above are not proper triangles because the length of the two smaller sides are smaller than <code>7</code> and won&rsquo;t be able to form a triangle.</em></p>
+<pre><code>func largestPerimeter(A []int) int {
+    sort.Ints(A)
+    for i := len(A) - 1; i &gt;= 2; i-- {
+        if A[i] &lt; A[i - 1] + A[i - 2] {
+            return A[i] + A[i - 1] + A[i - 2]
+        }
+    }
+    return 0
+}
+</code></pre>]]></content></item><item><title>Leetcode 1523</title><link>https://nathannaveen.dev/posts/leetcode-1523/</link><pubDate>Wed, 24 Feb 2021 17:03:24 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1523/</guid><description>1523. Count Odd Numbers in an Interval Range
 The idea of this solution is to get the number odd numbers from 0 to high, and then subtract the number of odd numbers from 0 to low - 1. The idea can be shown by an example:
 high: 7 low : 3 The odd numbers from 0 to high (7). There are 4 odd numbers from 0 to 7. The odd numbers from 0 to low - 1 (2).</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/">1523. Count Odd Numbers in an Interval Range</a></p>
 <p>The idea of this solution is to get the number odd numbers from <code>0</code> to <code>high</code>, and then subtract the number of odd numbers from <code>0</code> to <code>low - 1</code>. The idea can be shown by an example:</p>
