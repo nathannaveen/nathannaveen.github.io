@@ -28,6 +28,15 @@ paginate     = 10
     category = "blog"
     tag      = "tags"
     series   = "series"
+# Social icons
+[[params.social]]
+name = "leetcode"
+url  = "https://leetcode.com/nathanthegreat/"
+
+
+[[params.social]]
+name = "github"
+url  = "https://github.com/nathannaveen"
 
 [languages]
   [languages.en]
@@ -38,7 +47,7 @@ paginate     = 10
     readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]
-      logoText = "home"
+      logoText = "/home/nathan/"
       logoHomeLink = "/"
     # or
     #
@@ -48,5 +57,5 @@ paginate     = 10
   # And you can even create generic menu
   [[menu.main]]
     identifier = "blog"
-    name       = "Blog"
+    name       = "posts"
     url        = "/posts"

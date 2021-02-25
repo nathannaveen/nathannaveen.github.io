@@ -3,8 +3,7 @@ title: "Leetcode 976"
 date: 2021-02-25T13:50:15-05:00
 toc: false
 images:
-tags:
-  - [math, golang, leetcode]
+tags: [math, golang, leetcode]
 ---
 
 [976. Largest Perimeter Triangle](https://leetcode.com/problems/largest-perimeter-triangle)
