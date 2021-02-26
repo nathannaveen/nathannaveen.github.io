@@ -1,4 +1,38 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 25 Feb 2021 15:48:58 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1592</title><link>https://nathannaveen.dev/posts/leetcode-1592/</link><pubDate>Thu, 25 Feb 2021 15:48:58 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1592/</guid><description>1592. Rearrange Spaces Between Words
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 25 Feb 2021 20:22:25 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1704</title><link>https://nathannaveen.dev/posts/leetcode-1704/</link><pubDate>Thu, 25 Feb 2021 20:22:25 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1704/</guid><description>The idea of this solution is to first make the input string lowercase, and then add 1 to an integer array at the index of every letter, a = 0, b = 1, c = 2.... First we add to the array called first, then starting at a certain index start adding it to second.
+After that, add the number of vowel that have occured. The code does this by doing</description><content type="html"><![CDATA[<p>The idea of this solution is to first make the input string lowercase, and then add <code>1</code> to an integer array at the index of every letter, <code>a = 0, b = 1, c = 2...</code>. First we add to the array called <code>first</code>, then starting at a certain index start adding it to <code>second</code>.</p>
+<p>After that, add the number of vowel that have occured. The code does this by doing</p>
+<pre><code>firstCounter += first[0] + first[4] + first[8] + first[14] + first[20]
+secondCounter += second[0] + second[4] + second[8] + second[14] + second[20]
+</code></pre><p>You might be wondering why the code is adding from <code>first</code> and <code>second</code> at the indices <code>0, 4, 8, 14, 20</code>. It is because the ascii values of <code>'a', 'e', 'i', 'o', 'u'</code> are <code>97, 101, 105, 111, 117</code>, and when they get the indices of <code>a = 0, b = 1, c = 2...</code> it is bascily subtracting <code>97</code> from each of them, so <code>97 - 97 = 0, 101 - 97 = 4, 105 - 97 = 8, 111 - 97 = 14, 117 - 97 = 20</code>.</p>
+<p>All of this can be show with a example:</p>
+<pre><code>input = &quot;TacosAreCool&quot;
+output = true
+</code></pre><p>First off we have to make the input lower case so it becomes <code>&quot;tacosarecool&quot;</code>.</p>
+<p>Next we can add all the characters from to their appropriate arrays.</p>
+<p><img src="https://i.imgur.com/kYBK5as.jpg" alt=""></p>
+<p>You might be wondering why it says <code>tacosa</code> and <code>recool</code>. The front part of the word is <code>tacosa</code> and the back part is <code>recool</code> when the length of the string is divided by two, <code>len(tacosa) == 6</code> and <code>len(recool) == 6</code>. combine they make <code>tacosarecool</code>.</p>
+<p>Then we need to add all the vowels together.</p>
+<p><img src="https://i.imgur.com/DEf68sC.jpg" alt=""></p>
+<p>The number of vowels for <code>tacosa</code> is <code>3</code> because there are two <code>a</code>&rsquo;s and one <code>o</code>. The number of vowels for <code>recool</code> is <code>3</code> as well, because there is one <code>e</code> and two <code>o</code>&rsquo;s.</p>
+<p>Since both <code>tacosa</code> and <code>recool</code> both have the same amount of vowels we return <code>true</code>.</p>
+<pre><code>func halvesAreAlike(s string) bool {
+    first, second := make([]int, 26), make([]int, 26)
+    firstCounter, secondCounter := 0, 0
+    s = strings.ToLower(s)
+    for i, i2 := range s {
+        if i &lt; len(s)/2 {
+            first[int(i2-'a')]++
+        } else {
+            second[int(i2-'a')]++
+        }
+    }
+
+    firstCounter += first[0] + first[4] + first[8] + first[14] + first[20]
+    secondCounter += second[0] + second[4] + second[8] + second[14] + second[20]
+
+    return firstCounter == secondCounter
+}
+</code></pre>]]></content></item><item><title>Leetcode 1592</title><link>https://nathannaveen.dev/posts/leetcode-1592/</link><pubDate>Thu, 25 Feb 2021 15:48:58 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1592/</guid><description>1592. Rearrange Spaces Between Words
 The idea of this solution is pretty simple, first split text by space. We have to split it manualy and not use a inbuild function because the text can contain multiple spaces inbetween words, and we have to count spaces. This can be show in an example:
 input = &amp;quot; this is a sentence &amp;quot; inbuiltSplit = [&amp;quot;&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;this&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;is&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;sentence&amp;quot;, &amp;quot;&amp;quot;] The Code:</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/rearrange-spaces-between-words/">1592. Rearrange Spaces Between Words</a></p>
 <p>The idea of this solution is pretty simple, first split <code>text</code> by space. We have to split it manualy and not use a inbuild function because the text can contain multiple spaces inbetween words, and we have to count spaces. This can be show in an example:</p>
