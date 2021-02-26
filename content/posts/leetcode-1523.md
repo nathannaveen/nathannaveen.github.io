@@ -3,7 +3,7 @@ title: "Leetcode 1523"
 date: 2021-02-24T17:03:24-05:00
 toc: false
 images:
-tags: [leetcode, golang, math]
+tags: [leetcode, golang, math, images]
 ---
 [1523. Count Odd Numbers in an Interval Range](https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/)
 

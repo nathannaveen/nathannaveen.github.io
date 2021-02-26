@@ -3,7 +3,7 @@ title: "Leetcode 1296"
 date: 2021-02-25T15:47:35-05:00
 toc: false
 images:
-tags: [array, leetcode, golang]
+tags: [array, leetcode, golang, images]
 ---
 [Divide array in sets of k consecutive numbers](https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/)
 

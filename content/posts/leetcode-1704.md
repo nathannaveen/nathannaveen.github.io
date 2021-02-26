@@ -3,7 +3,7 @@ title: "Leetcode 1704"
 date: 2021-02-25T20:22:25-05:00
 toc: false
 images:
-tags: [leetcode, string, array, golang]
+tags: [leetcode, string, array, golang, images]
 ---
 
 The idea of this solution is to first make the input string lowercase, and then add `1` to an integer array at the index of every letter, `a = 0, b = 1, c = 2...`. First we add to the array called `first`, then starting at a certain index start adding it to `second`.

@@ -3,7 +3,7 @@ title: "Leetcode 1637"
 date: 2021-02-24T16:52:08-05:00
 toc: false
 images:
-tags: [leetcode, golang, math]
+tags: [leetcode, golang, math, images]
 ---
 [1637. Widest Vertical Area Between Two Points Containing No Points](https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points/)
 
