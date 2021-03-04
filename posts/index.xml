@@ -1,4 +1,302 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 01 Mar 2021 14:20:15 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 4</title><link>https://nathannaveen.dev/posts/leetcode-4/</link><pubDate>Mon, 01 Mar 2021 14:20:15 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-4/</guid><description>4. Median of Two Sorted Arrays
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 04 Mar 2021 15:47:37 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 908</title><link>https://nathannaveen.dev/posts/leetcode-908/</link><pubDate>Thu, 04 Mar 2021 15:47:37 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-908/</guid><description>908. Smallest Range I
+func smallestRangeI(A []int, K int) int { max, min := A[0], A[0] for _, i := range A { if i &amp;gt; max {max = i} if i &amp;lt; min {min = i} } if max-min-2*K &amp;gt; 0 { return max - min - 2 * K } return 0 }</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/smallest-range-i/">908. Smallest Range I</a></p>
+<pre><code>func smallestRangeI(A []int, K int) int {
+	max, min := A[0], A[0]
+
+	for _, i := range A {
+		if i &gt; max {max = i}
+		if i &lt; min {min = i}
+	}
+	if max-min-2*K &gt; 0 {
+		return max - min - 2 * K
+	}
+	return 0
+} 
+</code></pre>]]></content></item><item><title>Leetcode 347</title><link>https://nathannaveen.dev/posts/leetcode-347/</link><pubDate>Thu, 04 Mar 2021 15:47:24 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-347/</guid><description>347. Top K Frequent Elements
+The idea of this solution is pretty simple. First, add all the numbers to a matrix array with the size [number of different elements][2]. Then sort the array, and then add the values to a regular array of size K.
+The matrix array has a size of [number of different elemtnets][2] because we need to add every element to its corresponding place in the array and then update the frequency by adding one to it.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/top-k-frequent-elements/">347. Top K Frequent Elements</a></p>
+<p>The idea of this solution is pretty simple. First, add all the numbers to a matrix array with the size <code>[number of different elements][2]</code>. Then sort the array, and then add the values to a regular array of size <code>K</code>.</p>
+<hr>
+<p>The matrix array has a size of <code>[number of different elemtnets][2]</code> because we need to add every element to its corresponding place in the array and then update the frequency by adding one to it. The array is put in the format <code>[frequency][number]</code>.</p>
+<hr>
+<p>This array is sorted by frequency first and then the number. When we sort, we check whether the frequency of the last number is smaller than the frequency of the current number. If so, then switch the two items, and subtract <code>2</code> from the counter.</p>
+<hr>
+<p><strong>The sort can be shown using these images:</strong></p>
+<p><img src="https://i.imgur.com/fcBnUG3.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/GQeJ16L.jpg" alt=""></p>
+<blockquote>
+<p>[color=#0000ff] The frequency of the previous index is smaller than the current index, so switch them and subtract <code>2</code> from the index.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/CyCoaX4.jpg" alt=""></p>
+<blockquote>
+<p>[color=#0000ff] Even though we subtract <code>2</code> from the index, we only go back <code>1</code> place because we add <code>1</code> to the index with the for loop.</p>
+<p>Since the index is at zero, which is smaller than <code>1</code>, we don&rsquo;t do anything. We can&rsquo;t check whether the current index&rsquo;s frequency is smaller than the previous index&rsquo;s frequency because there is no previous index.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/KYCWTms.jpg" alt=""></p>
+<blockquote>
+<p>[color=#0000ff] We don&rsquo;t do anything because the frequency of the previous number is greater than the current frequency.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/zRoioun.jpg" alt=""></p>
+<blockquote>
+<p>[color=#0000ff] We still don&rsquo;t do anything because the previous frequency is greater than the current frequency. Since this is the last index, we know that <code>arr = [[4, 1], [2, 3], [1, 2]]</code> with the greatest frequency at the beginning and the smallest frequencies at the end.</p>
+</blockquote>
+<hr>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">topKFrequent</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">arr</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{}
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">num</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">nums</span> {
+        <span style="color:#a6e22e">contains</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">false</span>
+        
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">ints</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">arr</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#a6e22e">num</span> {
+                <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">++</span>
+                <span style="color:#a6e22e">contains</span> = <span style="color:#66d9ef">true</span>
+                <span style="color:#66d9ef">break</span>
+            }
+        }
+        
+        <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">contains</span> {
+            <span style="color:#a6e22e">arr</span> = append(<span style="color:#a6e22e">arr</span>, []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">num</span>})
+        }
+    }
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">arr</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>] &lt; <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>][<span style="color:#ae81ff">0</span>] {
+            <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>], <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] = <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>]
+            <span style="color:#a6e22e">i</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">2</span>
+        }
+    }
+
+    <span style="color:#a6e22e">nums</span> = []<span style="color:#66d9ef">int</span>{}
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">k</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">nums</span> = append(<span style="color:#a6e22e">nums</span>, <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>][<span style="color:#ae81ff">1</span>])
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">nums</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 833</title><link>https://nathannaveen.dev/posts/leetcode-833/</link><pubDate>Thu, 04 Mar 2021 10:24:54 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-833/</guid><description>833. Find And Replace in String
+func findReplaceString(S string, indexes []int, sources []string, targets []string) string { res := &amp;quot;&amp;quot; for i := 0; i &amp;lt; len(S); i++ { index := 0 // this is the index that is used for indexes, sources, and targets for i2, i3 := range indexes { if i3 == i { index = i2 // we do this because the indexes are not sorted } } if index &amp;lt; len(indexes) &amp;amp;&amp;amp; i == indexes[index] { currentString := sources[index] isSubstring := true for i2 := range currentString { // checking whether the whole substring is equal if string(S[i+i2]) !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-and-replace-in-string/">833. Find And Replace in String</a></p>
+<pre><code>func findReplaceString(S string, indexes []int, sources []string, targets []string) string {
+	res := &quot;&quot;
+
+	for i := 0; i &lt; len(S); i++ {
+		index := 0 // this is the index that is used for indexes, sources, and targets
+
+		for i2, i3 := range indexes {
+			if i3 == i {
+				index = i2 // we do this because the indexes are not sorted
+			}
+		}
+
+		if index &lt; len(indexes) &amp;&amp; i == indexes[index] {
+			currentString := sources[index]
+			isSubstring := true
+			for i2 := range currentString { // checking whether the whole substring is equal
+				if string(S[i+i2]) != string(currentString[i2]) { 
+					isSubstring = false
+					break
+				}
+			}
+
+			if isSubstring {
+				res += targets[index]
+				i += len(currentString) - 1 // we have to add to i because we dont want to repeat characters
+			} else {
+				res += string(S[i]) // if there is not a whole substring just add the character
+			}
+			index++
+		} else {
+			res += string(S[i]) // if there is no index in indexes that works for the current index
+		}
+	}
+
+	return res
+}
+
+</code></pre>]]></content></item><item><title>Leetcode 1636</title><link>https://nathannaveen.dev/posts/leetcode-1636/</link><pubDate>Wed, 03 Mar 2021 16:02:55 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1636/</guid><description>1636. Sort Array by Increasing Frequency
+The main idea of both the solutions is to add all the numbers to a matrix of lengths [len(nums)][2] and then sort each frequency of numbers by the max frequency. Suppose two values have the same frequency sort them by the value in descending order. After they are sorted, add all the values back to nums and return nums.
+This is the sort:
+for i := 1; i &amp;lt; len(arr); i++ { if i &amp;gt;= 1 &amp;amp;&amp;amp; ((arr[i-1][0] &amp;gt; arr[i][0]) || (arr[i-1][0] == arr[i][0] &amp;amp;&amp;amp; arr[i-1][1] &amp;lt; arr[i][1])) { arr[i], arr[i-1] = arr[i-1], arr[i] i -= 2 } } The idea of it is to start at the second item (first if 0 indexed) and then check whether the frequency of the number before the current is greater than the frequency of the current number.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/sort-array-by-increasing-frequency/">1636. Sort Array by Increasing Frequency</a></p>
+<p>The main idea of both the solutions is to add all the numbers to a matrix of lengths <code>[len(nums)][2]</code> and then sort each frequency of numbers by the max frequency. Suppose two values have the same frequency sort them by the value in descending order. After they are sorted, add all the values back to <code>nums</code> and return <code>nums</code>.</p>
+<p><strong>This is the sort:</strong></p>
+<pre><code>for i := 1; i &lt; len(arr); i++ {
+    if i &gt;= 1 &amp;&amp; ((arr[i-1][0] &gt; arr[i][0]) || 
+    (arr[i-1][0] == arr[i][0] &amp;&amp; arr[i-1][1] &lt; arr[i][1])) {
+        arr[i], arr[i-1] = arr[i-1], arr[i]
+        i -= 2
+    }
+}
+</code></pre><p>The idea of it is to start at the second item (first if 0 indexed) and then check whether the frequency of the number before the current is greater than the frequency of the current number. This is show like this in the code: <code>((arr[i-1][0] &gt; arr[i][0])</code>. Or it checks whether the frequency is the same and whether the current number is greater than the number before the current number, this is show in the code as this: <code>arr[i-1][0] == arr[i][0] &amp;&amp; arr[i-1][1] &lt; arr[i][1]</code>. If either of these things is true, then switch the current and number before the current element and subtracts <code>2</code> from <code>i</code>. We subtract <code>2</code> from <code>i</code> to move back if we have to switch the next current and number before the current numbers. And we subtract <code>2</code>, not <code>1</code> because the loops <code>i++</code> cancel out one of the subtracts. Since we have an <code>i -= 2</code>, we have to check whether <code>i &gt;= 1</code> because if we don&rsquo;t and <code>i == 0</code>, we would have an out-of-bounds exception.</p>
+<p>If you dont understand the explaination look at these images:</p>
+<p><img src="https://i.imgur.com/2zecuOJ.jpg" alt="">
+<img src="https://i.imgur.com/ZoBc0N6.jpg" alt="">
+<img src="https://i.imgur.com/FFnnfj8.jpg" alt=""></p>
+<p>The second code has better space complexity because, in the first solution, we use a <code>map</code> of size <code>len(nums)</code> and an <code>array</code> of size <code>[len(nums)][2]</code>. In the second solution, we just use an <code>array</code> of size <code>[len(nums)][2]</code>.</p>
+<p><strong>Code One:</strong></p>
+<pre><code>func frequencySort(nums []int) []int {
+    m := make(map[int]int)
+    arr := [][]int{}
+    counter := 0
+
+    for _, num := range nums {
+        m[num]++
+    }
+    for i, i2 := range m {
+        arr = append(arr, []int{i2, i})
+    }
+
+    for i := 1; i &lt; len(arr); i++ {
+        if i &gt;= 1 &amp;&amp; ((arr[i-1][0] &gt; arr[i][0]) || 
+        (arr[i-1][0] == arr[i][0] &amp;&amp; arr[i-1][1] &lt; arr[i][1])) {
+            arr[i], arr[i-1] = arr[i-1], arr[i]
+            i -= 2
+        }
+    }
+
+    for i := 0; i &lt; len(arr); i++ {
+        for j := 0; j &lt; arr[i][0]; j++ {
+            nums[counter] = arr[i][1]
+            counter++
+        }
+    }
+
+    return nums
+}
+</code></pre><p><strong>Code Two:</strong></p>
+<pre><code>func frequencySort(nums []int) []int {
+    arr := [][]int{}
+    counter := 0
+
+    for _, num := range nums {
+        contains := false
+
+        for _, ints := range arr {
+            if ints[1] == num {
+                ints[0]++
+                contains = true
+                break
+            }
+        }
+
+        if !contains {
+            arr = append(arr, []int{1, num})
+        }
+    }
+
+    for i := 1; i &lt; len(arr); i++ {
+        if i &gt;= 1 &amp;&amp; ((arr[i-1][0] &gt; arr[i][0]) ||
+        (arr[i-1][0] == arr[i][0] &amp;&amp; arr[i-1][1] &lt; arr[i][1])) {
+            arr[i], arr[i-1] = arr[i-1], arr[i]
+            i -= 2
+        }
+    }
+
+    for i := 0; i &lt; len(arr); i++ {
+        for j := 0; j &lt; arr[i][0]; j++ {
+            nums[counter] = arr[i][1]
+            counter++
+        }
+    }
+
+    return nums
+}
+</code></pre>]]></content></item><item><title>Leetcode 1385</title><link>https://nathannaveen.dev/posts/leetcode-1385/</link><pubDate>Wed, 03 Mar 2021 13:25:26 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1385/</guid><description>1385. Find the Distance Value Between Two Arrays
+The idea of this solution is to iterate through arr1 and then inside each iteration iterate through arr2. If the absolute value of arr1[i] - arr2[j] is smaller than or equal to d, we know that arr1[i] can&amp;rsquo;t be added to the resulting counter, so we can just break from the loop.
+There is a abs function because math.Abs takes longer. When using math.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-the-distance-value-between-two-arrays/">1385. Find the Distance Value Between Two Arrays</a></p>
+<p>The idea of this solution is to iterate through <code>arr1</code> and then inside each iteration iterate through <code>arr2</code>. If the absolute value of <code>arr1[i] - arr2[j]</code> is smaller than or equal to <code>d</code>, we know that <code>arr1[i]</code> can&rsquo;t be added to the resulting counter, so we can just <code>break</code> from the loop.</p>
+<p>There is a abs function because <code>math.Abs</code> takes longer. When using <code>math.Abs</code> we have to make <code>float64(arr1[i] - arr2[j])</code>, and then make the <code>int(math.Abs)</code>.</p>
+<pre><code>func findTheDistanceValue(arr1 []int, arr2 []int, d int) int {
+    res := 0
+    shouldAdd := true
+    for i := 0; i &lt; len(arr1); i++ {
+        for j := 0; j &lt; len(arr2); j++ {
+            if abs(arr1[i]-arr2[j]) &lt;= d {
+                shouldAdd = false
+                break
+            }
+        }
+        if shouldAdd {res++} else {shouldAdd = true}
+    }
+    return res
+}
+
+func abs(n int) int {
+    if n &lt; 0 {
+        return -n
+    }
+    return n
+}
+</code></pre>]]></content></item><item><title>Leetcode 645</title><link>https://nathannaveen.dev/posts/leetcode-645/</link><pubDate>Tue, 02 Mar 2021 11:27:21 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-645/</guid><description>645. Set Mismatch
+The idea of this solution is to add every number in the array nums to another array called temp. Next we go through the array temp and check whether the number of a certain number is equal to 2, if it is then we know that it is the repeated number. If it is not 2 but it is 0 we know that it is the skiped number.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/set-mismatch/">645. Set Mismatch</a></p>
+<p>The idea of this solution is to add every number in the array <code>nums</code> to another array called <code>temp</code>. Next we go through the array temp and check whether the number of a certain number is equal to <code>2</code>, if it is then we know that it is the repeated number. If it is not <code>2</code> but it is <code>0</code> we know that it is the skiped number. We know that there is always a duplicate number, so if we found the duplicate but not the value that is skiped we return the duplicate and the duplicate plus one, because if the skiped is not inside the array we have to return the next number.</p>
+<p><code>temp</code> has <code>10001</code> values because the constraints of the problem say <code>2 &lt;= nums.length &lt;= 10^4, 1 &lt;= nums[i] &lt;= 10^4</code>, since <code>10^4</code> equals <code>10000</code> and the constraints say <code>nums.length &lt;= 10^4</code> we have to do <code>10^4 + 1 = 10000 + 1 = 10001</code>.</p>
+<pre><code>func findErrorNums(nums []int) []int {
+    sort.Ints(nums)
+    double, skip := 0, 0
+    temp := make([]int, 10001)
+
+    for _, num := range nums {
+        temp[num]++
+    }
+
+    for i, value := range temp {
+        if value == 2 {
+            double = i
+            if skip != 0 {return []int{double, skip}}
+        } else if value == 0 {
+            skip = i
+            if double != 0 {return []int{double, skip}}
+        }
+    }
+
+    return []int{double, double + 1}
+}
+</code></pre>]]></content></item><item><title>Leetcode 34</title><link>https://nathannaveen.dev/posts/leetcode-34/</link><pubDate>Tue, 02 Mar 2021 11:27:12 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-34/</guid><description>34. Find First and Last Position of Element in Sorted Array
+Both of the solutions use a two pointer approche. The first solution is slower than the second solution because it checks an extra if statment inside the loop, while the second solution checks it outside of the loop.
+func searchRange(nums []int, target int) []int { left := 0 right := len(nums) - 1 for left &amp;lt; right { if nums[left] !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/">34. Find First and Last Position of Element in Sorted Array</a></p>
+<p>Both of the solutions use a two pointer approche. The first solution is slower than the second solution because it checks an extra <code>if</code> statment inside the loop, while the second solution checks it outside of the loop.</p>
+<pre><code>func searchRange(nums []int, target int) []int {
+    left := 0
+    right := len(nums) - 1
+
+    for left &lt; right {
+        if nums[left] != target {
+            left++
+        }
+        if nums[right] != target {
+            right--
+        }
+        if nums[left] == target &amp;&amp; nums[right] == target {
+            return []int{left, right}
+        }
+    }
+
+    if len(nums) &gt; 0 &amp;&amp; nums[left] == target &amp;&amp; nums[right] == target {
+        return []int{left, right}
+    }
+
+    return []int{-1, -1}
+}
+</code></pre><pre><code>func searchRange(nums []int, target int) []int {
+    left := 0
+    right := len(nums) - 1
+
+    for (left &lt; right) &amp;&amp; (nums[left] != target || nums[right] != target) {
+        if nums[left] != target {
+            left++
+        }
+        if nums[right] != target {
+            right--
+        }
+    }
+
+    if len(nums) &gt; 0 &amp;&amp; nums[left] == target &amp;&amp; nums[right] == target {
+        return []int{left, right}
+    }
+
+    return []int{-1, -1}
+}
+</code></pre>]]></content></item><item><title>Leetcode 4</title><link>https://nathannaveen.dev/posts/leetcode-4/</link><pubDate>Mon, 01 Mar 2021 14:20:15 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-4/</guid><description>4. Median of Two Sorted Arrays
 The idea of this solution is pretty simple, first append all the nums2 values to nums1. Then sort nums1. If there are a even number of values then the median is the middle two numbers added together and divided by 2. An example could be:
 input: nums1 = [1,2], nums2 = [3,4] expected output: 2.5
 When the two arrays are combined the new array would be [1, 2, 3, 4] and the two middle numbers are 2, and 3.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">4. Median of Two Sorted Arrays</a></p>
