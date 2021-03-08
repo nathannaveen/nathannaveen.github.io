@@ -1,4 +1,42 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 08 Mar 2021 09:42:56 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1332</title><link>https://nathannaveen.dev/posts/leetcode-1332/</link><pubDate>Mon, 08 Mar 2021 09:42:56 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1332/</guid><description>1332. Remove Palindromic Subsequences
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 08 Mar 2021 14:31:01 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1784</title><link>https://nathannaveen.dev/posts/leetcode-1784/</link><pubDate>Mon, 08 Mar 2021 14:31:01 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1784/</guid><description>1784. Check if Binary String Has at Most One Segment of Ones
+The problem description is:
+Given a binary string s without leading zeros, return true if s contains at most one contiguous segment of ones. Otherwise, return false.
+This is kind of hard to understand, so I am going to explain it. A contiguous segment of ones looks like:
+111000 100 10 1 11110000 And some of the ones that are not contiguous are:</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/">1784. Check if Binary String Has at Most One Segment of Ones</a></p>
+<p>The problem description is:</p>
+<blockquote>
+<p>Given a binary string <code>s</code> without leading zeros, return <code>true</code> if <code>s</code> contains at most one contiguous segment of ones. Otherwise, return <code>false</code>.</p>
+</blockquote>
+<p>This is kind of hard to understand, so I am going to explain it. A contiguous segment of ones looks like:</p>
+<pre><code>111000
+100
+10
+1
+11110000
+</code></pre><p>And some of the ones that are not contiguous are:</p>
+<pre><code>101
+1001
+111001
+10011
+</code></pre><p>You should be able to see that the non-consecutive strings have a <code>&quot;01&quot;</code>. We have to check whether there is a <code>&quot;01&quot;</code> in the string. If so, return <code>false</code>.</p>
+<p><em>Note: We don&rsquo;t have to worry about strings with leading zeros. That is why we can check whether there is a <code>&quot;01&quot;</code> in a string and return <code>false</code> if so. If we had leading zeros, there would be <code>&quot;01&quot;</code>&rsquo;s in the string even if there are consecutive ones, such as <code>&quot;001110&quot;</code>. We should return <code>true,</code> but there is a <code>&quot;01&quot;</code>.</em></p>
+<p><strong>First Solution:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">checkOnesSegment</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>:<span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;01&#34;</span> { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span> }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+}
+</code></pre></div><p><strong>Second Solution:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">checkOnesSegment</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span> { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span> }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1332</title><link>https://nathannaveen.dev/posts/leetcode-1332/</link><pubDate>Mon, 08 Mar 2021 09:42:56 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1332/</guid><description>1332. Remove Palindromic Subsequences
 This problem asks us to find all the subsequences in a string called s. s only contains the letters a and b.
 When we are doing this problem, the main thing to look at is that it says &amp;ldquo;subsequences,&amp;rdquo; not &amp;ldquo;substrings,&amp;rdquo; and that there are only two letters a and b.
 The difference between &amp;ldquo;substrings&amp;rdquo; and &amp;ldquo;subsequences&amp;rdquo; is substrings are consecutive letters, while subsequences doesn&amp;rsquo;t have to be consecutive.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/remove-palindromic-subsequences/">1332. Remove Palindromic Subsequences</a></p>
