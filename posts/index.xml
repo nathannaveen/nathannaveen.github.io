@@ -1,4 +1,86 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 08 Mar 2021 14:31:01 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1784</title><link>https://nathannaveen.dev/posts/leetcode-1784/</link><pubDate>Mon, 08 Mar 2021 14:31:01 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1784/</guid><description>1784. Check if Binary String Has at Most One Segment of Ones
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 09 Mar 2021 21:04:18 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1750</title><link>https://nathannaveen.dev/posts/leetcode-1750/</link><pubDate>Tue, 09 Mar 2021 21:04:18 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1750/</guid><description>1750. Minimum Length of String After Deleting Similar Ends
+The idea of this solution is pretty simple, so it can be shown with this image:
+func minimumLength(s string) int { for len(s) &amp;gt; 1 &amp;amp;&amp;amp; s[0] == s[len(s)-1] { end := s[len(s)-1] lenS := len(s) for i := 0; i &amp;lt; lenS; i++ { if s[len(s)-1] != s[0] { s = s[:len(s)-i-1] break } } lenS = len(s) for i := 0; i &amp;lt; lenS; i++ { if s[0] !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends/">1750. Minimum Length of String After Deleting Similar Ends</a></p>
+<p>The idea of this solution is pretty simple, so it can be shown with this image:</p>
+<p><img src="https://i.imgur.com/QAmU64G.jpg" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">minimumLength</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">int</span> {
+
+    <span style="color:#66d9ef">for</span> len(<span style="color:#a6e22e">s</span>) &gt; <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] {
+        <span style="color:#a6e22e">end</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        <span style="color:#a6e22e">lenS</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">s</span>)
+
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">lenS</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">0</span>] {
+                <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span>[:len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+                <span style="color:#66d9ef">break</span>
+            }
+        }
+        <span style="color:#a6e22e">lenS</span> = len(<span style="color:#a6e22e">s</span>)
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">lenS</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">end</span> {
+                <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">0</span><span style="color:#f92672">+</span><span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>:]
+                <span style="color:#66d9ef">break</span>
+            }
+        }
+    }
+
+    <span style="color:#66d9ef">return</span> len(<span style="color:#a6e22e">s</span>)
+}
+
+</code></pre></div>]]></content></item><item><title>Leetcode 1752</title><link>https://nathannaveen.dev/posts/leetcode-1752/</link><pubDate>Tue, 09 Mar 2021 21:04:13 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1752/</guid><description>1752. Check if Array Is Sorted and Rotated
+The idea of this solution is to loop through the array, and then check whether there is a nums[i] which is greater than nums[(i+1) % len(nums)] (By the way (i+1) % len(nums) is for getting the next number) if nums[i] &amp;gt; nums[(i+1)%len(nums)] then add one to a counter called counter. Then we check whether counter is greater than or equal to 2.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/">1752. Check if Array Is Sorted and Rotated</a></p>
+<p>The idea of this solution is to loop through the array, and then check whether there is a <code>nums[i]</code> which is greater than <code>nums[(i+1) % len(nums)]</code> (By the way <code>(i+1) % len(nums)</code> is for getting the next number) if <code>nums[i] &gt; nums[(i+1)%len(nums)]</code> then add one to a counter called <code>counter</code>. Then we check whether <code>counter</code> is greater than or equal to <code>2</code>.</p>
+<p>We check whether <code>counter</code>is greater than or eqal to <code>2</code> because if there are more than one <code>nums[i] &gt; nums[(i+1)%len(nums)]</code> we know that it is not sorted.</p>
+<p><img src="https://i.imgur.com/v2Qpuls.jpg" alt=""></p>
+<blockquote>
+<p>This is sorted, we know because there is only one <code>nums[i] &gt; nums[(i+1)%len(nums)]</code>. The array is <code>[4, 5, 1, 2, 3]</code> and when we rotate it we get <code>[1, 2, 3, 4, 5]</code>.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/SHE6tuZ.jpg" alt=""></p>
+<blockquote>
+<p>We we can see that the array <code>[2, 5, 1, 4, 3]</code> can never be rotated and be sorted:
+<code>[5, 1, 4, 3, 2]</code>
+<code>[1, 4, 3, 2, 5]</code>
+<code>[4, 3, 2, 5, 1]</code>
+<code>[3, 2, 5, 1, 4]</code>
+<code>[2, 5, 1, 4, 3]</code></p>
+<p>As you can see there is two <code>nums[i] &gt; nums[(i+1)%len(nums)]</code> so it will never be sorted.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/1oHm0tT.jpg" alt=""></p>
+<blockquote>
+<p>The input is already sorted, but even without that we can see that there is only one <code>nums[i] &gt; nums[(i+1)%len(nums)]</code>.</p>
+</blockquote>
+<hr>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">check</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">nums</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] &gt; <span style="color:#a6e22e">nums</span>[(<span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">%</span>len(<span style="color:#a6e22e">nums</span>)] {
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+        }
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span> {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+        }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+}
+</code></pre></div><p><strong>We could make the first solution a little better by doing:</strong> <em>(This is better because we are only checking the if when we add to counter and not every single time)</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">check</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">nums</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] &gt; <span style="color:#a6e22e">nums</span>[(<span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">%</span>len(<span style="color:#a6e22e">nums</span>)] {
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span> {
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+            }
+        }
+
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1784</title><link>https://nathannaveen.dev/posts/leetcode-1784/</link><pubDate>Mon, 08 Mar 2021 14:31:01 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1784/</guid><description>1784. Check if Binary String Has at Most One Segment of Ones
 The problem description is:
 Given a binary string s without leading zeros, return true if s contains at most one contiguous segment of ones. Otherwise, return false.
 This is kind of hard to understand, so I am going to explain it. A contiguous segment of ones looks like:
