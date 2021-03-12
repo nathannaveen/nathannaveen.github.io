@@ -1,4 +1,43 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Fri, 12 Mar 2021 11:01:21 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1401</title><link>https://nathannaveen.dev/posts/leetcode-1401/</link><pubDate>Fri, 12 Mar 2021 11:01:21 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1401/</guid><description>1401. Circle and Rectangle Overlapping
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Fri, 12 Mar 2021 12:03:46 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1461</title><link>https://nathannaveen.dev/posts/leetcode-1461/</link><pubDate>Fri, 12 Mar 2021 12:03:46 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1461/</guid><description>1461. Check If a String Contains All Binary Codes of Size K
+The idea of this solution is to make a sliding window and add all the substrings os size k to a map, if the maps length is equal to 2^k return true.
+We do 2^k because we have to acount for all posibilitys of 0 and 1.
+func hasAllCodes(s string, k int) bool { m := make(map[string]int) for i := 0; i &amp;lt; len(s)-k+1; i++ { m[s[i:i+k]]++ } return len(m) == twoPow(k) } func twoPow(k int) int { res := 1 for i := 0; i &amp;lt; k; i++ { res *= 2 } return res } By using bit maniplation we can simplify the code, left shifting is basicly multiplying by 2.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/">1461. Check If a String Contains All Binary Codes of Size K</a></p>
+<p>The idea of this solution is to make a sliding window and add all the substrings os size <code>k</code> to a map, if the maps length is equal to <code>2^k</code> return <code>true</code>.</p>
+<p>We do <code>2^k</code> because we have to acount for all posibilitys of <code>0</code> and <code>1</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hasAllCodes</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>)
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#a6e22e">k</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>:<span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#a6e22e">k</span>]]<span style="color:#f92672">++</span>
+    }
+
+    <span style="color:#66d9ef">return</span> len(<span style="color:#a6e22e">m</span>) <span style="color:#f92672">==</span> <span style="color:#a6e22e">twoPow</span>(<span style="color:#a6e22e">k</span>) 
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">twoPow</span>(<span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">k</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">res</span> <span style="color:#f92672">*=</span> <span style="color:#ae81ff">2</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div><p><em>By using bit maniplation we can simplify the code, left shifting is basicly multiplying by <code>2</code>. This can be shown using the following:</em></p>
+<pre><code>2^0 = 1    1 &lt;&lt; 0 = 1
+
+2^1 = 2    1 &lt;&lt; 1 = 2
+
+2^2 = 4    1 &lt;&lt; 2 = 4
+</code></pre><p><strong>The simplifyed the code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hasAllCodes</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>)
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#a6e22e">k</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>:<span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#a6e22e">k</span>]]<span style="color:#f92672">++</span>
+    }
+
+    <span style="color:#66d9ef">return</span> len(<span style="color:#a6e22e">m</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#a6e22e">k</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1401</title><link>https://nathannaveen.dev/posts/leetcode-1401/</link><pubDate>Fri, 12 Mar 2021 11:01:21 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1401/</guid><description>1401. Circle and Rectangle Overlapping
 The Main Idea
 The idea of this solution is to find the distance from the middle of the circle to the edge of a rectangle, and if the distance is smaller than or equal to the radius, we know that the rectangle overlaps with the circle.
 If you don&amp;rsquo;t understand, look at the following images:
