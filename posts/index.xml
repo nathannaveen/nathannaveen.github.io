@@ -1,4 +1,45 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 13 Mar 2021 10:42:03 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1329</title><link>https://nathannaveen.dev/posts/leetcode-1329/</link><pubDate>Sat, 13 Mar 2021 10:42:03 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1329/</guid><description>1329. Sort the Matrix Diagonally
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 14 Mar 2021 15:57:58 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1721</title><link>https://nathannaveen.dev/posts/leetcode-1721/</link><pubDate>Sun, 14 Mar 2021 15:57:58 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1721/</guid><description>1721. Swapping Nodes in a Linked List
+The idea of this solution is pretty simple.
+First, we find the length of the linked list Next, we iterate through the linked list up until the ending kth node And then we iterate through the linked list to to kth node Then, last of all, switch the value of the kth node with the value of the kth node from the end.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/swapping-nodes-in-a-linked-list/">1721. Swapping Nodes in a Linked List</a></p>
+<p>The idea of this solution is pretty simple.</p>
+<ul>
+<li>First, we find the length of the linked list</li>
+<li>Next, we iterate through the linked list up until the ending <code>kth</code> node</li>
+<li>And then we iterate through the linked list to to <code>kth</code> node</li>
+<li>Then, last of all, switch the value of the <code>kth</code> node with the value of the <code>kth</code> node from the end.</li>
+</ul>
+<p>Finding the length of the linked list is pretty simple. Just get a counter. In this problem, it is <code>lengthOfLinkedList</code>, then iterate through the linked list and add one to the counter every iteration.</p>
+<p>We get the <code>kth</code> node from the end by iterating a counter <code>i</code> through <code>0</code> to <code>lengthOfLinkedList - k</code>, <code>lengthOfLinkedList - k</code> gets the length of the linked list and then subtracts <code>k</code> from it, so we get the ending <code>kth</code> node.</p>
+<p>We get the <code>kth</code> node by just iterating through <code>0</code> to <code>k - 1</code>. We do <code>k - 1</code> because we do <code>first = first.Next</code> which makes it the next value.</p>
+<p>Then we switch the two values by just assigning them to each other if you don&rsquo;t understand <code>second.Val, first.Val = first.Val, second.Val</code> it is basically:</p>
+<pre><code>temp := second.Val
+
+second.Val = first.Val
+first.Val = temp
+</code></pre><p><strong>The code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">swapNodes</span>(<span style="color:#a6e22e">head</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ListNode</span>, <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">ListNode</span> {
+    <span style="color:#a6e22e">first</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">head</span>
+    <span style="color:#a6e22e">second</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">head</span>
+    <span style="color:#a6e22e">findLength</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">head</span>
+    <span style="color:#a6e22e">lengthOfLinkedList</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">findLength</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#a6e22e">lengthOfLinkedList</span><span style="color:#f92672">++</span>
+        <span style="color:#a6e22e">findLength</span> = <span style="color:#a6e22e">findLength</span>.<span style="color:#a6e22e">Next</span>
+    }
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">lengthOfLinkedList</span><span style="color:#f92672">-</span><span style="color:#a6e22e">k</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">second</span> = <span style="color:#a6e22e">second</span>.<span style="color:#a6e22e">Next</span>
+    }
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">k</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">first</span> = <span style="color:#a6e22e">first</span>.<span style="color:#a6e22e">Next</span>
+    }
+
+    <span style="color:#a6e22e">second</span>.<span style="color:#a6e22e">Val</span>, <span style="color:#a6e22e">first</span>.<span style="color:#a6e22e">Val</span> = <span style="color:#a6e22e">first</span>.<span style="color:#a6e22e">Val</span>, <span style="color:#a6e22e">second</span>.<span style="color:#a6e22e">Val</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">head</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1329</title><link>https://nathannaveen.dev/posts/leetcode-1329/</link><pubDate>Sat, 13 Mar 2021 10:42:03 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1329/</guid><description>1329. Sort the Matrix Diagonally
 The idea of this solution is kind of hard to explain so I will show it with the following images:
 i = len(mat), and j = len(mat[0])
 The yellow part is every where i and j will iterate
