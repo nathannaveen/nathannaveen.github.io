@@ -1,4 +1,107 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 14 Mar 2021 15:57:58 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1721</title><link>https://nathannaveen.dev/posts/leetcode-1721/</link><pubDate>Sun, 14 Mar 2021 15:57:58 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1721/</guid><description>1721. Swapping Nodes in a Linked List
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 15 Mar 2021 11:52:46 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 692</title><link>https://nathannaveen.dev/posts/leetcode-692/</link><pubDate>Mon, 15 Mar 2021 11:52:46 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-692/</guid><description>692. Top K Frequent Words
+The Main Idea:
+This solution first adds the words to an array called frequency and sorts frequency after that, return the k most frequency words.
+Adding to the array Frequency:
+You might be confused when we do this part:
+for _, ints := range frequency { if words[ints[0]] == word { contains = true ints[1]++ break } } We can simplify the if statement into if words[frequency[i][0]] = word.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/top-k-frequent-words/">692. Top K Frequent Words</a></p>
+<p><strong>The Main Idea:</strong></p>
+<p>This solution first adds the words to an array called <code>frequency</code> and sorts <code>frequency</code> after that, return the <code>k</code> most frequency words.</p>
+<p><strong>Adding to the array <code>Frequency</code>:</strong></p>
+<p>You might be confused when we do this part:</p>
+<pre><code>for _, ints := range frequency {
+    if words[ints[0]] == word {
+        contains = true
+        ints[1]++
+        break
+    }
+}
+</code></pre><p>We can simplify the <code>if</code> statement into <code>if words[frequency[i][0]] = word</code>. This looks a little weird. We have to do this to get the word for each frequency because the array <code>words</code> is an array of strings, while a frequency is integers. So <code>frequency</code> is an matrix array of <code>[int][int]</code> because we can&rsquo;t do <code>[string][int]</code>, basically <code>frequency</code> is <code>[the index of the first word with this word][frequency]</code>. This might still be a little confusing, so I drew up some pictures I describe it:</p>
+<p>The input:</p>
+<p><img src="https://i.imgur.com/DDnSxUW.jpg" alt=""></p>
+<p>Next:</p>
+<p><img src="https://i.imgur.com/4urAoah.jpg" alt=""></p>
+<blockquote>
+<p>As you can see, our word is <code>taco</code>. Since it is at the <code>0th</code> index and there is only one of it, we can add the array <code>[0, 1]</code> to <code>frequency</code>.</p>
+</blockquote>
+<p>Then:</p>
+<p><img src="https://i.imgur.com/I7OztWX.jpg" alt=""></p>
+<blockquote>
+<p>The new current word is <code>sunny</code>, and since it is at the <code>1st</code> index and there is only <code>1</code> sunny so far, we can add the array <code>[1, 1]</code> to the array.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/csUnLCw.jpg" alt=""></p>
+<blockquote>
+<p>This is just like the previous two parts since there is only <code>1</code> word <code>day</code> so far and the index is <code>2</code> we can add the array <code>[2, 1]</code></p>
+</blockquote>
+<p><img src="https://i.imgur.com/S8WjhpX.jpg" alt=""></p>
+<blockquote>
+<p>Now we have something different, we can do <code>if words[ints[0]] == word</code> and it outcomes as <code>true</code> (Remember that <code>if words[ints[0]] == word</code> equals <code>if words[frequency[i][0]] == word</code>). We can put the index of the word which is in <code>ints [0]</code> and then put it back into <code>words</code>, and we get the word, then we check whether that word is equal to the current word. If it is, we can add one to the frequency because they are both the same word.</p>
+</blockquote>
+<p>We can continue to do this until the end:</p>
+<p><img src="https://i.imgur.com/v1oWouh.jpg" alt=""></p>
+<blockquote>
+<p>When we just continue doing this we get the matrix array <code>[[0, 2][1, 2], [2, 2]]</code> for <code>frequency</code>.</p>
+</blockquote>
+<p><strong>The Sort:</strong></p>
+<p>The sorted array can be shown using another post of mine <a href="https://nathannaveen.dev/posts/leetcode-973/">Leetcode: 973</a> about the middle of the page, and it will say <code>The Idea Of This Solution:</code>, that is where it starts. That post is pretty similar but not the same, so you can look at that to get the main idea of the sort.</p>
+<p><strong>Getting the K most Frequent:</strong></p>
+<p>We get the <code>k</code> most frequent elements from the matrix array <code>frequency</code>. Since the matrix is sorted from smallest to greatest, we have to loop from the index of the last element to the last element&rsquo;s index minus <code>k</code>.</p>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">topKFrequent</span>(<span style="color:#a6e22e">words</span> []<span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">frequency</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{}
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">string</span>{}
+
+    <span style="color:#a6e22e">frequency</span> = <span style="color:#a6e22e">addWordsToFrequency</span>(<span style="color:#a6e22e">words</span>, <span style="color:#a6e22e">frequency</span>)
+
+    <span style="color:#a6e22e">sortFrequency</span>(<span style="color:#a6e22e">words</span>, <span style="color:#a6e22e">frequency</span>)
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">frequency</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> len(<span style="color:#a6e22e">frequency</span>)<span style="color:#f92672">-</span><span style="color:#a6e22e">k</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span> {
+        <span style="color:#a6e22e">res</span> = append(<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">words</span>[<span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span>][<span style="color:#ae81ff">0</span>]])
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addWordsToFrequency</span>(<span style="color:#a6e22e">words</span> []<span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">frequency</span> [][]<span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">       adding all the words to the matrix called frequency
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">           * first check whether frequency has the word in it, if it does
+</span><span style="color:#75715e">           add one to the frequency, if it doesn&#39;t add another word to the
+</span><span style="color:#75715e">           array with a frequency of 1
+</span><span style="color:#75715e">    */</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">word</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">words</span> {
+        <span style="color:#a6e22e">contains</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">false</span>
+
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">ints</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">frequency</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">words</span>[<span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">0</span>]] <span style="color:#f92672">==</span> <span style="color:#a6e22e">word</span> {
+                <span style="color:#a6e22e">contains</span> = <span style="color:#66d9ef">true</span>
+                <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">++</span>
+                <span style="color:#66d9ef">break</span>
+            }
+        }
+        <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">contains</span> {
+            <span style="color:#a6e22e">frequency</span> = append(<span style="color:#a6e22e">frequency</span>, []<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">i</span>, <span style="color:#ae81ff">1</span>})
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">frequency</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sortFrequency</span>(<span style="color:#a6e22e">words</span> []<span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">frequency</span> [][]<span style="color:#66d9ef">int</span>) {
+    
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">    This fuction sorts the matrix called frequency.
+</span><span style="color:#75715e">    */</span>
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">frequency</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span>][<span style="color:#ae81ff">1</span>] &lt; <span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">||</span>
+            (<span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;&amp;</span> 
+            <span style="color:#a6e22e">words</span>[<span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span>][<span style="color:#ae81ff">0</span>]] &gt; <span style="color:#a6e22e">words</span>[<span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]])) {
+
+            <span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span>], <span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] = <span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], <span style="color:#a6e22e">frequency</span>[<span style="color:#a6e22e">i</span>]
+            <span style="color:#a6e22e">i</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">2</span>
+        }
+    }
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1721</title><link>https://nathannaveen.dev/posts/leetcode-1721/</link><pubDate>Sun, 14 Mar 2021 15:57:58 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1721/</guid><description>1721. Swapping Nodes in a Linked List
 The idea of this solution is pretty simple.
 First, we find the length of the linked list Next, we iterate through the linked list up until the ending kth node And then we iterate through the linked list to to kth node Then, last of all, switch the value of the kth node with the value of the kth node from the end.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/swapping-nodes-in-a-linked-list/">1721. Swapping Nodes in a Linked List</a></p>
 <p>The idea of this solution is pretty simple.</p>
