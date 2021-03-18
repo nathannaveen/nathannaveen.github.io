@@ -17,7 +17,65 @@ If we pick one stone, the other player can choose three stones If we pick two st
 <p><img src="https://assets.leetcode.com/users/images/1d18be62-568e-408b-bdc0-e0b2c8025357_1616084116.2890737.jpeg" alt="image"></p>
 <p>The next example:</p>
 <p><img src="https://assets.leetcode.com/users/images/ed5060f8-e074-4ceb-b646-5c3286ed087e_1616084166.6079986.jpeg" alt="image"></p>
-]]></content></item><item><title>Leetcode 1041</title><link>https://nathannaveen.dev/posts/leetcode-1041/</link><pubDate>Tue, 16 Mar 2021 12:41:13 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1041/</guid><description>1041. Robot Bounded In Circle
+]]></content></item><item><title>Leetcode 1119</title><link>https://nathannaveen.dev/posts/leetcode-1119/</link><pubDate>Thu, 18 Mar 2021 11:32:48 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1119/</guid><description>1119. Remove Vowels from a String
+The first approach is pretty simple. If the letter is not a vowel, add it to a resulting string.
+The second approach is better because we keep on using the same string. We remake the string every time there is a vowel by going around the vowel.
+This can be shown with some images:
+We can have:
+input: &amp;quot;leetcode&amp;quot; expected output: &amp;quot;ltcd&amp;quot; We can fast forward to our first vowel, 'e'.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/remove-vowels-from-a-string/">1119. Remove Vowels from a String</a></p>
+<p>The first approach is pretty simple. If the letter is not a vowel, add it to a resulting string.</p>
+<p>The second approach is better because we keep on using the same string. We remake the string every time there is a vowel by going around the vowel.</p>
+<p>This can be shown with some images:</p>
+<p>We can have:</p>
+<pre><code>input: &quot;leetcode&quot;
+expected output: &quot;ltcd&quot;
+</code></pre><blockquote>
+<p>We can fast forward to our first vowel, <code>'e'</code>.</p>
+</blockquote>
+<p><img src="https://assets.leetcode.com/users/images/18d37f14-9f11-44bb-aeaa-380a78ed8e79_1616078946.4208002.jpeg" alt="image"></p>
+<blockquote>
+<p>Now we re-assign our string <code>s</code> to <code>&quot;leetcode&quot;</code> without the <code>'e'</code> and we get:</p>
+</blockquote>
+<p><img src="https://assets.leetcode.com/users/images/84537cdb-336d-45c1-9c74-3d2963e8d74f_1616079116.1516426.jpeg" alt="image"></p>
+<blockquote>
+<p>We have circled the letter <code>'t'</code> because <code>i == 2</code> but we forgot about the second <code>'e'</code> so we subtract <code>1</code> from <code>i</code> and we get:</p>
+</blockquote>
+<p><img src="https://assets.leetcode.com/users/images/d7f8958f-e111-44b7-b0e0-49715e6033e9_1616079273.371251.jpeg" alt="image"></p>
+<blockquote>
+<p>As we can see, <code>'e'</code> is a vowel, so we have to remake the string to:</p>
+</blockquote>
+<p><img src="https://assets.leetcode.com/users/images/ade21b1b-388e-420e-ad0b-606b55326c13_1616079425.8852704.jpeg" alt="image"></p>
+<blockquote>
+<p><em>Note: As you can see, we skipped a lot of the letter because it would take a lot longer if we didn&rsquo;t ignore them</em></p>
+<p>You can see that the <code>'o'</code> is a vowel, so we can remake the string to:</p>
+</blockquote>
+<p><img src="https://assets.leetcode.com/users/images/785dcddd-63ab-403f-9e31-e77ee37ed4fc_1616079718.1413827.jpeg" alt="image"></p>
+<blockquote>
+<p>We skipped some more letters again because the other letters were not needed.</p>
+<p>The <code>'e'</code> is a vowel, so we can remake the string to:</p>
+</blockquote>
+<p><img src="https://assets.leetcode.com/users/images/c437f9a8-4422-4153-bd63-616a7e11c0f5_1616079950.2055788.jpeg" alt="image"></p>
+<p>As we can see, <code>ltdc</code> is equal to our expected output.</p>
+<p><strong>The First Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">removeVowels</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i2</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i2</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;a&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">i2</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;e&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">i2</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;i&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">i2</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;o&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">i2</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;u&#39;</span> {
+            <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> string(<span style="color:#a6e22e">i2</span>)
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">removeVowels</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">s</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;a&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;e&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;i&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;o&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;u&#39;</span> {
+            <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span>[:<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>:]
+            <span style="color:#a6e22e">i</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1041</title><link>https://nathannaveen.dev/posts/leetcode-1041/</link><pubDate>Tue, 16 Mar 2021 12:41:13 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1041/</guid><description>1041. Robot Bounded In Circle
 What the problem is asking:
 The problem says that it will give a string with the letters &amp;quot;L&amp;quot;, &amp;quot;R&amp;quot; and &amp;quot;G&amp;quot; to command a robot. &amp;quot;L&amp;quot; means to turn left 90 degrees, &amp;quot;R&amp;quot; means to turn right 90 degrees, and &amp;quot;G&amp;quot; means to go forward one unit. The problem says to return true if the robot can continue in that pattern forever and keep going in a circle.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/robot-bounded-in-circle/">1041. Robot Bounded In Circle</a></p>
 <p><strong>What the problem is asking:</strong></p>
