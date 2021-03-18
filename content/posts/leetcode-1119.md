@@ -3,7 +3,7 @@ title: "Leetcode 1119"
 date: 2021-03-18T11:32:48-04:00
 toc: false
 images:
-tags: [leetcode, golang, string]
+tags: [leetcode, golang, string, images]
 ---
 
 [1119. Remove Vowels from a String](https://leetcode.com/problems/remove-vowels-from-a-string/)

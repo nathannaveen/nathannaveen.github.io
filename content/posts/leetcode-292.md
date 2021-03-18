@@ -3,7 +3,7 @@ title: "Leetcode 292"
 date: 2021-03-18T12:19:52-04:00
 toc: false
 images:
-tags: [leetcode, golang, math]
+tags: [leetcode, golang, math, images]
 ---
 
 [292. Nim Game](https://leetcode.com/problems/nim-game/)
