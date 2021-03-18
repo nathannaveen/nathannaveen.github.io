@@ -75,6 +75,131 @@ expected output: &quot;ltcd&quot;
     }
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>
 }
+</code></pre></div>]]></content></item><item><title>Leetcode 1138</title><link>https://nathannaveen.dev/posts/leetcode-1138/</link><pubDate>Thu, 18 Mar 2021 11:32:42 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1138/</guid><description>1138. Alphabet Board Path
+I have to admit the code might look daunting but it is actualy not that complicated after I explain it to you.
+What the Problem is asking:
+The problem asks us to make a board of letters:
+[ [a, b, c, d, e] [f, g, h, i, j] [k, l, m, n, o] [p, q, r, s, t] [u, v, w, x, y] [z] ] Then it gives us a word target.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/alphabet-board-path/submissions/">1138. Alphabet Board Path</a></p>
+<p><em>I have to admit the code might look daunting but it is actualy not that complicated after I explain it to you.</em></p>
+<p><strong>What the Problem is asking:</strong></p>
+<p>The problem asks us to make a board of letters:</p>
+<pre><code>[
+[a, b, c, d, e]
+[f, g, h, i, j]
+[k, l, m, n, o]
+[p, q, r, s, t]
+[u, v, w, x, y]
+[z]
+]
+</code></pre><p>Then it gives us a word <code>target</code>. We start at the position <code>(0, 0)</code> which is the letter <code>a</code> on the board.</p>
+<p>We are asked to split <code>target</code> into letters and then go from the current position to the letter, and then from the new position to the next letter, and so on.</p>
+<p>If we:</p>
+<ul>
+<li>go right then add a <code>R</code> to the result</li>
+<li>go left then add a <code>L</code> to the result</li>
+<li>go up then add a <code>U</code> to the result</li>
+<li>go down then add a <code>D</code> to the result</li>
+<li>reach the letter we add a <code>!</code> to the result</li>
+</ul>
+<p>We can show this with the following example:</p>
+<pre><code>input: 
+
+    target = &quot;leet&quot;
+
+output:
+
+    &quot;DDR!UURRR!!DDD!&quot;
+</code></pre><p><img src="https://i.imgur.com/ZxVnZJZ.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/6f4mbqt.jpg" alt=""></p>
+<blockquote>
+<p>The first letter is <code>l</code> so we have to go to the letter <code>l</code> from <code>a</code>. So we go <code>2</code> down and <code>1</code> right. So we add <code>DDR!</code> to the result.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/5Ox3cCZ.jpg" alt=""></p>
+<blockquote>
+<p>The second letter is <code>e</code> so we we have to first go up <code>2</code> and right <code>3</code>. Doing this we add <code>UURRR!</code> to the result.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/2aqk8sw.jpg" alt=""></p>
+<blockquote>
+<p>The third letter is an <code>e</code> as well, so we just have to add a <code>!</code> to the result.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/jJjDdUL.jpg" alt=""></p>
+<blockquote>
+<p>Since the last letter is <code>t</code> we just go down <code>3</code> from our current possition, so we just add <code>DDD!</code> to the result.</p>
+</blockquote>
+<p>After we have finished we can see that our result is <code>&quot;DDR! + UURRR! + ! + DDD!&quot; = &quot;DDR!UURRR!!DDD!&quot;</code> and our expected output is <code>&quot;DDR!UURRR!!DDD!&quot;</code>, and we can also see that our expected output is equal to our output.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">alphabetBoardPath</span>(<span style="color:#a6e22e">target</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+
+    <span style="color:#a6e22e">board</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;abcde&#34;</span>, <span style="color:#e6db74">&#34;fghij&#34;</span>, <span style="color:#e6db74">&#34;klmno&#34;</span>, <span style="color:#e6db74">&#34;pqrst&#34;</span>, <span style="color:#e6db74">&#34;uvwxy&#34;</span>, <span style="color:#e6db74">&#34;z&#34;</span>}
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#a6e22e">row</span>, <span style="color:#a6e22e">col</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">target</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">newCol</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">newCol</span> &lt; <span style="color:#ae81ff">6</span>; <span style="color:#a6e22e">newCol</span><span style="color:#f92672">++</span> {
+            <span style="color:#a6e22e">newRow</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">containsPosition</span>(<span style="color:#a6e22e">board</span>[<span style="color:#a6e22e">newCol</span>], int32(<span style="color:#a6e22e">target</span>[<span style="color:#a6e22e">i</span>]))
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">newRow</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> { <span style="color:#75715e">// this says that the row contains the letter
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">amountOfRowsLeft</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">newCol</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">col</span>)
+
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">newCol</span> &gt; <span style="color:#a6e22e">col</span> {
+                    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">col</span>; <span style="color:#a6e22e">k</span> &lt; <span style="color:#a6e22e">newCol</span>; <span style="color:#a6e22e">k</span><span style="color:#f92672">++</span> {
+                        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">k</span> &gt; len(<span style="color:#a6e22e">board</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span> {
+                            <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span>
+                            <span style="color:#66d9ef">break</span>
+                        }
+                        <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;D&#34;</span>
+                        <span style="color:#a6e22e">amountOfRowsLeft</span><span style="color:#f92672">--</span>
+                    }
+                } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">newCol</span> &lt; <span style="color:#a6e22e">col</span> {
+                    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">k</span> &lt; <span style="color:#a6e22e">col</span><span style="color:#f92672">-</span><span style="color:#a6e22e">newCol</span>; <span style="color:#a6e22e">k</span><span style="color:#f92672">++</span> {
+                        <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;U&#34;</span>
+                        <span style="color:#a6e22e">amountOfRowsLeft</span><span style="color:#f92672">--</span>
+                    }
+                }
+
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">newRow</span> &gt; <span style="color:#a6e22e">row</span> {
+                    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">k</span> &lt; <span style="color:#a6e22e">newRow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">row</span>; <span style="color:#a6e22e">k</span><span style="color:#f92672">++</span> {
+                        <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;R&#34;</span>
+                    }
+                } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">newRow</span> &lt; <span style="color:#a6e22e">row</span> {
+                    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">k</span> &lt; <span style="color:#a6e22e">row</span><span style="color:#f92672">-</span><span style="color:#a6e22e">newRow</span>; <span style="color:#a6e22e">k</span><span style="color:#f92672">++</span> {
+                        <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;L&#34;</span>
+                    }
+                }
+
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">amountOfRowsLeft</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+                    <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;D&#34;</span>
+                }
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">amountOfRowsLeft</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+                    <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;!&#34;</span>
+                }
+                <span style="color:#a6e22e">row</span>, <span style="color:#a6e22e">col</span> = <span style="color:#a6e22e">newRow</span>, <span style="color:#a6e22e">newCol</span>
+                <span style="color:#66d9ef">break</span>
+            }
+        }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">containsPosition</span>(<span style="color:#a6e22e">theRow</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">letter</span> <span style="color:#66d9ef">int32</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">        This checks whether theRow contains the letter
+</span><span style="color:#75715e">    */</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">i2</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">theRow</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i2</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">letter</span> {
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">i</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">a</span>
+}
+
 </code></pre></div>]]></content></item><item><title>Leetcode 1041</title><link>https://nathannaveen.dev/posts/leetcode-1041/</link><pubDate>Tue, 16 Mar 2021 12:41:13 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1041/</guid><description>1041. Robot Bounded In Circle
 What the problem is asking:
 The problem says that it will give a string with the letters &amp;quot;L&amp;quot;, &amp;quot;R&amp;quot; and &amp;quot;G&amp;quot; to command a robot. &amp;quot;L&amp;quot; means to turn left 90 degrees, &amp;quot;R&amp;quot; means to turn right 90 degrees, and &amp;quot;G&amp;quot; means to go forward one unit. The problem says to return true if the robot can continue in that pattern forever and keep going in a circle.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/robot-bounded-in-circle/">1041. Robot Bounded In Circle</a></p>

@@ -6,7 +6,11 @@ The first approach is pretty simple. If the letter is not a vowel, add it to a r
 The second approach is better because we keep on using the same string. We remake the string every time there is a vowel by going around the vowel.
 This can be shown with some images:
 We can have:
-input: &amp;quot;leetcode&amp;quot; expected output: &amp;quot;ltcd&amp;quot; We can fast forward to our first vowel, 'e'.</description></item><item><title>Leetcode 692</title><link>https://nathannaveen.dev/posts/leetcode-692/</link><pubDate>Mon, 15 Mar 2021 11:52:46 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-692/</guid><description>692. Top K Frequent Words
+input: &amp;quot;leetcode&amp;quot; expected output: &amp;quot;ltcd&amp;quot; We can fast forward to our first vowel, 'e'.</description></item><item><title>Leetcode 1138</title><link>https://nathannaveen.dev/posts/leetcode-1138/</link><pubDate>Thu, 18 Mar 2021 11:32:42 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1138/</guid><description>1138. Alphabet Board Path
+I have to admit the code might look daunting but it is actualy not that complicated after I explain it to you.
+What the Problem is asking:
+The problem asks us to make a board of letters:
+[ [a, b, c, d, e] [f, g, h, i, j] [k, l, m, n, o] [p, q, r, s, t] [u, v, w, x, y] [z] ] Then it gives us a word target.</description></item><item><title>Leetcode 692</title><link>https://nathannaveen.dev/posts/leetcode-692/</link><pubDate>Mon, 15 Mar 2021 11:52:46 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-692/</guid><description>692. Top K Frequent Words
 The Main Idea:
 This solution first adds the words to an array called frequency and sorts frequency after that, return the k most frequency words.
 Adding to the array Frequency:
