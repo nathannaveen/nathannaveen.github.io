@@ -1,4 +1,23 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 16 Mar 2021 12:41:13 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1041</title><link>https://nathannaveen.dev/posts/leetcode-1041/</link><pubDate>Tue, 16 Mar 2021 12:41:13 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1041/</guid><description>1041. Robot Bounded In Circle
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 18 Mar 2021 12:19:52 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 292</title><link>https://nathannaveen.dev/posts/leetcode-292/</link><pubDate>Thu, 18 Mar 2021 12:19:52 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-292/</guid><description>292. Nim Game
+func canWinNim(n int) bool { return n%4 != 0 } This is all the code we need to solve this problem.
+We have to return n % 4 != 0 because we are asked to pick from 1 to 3 stones, and if we pick;
+If we pick one stone, the other player can choose three stones If we pick two stones, the other player can select two stones If we pick three stones, the other player can choose one stone As you can see, when we add the stones together in the examples above, they all equal 4 stones.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/nim-game/">292. Nim Game</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">canWinNim</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span><span style="color:#f92672">%</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>
+}
+</code></pre></div><p>This is all the code we need to solve this problem.</p>
+<p>We have to return <code>n % 4 != 0</code> because we are asked to pick from <code>1</code> to <code>3</code> stones, and if we pick;</p>
+<ul>
+<li>If we pick one stone, the other player can choose three stones</li>
+<li>If we pick two stones, the other player can select two stones</li>
+<li>If we pick three stones, the other player can choose one stone</li>
+</ul>
+<p>As you can see, when we add the stones together in the examples above, they all equal <code>4</code> stones.</p>
+<p>We can see that any number that is a multiple of <code>4</code> will return false with these pictures:</p>
+<p><img src="https://assets.leetcode.com/users/images/1d18be62-568e-408b-bdc0-e0b2c8025357_1616084116.2890737.jpeg" alt="image"></p>
+<p>The next example:</p>
+<p><img src="https://assets.leetcode.com/users/images/ed5060f8-e074-4ceb-b646-5c3286ed087e_1616084166.6079986.jpeg" alt="image"></p>
+]]></content></item><item><title>Leetcode 1041</title><link>https://nathannaveen.dev/posts/leetcode-1041/</link><pubDate>Tue, 16 Mar 2021 12:41:13 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1041/</guid><description>1041. Robot Bounded In Circle
 What the problem is asking:
 The problem says that it will give a string with the letters &amp;quot;L&amp;quot;, &amp;quot;R&amp;quot; and &amp;quot;G&amp;quot; to command a robot. &amp;quot;L&amp;quot; means to turn left 90 degrees, &amp;quot;R&amp;quot; means to turn right 90 degrees, and &amp;quot;G&amp;quot; means to go forward one unit. The problem says to return true if the robot can continue in that pattern forever and keep going in a circle.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/robot-bounded-in-circle/">1041. Robot Bounded In Circle</a></p>
 <p><strong>What the problem is asking:</strong></p>
