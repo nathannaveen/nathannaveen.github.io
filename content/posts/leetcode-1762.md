@@ -14,7 +14,7 @@ The idea of this solution is to loop through the array `heights` backwards. Then
 
 If you don't understand the explaination just look at the following images:
 
-#### The input:
+**The input:**
 
 ![](https://i.imgur.com/ihGpLUO.jpg)
 
