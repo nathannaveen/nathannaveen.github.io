@@ -3,7 +3,7 @@ title: "Leetcode 1762"
 date: 2021-03-19T09:39:06-04:00
 toc: false
 images:
-tags:[leetcode, golang, images, array]
+tags: [leetcode, golang, images, array]
 ---
 
 [1762. Buildings With an Ocean View](https://leetcode.com/problems/buildings-with-an-ocean-view/)
