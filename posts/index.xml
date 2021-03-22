@@ -1,4 +1,123 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 21 Mar 2021 22:01:48 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1121</title><link>https://nathannaveen.dev/posts/leetcode-1121/</link><pubDate>Sun, 21 Mar 2021 22:01:48 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1121/</guid><description>1121. Divide Array Into Increasing Sequences
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 22 Mar 2021 11:57:20 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 296</title><link>https://nathannaveen.dev/posts/leetcode-296/</link><pubDate>Mon, 22 Mar 2021 11:57:20 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-296/</guid><description>296. Best Meeting Point
+What the Problem Is Asking:
+The problem gives us an input binary matrix array called grid. If grid[i][j] = 1 then it is a house of a friend, and if grid[i][j] = 0 then there is no house there.
+The problem asks us to find a point on the grid that is the smallest distance to walk from all the houses. Note that the point on the grid with the smallest distance can be on a house or an empty space.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/best-meeting-point/">296. Best Meeting Point</a></p>
+<p><strong>What the Problem Is Asking:</strong></p>
+<p>The problem gives us an input binary matrix array called <code>grid</code>. If <code>grid[i][j] = 1</code> then it is a house of a friend, and if <code>grid[i][j] = 0</code> then there is no house there.</p>
+<p>The problem asks us to find a point on the grid that is the smallest distance to walk from all the houses. <em>Note that the point on the grid with the smallest distance can be on a house or an empty space.</em></p>
+<p>They want you to calculate manhattan distance. The manhattan distance is:</p>
+<p><img src="https://i.imgur.com/dW8q8xG.jpg" alt=""></p>
+<p>Where the lines signify absolute value.</p>
+<p>For example, the example input given by the problem statement in Leetcode is:</p>
+<pre><code>[
+[1,0,0,0,1],
+[0,0,0,0,0],
+[0,0,1,0,0]
+]
+</code></pre><p>And the output is <code>6</code>. The meeting spot is <code>(2, 0)</code> because the one points are <code>(0, 0)(4, 0)(2, 2)</code>, and the manhattan distance from <code>(2, 0)</code> to the one points are <code>2</code>, so <code>2 + 2 + 2 = 6</code>.</p>
+<p><strong>The Idea Of This Solution:</strong></p>
+<p>The idea of this solution is pretty simple:</p>
+<ul>
+<li>First, add all the <code>1</code>&rsquo;s on the grid (houses) to an array called <code>ones</code>.</li>
+<li>Next, create a variable called <code>minimum</code> and loop through the grid at all points, then find the manhattan distance from all house points to the current point and sum them up. Make <code>minimum</code> the minimum of <code>minimum</code> and <code>manhattanDistance</code>.</li>
+</ul>
+<p><strong>How This Solution Works:</strong></p>
+<ul>
+<li>First, we find all the <code>1</code>&rsquo;s (houses) in the grid and add them to an array of <code>point</code>. Point is a struct that I created to store the points, so <code>point.x</code> is the x value, and <code>point.y</code> is the value. Anyways continuing, we add all the values that have to the array of points.</li>
+<li>After that, we make a variable called <code>minimum</code> and set it to the max integer value <code>2^31 = 2147483648</code>.</li>
+<li>We loop through the grid again and go through every point and get the manhattan distance from the position of that point to all the positions of the houses and sum up all the distances. If the sum of all the distances is smaller than the minimum distance, make <code>minimum = manhattanDistance</code>.</li>
+<li>Then all we have to do is return the minimum distance.</li>
+</ul>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">point</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>
+    <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">minTotalDistance</span>(<span style="color:#a6e22e">grid</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">ones</span> <span style="color:#f92672">:=</span> []<span style="color:#a6e22e">point</span>{}
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">grid</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">grid</span>[<span style="color:#ae81ff">0</span>]); <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> {
+                <span style="color:#a6e22e">ones</span> = append(<span style="color:#a6e22e">ones</span>, <span style="color:#a6e22e">point</span>{<span style="color:#a6e22e">x</span>: <span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">y</span>: <span style="color:#a6e22e">i</span>})
+            }
+        }
+    }
+
+    <span style="color:#a6e22e">minimum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">2147483648</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">grid</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">grid</span>[<span style="color:#ae81ff">0</span>]); <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+            <span style="color:#a6e22e">minimum</span> = <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">manhattanDistance</span>(<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">ones</span>), <span style="color:#a6e22e">minimum</span>)
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">minimum</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">manhattanDistance</span>(<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">ones</span> []<span style="color:#a6e22e">point</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">thePoint</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">ones</span> {
+        <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">j</span><span style="color:#f92672">-</span><span style="color:#a6e22e">thePoint</span>.<span style="color:#a6e22e">x</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#a6e22e">thePoint</span>.<span style="color:#a6e22e">y</span>)
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">sum</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">a</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &lt; <span style="color:#a6e22e">b</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+}
+</code></pre></div><p><strong>Code Without The Struct Point:</strong> <em>(This solution stores the points in a matrix array instead of a struct called point)</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">minTotalDistance</span>(<span style="color:#a6e22e">grid</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">ones</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{}
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">grid</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">grid</span>[<span style="color:#ae81ff">0</span>]); <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> {
+                <span style="color:#a6e22e">ones</span> = append(<span style="color:#a6e22e">ones</span>, []<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span>})
+            }
+        }
+    }
+
+    <span style="color:#a6e22e">minimum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">2147483648</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">grid</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">grid</span>[<span style="color:#ae81ff">0</span>]); <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+            <span style="color:#a6e22e">minimum</span> = <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">manhattanDistance</span>(<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">ones</span>), <span style="color:#a6e22e">minimum</span>)
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">minimum</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">manhattanDistance</span>(<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">ones</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">one</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">ones</span> {
+        <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">j</span><span style="color:#f92672">-</span><span style="color:#a6e22e">one</span>[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">+</span> <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#a6e22e">one</span>[<span style="color:#ae81ff">0</span>])
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">sum</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">a</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &lt; <span style="color:#a6e22e">b</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1121</title><link>https://nathannaveen.dev/posts/leetcode-1121/</link><pubDate>Sun, 21 Mar 2021 22:01:48 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1121/</guid><description>1121. Divide Array Into Increasing Sequences
 What the Problem is Asking Us To Do:
 The problem statement is:
 Given a non-decreasing array of positive integers nums and an integer K, find out if this array can be divided into one or more disjoint increasing subsequences of length at least K.
