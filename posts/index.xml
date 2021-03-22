@@ -1,4 +1,63 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 21 Mar 2021 11:36:17 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1214</title><link>https://nathannaveen.dev/posts/leetcode-1214/</link><pubDate>Sun, 21 Mar 2021 11:36:17 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1214/</guid><description>This is a simple depth-first-search (dfs) solution. We first iterate through the first tree and then the second tree. We add all the values from the first tree to the array arr1 and then add the second tree&amp;rsquo;s values to the array arr2. After that, we find whether two values from arr1, arr2 summed up equals target return true.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 21 Mar 2021 22:01:48 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1121</title><link>https://nathannaveen.dev/posts/leetcode-1121/</link><pubDate>Sun, 21 Mar 2021 22:01:48 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1121/</guid><description>1121. Divide Array Into Increasing Sequences
+What the Problem is Asking Us To Do:
+The problem statement is:
+Given a non-decreasing array of positive integers nums and an integer K, find out if this array can be divided into one or more disjoint increasing subsequences of length at least K.
+What this is saying is:
+We are first given a sorted array of positive integers called nums and an integer K for our input.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/divide-array-into-increasing-sequences/">1121. Divide Array Into Increasing Sequences</a></p>
+<p><strong>What the Problem is Asking Us To Do:</strong></p>
+<p>The problem statement is:</p>
+<blockquote>
+<p>Given a non-decreasing array of positive integers nums and an integer K, find out if this array can be divided into one or more disjoint increasing subsequences of length at least K.</p>
+</blockquote>
+<p>What this is saying is:</p>
+<ul>
+<li>We are first given a sorted array of positive integers called <code>nums</code> and an integer <code>K</code> for our input.</li>
+<li>We have to determine whether <code>nums</code> can be split into disjoint <em>(disjoint means not together because the prefix dis is not and joint means together. Thus, the definition of disjoint is not together)</em> sequences of at least <code>K</code>&lsquo;th length.</li>
+</ul>
+<p>You might be confused by the example which the problem gives on Leetcode:</p>
+<pre><code>Input: nums = [1,2,2,3,3,4,4], K = 3
+Output: true
+Explanation: 
+The array can be divided into the two subsequences [1,2,3,4] and [2,3,4]
+</code></pre><p>This is kind of misdirecting if you don&rsquo;t read the problem statement because you usually think that the arrays you have made have to be consecutive. <code>[1, 2, 3, 4]</code> and <code>[2, 3, 4]</code> are both consecutive.</p>
+<p><strong>The idea of this solution:</strong></p>
+<p>The idea of this solution is to find the max frequency of a certain number and then check whether <code>maxFrequency * K &lt;= len(nums)</code>. This works because the max frequency is the minimum number of disjoint sequences, and <code>K</code> is the minimum number of items per sequence. Even if the number of sequences is greater than the max frequency and there are more than <code>K</code> items per sequence, it will still work.</p>
+<p>We find the max frequency, which in this solution is called <code>maximum</code> by looping through <code>nums</code>, and if the next number is greater than the current number, we know that the frequency of the current number is the max frequency of this number so we can make <code>maximum = math.Max(float64(counter), maximum)</code>. Otherwise, we know that the next number is equal to the current number because <code>nums</code> is sorted. So we can add one to the current frequency counter called <code>counter</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">canDivideIntoSubsequences</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">K</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">counter</span>, <span style="color:#a6e22e">maximum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>, float64(<span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">nums</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] &gt; <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] {
+            <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Max</span>(float64(<span style="color:#a6e22e">counter</span>), <span style="color:#a6e22e">maximum</span>)
+            <span style="color:#a6e22e">counter</span> = <span style="color:#ae81ff">1</span>
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+        }
+    }
+    <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Max</span>(float64(<span style="color:#a6e22e">counter</span>), <span style="color:#a6e22e">maximum</span>)
+    <span style="color:#66d9ef">return</span> len(<span style="color:#a6e22e">nums</span>) <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">K</span> <span style="color:#f92672">*</span> int(<span style="color:#a6e22e">maximum</span>)
+}
+</code></pre></div><p><strong>Edit to make space better:</strong> <em>(Added a function called <code>max</code> to calculate the maximum of two values instead of using <code>math.Max()</code> and converting <code>counter</code> to <code>float64</code> and then converting <code>maximum</code> to <code>int</code>)</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">canDivideIntoSubsequences</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">K</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">counter</span>, <span style="color:#a6e22e">maximum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">nums</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] &gt; <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] {
+            <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">counter</span>)
+            <span style="color:#a6e22e">counter</span> = <span style="color:#ae81ff">1</span>
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+        }
+    }
+    <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">counter</span>)
+    <span style="color:#66d9ef">return</span> len(<span style="color:#a6e22e">nums</span>) <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">K</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">maximum</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#a6e22e">b</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1214</title><link>https://nathannaveen.dev/posts/leetcode-1214/</link><pubDate>Sun, 21 Mar 2021 11:36:17 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1214/</guid><description>This is a simple depth-first-search (dfs) solution. We first iterate through the first tree and then the second tree. We add all the values from the first tree to the array arr1 and then add the second tree&amp;rsquo;s values to the array arr2. After that, we find whether two values from arr1, arr2 summed up equals target return true.
 func twoSumBSTs(root1 *TreeNode, root2 *TreeNode, target int) bool { stack := []*TreeNode{root1} arr1 := []int{} arr2 := []int{} for len(stack) !</description><content type="html"><![CDATA[<p>This is a simple depth-first-search (dfs) solution. We first iterate through the first tree and then the second tree. We add all the values from the first tree to the array <code>arr1</code> and then add the second tree&rsquo;s values to the array <code>arr2</code>. After that, we find whether two values from <code>arr1, arr2</code> summed up equals <code>target</code> return <code>true</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">twoSumBSTs</span>(<span style="color:#a6e22e">root1</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>, <span style="color:#a6e22e">root2</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
     <span style="color:#a6e22e">stack</span> <span style="color:#f92672">:=</span> []<span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>{<span style="color:#a6e22e">root1</span>}
