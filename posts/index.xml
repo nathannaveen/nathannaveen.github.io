@@ -217,8 +217,47 @@ The array can be divided into the two subsequences [1,2,3,4] and [2,3,4]
     }
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
 }
-</code></pre></div>]]></content></item><item><title>Leetcode 1214</title><link>https://nathannaveen.dev/posts/leetcode-1214/</link><pubDate>Sun, 21 Mar 2021 11:36:17 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1214/</guid><description>This is a simple depth-first-search (dfs) solution. We first iterate through the first tree and then the second tree. We add all the values from the first tree to the array arr1 and then add the second tree&amp;rsquo;s values to the array arr2. After that, we find whether two values from arr1, arr2 summed up equals target return true.
-func twoSumBSTs(root1 *TreeNode, root2 *TreeNode, target int) bool { stack := []*TreeNode{root1} arr1 := []int{} arr2 := []int{} for len(stack) !</description><content type="html"><![CDATA[<p>This is a simple depth-first-search (dfs) solution. We first iterate through the first tree and then the second tree. We add all the values from the first tree to the array <code>arr1</code> and then add the second tree&rsquo;s values to the array <code>arr2</code>. After that, we find whether two values from <code>arr1, arr2</code> summed up equals <code>target</code> return <code>true</code>.</p>
+</code></pre></div>]]></content></item><item><title>Leetcode 1214</title><link>https://nathannaveen.dev/posts/leetcode-1214/</link><pubDate>Sun, 21 Mar 2021 11:36:17 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1214/</guid><description>1214. Two Sum BSTs
+Quick Run-Down On The Solutions
+The first solution is the easiest of the three solutions and the worst-time complexity solution. The second solution has a different approach from the first solution and a little better time but still not that great. The third solution has a lot better time than the first two solutions and has a similar approach to the second solution. The Ideas of These Solutions:</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/two-sum-bsts/">1214. Two Sum BSTs</a></p>
+<p><strong>Quick Run-Down On The Solutions</strong></p>
+<ul>
+<li>The first solution is the easiest of the three solutions and the worst-time complexity solution.</li>
+<li>The second solution has a different approach from the first solution and a little better time but still not that great.</li>
+<li>The third solution has a lot better time than the first two solutions and has a similar approach to the second solution.</li>
+</ul>
+<p><strong>The Ideas of These Solutions:</strong></p>
+<p>The first solution is a simple mundane depth-first-search (dfs) solution. We first iterate through the first tree and then the second tree. We add all the values from the first tree to the array <code>arr1</code> and then add the second tree&rsquo;s values to the array <code>arr2</code>. After that, we find whether two values from <code>arr1, arr2</code> summed up equals <code>target</code> return <code>true</code>.</p>
+<p>The second solution iterates through the first tree and finds the difference of <code>target - pop.Val</code>, and add it to an array called <code>secondTreeExpectedValues</code>. All we have to do is iterate through the second tree and check whether <code>secondTreeExpectedValues</code> contains the <code>pop.Val</code>. If it does, we know that the trees have two numbers that add up to <code>target</code>.</p>
+<p>The third solution does the same thing as the second solution but uses a map called <code>m</code> instead of <code>secondTreeExpectedValues</code>. The key difference between the two is when you check whether an array contains, you have to iterate through an array, and iterating through an array is <code>O(n)</code> where <code>n = len(array)</code>. But checking whether a map contains is <code>O(1)</code>. So using a map instead of an array cuts down on a lot of time.</p>
+<p>If you don&rsquo;t understand the idea of the second and third solutions, look at the following images <em>(I am doing this with the third solutions idea)</em>:</p>
+<h4 id="input">Input:</h4>
+<p><img src="https://i.imgur.com/Fw7hBM1.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/ZsmP7Qm.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/IyZCA6K.jpg" alt=""></p>
+<p>Now we have finished iterating through the first tree and added all the differences to the map.</p>
+<p>Now iterating through tree2:</p>
+<p><img src="https://i.imgur.com/cC3HsMC.jpg" alt=""></p>
+<blockquote>
+<p>There is no key of <code>8</code>, so we continue.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/4J1AYm6.jpg" alt=""></p>
+<blockquote>
+<p>There is no key of <code>11</code> as well.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/TEP4FpV.jpg" alt=""></p>
+<blockquote>
+<p>There is no key of <code>12</code>.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/y1khnaO.jpg" alt=""></p>
+<blockquote>
+<p>There is no key of <code>9</code> in <code>m</code>.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/3ZvKBVR.jpg" alt=""></p>
+<blockquote>
+<p>There is a key of <code>6</code> in <code>m</code>, and the value is <code>7</code>. When we add <code>6</code> and <code>7</code> together, we get <code>13</code>. So you see when we did <code>target - pop.Val</code> we were getting the second value from <code>tree2</code>.
+<strong>The First Solution:</strong></p>
+</blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">twoSumBSTs</span>(<span style="color:#a6e22e">root1</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>, <span style="color:#a6e22e">root2</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
     <span style="color:#a6e22e">stack</span> <span style="color:#f92672">:=</span> []<span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>{<span style="color:#a6e22e">root1</span>}
     <span style="color:#a6e22e">arr1</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{}
@@ -253,6 +292,78 @@ func twoSumBSTs(root1 *TreeNode, root2 *TreeNode, target int) bool { stack := []
             }
         }
     }
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+}
+</code></pre></div><p><strong>The Second Solution:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">twoSumBSTs</span>(<span style="color:#a6e22e">root1</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>, <span style="color:#a6e22e">root2</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">stack</span> <span style="color:#f92672">:=</span> []<span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>{<span style="color:#a6e22e">root1</span>}
+    <span style="color:#a6e22e">secondTreeExpectedValues</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{}
+
+    <span style="color:#66d9ef">for</span> len(<span style="color:#a6e22e">stack</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#a6e22e">pop</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stack</span>[len(<span style="color:#a6e22e">stack</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        <span style="color:#a6e22e">stack</span> = <span style="color:#a6e22e">stack</span>[:len(<span style="color:#a6e22e">stack</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">pop</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+            <span style="color:#a6e22e">stack</span> = append(<span style="color:#a6e22e">stack</span>, <span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Left</span>, <span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Right</span>)
+            <span style="color:#a6e22e">secondTreeExpectedValues</span> =
+                append(<span style="color:#a6e22e">secondTreeExpectedValues</span>, <span style="color:#a6e22e">target</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Val</span>)
+        }
+    }
+
+    <span style="color:#a6e22e">stack</span> = append(<span style="color:#a6e22e">stack</span>, <span style="color:#a6e22e">root2</span>)
+
+    <span style="color:#66d9ef">for</span> len(<span style="color:#a6e22e">stack</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#a6e22e">pop</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stack</span>[len(<span style="color:#a6e22e">stack</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        <span style="color:#a6e22e">stack</span> = <span style="color:#a6e22e">stack</span>[:len(<span style="color:#a6e22e">stack</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">pop</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+            <span style="color:#a6e22e">stack</span> = append(<span style="color:#a6e22e">stack</span>, <span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Left</span>, <span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Right</span>)
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">arrayContains</span>(<span style="color:#a6e22e">secondTreeExpectedValues</span>, <span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Val</span>) {
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+            }
+        }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">arrayContains</span>(<span style="color:#a6e22e">arr</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">val</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">arr</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">val</span> {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+}
+</code></pre></div><p><strong>The Third Solution:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">twoSumBSTs</span>(<span style="color:#a6e22e">root1</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>, <span style="color:#a6e22e">root2</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>, <span style="color:#a6e22e">target</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">stack</span> <span style="color:#f92672">:=</span> []<span style="color:#f92672">*</span><span style="color:#a6e22e">TreeNode</span>{<span style="color:#a6e22e">root1</span>}
+    <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">int</span>)
+
+    <span style="color:#66d9ef">for</span> len(<span style="color:#a6e22e">stack</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#a6e22e">pop</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stack</span>[len(<span style="color:#a6e22e">stack</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        <span style="color:#a6e22e">stack</span> = <span style="color:#a6e22e">stack</span>[:len(<span style="color:#a6e22e">stack</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">pop</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+            <span style="color:#a6e22e">stack</span> = append(<span style="color:#a6e22e">stack</span>, <span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Left</span>, <span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Right</span>)
+            <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">target</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Val</span>] = <span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Val</span>
+        }
+    }
+
+    <span style="color:#a6e22e">stack</span> = append(<span style="color:#a6e22e">stack</span>, <span style="color:#a6e22e">root2</span>)
+
+    <span style="color:#66d9ef">for</span> len(<span style="color:#a6e22e">stack</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#a6e22e">pop</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stack</span>[len(<span style="color:#a6e22e">stack</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        <span style="color:#a6e22e">stack</span> = <span style="color:#a6e22e">stack</span>[:len(<span style="color:#a6e22e">stack</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">pop</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+            <span style="color:#a6e22e">stack</span> = append(<span style="color:#a6e22e">stack</span>, <span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Left</span>, <span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Right</span>)
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">pop</span>.<span style="color:#a6e22e">Val</span>]; <span style="color:#a6e22e">ok</span> {
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+            }
+        }
+    }
+
     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
 }
 </code></pre></div>]]></content></item><item><title>Leetcode 272</title><link>https://nathannaveen.dev/posts/leetcode-272/</link><pubDate>Fri, 19 Mar 2021 09:50:42 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-272/</guid><description>272. Closest Binary Search Tree Value II
