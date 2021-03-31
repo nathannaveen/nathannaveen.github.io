@@ -1,4 +1,110 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 24 Mar 2021 12:35:49 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1791</title><link>https://nathannaveen.dev/posts/leetcode-1791/</link><pubDate>Wed, 24 Mar 2021 12:35:49 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1791/</guid><description>1791. Find Center of Star Graph
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Fri, 26 Mar 2021 10:27:54 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 163</title><link>https://nathannaveen.dev/posts/leetcode-163/</link><pubDate>Fri, 26 Mar 2021 10:27:54 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-163/</guid><description>1427. Perform String Shifts
+The idea of this solution is pretty simple.
+Since there are only two directions, we can shift the strings in one direction. The reason we can shift in only one direction is when the input tells us to shift
+First left and then right: The right might cancel out the left and will end up with no shift. The right might be greater than the left, so we shift right.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/perform-string-shifts/">1427. Perform String Shifts</a></p>
+<p>The idea of this solution is pretty simple.</p>
+<ul>
+<li>
+<p>Since there are only two directions, we can shift the strings in one direction. The reason we can shift in only one direction is when the input tells us to shift</p>
+<ul>
+<li>First left and then right:
+<ul>
+<li>The right might cancel out the left and will end up with no shift.</li>
+<li>The right might be greater than the left, so we shift right.</li>
+<li>The left might be greater than the right, so we shift left.</li>
+</ul>
+</li>
+<li>First right then left:
+<ul>
+<li>The left might be equal to the right, so it will cancel both of them out, and we won&rsquo;t shift.</li>
+<li>The left might be greater than the right, so we shift left.</li>
+<li>The left might be smaller than the right, so we shift right.</li>
+</ul>
+</li>
+<li>First left then another left:
+<ul>
+<li>We can only go left because there is no right to cancel out.</li>
+</ul>
+</li>
+<li>First right then another right:
+<ul>
+<li>We only shift right because there is no left for us to cancel the right shift with.</li>
+</ul>
+</li>
+</ul>
+<p>These are the possibilities that we can shift but in different permutations. This can be shown with the following example:</p>
+<p><code>s = &quot;abc&quot;, shift = [[0,1],[1,2]]</code>, as we see it firsts tells us to shift left (<code>0 = left</code>) by one unit and then to shift right (<code>1 = right</code>) by two units. The left gets canceled out by the right, and we have to shift right. This can be shown with an image:</p>
+<p><img src="https://i.imgur.com/1CZ7taX.jpg" alt=""></p>
+<p>First, go left by one (green) and then go right by two (red), and we can see that we have to shift right by one.</p>
+<p>So we find whether we have to shift right or left by using a counter called <code>counter</code>.</p>
+<p><em>(Note: Since the current shift is in the format of <code>[direction, number of shifts]</code> I am going to be referring to the current shifts direction or the number of shifts)</em></p>
+<p>We check whether the direction of the current shift is <code>0</code>. If it is <code>0</code>, we know that we have to shift left, so we subtract the number of shifts from the counter. Else we know that the direction has to be right, shown as <code>1</code>, and we add the number of shifts to <code>counter</code> because it is right.</p>
+</li>
+<li>
+<p>The next part is shifting the letters.</p>
+<ul>
+<li>First, we can check whether the counter is smaller than <code>0</code> (if we have to shift left):
+<ul>
+<li>We make a variable called <code>temp</code> to store the first letter. Then we remake <code>s</code> from the second letter to the end, and we add <code>temp</code> to the back to <code>s</code>. This is basically shifting left.</li>
+</ul>
+</li>
+<li>Else we know that counter is greater than or equal to <code>0</code> (for shifting right):
+<ul>
+<li>We make a variable called <code>temp</code> to store the last number. Then we remake <code>s</code> to the last number plus the rest of the string. This is basically shifting right.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">stringShift</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">shift</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">ints</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">shift</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">counter</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">1</span>]
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">counter</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">1</span>]
+        }
+    }
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">counter</span> &lt; <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">temp</span> <span style="color:#f92672">:=</span> string(<span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">0</span>])
+            <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">1</span>:] <span style="color:#f92672">+</span> <span style="color:#a6e22e">temp</span>
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">temp</span> <span style="color:#f92672">:=</span> string(<span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+            <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">temp</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">s</span>[:len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">--</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>
+}
+</code></pre></div><p><strong>We Can Simplify This Solution:</strong> <em>(We don&rsquo;t use <code>temp</code> because we can just add the last and first letter to the end and the last letter to the beginning)</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">stringShift</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">shift</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">ints</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">shift</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">counter</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">1</span>]
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">counter</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">1</span>]
+        }
+    }
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">counter</span> &lt; <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">1</span>:] <span style="color:#f92672">+</span> string(<span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">0</span>])
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">s</span> = string(<span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]) <span style="color:#f92672">+</span> <span style="color:#a6e22e">s</span>[:len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">--</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1791</title><link>https://nathannaveen.dev/posts/leetcode-1791/</link><pubDate>Wed, 24 Mar 2021 12:35:49 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1791/</guid><description>1791. Find Center of Star Graph
 This solution is straightforward.
 We first make an array called nodes with edges + 1 values. We need edges + 1 values because len(edges) is the number of edge nodes, and the + 1 is for the center node. We only need edges + 1 nodes because the nodes are from 1...n. Then we loop through edges and get each edge. edge[0] and edge[1] are the two values given per edge.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-center-of-star-graph/">1791. Find Center of Star Graph</a></p>
 <p>This solution is straightforward.</p>
