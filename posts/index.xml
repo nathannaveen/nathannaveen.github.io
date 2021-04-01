@@ -1,4 +1,145 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Fri, 26 Mar 2021 10:27:54 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 163</title><link>https://nathannaveen.dev/posts/leetcode-163/</link><pubDate>Fri, 26 Mar 2021 10:27:54 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-163/</guid><description>1427. Perform String Shifts
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 01 Apr 2021 10:34:39 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 246</title><link>https://nathannaveen.dev/posts/leetcode-246/</link><pubDate>Thu, 01 Apr 2021 10:34:39 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-246/</guid><description>246. Strobogrammatic Number
+This solution is pretty simple and pretty similar to Leetcode 163.
+The problem asks us to flip a number by 180 degrees and then return true if the fliped number is equal to the non-fliped number.
+You might think that just flipping every digit and then check whether the following fliped number is equal to the non fliped number, but there is a problem with just flipping. Here is an example to show that just flipping doesn&amp;rsquo;t work:</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/strobogrammatic-number/">246. Strobogrammatic Number</a></p>
+<p>This solution is pretty simple and pretty similar to <a href="https://nathannaveen.dev/posts/leetcode-163/">Leetcode 163</a>.</p>
+<p>The problem asks us to flip a number by 180 degrees and then return true if the fliped number is equal to the non-fliped number.</p>
+<p>You might think that just flipping every digit and then check whether the following fliped number is equal to the non fliped number, but there is a problem with just flipping. Here is an example to show that just flipping doesn&rsquo;t work:</p>
+<p><code>input: &quot;69&quot;</code>
+<code>expected output: true.</code></p>
+<p>If we flip every digit, we get <code>6</code> converts to <code>9</code> and <code>9</code> flips to <code>6</code>, so we get <code>96</code>. When we compare <code>96 == 69</code>, we have to return false even though we want it to output <code>true</code>.</p>
+<p>But if we reverse the fliped string and then compare it with the original string, we get the proper output. This can be shown with some images:</p>
+<p><img src="https://i.imgur.com/YAXBBOI.jpg" alt=""></p>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">isStrobogrammatic</span>(<span style="color:#a6e22e">num</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">newNumber</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">num</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span> {
+        <span style="color:#a6e22e">lastDigit</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">num</span>[<span style="color:#a6e22e">i</span>]
+        <span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">lastDigit</span> {
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;0&#39;</span>:
+            <span style="color:#a6e22e">newNumber</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;0&#34;</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;1&#39;</span>:
+            <span style="color:#a6e22e">newNumber</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;1&#34;</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;6&#39;</span>:
+            <span style="color:#a6e22e">newNumber</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;9&#34;</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;8&#39;</span>:
+            <span style="color:#a6e22e">newNumber</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;8&#34;</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;9&#39;</span>:
+            <span style="color:#a6e22e">newNumber</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;6&#34;</span>
+        <span style="color:#66d9ef">default</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newNumber</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">num</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1427</title><link>https://nathannaveen.dev/posts/leetcode-1427/</link><pubDate>Tue, 30 Mar 2021 13:23:55 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1427/</guid><description>1427. Perform String Shifts
+The idea of this solution is pretty simple.
+Since there are only two directions, we can shift the strings in one direction. The reason we can shift in only one direction is when the input tells us to shift
+First left and then right: The right might cancel out the left and will end up with no shift. The right might be greater than the left, so we shift right.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/perform-string-shifts/">1427. Perform String Shifts</a></p>
+<p>The idea of this solution is pretty simple.</p>
+<ul>
+<li>
+<p>Since there are only two directions, we can shift the strings in one direction. The reason we can shift in only one direction is when the input tells us to shift</p>
+<ul>
+<li>First left and then right:
+<ul>
+<li>The right might cancel out the left and will end up with no shift.</li>
+<li>The right might be greater than the left, so we shift right.</li>
+<li>The left might be greater than the right, so we shift left.</li>
+</ul>
+</li>
+<li>First right then left:
+<ul>
+<li>The left might be equal to the right, so it will cancel both of them out, and we won&rsquo;t shift.</li>
+<li>The left might be greater than the right, so we shift left.</li>
+<li>The left might be smaller than the right, so we shift right.</li>
+</ul>
+</li>
+<li>First left then another left:
+<ul>
+<li>We can only go left because there is no right to cancel out.</li>
+</ul>
+</li>
+<li>First right then another right:
+<ul>
+<li>We only shift right because there is no left for us to cancel the right shift with.</li>
+</ul>
+</li>
+</ul>
+<p>These are the possibilities that we can shift but in different permutations. This can be shown with the following example:</p>
+<p><code>s = &quot;abc&quot;, shift = [[0,1],[1,2]]</code>, as we see it firsts tells us to shift left (<code>0 = left</code>) by one unit and then to shift right (<code>1 = right</code>) by two units. The left gets canceled out by the right, and we have to shift right. This can be shown with an image:</p>
+<p><img src="https://i.imgur.com/1CZ7taX.jpg" alt=""></p>
+<p>First, go left by one (green) and then go right by two (red), and we can see that we have to shift right by one.</p>
+<p>So we find whether we have to shift right or left by using a counter called <code>counter</code>.</p>
+<p><em>(Note: Since the current shift is in the format of <code>[direction, number of shifts]</code> I am going to be referring to the current shifts direction or the number of shifts)</em></p>
+<p>We check whether the direction of the current shift is <code>0</code>. If it is <code>0</code>, we know that we have to shift left, so we subtract the number of shifts from the counter. Else we know that the direction has to be right, shown as <code>1</code>, and we add the number of shifts to <code>counter</code> because it is right.</p>
+</li>
+<li>
+<p>The next part is shifting the letters.</p>
+<ul>
+<li>First, we can check whether the counter is smaller than <code>0</code> (if we have to shift left):
+<ul>
+<li>We make a variable called <code>temp</code> to store the first letter. Then we remake <code>s</code> from the second letter to the end, and we add <code>temp</code> to the back to <code>s</code>. This is basically shifting left.</li>
+</ul>
+</li>
+<li>Else we know that counter is greater than or equal to <code>0</code> (for shifting right):
+<ul>
+<li>We make a variable called <code>temp</code> to store the last number. Then we remake <code>s</code> to the last number plus the rest of the string. This is basically shifting right.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">stringShift</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">shift</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">ints</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">shift</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">counter</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">1</span>]
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">counter</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">1</span>]
+        }
+    }
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">counter</span> &lt; <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">temp</span> <span style="color:#f92672">:=</span> string(<span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">0</span>])
+            <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">1</span>:] <span style="color:#f92672">+</span> <span style="color:#a6e22e">temp</span>
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">temp</span> <span style="color:#f92672">:=</span> string(<span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+            <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">temp</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">s</span>[:len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">--</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>
+}
+</code></pre></div><p><strong>We Can Simplify This Solution:</strong> <em>(We don&rsquo;t use <code>temp</code> because we can just add the last and first letter to the end and the last letter to the beginning)</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">stringShift</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">shift</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">ints</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">shift</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">counter</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">1</span>]
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">counter</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">ints</span>[<span style="color:#ae81ff">1</span>]
+        }
+    }
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">counter</span> &lt; <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">1</span>:] <span style="color:#f92672">+</span> string(<span style="color:#a6e22e">s</span>[<span style="color:#ae81ff">0</span>])
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">s</span> = string(<span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]) <span style="color:#f92672">+</span> <span style="color:#a6e22e">s</span>[:len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">--</span>
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>
+}
+</code></pre></div><hr>
+]]></content></item><item><title>Leetcode 163</title><link>https://nathannaveen.dev/posts/leetcode-163/</link><pubDate>Fri, 26 Mar 2021 10:27:54 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-163/</guid><description>1427. Perform String Shifts
 The idea of this solution is pretty simple.
 Since there are only two directions, we can shift the strings in one direction. The reason we can shift in only one direction is when the input tells us to shift
 First left and then right: The right might cancel out the left and will end up with no shift. The right might be greater than the left, so we shift right.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/perform-string-shifts/">1427. Perform String Shifts</a></p>
