@@ -1,11 +1,9 @@
 ---
 title: "Leetcode 246"
 date: 2021-04-01T10:34:39-05:00
-draft: true
 toc: false
 images:
-tags:
-  - untagged
+tags: [math, golang, leetcode, string]
 ---
 
 [246. Strobogrammatic Number](https://leetcode.com/problems/strobogrammatic-number/)
