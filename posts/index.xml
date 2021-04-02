@@ -1,4 +1,40 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 01 Apr 2021 13:15:33 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1118</title><link>https://nathannaveen.dev/posts/leetcode-1118/</link><pubDate>Thu, 01 Apr 2021 13:15:33 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1118/</guid><description>1118. Number of Days in a Month
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Fri, 02 Apr 2021 13:08:17 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 734</title><link>https://nathannaveen.dev/posts/leetcode-734/</link><pubDate>Fri, 02 Apr 2021 13:08:17 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-734/</guid><description>734. Sentence Similarity
+The idea of this solution is to:
+We have to first check whether the lengths of the two sentences are the same. If they aren&amp;rsquo;t, we return false. Then we have to make a map called m. The map is in a format of string, []string where string is the key and []string is the value. We add all the values from the matrix array called similarPairs to m.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/sentence-similarity/">734. Sentence Similarity</a></p>
+<p>The idea of this solution is to:</p>
+<ul>
+<li>We have to first check whether the lengths of the two sentences are the same. If they aren&rsquo;t, we return <code>false</code>.</li>
+<li>Then we have to make a map called <code>m</code>. The map is in a format of <code>string, []string</code> where <code>string</code> is the <code>key</code> and <code>[]string</code> is the value.</li>
+<li>We add all the values from the matrix array called <code>similarPairs</code> to <code>m</code>.</li>
+<li>After we have added all the values from <code>similarPairs</code> to <code>m</code>, we can loop through sentence 1 and 2 and check whether <code>m[sentence1[i]]</code> contains <code>sentence2[i]</code>, if it doesn&rsquo;t and the two words are not similar we have to return <code>false</code>.</li>
+<li>After we have looped through, we can return true because then we know that the sentences are similar.</li>
+</ul>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">areSentencesSimilar</span>(<span style="color:#a6e22e">sentence1</span> []<span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">sentence2</span> []<span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">similarPairs</span> [][]<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">sentence1</span>) <span style="color:#f92672">!=</span> len(<span style="color:#a6e22e">sentence2</span>) { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span> }
+
+    <span style="color:#a6e22e">length</span>, <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">sentence1</span>), make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>][]<span style="color:#66d9ef">string</span>)
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">pair</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">similarPairs</span> {
+        <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">pair</span>[<span style="color:#ae81ff">0</span>]], <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">pair</span>[<span style="color:#ae81ff">1</span>]] = append(<span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">pair</span>[<span style="color:#ae81ff">0</span>]], <span style="color:#a6e22e">pair</span>[<span style="color:#ae81ff">1</span>]), 
+        append(<span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">pair</span>[<span style="color:#ae81ff">1</span>]], <span style="color:#a6e22e">pair</span>[<span style="color:#ae81ff">0</span>])
+    }
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">arrayContains</span>(<span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">sentence1</span>[<span style="color:#a6e22e">i</span>]], <span style="color:#a6e22e">sentence2</span>[<span style="color:#a6e22e">i</span>]) <span style="color:#f92672">&amp;&amp;</span>
+        <span style="color:#a6e22e">sentence1</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">sentence2</span>[<span style="color:#a6e22e">i</span>] { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span> }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">arrayContains</span>(<span style="color:#a6e22e">h</span> []<span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">n</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">h</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">n</span> { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span> }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1118</title><link>https://nathannaveen.dev/posts/leetcode-1118/</link><pubDate>Thu, 01 Apr 2021 13:15:33 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1118/</guid><description>1118. Number of Days in a Month
 To start, I wouldn&amp;rsquo;t say that this is a good interview problem because it is not an algorithmic problem.
 The months and the number of days in each month can be shown in the table below:
 In February, it can be either 28 days or 29 days. 28 days in a regular year and 29 days in a leap year.
