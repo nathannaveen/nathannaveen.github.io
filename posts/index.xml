@@ -54,6 +54,119 @@ What we need to know for the following if and else statements is when the code l
     }
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
 }
+</code></pre></div>]]></content></item><item><title>Leetcode 874</title><link>https://nathannaveen.dev/posts/leetcode-874/</link><pubDate>Wed, 07 Apr 2021 12:36:17 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-874/</guid><description>874. Walking Robot Simulation
+Warning: This solution is pretty annoying.
+What The Problem is Telling Us:
+The problem description says that they will give an array called commands that tell you to turn right, left, or move forward, and they will also give you a matrix array called obstacles. obstacles is pretty self-explanatory. It is points where an obstacle is at. The points are in the format of (x, y).</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/walking-robot-simulation/">874. Walking Robot Simulation</a></p>
+<p>Warning: This solution is pretty annoying.</p>
+<p><strong>What The Problem is Telling Us:</strong></p>
+<p>The problem description says that they will give an array called <code>commands</code> that tell you to turn right, left, or move forward, and they will also give you a matrix array called <code>obstacles</code>. <code>obstacles</code> is pretty self-explanatory. It is points where an obstacle is at. The points are in the format of <code>(x, y)</code>.</p>
+<p>There are three types of commands in <code>commands</code>:</p>
+<ul>
+<li>-1 is to turn right 90 degrees</li>
+<li>-2 is to turn left 90 degrees (Or just -90 degrees)</li>
+<li>And numbers from 1 to 9. This is how many units to move by.</li>
+</ul>
+<p>If the robot hits an obstacle while in mid-journey, the robot stops at the step before the barrier and continues on with the rest of the commands.</p>
+<p><strong>The Idea of This Code:</strong></p>
+<p>The idea of this code is pretty simple:</p>
+<ol>
+<li>First, we make some variables called:
+<ul>
+<li><code>maximum</code> is for the maximum Euclidean distance squared</li>
+<li><code>direction</code> is for what direction we are going such as <code>0 = north, 1 = east, 2 = south, 3 = west, 4 = north, 5 = east, 6 = south, 7 = west ...</code></li>
+<li><code>x, y</code> are for storing the current x value and the current y value</li>
+</ul>
+</li>
+<li>Then, we loop through <code>commands</code>.</li>
+<li>We check whether the current command, which we call <code>command</code> (save <code>command</code> for future reference) is <code>-1</code>. If so, we need to add one to <code>direction</code> so in example if we are pointing north, we will now be pointing east.</li>
+<li>Else if <code>command</code> is <code>-2</code> we add <code>3</code> to <code>direction</code>. You might be wondering why we add <code>3</code> instead of subtracting <code>1</code>, it is because <code>4 - 1 = 3</code> and since when <code>direction = 0</code> it is <code>north</code>, when <code>direction = 4</code> it is when <code>north</code>, <code>direction = 8</code> it is <code>north</code>, and so on. Since <code>direction</code> just keeps on going on and is never negative, we add <code>3</code> to solve some problems.</li>
+<li>Now else, if it is not <code>-1</code> or <code>-2</code>, we can loop through all the obstacles to see whether our robot has hit any.
+<ul>
+<li>First, we can start we are facing north, and there is an obstacle in the way</li>
+<li>Next, we can do where the robot is facing east, and there is an obstacle in its path</li>
+<li>Next, we can do the test case where the robot is facing south, and there is an obstacle in its path</li>
+<li>Next, if we are facing west and there is an obstacle in its path</li>
+<li>Last but not least, if the robot does not hit any obstacles.</li>
+</ul>
+</li>
+</ol>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">a</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &lt; <span style="color:#a6e22e">b</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">robotSim</span>(<span style="color:#a6e22e">commands</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">obstacles</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">maximum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#a6e22e">direction</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">command</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">commands</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">command</span> <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> { <span style="color:#75715e">// Turn right
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">direction</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">command</span> <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> { <span style="color:#75715e">// Turn left
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">direction</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span>
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">hitObsticle</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">false</span>
+            <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">obstacle</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">obstacles</span> {
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">direction</span><span style="color:#f92672">%</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span>
+                <span style="color:#a6e22e">y</span> &lt; <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">y</span><span style="color:#f92672">+</span><span style="color:#a6e22e">command</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">1</span>] { 
+                
+                    <span style="color:#75715e">// North
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">hitObsticle</span> = <span style="color:#66d9ef">true</span>
+                    <span style="color:#a6e22e">y</span> = <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+                    
+                } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">direction</span><span style="color:#f92672">%</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">x</span> &lt; <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span>
+                <span style="color:#a6e22e">y</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">x</span><span style="color:#f92672">+</span><span style="color:#a6e22e">command</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">0</span>] { 
+                    
+                    <span style="color:#75715e">// East
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">hitObsticle</span> = <span style="color:#66d9ef">true</span>
+                    <span style="color:#a6e22e">x</span> = <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+                    
+                } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">direction</span><span style="color:#f92672">%</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span>
+                <span style="color:#a6e22e">y</span> &gt; <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">y</span><span style="color:#f92672">-</span><span style="color:#a6e22e">command</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">1</span>] { 
+                
+                    <span style="color:#75715e">// South
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">hitObsticle</span> = <span style="color:#66d9ef">true</span>
+                    <span style="color:#a6e22e">y</span> = <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+                    
+                } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">direction</span><span style="color:#f92672">%</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">x</span> &gt; <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span>
+                <span style="color:#a6e22e">y</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">x</span><span style="color:#f92672">-</span><span style="color:#a6e22e">command</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">0</span>] { 
+                    
+                    <span style="color:#75715e">// West
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">hitObsticle</span> = <span style="color:#66d9ef">true</span>
+                    <span style="color:#a6e22e">x</span> = <span style="color:#a6e22e">obstacle</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+                }
+            }
+
+            <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">hitObsticle</span> {
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">direction</span><span style="color:#f92672">%</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+                    <span style="color:#a6e22e">y</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">command</span>
+                } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">direction</span><span style="color:#f92672">%</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> {
+                    <span style="color:#a6e22e">x</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">command</span>
+                } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">direction</span><span style="color:#f92672">%</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span> {
+                    <span style="color:#a6e22e">y</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">command</span>
+                } <span style="color:#66d9ef">else</span> {
+                    <span style="color:#a6e22e">x</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">command</span>
+                }
+            }
+            <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">x</span>)<span style="color:#f92672">*</span><span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">x</span>)<span style="color:#f92672">+</span><span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">y</span>)<span style="color:#f92672">*</span><span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">y</span>))
+
+        }
+
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">maximum</span>
+}
 </code></pre></div>]]></content></item><item><title>Leetcode 1475</title><link>https://nathannaveen.dev/posts/leetcode-1475/</link><pubDate>Tue, 06 Apr 2021 09:57:29 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1475/</guid><description>1475. Final Prices With a Special Discount in a Shop
 This solution is pretty simple just loop through prices and then find the first price smaller than the current one. After that, remake prices[i] the current price minus the minimum.
 The Code:
