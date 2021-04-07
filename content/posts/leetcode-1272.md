@@ -3,7 +3,7 @@ title: "Leetcode 1272"
 date: 2021-04-07T12:36:27-05:00
 toc: false
 images:
-tags: [leetcode, golang, array]
+tags: [leetcode, golang, array, images]
 ---
 
 [1272. Remove Interval](https://leetcode.com/problems/remove-interval/)
