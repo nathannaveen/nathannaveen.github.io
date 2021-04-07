@@ -1,4 +1,60 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 06 Apr 2021 09:57:29 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1475</title><link>https://nathannaveen.dev/posts/leetcode-1475/</link><pubDate>Tue, 06 Apr 2021 09:57:29 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1475/</guid><description>1475. Final Prices With a Special Discount in a Shop
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 07 Apr 2021 12:36:27 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1272</title><link>https://nathannaveen.dev/posts/leetcode-1272/</link><pubDate>Wed, 07 Apr 2021 12:36:27 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1272/</guid><description>1272. Remove Interval
+What This Code Is Doing:
+We make a new resulting array and then loop through intervals.
+What we need to know for the following if and else statements is when the code loops through intervals, we get interval per iteration. interval is in the format [start, end]. Also, the constraints say -10^9 &amp;lt;= start &amp;lt; end &amp;lt;= 10^9, so we can see that start and end are never on the exact same location and the start is always lesser than end.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/remove-interval/">1272. Remove Interval</a></p>
+<p><strong>What This Code Is Doing:</strong></p>
+<p>We make a new resulting array and then loop through <code>intervals</code>.</p>
+<p>What we need to know for the following if and else statements is when the code loops through <code>intervals</code>, we get <code>interval</code> per iteration. <code>interval</code> is in the format <code>[start, end]</code>. Also, the constraints say <code>-10^9 &lt;= start &lt; end &lt;= 10^9</code>, so we can see that <code>start</code> and <code>end</code> are never on the exact same location and the <code>start</code> is always lesser than <code>end</code>.</p>
+<p>The if and else statments are as follows:</p>
+<ul>
+<li>
+<p>When we do the if statment: <code>if interval[0] &lt; toBeRemoved[0] &amp;&amp; toBeRemoved[1] &lt; interval[1] {</code> we are checking whether the <code>start</code> of <code>interval</code> is smaller than the <code>start</code> of <code>toBeRemoved</code> and the <code>end</code> of <code>interval</code> is greater than the <code>end</code> of <code>toBeRemoved</code>, like in the following image: <img src="https://i.imgur.com/As6SkRK.jpg" alt=""> <em>(Note: <code>interval</code> is green and <code>toBeRemoved</code> is red)</em> The <code>start</code> of <code>interval</code> is smaller than the <code>start</code> of <code>toBeRemoved</code>, and the <code>end</code> of <code>interval</code> is greater than the <code>end</code> of <code>toBeRemoved</code>.</p>
+</li>
+<li>
+<p>The first else if statment is <code>else if interval[0] &lt; toBeRemoved[0] &amp;&amp; interval[1] &gt; toBeRemoved[0] &amp;&amp; interval[1] &lt;= toBeRemoved[1] {</code>. It is for if the interception of <code>interval</code> and <code>toBeRemoved</code> is on the right of <code>toBeRemoved</code>, this can be shown with an image: <img src="https://i.imgur.com/r7HrHZa.jpg" alt=""> This is for if <code>interval</code>&rsquo;s <code>start</code> is smaller than <code>toBeRemoved</code>&rsquo;s <code>start</code>, <code>intervals</code>&rsquo;s <code>end</code> is smaller than <code>toBeRemoved</code>&rsquo;s <code>end</code>, and <code>interval</code>&rsquo;s <code>end</code> is greater than <code>toBeRemoved</code>&rsquo;s <code>start</code>.</p>
+</li>
+<li>
+<p>The next else if is <code>else if interval[0] &gt;= toBeRemoved[0] &amp;&amp; interval[0] &lt; toBeRemoved[1] &amp;&amp; interval[1] &gt; toBeRemoved[1] {</code>. Is for the same thing as the first else if except it is on the other side of <code>toBeRemoved</code>. This can be shown using an image: <img src="https://i.imgur.com/YyTQdID.jpg" alt=""></p>
+</li>
+<li>
+<p>The next else if is <code>else if interval[0] &gt;= toBeRemoved[0] &amp;&amp; interval[0] &lt; toBeRemoved[1] &amp;&amp; interval[1] &lt;= toBeRemoved[1] &amp;&amp; interval[1] &gt; toBeRemoved[0] {</code>. This is for if the <code>start</code> of <code>interval</code> is greater than the <code>start</code> of <code>toBeRemoved</code> and the <code>end</code> of <code>interval</code> is smaller than <code>end</code> of <code>toBeRemoved</code>. This can be shown using an image: <img src="https://i.imgur.com/Jm3W1S8.jpg" alt=""></p>
+</li>
+<li>
+<p>And last but not least our else. This is for if there is no overlap of <code>interval</code> and <code>toBeRemoved</code>. This can be shown using an image: <img src="https://i.imgur.com/2PsNVdQ.jpg" alt=""></p>
+</li>
+</ul>
+<p>That is all there is to the code, thank you for reading.</p>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">removeInterval</span>(<span style="color:#a6e22e">intervals</span> [][]<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">toBeRemoved</span> []<span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{}
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">interval</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">intervals</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">0</span>] &lt; <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">1</span>] &lt; <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">1</span>] {
+        
+            <span style="color:#a6e22e">res</span> = append(<span style="color:#a6e22e">res</span>, []<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">0</span>], <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">0</span>]}, 
+            []<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">1</span>], <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">1</span>]})
+            
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">0</span>] &lt; <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">1</span>] &gt; <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">0</span>]
+        <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">1</span>] {
+        
+            <span style="color:#a6e22e">res</span> = append(<span style="color:#a6e22e">res</span>, []<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">0</span>], <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">0</span>]})
+            
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">0</span>] &lt; <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">1</span>]
+        <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">1</span>] &gt; <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">1</span>] {
+        
+            <span style="color:#a6e22e">res</span> = append(<span style="color:#a6e22e">res</span>, []<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">1</span>], <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">1</span>]})
+            
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">0</span>] &lt; <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">1</span>]
+        <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">interval</span>[<span style="color:#ae81ff">1</span>] &gt; <span style="color:#a6e22e">toBeRemoved</span>[<span style="color:#ae81ff">0</span>] {
+        
+            <span style="color:#66d9ef">continue</span>
+            
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">res</span> = append(<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">interval</span>)
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1475</title><link>https://nathannaveen.dev/posts/leetcode-1475/</link><pubDate>Tue, 06 Apr 2021 09:57:29 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1475/</guid><description>1475. Final Prices With a Special Discount in a Shop
 This solution is pretty simple just loop through prices and then find the first price smaller than the current one. After that, remake prices[i] the current price minus the minimum.
 The Code:
 func finalPrices(prices []int) []int { for i, price := range prices { minimum := 1001 for j := i + 1; j &amp;lt; len(prices); j++ { if prices[j] &amp;lt;= price { minimum = prices[j] break } } if minimum !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/">1475. Final Prices With a Special Discount in a Shop</a></p>
