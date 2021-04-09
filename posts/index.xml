@@ -1,4 +1,142 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 07 Apr 2021 12:36:27 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1272</title><link>https://nathannaveen.dev/posts/leetcode-1272/</link><pubDate>Wed, 07 Apr 2021 12:36:27 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1272/</guid><description>1272. Remove Interval
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Fri, 09 Apr 2021 10:56:57 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1071</title><link>https://nathannaveen.dev/posts/leetcode-1071/</link><pubDate>Fri, 09 Apr 2021 10:56:57 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1071/</guid><description>1071. Greatest Common Divisor of Strings
+The idea of this solution is actually pretty simple. But before we go into the problem, we have to know that a string with a common factor has a prefix (the definition of a prefix is the beginning characters of a string, a prefix can be any length) that is repeated throughout the string. This can be shown using some examples:
+&amp;quot;abcdabcdabcd&amp;quot; we know that the repeated substring is &amp;quot;abcd&amp;quot;, and we can see that &amp;quot;abcd&amp;quot; is a prefix.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/greatest-common-divisor-of-strings/">1071. Greatest Common Divisor of Strings
+</a></p>
+<p>The idea of this solution is actually pretty simple. But before we go into the problem, we have to know that a string with a common factor has a prefix (the definition of a prefix is the beginning characters of a string, a prefix can be any length) that is repeated throughout the string. This can be shown using some examples:</p>
+<ul>
+<li><code>&quot;abcdabcdabcd&quot;</code> we know that the repeated substring is <code>&quot;abcd&quot;</code>, and we can see that <code>&quot;abcd&quot;</code> is a prefix.</li>
+<li><code>&quot;abcabcabcabc&quot;</code> we can see that <code>&quot;abc&quot;</code> is the repeated substring, and we can see that <code>&quot;abc&quot;</code> is the prefix.</li>
+</ul>
+<p>So the idea of this solution is:</p>
+<ul>
+<li>We loop through <code>str1</code> and <code>str2</code>.</li>
+<li>Then we get the substring of <code>str1</code> and <code>str2</code> from <code>0</code> to <code>i</code>.</li>
+<li>Then all we have to do is check whether the rest of the strings can be split up into prefixes. If it is, we can make the resulting string equal to the substring.</li>
+</ul>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">gcdOfStrings</span>(<span style="color:#a6e22e">str1</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">str2</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> int(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Min</span>(float64(len(<span style="color:#a6e22e">str1</span>)),
+    float64(len(<span style="color:#a6e22e">str2</span>)))); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+    
+        <span style="color:#a6e22e">sub</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">str1</span>[:<span style="color:#a6e22e">i</span>]
+        <span style="color:#a6e22e">sub2</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">str2</span>[:<span style="color:#a6e22e">i</span>]
+
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sub</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">sub2</span> <span style="color:#f92672">&amp;&amp;</span> len(<span style="color:#a6e22e">str1</span>)<span style="color:#f92672">%</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> len(<span style="color:#a6e22e">str2</span>)<span style="color:#f92672">%</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">h</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">true</span>
+            <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">str1</span>)<span style="color:#f92672">-</span><span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">i</span> {
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">str1</span>[<span style="color:#a6e22e">j</span>:<span style="color:#a6e22e">j</span><span style="color:#f92672">+</span><span style="color:#a6e22e">i</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">sub</span> {
+                    <span style="color:#a6e22e">h</span> = <span style="color:#66d9ef">false</span>
+                    <span style="color:#66d9ef">break</span>
+                }
+            }
+            <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">str2</span>)<span style="color:#f92672">-</span><span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">i</span> {
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">str2</span>[<span style="color:#a6e22e">j</span>:<span style="color:#a6e22e">j</span><span style="color:#f92672">+</span><span style="color:#a6e22e">i</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">sub</span> {
+                    <span style="color:#a6e22e">h</span> = <span style="color:#66d9ef">false</span>
+                    <span style="color:#66d9ef">break</span>
+                }
+            }
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">h</span> {
+                <span style="color:#a6e22e">res</span> = <span style="color:#a6e22e">sub</span>
+            }
+        }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+
+</code></pre></div><p><strong>Edited Vertion:</strong> <em>(Without the built in <code>math.Min()</code>)</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">gcdOfStrings</span>(<span style="color:#a6e22e">str1</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">str2</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">min</span>(len(<span style="color:#a6e22e">str1</span>), len(<span style="color:#a6e22e">str2</span>)); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">sub</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">str1</span>[:<span style="color:#a6e22e">i</span>]
+        <span style="color:#a6e22e">sub2</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">str2</span>[:<span style="color:#a6e22e">i</span>]
+
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sub</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">sub2</span> <span style="color:#f92672">&amp;&amp;</span> len(<span style="color:#a6e22e">str1</span>)<span style="color:#f92672">%</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> len(<span style="color:#a6e22e">str2</span>)<span style="color:#f92672">%</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">h</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">true</span>
+            <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">str1</span>)<span style="color:#f92672">-</span><span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">i</span> {
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">str1</span>[<span style="color:#a6e22e">j</span>:<span style="color:#a6e22e">j</span><span style="color:#f92672">+</span><span style="color:#a6e22e">i</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">sub</span> {
+                    <span style="color:#a6e22e">h</span> = <span style="color:#66d9ef">false</span>
+                    <span style="color:#66d9ef">break</span>
+                }
+            }
+            <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">str2</span>)<span style="color:#f92672">-</span><span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">i</span> {
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">str2</span>[<span style="color:#a6e22e">j</span>:<span style="color:#a6e22e">j</span><span style="color:#f92672">+</span><span style="color:#a6e22e">i</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">sub</span> {
+                    <span style="color:#a6e22e">h</span> = <span style="color:#66d9ef">false</span>
+                    <span style="color:#66d9ef">break</span>
+                }
+            }
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">h</span> {
+                <span style="color:#a6e22e">res</span> = <span style="color:#a6e22e">sub</span>
+            }
+        }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#a6e22e">b</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 892</title><link>https://nathannaveen.dev/posts/leetcode-892/</link><pubDate>Fri, 09 Apr 2021 10:56:50 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-892/</guid><description>892. Surface Area of 3D Shapes
+The Idea Of This Solution:
+This solution uses the fact that each stack of cubes surface area is the equation 2 + 4 * v. This works because each cube has 6 sides. This can be shown using some images:
+We can see that each cube has 6 planes. There are 4 sides, 1 top, and 1 bottom.
+Now, as we can see, there are 10 units of surface area while the other one only had 6, there are 8 sides, 1 top, and 1 bottom.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/surface-area-of-3d-shapes/">892. Surface Area of 3D Shapes</a></p>
+<p><strong>The Idea Of This Solution:</strong></p>
+<p>This solution uses the fact that each stack of cubes surface area is the equation <code>2 + 4 * v</code>. This works because each cube has <code>6</code> sides. This can be shown using some images:</p>
+<p><img src="https://i.imgur.com/jVZR9I5.jpg" alt=""></p>
+<blockquote>
+<p>We can see that each cube has <code>6</code> planes. There are <code>4</code> sides, <code>1</code> top, and <code>1</code> bottom.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/9Vt9RPI.jpg" alt=""></p>
+<blockquote>
+<p>Now, as we can see, there are <code>10</code> units of surface area while the other one only had <code>6</code>, there are <code>8</code> sides, <code>1</code> top, and <code>1</code> bottom.</p>
+</blockquote>
+<p><img src="https://i.imgur.com/8Adx4dO.jpg" alt=""></p>
+<blockquote>
+<p>This example is <code>3</code> cubes, and it has a surface area of <code>14</code> units. There are <code>12</code> side units, <code>1</code> top, and <code>1</code> bottom.</p>
+</blockquote>
+<p>As you can see in all three examples, there is always 1 top, one bottom, and four sides per cube, so we can write the equation <code>2 + 4 * v</code>, where <code>v</code> is the number of cubes. This equation will work for all stacks except for one with <code>v = 0</code>. This is because if we do this equation with <code>v = 0</code>, we get the output of <code>2</code>. After all, the code thinks that there is a top and a bottom, but we know that there is no top and no bottom on a stack of size <code>0</code>.</p>
+<p>Now that we have got the total surface area, we have to subtract the overlapping part. Now you might be asking, what overlap? Just look at the following image:</p>
+<p><img src="https://i.imgur.com/19n56ry.jpg" alt=""></p>
+<blockquote>
+<p>First, we can get the input of a stack of <code>4</code> and then a pile of <code>2</code> back to back, so we have to subtract the stack size <code>2</code>&rsquo;s one side from the stack of size <code>2</code> and the pile of size <code>4</code>. So basically, we are subtracting <code>2 * minimum(grid before, current grid)</code>.</p>
+</blockquote>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &lt; <span style="color:#a6e22e">b</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">surfaceArea</span>(<span style="color:#a6e22e">grid</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#75715e">// 2 + shape * 4 == area of each shape
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">grid</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">grid</span>[<span style="color:#ae81ff">0</span>]); <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+                <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>]<span style="color:#f92672">*</span><span style="color:#ae81ff">4</span>
+            }
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> {
+                <span style="color:#a6e22e">res</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#a6e22e">j</span>], <span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>])
+            }
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">j</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> {
+                <span style="color:#a6e22e">res</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], <span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>])
+            }
+        }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1272</title><link>https://nathannaveen.dev/posts/leetcode-1272/</link><pubDate>Wed, 07 Apr 2021 12:36:27 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1272/</guid><description>1272. Remove Interval
 What This Code Is Doing:
 We make a new resulting array and then loop through intervals.
 What we need to know for the following if and else statements is when the code loops through intervals, we get interval per iteration. interval is in the format [start, end]. Also, the constraints say -10^9 &amp;lt;= start &amp;lt; end &amp;lt;= 10^9, so we can see that start and end are never on the exact same location and the start is always lesser than end.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/remove-interval/">1272. Remove Interval</a></p>
