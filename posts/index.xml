@@ -1,4 +1,53 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 10 Apr 2021 09:44:48 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1426</title><link>https://nathannaveen.dev/posts/leetcode-1426/</link><pubDate>Sat, 10 Apr 2021 09:44:48 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1426/</guid><description>1426. Counting Elements
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 10 Apr 2021 09:44:53 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1742</title><link>https://nathannaveen.dev/posts/leetcode-1742/</link><pubDate>Sat, 10 Apr 2021 09:44:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1742/</guid><description>1742. Maximum Number of Balls in a Box
+The idea of this solution is pretty simple:
+We use a map to store all the elements and their frequencies, and we use a variable called maximum to store the maximum frequency. We loop from lowLimit to highLimit. Inside the first loop, we make a nested loop to sum up all the digits of each number between lowLimit and highLimt. After we have got the sum, we do m[sum]++ because we have to add one to the frequency of sum.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/maximum-number-of-balls-in-a-box/">1742. Maximum Number of Balls in a Box</a></p>
+<p>The idea of this solution is pretty simple:</p>
+<ul>
+<li>We use a map to store all the elements and their frequencies, and we use a variable called <code>maximum</code> to store the maximum frequency.</li>
+<li>We loop from <code>lowLimit</code> to <code>highLimit</code>.</li>
+<li>Inside the first loop, we make a nested loop to sum up all the digits of each number between <code>lowLimit</code> and <code>highLimt</code>.</li>
+<li>After we have got the sum, we do <code>m[sum]++</code> because we have to add one to the frequency of <code>sum</code>.</li>
+<li>Then we check whether the new frequency is greater than our old <code>maximum</code>. If so, we should make <code>maximum = m[sum]</code>.</li>
+<li>Then we return <code>maximum</code>.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">countBalls</span>(<span style="color:#a6e22e">lowLimit</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">highLimit</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">maximum</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">int</span>), <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">lowLimit</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">highLimit</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">i</span>, <span style="color:#ae81ff">0</span>
+
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">n</span> &gt; <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">n</span> = <span style="color:#a6e22e">sum</span><span style="color:#f92672">+</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>), <span style="color:#a6e22e">n</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>
+        }
+        <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">sum</span>]<span style="color:#f92672">++</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">sum</span>] &gt; <span style="color:#a6e22e">maximum</span> {
+            <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">sum</span>]
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">maximum</span>
+}
+</code></pre></div><p><strong>Using A <code>max()</code> Function:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">countBalls</span>(<span style="color:#a6e22e">lowLimit</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">highLimit</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">maximum</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">int</span>), <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">lowLimit</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">highLimit</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">i</span>, <span style="color:#ae81ff">0</span>
+
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">n</span> &gt; <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">n</span> = <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>), <span style="color:#a6e22e">n</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>
+        }
+        <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">sum</span>]<span style="color:#f92672">++</span>
+        <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">sum</span>])
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">maximum</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#a6e22e">b</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1426</title><link>https://nathannaveen.dev/posts/leetcode-1426/</link><pubDate>Sat, 10 Apr 2021 09:44:48 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1426/</guid><description>1426. Counting Elements
 This solution is straightforward, and the idea of this solution is we add all the values of arr into a map called m. All we do is check whether m contains arr[i] + 1. If it does, we can add one to the resulting counter.
 So the code:
 First, makes a map called m and a variable called res. Then we loop through arr and add all the values into m.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/counting-elements/">1426. Counting Elements</a></p>
