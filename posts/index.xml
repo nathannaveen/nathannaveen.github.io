@@ -1,4 +1,36 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 13 Apr 2021 10:11:45 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 252</title><link>https://nathannaveen.dev/posts/leetcode-252/</link><pubDate>Tue, 13 Apr 2021 10:11:45 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-252/</guid><description>252. Meeting Rooms
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 14 Apr 2021 09:58:25 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 824</title><link>https://nathannaveen.dev/posts/leetcode-824/</link><pubDate>Wed, 14 Apr 2021 09:58:25 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-824/</guid><description>824. Goat Latin
+The idea of this solution is actualy pretty simple. We:
+First add all the vowels to a map. We make a a string where we keep on appending &amp;quot;a&amp;quot; to it per word. Then we split S by spaces so we get all the words in an array called words. Then we loop through words. Inside the iteration we check whether the first letter of the current word is not a vowel we can move the first letter to the end.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/goat-latin/">824. Goat Latin</a></p>
+<p>The idea of this solution is actualy pretty simple. We:</p>
+<ul>
+<li>First add all the vowels to a map. We make a <code>a</code> string where we keep on appending <code>&quot;a&quot;</code> to it per word. Then we split <code>S</code> by spaces so we get all the words in an array called <code>words</code>.</li>
+<li>Then we loop through <code>words</code>.</li>
+<li>Inside the iteration we check whether the first letter of the current word is not a vowel we can move the first letter to the end.</li>
+<li>After checking whether it is a consonant we can add <code>&quot;ma&quot; + a</code> because we are supposed to add <code>&quot;ma&quot; + a</code> to a word that begins with a vowel or a consonant.</li>
+<li>Then we add <code>&quot;a&quot;</code> to <code>a</code> because as the problem statment says &ldquo;Add one letter &lsquo;a&rsquo; to the end of each word per its word index in the sentence, starting with 1.&rdquo;</li>
+</ul>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">toGoatLatin</span>(<span style="color:#a6e22e">S</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">words</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Split</span>(<span style="color:#a6e22e">S</span>, <span style="color:#e6db74">&#34; &#34;</span>)
+    <span style="color:#a6e22e">vowels</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">uint8</span>]<span style="color:#66d9ef">int</span>)
+    <span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;a&#34;</span>
+    
+    <span style="color:#a6e22e">vowels</span>[<span style="color:#e6db74">&#39;a&#39;</span>] = <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">vowels</span>[<span style="color:#e6db74">&#39;e&#39;</span>] = <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">vowels</span>[<span style="color:#e6db74">&#39;i&#39;</span>] = <span style="color:#ae81ff">1</span>;
+    <span style="color:#a6e22e">vowels</span>[<span style="color:#e6db74">&#39;o&#39;</span>] = <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">vowels</span>[<span style="color:#e6db74">&#39;u&#39;</span>] = <span style="color:#ae81ff">1</span>
+    
+    <span style="color:#a6e22e">vowels</span>[<span style="color:#e6db74">&#39;A&#39;</span>] = <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">vowels</span>[<span style="color:#e6db74">&#39;E&#39;</span>] = <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">vowels</span>[<span style="color:#e6db74">&#39;I&#39;</span>] = <span style="color:#ae81ff">1</span>; 
+    <span style="color:#a6e22e">vowels</span>[<span style="color:#e6db74">&#39;O&#39;</span>] = <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">vowels</span>[<span style="color:#e6db74">&#39;U&#39;</span>] = <span style="color:#ae81ff">1</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">words</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">vowels</span>[<span style="color:#a6e22e">words</span>[<span style="color:#a6e22e">i</span>][<span style="color:#ae81ff">0</span>]] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">words</span>[<span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">words</span>[<span style="color:#a6e22e">i</span>][<span style="color:#ae81ff">1</span>:] <span style="color:#f92672">+</span> string(<span style="color:#a6e22e">words</span>[<span style="color:#a6e22e">i</span>][<span style="color:#ae81ff">0</span>])
+        }
+        <span style="color:#a6e22e">words</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;ma&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">a</span>
+        <span style="color:#a6e22e">a</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;a&#34;</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Join</span>(<span style="color:#a6e22e">words</span>, <span style="color:#e6db74">&#34; &#34;</span>)
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 252</title><link>https://nathannaveen.dev/posts/leetcode-252/</link><pubDate>Tue, 13 Apr 2021 10:11:45 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-252/</guid><description>252. Meeting Rooms
 The Idea Of The Solutions:
 The idea of these two solutions is pretty simple because the second solution is based on the first solution, and the first solution is pretty simple.
 The idea of the first solution is:
