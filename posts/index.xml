@@ -1,4 +1,99 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 14 Apr 2021 12:29:07 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 118</title><link>https://nathannaveen.dev/posts/leetcode-118/</link><pubDate>Wed, 14 Apr 2021 12:29:07 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-118/</guid><description>118. Pascal&amp;rsquo;s Triangle
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 15 Apr 2021 08:50:00 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1800</title><link>https://nathannaveen.dev/posts/leetcode-1800/</link><pubDate>Thu, 15 Apr 2021 08:50:00 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1800/</guid><description>1800. Maximum Ascending Subarray Sum
+The idea of this solution is pretty simple:
+We need two variables, sum for the current sum of ascending values and maximum for the maximum sum. Then we loop through nums. Inside the loop, we check whether the current number is greater than the previous number. If so, we can add the number to sum. Else the number is smaller than or equal to the previous number, we can make maximum equal to the math.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/maximum-ascending-subarray-sum/">1800. Maximum Ascending Subarray Sum</a></p>
+<p>The idea of this solution is pretty simple:</p>
+<ul>
+<li>We need two variables, <code>sum</code> for the current sum of ascending values and <code>maximum</code> for the maximum sum.</li>
+<li>Then we loop through <code>nums</code>.</li>
+<li>Inside the loop, we check whether the current number is greater than the previous number. If so, we can add the number to <code>sum</code>.</li>
+<li>Else the number is smaller than or equal to the previous number, we can make <code>maximum</code> equal to the <code>math.Max(maximum, sum)</code> and reset sum to the current number.</li>
+<li>After we have looped through <code>nums</code> we can make <code>maximum</code> equal to <code>math.Max(maximum, sum)</code> again.</li>
+<li>Now we can return <code>maximum.</code></li>
+</ul>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">maxAscendingSum</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">maximum</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#ae81ff">0</span>]
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#ae81ff">0</span>]
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">nums</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] &gt; <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] {
+            <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>]
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">sum</span> = 
+            int(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Max</span>(float64(<span style="color:#a6e22e">maximum</span>), float64(<span style="color:#a6e22e">sum</span>))), <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>]
+        }
+    }
+    <span style="color:#a6e22e">maximum</span> = int(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Max</span>(float64(<span style="color:#a6e22e">maximum</span>), float64(<span style="color:#a6e22e">sum</span>)))
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">maximum</span>
+}
+</code></pre></div><p><strong>Same Solution Without <code>math.Max()</code></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">maxAscendingSum</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">maximum</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#ae81ff">0</span>]
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#ae81ff">0</span>]
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">nums</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] &gt; <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] {
+            <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>]
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">sum</span> = <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">sum</span>), <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>]
+        }
+    }
+    <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">sum</span>)
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">maximum</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#a6e22e">b</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 119</title><link>https://nathannaveen.dev/posts/leetcode-119/</link><pubDate>Thu, 15 Apr 2021 08:49:51 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-119/</guid><description>119. Pascal&amp;rsquo;s Triangle II
+I will explain the first solution.
+If you want to understand the second solution click on the link above the code.
+So the first solution only wants us to return the last row of the triangle.
+Since we need two rows always for this problem the current row and the previous row. In this problem res is the current row and temp is the previous row.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/pascals-triangle-ii/">119. Pascal&rsquo;s Triangle II</a></p>
+<p>I will explain the first solution.</p>
+<p>If you want to understand the second solution click on the link above the code.</p>
+<p>So the first solution only wants us to return the last row of the triangle.</p>
+<p>Since we need two rows always for this problem the current row and the previous row. In this problem <code>res</code> is the current row and <code>temp</code> is the previous row.</p>
+<p>Here is how the problem works</p>
+<ul>
+<li>We have <code>res[0]</code> equal to <code>1</code> so all we have to do is keep on appending <code>1</code> to <code>res</code> every time we iterate.</li>
+<li>Then we have to loop through <code>res</code>&rsquo;s indexes starting at <code>1</code> and ending at <code>len(res) - 1</code> because we don&rsquo;t want to count the start and end <code>1</code>&rsquo;s.</li>
+<li>Inside the nested for we can make <code>res[j] = temp[j-1] + temp[j]</code>. If you don&rsquo;t understand why this works look at the image bellow: <img src="https://i.imgur.com/vPafRCe.png" alt=""></li>
+<li>After iterating through everything we can return <code>res</code>.</li>
+</ul>
+<p><strong>The Code:</strong> <em>This is the one that is 100%, 100%</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getRow</span>(<span style="color:#a6e22e">rowIndex</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{}
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">rowIndex</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">temp</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, len(<span style="color:#a6e22e">res</span>))
+        copy(<span style="color:#a6e22e">temp</span>, <span style="color:#a6e22e">res</span>)
+        <span style="color:#a6e22e">res</span> = append(<span style="color:#a6e22e">res</span>, <span style="color:#ae81ff">1</span>)
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">res</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+            <span style="color:#a6e22e">res</span>[<span style="color:#a6e22e">j</span>] = <span style="color:#a6e22e">temp</span>[<span style="color:#a6e22e">j</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">temp</span>[<span style="color:#a6e22e">j</span>]
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div><p><strong>We could do somthing similar to what we did in <a href="https://nathannaveen.dev/posts/leetcode-118/">Leetcode 118</a> But it is a pretty brute force solution for this problem:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getRow</span>(<span style="color:#a6e22e">rowIndex</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{}
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">rowIndex</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">temp</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+        <span style="color:#a6e22e">temp</span>[<span style="color:#ae81ff">0</span>], <span style="color:#a6e22e">temp</span>[len(<span style="color:#a6e22e">temp</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] = <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">temp</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+            <span style="color:#a6e22e">temp</span>[<span style="color:#a6e22e">j</span>] = <span style="color:#a6e22e">res</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#a6e22e">j</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">res</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#a6e22e">j</span>]
+        }
+        <span style="color:#a6e22e">res</span> = append(<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">temp</span>)
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>[len(<span style="color:#a6e22e">res</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 118</title><link>https://nathannaveen.dev/posts/leetcode-118/</link><pubDate>Wed, 14 Apr 2021 12:29:07 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-118/</guid><description>118. Pascal&amp;rsquo;s Triangle
 The idea of this solution is pretty simple:
 We first have a matrix array called res Then we loop through numRows While iterating through numRows we have to make an array called temp. It is going to be our current row. We make temp[0] and temp[len(temp)] equal to 1 so we get the outer 1&amp;rsquo;s. Then we loop through the middle elements (basically excluding the outside 1&amp;rsquo;s) We have to make every temp[j] equal to the previous rows previous rows[j - 1] + previous rows[j].</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/pascals-triangle/">118. Pascal&rsquo;s Triangle</a></p>
 <p>The idea of this solution is pretty simple:</p>
