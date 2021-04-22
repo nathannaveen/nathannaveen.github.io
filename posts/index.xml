@@ -1,4 +1,128 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 17 Apr 2021 09:23:24 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 229</title><link>https://nathannaveen.dev/posts/leetcode-229/</link><pubDate>Sat, 17 Apr 2021 09:23:24 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-229/</guid><description>229. Majority Element II
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 22 Apr 2021 09:14:35 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1151</title><link>https://nathannaveen.dev/posts/leetcode-1151/</link><pubDate>Thu, 22 Apr 2021 09:14:35 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1151/</guid><description>1151. Minimum Swaps to Group All 1&amp;rsquo;s Together
+The idea of this solution is:
+We find the number of 1&amp;rsquo;s. Then we know that the 1&amp;rsquo;s have to be in a subarray of the length of all the 1&amp;rsquo;s. We know that this works because the problem statement says that all the 1&amp;rsquo;s should be together in any place. Since we know that all the ones should be in a substring of length the number of ones in data, we just have to find the substring with the maximum number of 1&amp;rsquo;s in it already so, we get the minimum switches.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together/">1151. Minimum Swaps to Group All 1&rsquo;s Together</a></p>
+<p>The idea of this solution is:</p>
+<ul>
+<li>We find the number of <code>1</code>&rsquo;s.</li>
+<li>Then we know that the <code>1</code>&rsquo;s have to be in a subarray of the length of all the <code>1</code>&rsquo;s. We know that this works because the problem statement says that all the <code>1</code>&rsquo;s should be together in <strong>any place</strong>. Since we know that all the ones should be in a substring of length the number of ones in <code>data</code>, we just have to find the substring with the maximum number of <code>1</code>&rsquo;s in it already so, we get the minimum switches.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">minSwaps</span>(<span style="color:#a6e22e">data</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">oneCounter</span>, <span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">data</span> {
+        <span style="color:#a6e22e">oneCounter</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">i</span>
+    }
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">oneCounter</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">counter</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">i</span>]
+    }
+    <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">counter</span>)
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">oneCounter</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">data</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">counter</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">-</span> <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">oneCounter</span>]
+        <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">maximum</span>, <span style="color:#a6e22e">counter</span>)
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">oneCounter</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">maximum</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#a6e22e">b</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1176</title><link>https://nathannaveen.dev/posts/leetcode-1176/</link><pubDate>Mon, 19 Apr 2021 10:48:25 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1176/</guid><description>1176. Diet Plan Performance
+This is how the code works:
+We sum up the first k elements. Then compare whether sum is greater than upper or smaller than lower. After comparing we can loop from k to len(calories). Then we can take off the beggining of the subarray by subtracting calories[i - k]. And then we have to add the next element from the end of the subarray to the end to the subarray, we do this by adding calories[i].</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/diet-plan-performance/">1176. Diet Plan Performance</a></p>
+<p>This is how the code works:</p>
+<ul>
+<li>We sum up the first <code>k</code> elements.</li>
+<li>Then compare whether sum is greater than upper or smaller than lower.</li>
+<li>After comparing we can loop from <code>k</code> to <code>len(calories)</code>.</li>
+<li>Then we can take off the beggining of the subarray by subtracting <code>calories[i - k]</code>. And then we have to add the next element from the end of the subarray to the end to the subarray, we do this by adding <code>calories[i]</code>. We can do <code>sum -= calories[i - k]</code>, and then <code>sum += calories[i]</code>, or we can simplify these two lines into one line, <code>sum -= calories[i - k] - calories[i]</code> or <code>sum += calories[i] - calories[i - k]</code>.</li>
+<li>Then compare whether sum is greater than upper or smaller than lower.</li>
+</ul>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">dietPlanPerformance</span>(<span style="color:#a6e22e">calories</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">lower</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">upper</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">k</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">calories</span>[<span style="color:#a6e22e">i</span>]
+    }
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">comparison</span>(<span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">lower</span>, <span style="color:#a6e22e">upper</span>)
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">k</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">calories</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">sum</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">calories</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">k</span>] <span style="color:#f92672">-</span> <span style="color:#a6e22e">calories</span>[<span style="color:#a6e22e">i</span>]
+        <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">comparison</span>(<span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">lower</span>, <span style="color:#a6e22e">upper</span>)
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">comparison</span>(<span style="color:#a6e22e">sum</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">lower</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">upper</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sum</span> &lt; <span style="color:#a6e22e">lower</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sum</span> &gt; <span style="color:#a6e22e">upper</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1323</title><link>https://nathannaveen.dev/posts/leetcode-1323/</link><pubDate>Mon, 19 Apr 2021 10:48:16 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1323/</guid><description>1323. Maximum 69 Number
+This solution is pretty simple once you understand it.
+The idea of this solution is since 9 - 6 = 3, so 6 + 3 = 9. When we add 3 * the current place value to 6 * the current place value we get 9 * the current place value. So if we do 60 + (3 * 10) = 90, 600 + (3 * 100) = 900, 6000 + (3 * 1000) = 9000.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/maximum-69-number/">1323. Maximum 69 Number</a></p>
+<p>This solution is pretty simple once you understand it.</p>
+<p><strong>The idea of this solution is</strong> since <code>9 - 6 = 3</code>, so <code>6 + 3 = 9</code>. When we add <code>3 * the current place value</code> to <code>6 * the current place value</code> we get <code>9 * the current place value</code>. So if we do <code>60 + (3 * 10) = 90</code>, <code>600 + (3 * 100) = 900, 6000 + (3 * 1000) = 9000</code>. Now we can apply this for the current problem. We are given the number <code>num</code>, so all we have to do is find the <code>6</code> with the greatest place value and then multiply it by <code>3</code>, and add <code>num</code> to the result. This can be shown with the expretion <code>(6 with the greatest place value * 3) + num</code>.</p>
+<p><strong>The walk through this solution is:</strong></p>
+<ul>
+<li>We first loop while <code>temp &gt; 0</code>, <code>temp</code> is a temporary variable of <code>num</code></li>
+<li>Then we check whether <code>temp % 10 == 6</code>, which checks whether the current digit starting from the <code>1</code>&rsquo;s digit is equal to <code>6</code>. If it is, we can make the <code>last6Position</code> similar to <code>placeValue</code> (<code>placeValue</code> has the pattern of <code>1, 10, 100, 1000...</code>)</li>
+<li>Then we divide <code>temp</code> by <code>10</code> and multiply <code>placeValue</code> by <code>10</code>.</li>
+<li>Then we can return <code>num + last6Position * 3</code>.</li>
+</ul>
+<p><strong>If you still don&rsquo;t understand look at the following example:</strong></p>
+<p><code>num = 96966969</code>
+<code>expected output = 99966969</code></p>
+<p>What we can do:</p>
+<ul>
+<li><code>temp = 96966969, placeValue = 1</code>, <code>temp % 10 == 9</code> so continue, <code>temp /= 10, placeValue *= 10</code></li>
+<li><code>temp = 9696696, placeValue = 10</code>, <code>temp % 10 == 6</code> so <code>last6Position = 10</code>, <code>temp /= 10, placeValue *= 10</code></li>
+<li><code>temp = 969669, placeValue = 100</code>, <code>temp % 10 == 9</code> so continue, <code>temp /= 10, placeValue *= 10</code></li>
+<li><code>temp = 96966, placeValue = 1000</code>, <code>temp % 10 == 6</code> so <code>last6Position = 1000</code>, <code>temp /= 10, placeValue *= 10</code></li>
+<li><code>temp = 9696, placeValue = 10000</code>, <code>temp % 10 == 6</code> so <code>last6Position = 10000</code>, <code>temp /= 10, placeValue *= 10</code></li>
+<li><code>temp = 969, placeValue = 100000</code>, <code>temp % 10 == 9</code> so continue, <code>temp /= 10, placeValue *= 10</code></li>
+<li><code>temp = 96, placeValue = 1000000</code>, <code>temp % 10 == 6</code> so <code>last6Position = 1000000</code>, <code>temp /= 10, placeValue *= 10</code></li>
+<li><code>temp = 9, placeValue = 10000000</code>, <code>temp % 10 == 9</code> so continue, <code>temp /= 10, placeValue *= 10</code></li>
+<li><code>temp &lt;= 0</code> so break out of loop.</li>
+<li><code>num + (3 * 1000000) = num + 3000000 = 96966969 + 3000000 = 99966969</code>, return <code>99966969</code>.</li>
+<li>our expected output equal our actual output so this works.</li>
+</ul>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">maximum69Number</span>(<span style="color:#a6e22e">num</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">temp</span>, <span style="color:#a6e22e">placeValue</span>, <span style="color:#a6e22e">last6Position</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">num</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">temp</span> &gt; <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">temp</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">6</span> {
+            <span style="color:#a6e22e">last6Position</span> = <span style="color:#a6e22e">placeValue</span>
+        }
+        <span style="color:#a6e22e">temp</span> <span style="color:#f92672">/=</span> <span style="color:#ae81ff">10</span>
+        <span style="color:#a6e22e">placeValue</span> <span style="color:#f92672">*=</span> <span style="color:#ae81ff">10</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">last6Position</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 392</title><link>https://nathannaveen.dev/posts/leetcode-392/</link><pubDate>Mon, 19 Apr 2021 10:48:01 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-392/</guid><description>392. Is Subsequence
+func isSubsequence(s string, t string) bool { sCounter, i := 0, 0 for i &amp;lt; len(t) &amp;amp;&amp;amp; sCounter &amp;lt; len(s) { if t[i] == s[sCounter] { sCounter++ } i++ } return sCounter == len(s) }</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/is-subsequence/">392. Is Subsequence</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">isSubsequence</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">t</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">sCounter</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">t</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">sCounter</span> &lt; len(<span style="color:#a6e22e">s</span>) {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">t</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">sCounter</span>] {
+            <span style="color:#a6e22e">sCounter</span><span style="color:#f92672">++</span>
+        }
+        <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">sCounter</span> <span style="color:#f92672">==</span> len(<span style="color:#a6e22e">s</span>)
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 229</title><link>https://nathannaveen.dev/posts/leetcode-229/</link><pubDate>Sat, 17 Apr 2021 09:23:24 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-229/</guid><description>229. Majority Element II
 This solution is pretty simple:
 We loop through nums We add 1 to a map of integers called m, so we add 1 to m[num] where num is the current number in nums. Then we check whether m[num] == len(nums) / 3 + 1 this is checking whether the element is a majority element. Note: We can&amp;rsquo;t do m[num] &amp;gt;= len(nums) / 3 + 1.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/majority-element-ii/">229. Majority Element II</a></p>
 <p>This solution is pretty simple:</p>
