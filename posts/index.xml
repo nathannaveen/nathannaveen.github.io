@@ -1,4 +1,118 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 22 Apr 2021 09:14:35 -0400</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1151</title><link>https://nathannaveen.dev/posts/leetcode-1151/</link><pubDate>Thu, 22 Apr 2021 09:14:35 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1151/</guid><description>1151. Minimum Swaps to Group All 1&amp;rsquo;s Together
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 25 Apr 2021 11:08:11 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1422</title><link>https://nathannaveen.dev/posts/leetcode-1422/</link><pubDate>Sun, 25 Apr 2021 11:08:11 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1422/</guid><description>1422. Maximum Score After Splitting a String
+The idea of the first solution is pretty simple, and the second solution is based on the first solution.
+The idea of the first solution is:
+We loop through s and add all the numbers to a counter called numberOfOnes to count the number of ones. We do this by using ASCII. The ASCII of 0 is 48, and the ASCII of 1 is 49, so we can get the int of s[i] and then subtract 48 from it to get 0 or 1.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/maximum-score-after-splitting-a-string/">1422. Maximum Score After Splitting a String</a></p>
+<p>The idea of the first solution is pretty simple, and the second solution is based on the first solution.</p>
+<p>The idea of the first solution is:</p>
+<ul>
+<li>We loop through <code>s</code> and add all the numbers to a counter called <code>numberOfOnes</code> to count the number of ones. We do this by using ASCII. The ASCII of <code>0</code> is <code>48</code>, and the ASCII of <code>1</code> is <code>49</code>, so we can get the <code>int</code> of <code>s[i]</code> and then subtract <code>48</code> from it to get <code>0</code> or <code>1</code>. If it is <code>0</code> <code>s[i] = '0'</code> and if it is <code>1</code> <code>s[i] = '1'</code>.</li>
+<li>If the first element is a <code>'0'</code> we add one to <code>numberOfZeros</code> and if it is a <code>'1'</code> we can subtract one from <code>numberOfOnes</code> because the split string starts with a substring of length <code>1</code> on the left and a substring of length <code>(len(s) - 1) - 1</code>.</li>
+<li>Then we can loop through <code>1</code> to <code>len(s) - 1</code> and add one to <code>numberOfZeros</code> or subtract one from the <code>numberOfOnes</code>, and then check whether the <code>numberOfZeros + numberOfOnes</code> is greater than <code>maximum</code>, if so make <code>maximum</code> equal to <code>numberOfZeros + numberOfOnes</code>.</li>
+</ul>
+<p>The idea of the second solution is: We do the same thing as the first solution, but we combine <code>numberOfZeros</code> and <code>numberOfOnes</code> into a variable called <code>sum</code>.</p>
+<p><strong>The First Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">maxScore</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">numberOfOnes</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#a6e22e">numberOfZeros</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#a6e22e">maximum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
+        <span style="color:#a6e22e">numberOfOnes</span> <span style="color:#f92672">+=</span> int(<span style="color:#a6e22e">i</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">48</span>
+    }
+    
+    <span style="color:#a6e22e">numberOfZeros</span>, <span style="color:#a6e22e">numberOfOnes</span> = 
+    <span style="color:#a6e22e">addAndSubtractFromOnesAndZeros</span>(<span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">numberOfZeros</span>, <span style="color:#a6e22e">numberOfOnes</span>, <span style="color:#ae81ff">0</span>)
+    
+    <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">numberOfOnes</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">numberOfZeros</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">numberOfZeros</span>, <span style="color:#a6e22e">numberOfOnes</span> = 
+        <span style="color:#a6e22e">addAndSubtractFromOnesAndZeros</span>(<span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">numberOfZeros</span>, <span style="color:#a6e22e">numberOfOnes</span>, <span style="color:#a6e22e">i</span>)
+        
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">numberOfOnes</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">numberOfZeros</span> &gt; <span style="color:#a6e22e">maximum</span> {
+            <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">numberOfOnes</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">numberOfZeros</span>
+        }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">maximum</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addAndSubtractFromOnesAndZeros</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, 
+<span style="color:#a6e22e">numberOfZeros</span>, <span style="color:#a6e22e">numberOfOnes</span>, <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) (<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span>) {
+
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">numberOfZeros</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">numberOfOnes</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">numberOfZeros</span>, <span style="color:#a6e22e">numberOfOnes</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+}
+</code></pre></div><p><strong>The Second Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">maxScore</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">maximum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
+        <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> int(<span style="color:#a6e22e">i</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">48</span>
+    }
+
+    <span style="color:#a6e22e">sum</span> = <span style="color:#a6e22e">addAndSubtractFromOnesAndZeros2</span>(<span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">sum</span>, <span style="color:#ae81ff">0</span>)
+    <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">sum</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">sum</span> = <span style="color:#a6e22e">addAndSubtractFromOnesAndZeros2</span>(<span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">i</span>)
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sum</span> &gt; <span style="color:#a6e22e">maximum</span> {
+            <span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">sum</span>
+        }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">maximum</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addAndSubtractFromOnesAndZeros2</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 748</title><link>https://nathannaveen.dev/posts/leetcode-748/</link><pubDate>Sun, 25 Apr 2021 11:08:04 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-748/</guid><description>Shortest Completing Word
+Here is how I got to this solution. I couldn&amp;rsquo;t think of any way to solve this problem without doing a naive solution, so I looked at the discussion and saw jmcelvenny&amp;rsquo;s solution.
+The idea of this solution is:
+we get all the letters in licensePlate and multiply each letter&amp;rsquo;s prime number to a variable called product. We have an array of 26 prime numbers, so each letter has its own prime number (upper case and lower case of the same letter share a prime number), such as a : primes[0], b : primes[1], c : primes[2], and A : primes[0], B : primes[1], C : primes[2].</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/shortest-completing-word/">Shortest Completing Word</a></p>
+<p>Here is how I got to this solution. I couldn&rsquo;t think of any way to solve this problem without doing a naive solution, so I looked at the discussion and saw <a href="https://leetcode.com/problems/shortest-completing-word/discuss/158110/Java-6ms-beats-100-PRIME-NUMBERS">jmcelvenny&rsquo;s solution</a>.</p>
+<p>The idea of this solution is:</p>
+<ul>
+<li>we get all the letters in <code>licensePlate</code> and multiply each letter&rsquo;s prime number to a variable called <code>product</code>. We have an array of <code>26</code> prime numbers, so each letter has its own prime number (upper case and lower case of the same letter share a prime number), such as <code>a : primes[0], b : primes[1], c : primes[2]</code>, and <code>A : primes[0], B : primes[1], C : primes[2]</code>.</li>
+<li>After we have multiplied all the <code>licensePlate</code> letters prime numbers together, we multiply each word letters prime numbers together into another product.</li>
+<li>Then check whether the <code>newProduct % originalProduct == 0</code>, and the length of the current word is smaller than the length of the shortest word. If so, make the shortest word equal to the present word.</li>
+</ul>
+<p>You might be wondering why we are doing <code>newProduct % originalProduct == 0</code>, it is because if there is a product of only prime numbers, the only divisors are the same prime numbers. So since the <code>originalProduct</code> is the product of the primes, and <code>newProduct</code> is also the product of primes. Since we know that prime products can only be divided by the primes the were multiplied to get the outcome, we can do <code>newProduct % originalProduct == 0</code> because if <code>newProduct % originalProduct</code> equals <code>0</code> we know that <code>newProduct</code> has all the primes of <code>originalProduct</code>, which intern means that the current word has the letters of the license plate.</p>
+<p>If you still don&rsquo;t understand but understand one-way encryption, this solution is similar to one-way encryption.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">shortestCompletingWord</span>(<span style="color:#a6e22e">licensePlate</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">words</span> []<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">primes</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">29</span>, <span style="color:#ae81ff">31</span>, <span style="color:#ae81ff">37</span>, <span style="color:#ae81ff">41</span>, <span style="color:#ae81ff">43</span>,
+        <span style="color:#ae81ff">47</span>, <span style="color:#ae81ff">53</span>, <span style="color:#ae81ff">59</span>, <span style="color:#ae81ff">61</span>, <span style="color:#ae81ff">67</span>, <span style="color:#ae81ff">71</span>, <span style="color:#ae81ff">73</span>, <span style="color:#ae81ff">79</span>, <span style="color:#ae81ff">83</span>, <span style="color:#ae81ff">89</span>, <span style="color:#ae81ff">97</span>, <span style="color:#ae81ff">101</span>}
+    <span style="color:#a6e22e">product</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">product</span> = <span style="color:#a6e22e">productOfWord</span>(<span style="color:#a6e22e">licensePlate</span>, <span style="color:#a6e22e">product</span>, <span style="color:#a6e22e">primes</span>)
+    <span style="color:#a6e22e">shortest</span>, <span style="color:#a6e22e">length</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#ae81ff">16</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">word</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">words</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">productOfWord</span>(<span style="color:#a6e22e">word</span>, <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">primes</span> ) <span style="color:#f92672">%</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> len(<span style="color:#a6e22e">word</span>) &lt; <span style="color:#a6e22e">length</span> {
+            <span style="color:#a6e22e">shortest</span>, <span style="color:#a6e22e">length</span> = <span style="color:#a6e22e">word</span>, len(<span style="color:#a6e22e">word</span>)
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">shortest</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">productOfWord</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">product</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">primes</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
+        <span style="color:#a6e22e">lowerIndex</span>, <span style="color:#a6e22e">higherIndex</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;A&#39;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">lowerIndex</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">lowerIndex</span> &lt; <span style="color:#ae81ff">26</span> {
+            <span style="color:#a6e22e">product</span> <span style="color:#f92672">*=</span> <span style="color:#a6e22e">primes</span>[<span style="color:#a6e22e">lowerIndex</span>]
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">higherIndex</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">higherIndex</span> &lt; <span style="color:#ae81ff">26</span> {
+            <span style="color:#a6e22e">product</span> <span style="color:#f92672">*=</span> <span style="color:#a6e22e">primes</span>[<span style="color:#a6e22e">higherIndex</span>]
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">product</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1151</title><link>https://nathannaveen.dev/posts/leetcode-1151/</link><pubDate>Thu, 22 Apr 2021 09:14:35 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1151/</guid><description>1151. Minimum Swaps to Group All 1&amp;rsquo;s Together
 The idea of this solution is:
 We find the number of 1&amp;rsquo;s. Then we know that the 1&amp;rsquo;s have to be in a subarray of the length of all the 1&amp;rsquo;s. We know that this works because the problem statement says that all the 1&amp;rsquo;s should be together in any place. Since we know that all the ones should be in a substring of length the number of ones in data, we just have to find the substring with the maximum number of 1&amp;rsquo;s in it already so, we get the minimum switches.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together/">1151. Minimum Swaps to Group All 1&rsquo;s Together</a></p>
 <p>The idea of this solution is:</p>
@@ -31,6 +145,41 @@ We find the number of 1&amp;rsquo;s. Then we know that the 1&amp;rsquo;s have to
         <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
     }
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 859</title><link>https://nathannaveen.dev/posts/leetcode-859/</link><pubDate>Thu, 22 Apr 2021 09:14:13 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-859/</guid><description>859. Buddy Strings
+To check whether two strings are buddy strings we have to check whether:
+len(a) == len(b) if a == b, and there is a duplicate letter in a if there are a[j] != b[j] and a[i] != b[i] and a[j] == b[i] and a[i] == b[j] func buddyStrings(a string, b string) bool { if len(a) != len(b) { return false } m := make(map[uint8]int) temp := -1 counter := 0 for i := 0; i &amp;lt; len(a); i++ { m[a[i]]++ if a == b &amp;amp;&amp;amp; m[a[i]] == 2 { return true } if a[i] !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/buddy-strings/">859. Buddy Strings</a></p>
+<p>To check whether two strings are buddy strings we have to check whether:</p>
+<ul>
+<li><code>len(a) == len(b)</code></li>
+<li>if <code>a == b</code>, and there is a duplicate letter in <code>a</code></li>
+<li>if there are <code>a[j] != b[j]</code> and <code>a[i] != b[i]</code> and <code>a[j] == b[i]</code> and <code>a[i] == b[j]</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">buddyStrings</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">a</span>) <span style="color:#f92672">!=</span> len(<span style="color:#a6e22e">b</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+    }
+
+    <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">uint8</span>]<span style="color:#66d9ef">int</span>)
+    <span style="color:#a6e22e">temp</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">a</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>]]<span style="color:#f92672">++</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>]] <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span> {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+        }
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">b</span>[<span style="color:#a6e22e">i</span>] {
+            <span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">temp</span> <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> {
+                <span style="color:#a6e22e">temp</span> = <span style="color:#a6e22e">i</span>
+            } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">temp</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">b</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">||</span> <span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">b</span>[<span style="color:#a6e22e">temp</span>] {
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+            }
+        }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>
 }
 </code></pre></div>]]></content></item><item><title>Leetcode 1176</title><link>https://nathannaveen.dev/posts/leetcode-1176/</link><pubDate>Mon, 19 Apr 2021 10:48:25 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1176/</guid><description>1176. Diet Plan Performance
 This is how the code works:
