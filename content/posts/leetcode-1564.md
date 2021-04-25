@@ -3,7 +3,7 @@ title: "Leetcode 1564"
 date: 2021-04-25T18:43:09-05:00
 toc: false
 images:
-tags: [leetcode, golang, array]
+tags: [leetcode, golang, array, images]
 ---
 
 [1564. Put Boxes Into the Warehouse I](https://leetcode.com/problems/put-boxes-into-the-warehouse-i/)
