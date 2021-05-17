@@ -8,7 +8,7 @@ tags: [leetcode, golang, images, math]
 
 [836. Rectangle Overlap](https://leetcode.com/problems/rectangle-overlap/)
 
-This solution is pretty simular to my other solution [Leetcode: 223](https://nathannaveen.dev/posts/leetcode-223/) This is the part in the other solution which I based this solution on:
+This solution is pretty similar to my other solution [Leetcode: 223](https://nathannaveen.dev/posts/leetcode-223/) This is the part in the other solution which I based this solution on:
 
 ``` go
 // A = rec1[0], B = rec1[1], C = rec1[2], D = rec1[3]
