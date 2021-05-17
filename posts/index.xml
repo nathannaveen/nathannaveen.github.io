@@ -1,4 +1,198 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 17 May 2021 09:32:30 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 36</title><link>https://nathannaveen.dev/posts/leetcode-36/</link><pubDate>Mon, 17 May 2021 09:32:30 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-36/</guid><description>36. Valid Sudoku
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 17 May 2021 09:50:59 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1858</title><link>https://nathannaveen.dev/posts/leetcode-1858/</link><pubDate>Mon, 17 May 2021 09:50:59 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1858/</guid><description>1858. Longest Word With All Prefixes
+This solution aims to sort words so we get the previous prefix of the max word before the word. An example of this could be
+words = [&amp;quot;k&amp;quot;, &amp;quot;kiran&amp;quot;,&amp;quot;ki&amp;quot;,&amp;quot;kira&amp;quot;,&amp;quot;kir&amp;quot;] and when we sort, it becomes words = [&amp;quot;k&amp;quot;,&amp;quot;ki&amp;quot;,&amp;quot;kir&amp;quot;,&amp;quot;kira&amp;quot;, &amp;quot;kiran&amp;quot;].
+Then we can use a map to build up the word. If the len(word) is equal to 1, we know that it is a start of a word, or if the map contains word without the last letter, we know that there is the prefix of the word.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/longest-word-with-all-prefixes/">1858. Longest Word With All Prefixes</a></p>
+<p>This solution aims to sort <code>words</code> so we get the previous prefix of the max word before the word. An example of this could be</p>
+<p><code>words = [&quot;k&quot;, &quot;kiran&quot;,&quot;ki&quot;,&quot;kira&quot;,&quot;kir&quot;]</code>
+and when we sort, it becomes <code>words = [&quot;k&quot;,&quot;ki&quot;,&quot;kir&quot;,&quot;kira&quot;, &quot;kiran&quot;]</code>.</p>
+<p>Then we can use a map to build up the word. If the <code>len(word)</code> is equal to <code>1</code>, we know that it is a start of a word, or if the map contains <code>word</code> without the last letter, we know that there is the prefix of the word. So if either of these statements we know, we should add the word to the map and make the result the <code>max(word, res)</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">longestWord</span>(<span style="color:#a6e22e">words</span> []<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+	<span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>)
+	<span style="color:#a6e22e">maximum</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>
+	<span style="color:#a6e22e">sort</span>.<span style="color:#a6e22e">Strings</span>(<span style="color:#a6e22e">words</span>)
+
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">word</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">words</span> {
+		<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">word</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">word</span>[:len(<span style="color:#a6e22e">word</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span> {
+			<span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">word</span>]<span style="color:#f92672">++</span>
+			<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">word</span>) &gt; len(<span style="color:#a6e22e">maximum</span>) {
+				<span style="color:#a6e22e">maximum</span> = <span style="color:#a6e22e">word</span>
+			}
+		}
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">maximum</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1816</title><link>https://nathannaveen.dev/posts/leetcode-1816/</link><pubDate>Mon, 17 May 2021 09:50:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1816/</guid><description>1816. Truncate Sentence
+Since the solution wants us to return the first k words
+We can split the words Then we can return the the first k words joined together seperated by spaces. The Solution
+func truncateSentence(s string, k int) string { return strings.Join(strings.Split(s, &amp;#34; &amp;#34;)[:k], &amp;#34; &amp;#34;) } Edited Solution for readability
+func truncateSentence(s string, k int) string { arr := strings.Split(s, &amp;#34; &amp;#34;) return strings.Join(arr[:k], &amp;#34; &amp;#34;) }</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/truncate-sentence/">1816. Truncate Sentence</a></p>
+<p>Since the solution wants us to return the first <code>k</code> words</p>
+<ul>
+<li>We can split the words</li>
+<li>Then we can return the the first <code>k</code> words joined together seperated by spaces.</li>
+</ul>
+<p><strong>The Solution</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">truncateSentence</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">string</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Join</span>(<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Split</span>(<span style="color:#a6e22e">s</span>, <span style="color:#e6db74">&#34; &#34;</span>)[:<span style="color:#a6e22e">k</span>], <span style="color:#e6db74">&#34; &#34;</span>)
+}
+</code></pre></div><p><strong>Edited Solution for readability</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">truncateSentence</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">string</span> {
+	<span style="color:#a6e22e">arr</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Split</span>(<span style="color:#a6e22e">s</span>, <span style="color:#e6db74">&#34; &#34;</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Join</span>(<span style="color:#a6e22e">arr</span>[:<span style="color:#a6e22e">k</span>], <span style="color:#e6db74">&#34; &#34;</span>)
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1252</title><link>https://nathannaveen.dev/posts/leetcode-1252/</link><pubDate>Mon, 17 May 2021 09:50:46 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1252/</guid><description>1252. Cells with Odd Values in a Matrix
+The idea of this solution is to use two maps, x, and y, and we can add all the values of indices to x, and y (index[0] to x, and index[1] to y).
+Then we can check whether all the x&amp;rsquo;s plus all the y&amp;rsquo;s is odd. If so, we know that we can add one to the result.
+If you don&amp;rsquo;t understand we can take an example:</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/">1252. Cells with Odd Values in a Matrix</a></p>
+<p>The idea of this solution is to use two maps, <code>x</code>, and <code>y</code>, and we can add all the values of indices to <code>x</code>, and <code>y</code> (<code>index[0]</code> to <code>x</code>, and <code>index[1]</code> to <code>y</code>).</p>
+<p>Then we can check whether all the <code>x</code>&rsquo;s plus all the <code>y</code>&rsquo;s is odd. If so, we know that we can add one to the result.</p>
+<p>If you don&rsquo;t understand we can take an example:</p>
+<p><code>n = 3, m = 2, indices = [[0, 1],[1, 2]]</code></p>
+<p><img src="https://i.imgur.com/VLYxqIn.jpg" alt=""></p>
+<blockquote>
+<p>Note: You might have noticed that the position is in the format <code>(y, x)</code> instead of the average <code>(x, y)</code>. I don&rsquo;t know why this is. If anybody knows, could you please comment?</p>
+<p>Continuing with the example, we find the rows and columns and fill them up. After that, we can find the sum of each position:</p>
+</blockquote>
+<p><img src="https://i.imgur.com/lX74aeV.jpg" alt=""></p>
+<p>You might be wondering why this code uses <code>2</code> maps instead of <code>1</code> map or instead of <code>1</code> matrix. This code uses <code>2</code> maps instead of <code>1</code> map because it is not a matrix. The maps store all the <code>x</code> values and all the <code>y</code> values. If we put both maps together, we could get a matrix, but a matrix makes the space <code>O(m * n)</code> while the space of two maps is <code>O(m + n)</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">oddCells</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">m</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">indices</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+	<span style="color:#a6e22e">x</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">int</span>)
+	<span style="color:#a6e22e">y</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">int</span>)
+	<span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">index</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">indices</span> {
+		<span style="color:#a6e22e">y</span>[<span style="color:#a6e22e">index</span>[<span style="color:#ae81ff">0</span>]]<span style="color:#f92672">++</span>
+		<span style="color:#a6e22e">x</span>[<span style="color:#a6e22e">index</span>[<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">++</span>
+	}
+
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; <span style="color:#a6e22e">m</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+			<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">y</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">x</span>[<span style="color:#a6e22e">j</span>]) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> {
+				<span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+			}
+		}
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">counter</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1180</title><link>https://nathannaveen.dev/posts/leetcode-1180/</link><pubDate>Mon, 17 May 2021 09:50:40 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1180/</guid><description>1180. Count Substrings with Only One Distinct Letter
+The idea of this solution is to use the number of consecutive letters. And to use the formula n * (n + 1) / 2 to find the number of valid substrings. We can use the example below to explain:
+Before the example: n * (n + 1) / 2 is the equation for finding the sum of the first n consecutive elements.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/count-substrings-with-only-one-distinct-letter/">1180. Count Substrings with Only One Distinct Letter</a></p>
+<hr>
+<p>The idea of this solution is to use the number of consecutive letters. And to use the formula <code>n * (n + 1) / 2</code> to find the number of valid substrings. We can use the example below to explain:</p>
+<p><em>Before the example: <code>n * (n + 1) / 2</code> is the equation for finding the sum of the first <code>n</code> consecutive elements. The sum of the first <code>3</code> consecutive elments is <code>1 + 2 + 3 = 6</code>, and <code>3 * (3 + 1) / 2 = 3 * 4 / 2 = 12/ 2 = 6</code>, Note: Use PEMDAS when calculating <code>n * (n + 1) / 2</code>.</em></p>
+<ul>
+<li><code>input := &quot;aaaabbbcccccca&quot;</code></li>
+<li>The first substring is <code>aaaa</code>. We have one <code>aaaa</code>, two <code>aaa</code>, three <code>aa</code>, and four <code>a</code>&rsquo;s. <code>1 + 2 + 3 + 4 = 10</code> which equals <code>4 * (4 + 1) / 2 = 10</code>. So <code>res = 10</code></li>
+<li>Right now, you might be thinking that there aren&rsquo;t two <code>aaa</code>&rsquo;s and there aren&rsquo;t three <code>aa</code>&rsquo;s. If we look at it with just <code>4</code> random letters, you can see it is true. Let us say that we have <code>abcd</code>, there are two substrings of size three, <code>abc</code>, and <code>bcd</code>, and there are three substrings of size two <code>ab</code>, <code>bc</code>, and <code>cd</code>. This can be shown in the equation as <code>4 * (4 + 1) / 2</code></li>
+<li>Now, we can continue with our example. Our next substring would be <code>&quot;bbb&quot;</code>, and there is one <code>&quot;bbb&quot;</code>, two <code>&quot;bb&quot;</code>, and three <code>&quot;b&quot;</code>&rsquo;s. This can be shown in the equation as <code>3 * (3 + 1) / 2</code></li>
+<li>Next we can get <code>cccccc</code>. And we can get one <code>&quot;cccccc&quot;</code>, two <code>&quot;ccccc&quot;</code>, three <code>&quot;cccc&quot;</code>, four <code>&quot;ccc&quot;</code>, five <code>&quot;cc&quot;</code>, and six <code>&quot;c&quot;</code>&rsquo;s. This can be shown in the equation as <code>6 * (6 + 1) / 2</code></li>
+<li>After that, we have the substring <code>&quot;a&quot;</code>, and we have only one <code>&quot;a&quot;</code>. This can be shown in the equation as <code>1 * (1 + 1) / 2</code></li>
+</ul>
+<hr>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">countLetters</span>(<span style="color:#a6e22e">S</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">int</span> {
+	<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+	<span style="color:#a6e22e">letter</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>
+	<span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">S</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">letter</span> <span style="color:#f92672">!=</span> string(<span style="color:#a6e22e">i</span>) {
+			<span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">counter</span> <span style="color:#f92672">*</span> (<span style="color:#a6e22e">counter</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
+			<span style="color:#a6e22e">counter</span> = <span style="color:#ae81ff">0</span>
+			<span style="color:#a6e22e">letter</span> = string(<span style="color:#a6e22e">i</span>)
+		}
+		<span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+	}
+	<span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">counter</span> <span style="color:#f92672">*</span> (<span style="color:#a6e22e">counter</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1833</title><link>https://nathannaveen.dev/posts/leetcode-1833/</link><pubDate>Mon, 17 May 2021 09:50:14 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1833/</guid><description>1833. Maximum Ice Cream Bars
+To be truthful, I think that this problem&amp;rsquo;s difficulty should be easy instead of medium.
+This solution aims to sort costs because the maximum number of popsicles is obtained with the least price.
+func maxIceCream(costs []int, coins int) int { sort.Ints(costs) res := 0 for _, cost := range costs { if coins - cost &amp;lt; 0 { break } res++ coins -= cost } return res }</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/maximum-ice-cream-bars/">1833. Maximum Ice Cream Bars</a></p>
+<p>To be truthful, I think that this problem&rsquo;s difficulty should be easy instead of medium.</p>
+<p>This solution aims to sort <code>costs</code> because the maximum number of popsicles is obtained with the least price.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">maxIceCream</span>(<span style="color:#a6e22e">costs</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">coins</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+	<span style="color:#a6e22e">sort</span>.<span style="color:#a6e22e">Ints</span>(<span style="color:#a6e22e">costs</span>)
+	<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">cost</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">costs</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">coins</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">cost</span> &lt; <span style="color:#ae81ff">0</span> {
+			<span style="color:#66d9ef">break</span>
+		}
+		<span style="color:#a6e22e">res</span><span style="color:#f92672">++</span>
+		<span style="color:#a6e22e">coins</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">cost</span>
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1827</title><link>https://nathannaveen.dev/posts/leetcode-1827/</link><pubDate>Mon, 17 May 2021 09:50:09 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1827/</guid><description>1827. Minimum Operations to Make the Array Increasing
+The ideas of both of the solutions are similar and simple. We know that an array is strictly increasing if the current element in the array, nums[i], is greater than the previous element nums[i - 1]. So if nums[i - 1] is greater than or equal to nums[i] we know that we have to make nums[i] = nums[i - 1] + 1.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/minimum-operations-to-make-the-array-increasing/">1827. Minimum Operations to Make the Array Increasing</a></p>
+<p>The ideas of both of the solutions are similar and simple. We know that an array is strictly increasing if the current element in the array, <code>nums[i]</code>, is greater than the previous element <code>nums[i - 1]</code>. So if <code>nums[i - 1]</code> is greater than or equal to <code>nums[i]</code> we know that we have to make <code>nums[i] = nums[i - 1] + 1</code>.</p>
+<p><strong>The Idea Of The First Solution:</strong></p>
+<p>The idea of the first solution is to loop from the first element (0 indexed) to the end element. Then check whether <code>nums[i] &lt;= nums[i - 1]</code>, if so we can add <code>nums[i - 1] + 1 - nums[i]</code> to <code>res</code>. We add <code>nums[i - 1] + 1 - nums[i]</code> to res because <code>nums[i - 1] + 1</code> is the value we want res to be, and we subtract <code>nums[i]</code> from it because we want to find the number of operations.</p>
+<p><strong>The Idea Of The Second Solution:</strong></p>
+<p>Like I said the second solution is pretty similar. We loop from the first element (0 indexed) to the end element and add <code>max(0, nums[i - 1] + 1 - nums[i])</code> to <code>res</code>. We add <code>max(0, nums[i - 1] + 1 - nums[i])</code> to <code>res</code> because if <code>nums[i]</code> is greater than <code>nums[i - 1]</code> we add <code>0</code>, otherwise we add the difference between them. Then we remake <code>nums[i]</code> equal to the maximum of <code>nums[i]</code>, or <code>nums[i - 1] + 1</code>.</p>
+<p><strong>The First Solution:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">minOperations</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+	<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">nums</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] {
+			<span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>]
+			<span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+		}
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div><p><strong>The Second Solution:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">minOperations</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+	<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">nums</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+		<span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>])
+		<span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>], <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#a6e22e">b</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+}
+
+</code></pre></div>]]></content></item><item><title>Leetcode 1331</title><link>https://nathannaveen.dev/posts/leetcode-1331/</link><pubDate>Mon, 17 May 2021 09:49:56 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1331/</guid><description>1331. Rank Transform of an Array
+The idea of this solution is to:
+Copy arr. Then sort the copy Then loop through the copy and add all the values and indexes of the copy to a map called m. Then loop through 0 to len(arr) - 1, and make arr[i] = m[arr[i]]. Then return arr. func arrayRankTransform(arr []int) []int { g := make([]int, len(arr)) m := make(map[int]int) counter := 1 copy(g, arr) sort.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/rank-transform-of-an-array/">1331. Rank Transform of an Array</a></p>
+<p>The idea of this solution is to:</p>
+<ul>
+<li>Copy <code>arr</code>.</li>
+<li>Then sort the copy</li>
+<li>Then loop through the copy and add all the values and indexes of the copy to a map called <code>m</code>.</li>
+<li>Then loop through <code>0</code> to <code>len(arr) - 1</code>, and make <code>arr[i] = m[arr[i]]</code>.</li>
+<li>Then return <code>arr</code>.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">arrayRankTransform</span>(<span style="color:#a6e22e">arr</span> []<span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
+	<span style="color:#a6e22e">g</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, len(<span style="color:#a6e22e">arr</span>))
+	<span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">int</span>)
+	<span style="color:#a6e22e">counter</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>
+
+	copy(<span style="color:#a6e22e">g</span>, <span style="color:#a6e22e">arr</span>)
+	<span style="color:#a6e22e">sort</span>.<span style="color:#a6e22e">Ints</span>(<span style="color:#a6e22e">g</span>)
+
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">g</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">g</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#a6e22e">g</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] {
+			<span style="color:#a6e22e">counter</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+		}
+		<span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">g</span>[<span style="color:#a6e22e">i</span>]] = <span style="color:#a6e22e">counter</span>
+		<span style="color:#a6e22e">counter</span><span style="color:#f92672">++</span>
+	}
+
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">arr</span> {
+		<span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>]]
+	}
+
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arr</span>
+}
+
+</code></pre></div>]]></content></item><item><title>Leetcode 36</title><link>https://nathannaveen.dev/posts/leetcode-36/</link><pubDate>Mon, 17 May 2021 09:32:30 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-36/</guid><description>36. Valid Sudoku
 The main idea of this solution is to find the rows, columns, and squares of the numbers. By squares, I mean the nine squares in the board:
 The code goes through every position, and if the value is not a &amp;quot;.&amp;quot;, we check whether the row, column, or square contains the number. If so, we can return false.
 How to Calculate The Rows And Columns
