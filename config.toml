@@ -31,7 +31,7 @@ paginate     = 20
 # Social icons
 [[params.social]]
 name = "leetcode"
-url  = "https://leetcode.com/nathanthegreat/"
+url  = "https://leetcode.com/nathannaveen/"
 
 
 [[params.social]]
@@ -42,7 +42,7 @@ url  = "https://github.com/nathannaveen"
   [languages.en]
     title = "nathan naveen"
     subtitle = "my blog"
-    keywords = ""
+    keywords = ["leetcode", "golang", "algorithums"]
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
 
