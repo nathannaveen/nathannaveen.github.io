@@ -20,7 +20,7 @@ paginate     = 20
   enableSharingButtons = true
 
   # Metadata mostly used in document's head
-  description = "nathan naveens blog"
+  description = "Nathan Naveens blog"
   keywords = "homepage, blog"
   images = [""]
 
@@ -47,7 +47,7 @@ url  = "https://github.com/nathannaveen"
     readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]
-      logoText = "/home/nathan/"
+      logoText = "cd /home"
       logoHomeLink = "/"
     # or
     #
