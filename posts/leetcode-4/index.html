@@ -83,7 +83,7 @@ One minute
 <code>expected output: 2.5</code></p>
 <p>When the two arrays are combined the new array would be <code>[1, 2, 3, 4]</code> and the two middle numbers are <code>2</code>, and <code>3</code>. When <code>2</code> and <code>3</code> are added together we get <code>5</code>, and <code>5</code> divided by <code>2</code> is <code>2.5</code>.</p>
 <p>If the number of values of <code>nums1</code> is odd, the median is the middle number.</p>
-<pre><code>func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+<pre tabindex=0><code>func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
     nums1 = append(nums1, nums2...)
     sort.Ints(nums1)
 

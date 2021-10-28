@@ -76,7 +76,7 @@ One minute
 <p><a href=https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/>1523. Count Odd Numbers in an Interval Range</a></p>
 <p>The idea of this solution is to get the number odd numbers from <code>0</code> to <code>high</code>, and then subtract the number of odd numbers from <code>0</code> to <code>low - 1</code>. The idea can be shown by an example:</p>
 <hr>
-<pre><code>high: 7
+<pre tabindex=0><code>high: 7
 low : 3
 </code></pre><p><img src=https://assets.leetcode.com/users/images/2ca6929e-c01e-491f-9505-85dc303d779a_1614122599.638341.png alt=image></p>
 <ul>
@@ -88,7 +88,7 @@ low : 3
 </ul>
 <p>The number of odd numbers would be <code>4 - 1 = 3</code>. Three odd numbers.</p>
 <hr>
-<pre><code>func countOdds(low int, high int) int {
+<pre tabindex=0><code>func countOdds(low int, high int) int {
 	return (high + 1)/2 - low / 2
 }
 </code></pre>

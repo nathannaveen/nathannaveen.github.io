@@ -75,7 +75,7 @@ func queryString(S string, N int) bool { for i := 1; i <= N; i++ { s := &#34;&#3
 <div class=post-content>
 <p><a href=https://leetcode.com/problems/binary-string-with-substrings-representing-1-to-n/>1016. Binary String With Substrings Representing 1 To N</a></p>
 <p>The idea of this solution is to loop through <code>1...N</code> and then make the string by adding the bytes to a string called <code>s</code>. Then check if <code>S</code> contains the reversed string of the bytes. The string <code>s</code> is reversed by a helper function.</p>
-<pre><code>func queryString(S string, N int) bool {
+<pre tabindex=0><code>func queryString(S string, N int) bool {
     for i := 1; i &lt;= N; i++ {
         s := &quot;&quot;
         n := i
@@ -104,7 +104,7 @@ func reverse(s string) string {
     return res
 }
 </code></pre><p>This solution is pretty much the same as the first solution but this solution doesn&rsquo;t use a outside function to reverse.</p>
-<pre><code>func queryString(S string, N int) bool {
+<pre tabindex=0><code>func queryString(S string, N int) bool {
     for i := 1; i &lt;= N; i++ {
         s := &quot;&quot;
         n := i

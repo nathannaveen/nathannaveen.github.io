@@ -71,11 +71,11 @@ After that, add the number of vowel that have occured. The code does this by doi
 <div class=post-content>
 <p>The idea of this solution is to first make the input string lowercase, and then add <code>1</code> to an integer array at the index of every letter, <code>a = 0, b = 1, c = 2...</code>. First we add to the array called <code>first</code>, then starting at a certain index start adding it to <code>second</code>.</p>
 <p>After that, add the number of vowel that have occured. The code does this by doing</p>
-<pre><code>firstCounter += first[0] + first[4] + first[8] + first[14] + first[20]
+<pre tabindex=0><code>firstCounter += first[0] + first[4] + first[8] + first[14] + first[20]
 secondCounter += second[0] + second[4] + second[8] + second[14] + second[20]
 </code></pre><p>You might be wondering why the code is adding from <code>first</code> and <code>second</code> at the indices <code>0, 4, 8, 14, 20</code>. It is because the ascii values of <code>'a', 'e', 'i', 'o', 'u'</code> are <code>97, 101, 105, 111, 117</code>, and when they get the indices of <code>a = 0, b = 1, c = 2...</code> it is bascily subtracting <code>97</code> from each of them, so <code>97 - 97 = 0, 101 - 97 = 4, 105 - 97 = 8, 111 - 97 = 14, 117 - 97 = 20</code>.</p>
 <p>All of this can be show with a example:</p>
-<pre><code>input = &quot;TacosAreCool&quot;
+<pre tabindex=0><code>input = &quot;TacosAreCool&quot;
 output = true
 </code></pre><p>First off we have to make the input lower case so it becomes <code>"tacosarecool"</code>.</p>
 <p>Next we can add all the characters from to their appropriate arrays.</p>
@@ -85,7 +85,7 @@ output = true
 <p><img src=https://i.imgur.com/DEf68sC.jpg alt></p>
 <p>The number of vowels for <code>tacosa</code> is <code>3</code> because there are two <code>a</code>&rsquo;s and one <code>o</code>. The number of vowels for <code>recool</code> is <code>3</code> as well, because there is one <code>e</code> and two <code>o</code>&rsquo;s.</p>
 <p>Since both <code>tacosa</code> and <code>recool</code> both have the same amount of vowels we return <code>true</code>.</p>
-<pre><code>func halvesAreAlike(s string) bool {
+<pre tabindex=0><code>func halvesAreAlike(s string) bool {
     first, second := make([]int, 26), make([]int, 26)
     firstCounter, secondCounter := 0, 0
     s = strings.ToLower(s)

@@ -85,7 +85,7 @@ The idea of this solution is pretty simple.
 <p>We get the <code>kth</code> node from the end by iterating a counter <code>i</code> through <code>0</code> to <code>lengthOfLinkedList - k</code>, <code>lengthOfLinkedList - k</code> gets the length of the linked list and then subtracts <code>k</code> from it, so we get the ending <code>kth</code> node.</p>
 <p>We get the <code>kth</code> node by just iterating through <code>0</code> to <code>k - 1</code>. We do <code>k - 1</code> because we do <code>first = first.Next</code> which makes it the next value.</p>
 <p>Then we switch the two values by just assigning them to each other if you don&rsquo;t understand <code>second.Val, first.Val = first.Val, second.Val</code> it is basically:</p>
-<pre><code>temp := second.Val
+<pre tabindex=0><code>temp := second.Val
 
 second.Val = first.Val
 first.Val = temp

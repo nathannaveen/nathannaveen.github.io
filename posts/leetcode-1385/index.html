@@ -76,7 +76,7 @@ One minute
 <p><a href=https://leetcode.com/problems/find-the-distance-value-between-two-arrays/>1385. Find the Distance Value Between Two Arrays</a></p>
 <p>The idea of this solution is to iterate through <code>arr1</code> and then inside each iteration iterate through <code>arr2</code>. If the absolute value of <code>arr1[i] - arr2[j]</code> is smaller than or equal to <code>d</code>, we know that <code>arr1[i]</code> can&rsquo;t be added to the resulting counter, so we can just <code>break</code> from the loop.</p>
 <p>There is a abs function because <code>math.Abs</code> takes longer. When using <code>math.Abs</code> we have to make <code>float64(arr1[i] - arr2[j])</code>, and then make the <code>int(math.Abs)</code>.</p>
-<pre><code>func findTheDistanceValue(arr1 []int, arr2 []int, d int) int {
+<pre tabindex=0><code>func findTheDistanceValue(arr1 []int, arr2 []int, d int) int {
     res := 0
     shouldAdd := true
     for i := 0; i &lt; len(arr1); i++ {

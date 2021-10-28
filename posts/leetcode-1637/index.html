@@ -74,7 +74,7 @@ One minute
 </code></pre>
 <p>The idea of this solution is to ignore the <code>y</code> part of <code>points</code> because the vertical area is the made of vertical lines. Vertical lines are made up off one <code>x</code> value for every <code>y</code> value. An example could be the line <code>x = 3</code>, this is a vertical line at the x value <code>3</code>.</p>
 <p>The code first puts all the <code>x</code> points in the array <code>xPoints</code>. Then it sorts <code>xPoints</code> so all the <code>x</code>&rsquo;s are ready to use a sliding window approche of size two to find the greatest distance between all the two points. This can be show with this picture:</p>
-<pre><code>input: [[8, 7], [9, 9], [7, 4], [9, 7]]
+<pre tabindex=0><code>input: [[8, 7], [9, 9], [7, 4], [9, 7]]
 output: 1
 </code></pre><p><img src=https://assets.leetcode.com/users/images/84ee2492-0703-4617-a38e-6691b4bcc3ea_1614125888.3422618.png alt=image></p>
 <ul>
@@ -83,7 +83,7 @@ output: 1
 <li>Use a sliding window to find the max difference each <code>x</code> value.</li>
 </ul>
 <hr>
-<pre><code>func maxWidthOfVerticalArea(points [][]int) int {
+<pre tabindex=0><code>func maxWidthOfVerticalArea(points [][]int) int {
 	xPoints := []int{}
 	for _, point := range points {
 		xPoints = append(xPoints, point[0])

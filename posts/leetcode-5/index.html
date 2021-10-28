@@ -76,7 +76,7 @@ One minute
 <p><a href=https://leetcode.com/problems/longest-palindromic-substring/>5. Longest Palindromic Substring</a></p>
 <p>In this solution we dont have to check whether the palindrome substring is greater than the max length substring because the length of the substring will always be greater than or equal to the length of the current max substring. This can be show in an image:</p>
 <p><img src=https://i.imgur.com/k9YUTYG.jpg alt></p>
-<pre><code>func longestPalindrome(s string) string {
+<pre tabindex=0><code>func longestPalindrome(s string) string {
 	max := &quot;&quot;
 	for i := 0; i &lt; len(s); i++ {
 		for j := 0; j &lt;= len(s)-i; j++ {

@@ -72,7 +72,7 @@ The idea of this solution is to add every number in the array nums to another ar
 <p><a href=https://leetcode.com/problems/set-mismatch/>645. Set Mismatch</a></p>
 <p>The idea of this solution is to add every number in the array <code>nums</code> to another array called <code>temp</code>. Next we go through the array temp and check whether the number of a certain number is equal to <code>2</code>, if it is then we know that it is the repeated number. If it is not <code>2</code> but it is <code>0</code> we know that it is the skiped number. We know that there is always a duplicate number, so if we found the duplicate but not the value that is skiped we return the duplicate and the duplicate plus one, because if the skiped is not inside the array we have to return the next number.</p>
 <p><code>temp</code> has <code>10001</code> values because the constraints of the problem say <code>2 &lt;= nums.length &lt;= 10^4, 1 &lt;= nums[i] &lt;= 10^4</code>, since <code>10^4</code> equals <code>10000</code> and the constraints say <code>nums.length &lt;= 10^4</code> we have to do <code>10^4 + 1 = 10000 + 1 = 10001</code>.</p>
-<pre><code>func findErrorNums(nums []int) []int {
+<pre tabindex=0><code>func findErrorNums(nums []int) []int {
     sort.Ints(nums)
     double, skip := 0, 0
     temp := make([]int, 10001)

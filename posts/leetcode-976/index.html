@@ -83,7 +83,7 @@ In the problem it asks us to &ldquo;return the largest perimeter of a triangle w
 <p><img src=https://i.imgur.com/LRxVW4L.jpg alt>
 <img src=https://i.imgur.com/H1ySPp7.jpg alt></p>
 <p><em>The two images above are not proper triangles because the length of the two smaller sides are smaller than <code>7</code> and won&rsquo;t be able to form a triangle.</em></p>
-<pre><code>func largestPerimeter(A []int) int {
+<pre tabindex=0><code>func largestPerimeter(A []int) int {
     sort.Ints(A)
     for i := len(A) - 1; i &gt;= 2; i-- {
         if A[i] &lt; A[i - 1] + A[i - 2] {

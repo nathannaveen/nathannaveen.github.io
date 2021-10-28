@@ -76,7 +76,7 @@ One minute
 <p><a href=https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/>448. Find All Numbers Disappeared in an Array</a></p>
 <p>The idea of this solution is to add all the numbers to a map and then check whether the map doesn&rsquo;t contain a number. If it doesn&rsquo;t contain then add it to the array <code>arr</code>.</p>
 <p>We return the array from the first position to the end because when we make the array it comes out with a <code>0</code> at the zeroth index. For example a input array could be <code>[4,3,2,7,8,2,3,1]</code>. If we just returned <code>arr</code> then we would get <code>[0, 5, 6]</code> instead of <code>[5, 6]</code>. This can also be fixed by making <code>i</code> in the second loop start at <code>1</code> instead of <code>0</code>.</p>
-<pre><code>func findDisappearedNumbers(nums []int) []int {
+<pre tabindex=0><code>func findDisappearedNumbers(nums []int) []int {
 
     m := make(map[int]int)
     arr := []int{}

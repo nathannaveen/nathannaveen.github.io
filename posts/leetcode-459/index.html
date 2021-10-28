@@ -87,7 +87,7 @@ In the first example the substring abc starts at the 0&lsquo;th index and ends a
 </blockquote>
 <p>If you have noticed in both the examples the repeated substring has to start at the <code>0</code>&lsquo;th index and has to end at a following index.</p>
 <p>The way my code checks whether it is a substring that repeats through out is it adds that substring to a empty string as many times as it fits in the string. Then it checks whether the new string is equal to <code>s</code>. If it is then <code>return true</code>. If it is never equal then <code>return false</code>.</p>
-<pre><code>func repeatedSubstringPattern(s string) bool {
+<pre tabindex=0><code>func repeatedSubstringPattern(s string) bool {
 	for i := 0; i &lt; len(s); i++ {
 		end := len(s)
 		str := &quot;&quot;

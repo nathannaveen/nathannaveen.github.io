@@ -1,4 +1,619 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 17 Aug 2021 12:33:53 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1804</title><link>https://nathannaveen.dev/posts/leetcode-1804/</link><pubDate>Tue, 17 Aug 2021 12:33:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1804/</guid><description>1804. Implement Trie II (Prefix Tree)
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 28 Oct 2021 15:59:20 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1807</title><link>https://nathannaveen.dev/posts/leetcode-1807/</link><pubDate>Thu, 28 Oct 2021 15:59:20 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1807/</guid><description>1807. Evaluate the Bracket Pairs of a String
+The idea of this solution is pretty simple:
+We can first add all the knowledge into a map which I called storedKnowledge Then we can loop through s If s[i] == '(' we can make start = i + 1, so we know where the bracket starts Else if s[i] == ')' we can check whether storedKnowledge contains s[start : i] (For our non-Golang users s[start : i] is basically getting the substring from position start to the position i, if we think mathematically it could be shown as the inequality [start, i)), if it contains we can add the value to res, else add &amp;quot;?</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/evaluate-the-bracket-pairs-of-a-string/">1807. Evaluate the Bracket Pairs of a String</a></p>
+<p>The idea of this solution is pretty simple:</p>
+<ul>
+<li>We can first add all the knowledge into a map which I called <code>storedKnowledge</code></li>
+<li>Then we can loop through <code>s</code>
+<ul>
+<li>If <code>s[i] == '('</code> we can make <code>start = i + 1</code>, so we know where the bracket starts</li>
+<li>Else if <code>s[i] == ')'</code> we can check whether <code>storedKnowledge</code> contains <code>s[start : i]</code> (For our non-Golang users <code>s[start : i]</code> is basically getting the substring from position <code>start</code> to the position <code>i</code>, if we think mathematically it could be shown as the inequality <code>[start, i)</code>), if it contains we can add the value to <code>res</code>, else add <code>&quot;?&quot;</code> to <code>res</code>. Then I make <code>start = -1</code>, I will explain this in the next bullet point.</li>
+<li>Else if <code>start != -1</code>. The <code>start != -1</code> checks whether we are inside a bracket, and if so, we don&rsquo;t want to add the letter to <code>res</code>.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">evaluate</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">knowledge</span> [][]<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">storedKnowledge</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>] <span style="color:#66d9ef">string</span>)
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">know</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">knowledge</span> {
+        <span style="color:#a6e22e">storedKnowledge</span>[<span style="color:#a6e22e">know</span>[<span style="color:#ae81ff">0</span>]] = <span style="color:#a6e22e">know</span>[<span style="color:#ae81ff">1</span>]
+    }
+    
+    <span style="color:#a6e22e">start</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">i2</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i2</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;(&#39;</span> {
+            <span style="color:#a6e22e">start</span> = <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i2</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;)&#39;</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">storedKnowledge</span>[<span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">start</span> : <span style="color:#a6e22e">i</span>]]; <span style="color:#a6e22e">ok</span> {
+                <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">storedKnowledge</span>[<span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">start</span> : <span style="color:#a6e22e">i</span>]]     
+            } <span style="color:#66d9ef">else</span> {
+                <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;?&#34;</span>
+            }
+            <span style="color:#a6e22e">start</span> = <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> {
+            <span style="color:#75715e">// start == -1 is for if we are not inside a bracket
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> string(<span style="color:#a6e22e">i2</span>)
+        }
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div><p>I liked the way that @DBabichev did his solution, so I tried something similar (@DBabichev has a pretty good explanation to this solution, so I will link the <a href="https://leetcode.com/problems/evaluate-the-bracket-pairs-of-a-string/discuss/1130510/Python-Short-solution-using-split-explained">solution</a>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">evaluate</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">knowledge</span> [][]<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">storedKnowledge</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>] <span style="color:#66d9ef">string</span>)
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">know</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">knowledge</span> {
+        <span style="color:#a6e22e">storedKnowledge</span>[<span style="color:#a6e22e">know</span>[<span style="color:#ae81ff">0</span>]] = <span style="color:#a6e22e">know</span>[<span style="color:#ae81ff">1</span>]
+    }
+    
+    <span style="color:#a6e22e">arr</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Split</span>(<span style="color:#a6e22e">s</span>, <span style="color:#e6db74">&#34;(&#34;</span>)
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#ae81ff">0</span>]
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">arr</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">temp</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Split</span>(<span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>], <span style="color:#e6db74">&#34;)&#34;</span>)
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">val</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">storedKnowledge</span>[<span style="color:#a6e22e">temp</span>[<span style="color:#ae81ff">0</span>]]; <span style="color:#a6e22e">ok</span> {
+            <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">val</span>
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;?&#34;</span>
+        }
+        <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">temp</span>[<span style="color:#ae81ff">1</span>]
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1991</title><link>https://nathannaveen.dev/posts/leetcode-1991/</link><pubDate>Thu, 28 Oct 2021 15:59:14 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1991/</guid><description>1991. Find the Middle Index in Array
+The idea of this solution is pretty simple:
+We find the sum of all the numbers in nums (In this solution, I am calling it sum) Then we check whether sum - left - nums[i] == left (I will get back to what left is and what this whole thing means in the following parts). If so, we can return i (The index).</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-the-middle-index-in-array/">1991. Find the Middle Index in Array</a></p>
+<p>The idea of this solution is pretty simple:</p>
+<ul>
+<li>We find the sum of all the numbers in <code>nums</code> (In this solution, I am calling it <code>sum</code>)</li>
+<li>Then we check whether <code>sum - left - nums[i] == left</code> (I will get back to what <code>left</code> is and what this whole thing means in the following parts). If so, we can return <code>i</code> (The index).</li>
+<li>The variable called <code>left</code> keeps track of the left sum, so we do <code>left += nums[i]</code>.</li>
+</ul>
+<p>So, if you don&rsquo;t understand what <code>sum - left - nums[i] == left</code> is doing, read the following:</p>
+<p>There is a small part that I would assume someone would have missed, and that is in the following:</p>
+<blockquote>
+<p><code>nums[0] + nums[1] + ... + nums[middleIndex-1] == nums[middleIndex+1] + nums[middleIndex+2] + ... + nums[nums.length-1]</code></p>
+</blockquote>
+<p>We are supposed to make the sum of all the numbers before <code>nums[i]</code> equal to the sum of all the numbers after <code>nums[i]</code>, not including <code>nums[i]</code>.</p>
+<p>So doing <code>sum - left - nums[i] == left</code> is basically checking whether <code>right sum == left sum</code>:</p>
+<ul>
+<li><code>sum - left</code> is for getting the sum of all the elements to the right of <code>nums[i - 1]</code> (Basically all the elements to the right of <code>nums[i]</code> plus <code>nums[i]</code>)</li>
+<li>Subtracting <code>nums[i]</code> from <code>sum - left</code> is for taking out the <code>nums[i]</code>.</li>
+<li>The two bullet points before this one were for finding the right sum, but since we know the left sum we can just check whether <code>right sum == left sum</code>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">findMiddleIndex</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#a6e22e">left</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">num</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">nums</span> { <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">num</span> }
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">nums</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">left</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#a6e22e">left</span> {
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">i</span>
+        }
+        
+        <span style="color:#a6e22e">left</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>]
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1984</title><link>https://nathannaveen.dev/posts/leetcode-1984/</link><pubDate>Thu, 28 Oct 2021 15:59:09 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1984/</guid><description>1984. Minimum Difference Between Highest and Lowest of K Scores
+The idea of this solution is pretty simple:
+We just sort nums And then we can use a sliding window to check for the min of the last number in the sub-array minus the first number in the sub-array. The reason we sort nums is the minimum distance will always be between the two closest numbers. For example if we have the array nums = [1, 2, 3, 4, 6, 10], and we had k = 3, we can see that the differences would be:</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/">1984. Minimum Difference Between Highest and Lowest of K Scores</a></p>
+<p>The idea of this solution is pretty simple:</p>
+<ul>
+<li>We just sort <code>nums</code></li>
+<li>And then we can use a sliding window to check for the min of the last number in the sub-array minus the first number in the sub-array.</li>
+</ul>
+<p>The reason we sort <code>nums</code> is the minimum distance will always be between the two closest numbers. For example if we have the array <code>nums = [1, 2, 3, 4, 6, 10]</code>, and we had <code>k = 3</code>, we can see that the differences would be:</p>
+<ul>
+<li><code>3 - 1 = 2</code></li>
+<li><code>4 - 2 = 2</code></li>
+<li><code>6 - 3 = 3</code></li>
+<li><code>10 - 4 = 6</code></li>
+</ul>
+<p>And we can use this to find the minimum difference.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">minimumDifference</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">min</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">100000</span>
+    <span style="color:#a6e22e">sort</span>.<span style="color:#a6e22e">Ints</span>(<span style="color:#a6e22e">nums</span>)
+
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">nums</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">min</span> = int(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Min</span>(float64(<span style="color:#a6e22e">min</span>), float64(<span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">-</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]))) 
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">min</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 598</title><link>https://nathannaveen.dev/posts/leetcode-598/</link><pubDate>Thu, 28 Oct 2021 15:59:00 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-598/</guid><description>598. Range Addition II
+The idea of this solution is pretty simple, the positions with the max value will be in the sub-matrix of range 0 to minimum y pos, and 0 to minimum x pos.
+If you don&amp;rsquo;t understand look at the example bellow:
+input: m = 6, n = 5, ops = [[4, 3], [2, 6], [3, 5]] (Note: They give the input 1-indexed, instead of 0-indexed)
+As you can see, all rectangles top left corner is (0, 0) (I added an orange dot at (0, 0)).</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/range-addition-ii/">598. Range Addition II</a></p>
+<p>The idea of this solution is pretty simple, the positions with the max value will be in the sub-matrix of range <code>0 to minimum y pos</code>, and <code>0 to minimum x pos</code>.</p>
+<p>If you don&rsquo;t understand look at the example bellow:</p>
+<p><code>input: m = 6, n = 5, ops = [[4, 3], [2, 6], [3, 5]]</code> <em>(Note: They give the input <code>1-indexed</code>, instead of <code>0-indexed</code>)</em></p>
+<p><img src="https://i.imgur.com/Nz4lmSJ.png" alt=""></p>
+<p>As you can see, all rectangles top left corner is <code>(0, 0)</code> (I added an orange dot at <code>(0, 0)</code>). And the sub-matrix that has the maximum values is surrounded by the yellow dotted line.</p>
+<p>We have four parts of the dotted line, the <code>top</code>, <code>bottom</code>, <code>right</code>, and <code>left</code>.</p>
+<ul>
+<li>The <code>top</code> line is on the <code>x-axis</code>, so we don&rsquo;t have to worry about that.</li>
+<li>The <code>left</code> line is on the <code>y-axis</code>, so we also don&rsquo;t have to worry about that.</li>
+<li>The <code>right</code> line is the minimum <code>x</code> value in all the <code>ops</code> because the minimum is the max position that we know we have all the operations in.</li>
+<li>The <code>bottom</code> line is the minimum <code>y</code> value in <code>ops</code>, and it is that for the same reason as the <code>right</code> line.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">maxCount</span>(<span style="color:#a6e22e">m</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">ops</span> [][]<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">n</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">op</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">ops</span> {
+        <span style="color:#a6e22e">x</span> = <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">op</span>[<span style="color:#ae81ff">0</span>], <span style="color:#a6e22e">x</span>)
+        <span style="color:#a6e22e">y</span> = <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">op</span>[<span style="color:#ae81ff">1</span>], <span style="color:#a6e22e">y</span>)
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">y</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">a</span> &gt; <span style="color:#a6e22e">b</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 2006</title><link>https://nathannaveen.dev/posts/leetcode-2006/</link><pubDate>Thu, 28 Oct 2021 15:58:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2006/</guid><description>2006. Count Number of Pairs With Absolute Difference K
+The main idea of this solution is nums[i] + k = nums[j] and nums[i] - k = nums[j], if you don&amp;rsquo;t understand:
+|nums[i] - nums[j| = k
+Now if we took off the absolute value sign we get 2 equations:
+-(nums[i] - nums[j]) = k and nums[i] - nums[j] = k
+Let us start with -(nums[i] - nums[j]) = k:
+-(nums[i] - nums[j]) = k Mulitply both sides by -1 so nums[i] - nums[j] = -k add k to both sides, and add nums[j] to both sides nums[i] + k = nums[j] Now we can do nums[i] - nums[j] = k:</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/">2006. Count Number of Pairs With Absolute Difference K</a></p>
+<p>The main idea of this solution is <code>nums[i] + k = nums[j]</code> and <code>nums[i] - k = nums[j]</code>, if you don&rsquo;t understand:</p>
+<p><code>|nums[i] - nums[j| = k</code></p>
+<p>Now if we took off the absolute value sign we get 2 equations:</p>
+<p><code>-(nums[i] - nums[j]) = k and</code>
+<code>nums[i] - nums[j] = k</code></p>
+<p>Let us start with <code>-(nums[i] - nums[j]) = k</code>:</p>
+<pre><code>-(nums[i] - nums[j]) = k
+Mulitply both sides by -1 so nums[i] - nums[j] = -k
+add k to both sides, and add nums[j] to both sides
+nums[i] + k = nums[j]
+</code></pre>
+<p>Now we can do <code>nums[i] - nums[j] = k</code>:</p>
+<pre><code>nums[i] - nums[j] = k
+add nums[j] to both sides, and subtract k from both sides
+nums[i] - k = nums[j]
+</code></pre>
+<p>Now you might be wondering why <code>nums[i] + k = nums[j]</code> and <code>nums[i] - k = nums[j]</code> is useful, it is because we can loop through <code>nums</code>, and then add the number of elements that equal <code>nums[i] + k</code> (aka <code>nums[j]</code>) and the number of elements that equal <code>nums[i] - k</code> (This could be called <code>nums[j]</code>, but <code>nums[j]</code> is already assigned to <code>nums[i] + k</code>, so this could be called <code>nums[l]</code>).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">countKDifference</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">k</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>] <span style="color:#66d9ef">int</span>)
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">num</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">nums</span> {
+        <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">num</span>]<span style="color:#f92672">++</span>
+        <span style="color:#a6e22e">res</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">num</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">k</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">num</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">k</span>]
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 2016</title><link>https://nathannaveen.dev/posts/leetcode-2016/</link><pubDate>Thu, 28 Oct 2021 15:58:50 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2016/</guid><description>2016. Maximum Difference Between Increasing Elements
+The idea of this solution is we loop through nums, and if a number is greater than min we can check whether to make it max, otherwise if the number is smaller than min we can re-make min.
+func maximumDifference(nums []int) int { min := nums[0] max := -1 for i := 0; i &amp;lt; len(nums); i++ { if nums[i] &amp;gt; min &amp;amp;&amp;amp; nums[i] - min &amp;gt; max { max = nums[i] - min } else if nums[i] &amp;lt; min { min = nums[i] } } return max }</description><content type="html"><![CDATA[<p><a href="https://https://leetcode.com/problems/maximum-difference-between-increasing-elements/">2016. Maximum Difference Between Increasing Elements</a></p>
+<p>The idea of this solution is we loop through <code>nums</code>, and if a number is greater than <code>min</code> we can check whether to make it <code>max</code>, otherwise if the number is smaller than <code>min</code> we can re-make <code>min</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">maximumDifference</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">min</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#ae81ff">0</span>]
+    <span style="color:#a6e22e">max</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">nums</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] &gt; <span style="color:#a6e22e">min</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">-</span> <span style="color:#a6e22e">min</span> &gt; <span style="color:#a6e22e">max</span> {
+            <span style="color:#a6e22e">max</span> = <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">-</span> <span style="color:#a6e22e">min</span>
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>] &lt; <span style="color:#a6e22e">min</span> {
+            <span style="color:#a6e22e">min</span> = <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>]
+        }
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">max</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1257</title><link>https://nathannaveen.dev/posts/leetcode-1257/</link><pubDate>Thu, 28 Oct 2021 15:58:40 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1257/</guid><description>1257. Smallest Common Region
+A quick idea of this solution is (Note: This solution is not very good if you want a solution that is easy to understand, look after this):
+To use a map to store every region as the key and the value as the region in which the original region is contained. Then loop through all the regions in the food chain of region1 (I am calling a food chain whenever we start with region1, and then find the region that contains it) and store all the values into another map.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/smallest-common-region/">1257. Smallest Common Region</a></p>
+<p>A quick idea of this solution is <em>(Note: This solution is not very good if you want a solution that is easy to understand, look after this)</em>:</p>
+<ul>
+<li>To use a map to store every region as the key and the value as the region in which the original region is contained.</li>
+<li>Then loop through all the regions in the food chain of <code>region1</code> (I am calling a food chain whenever we start with <code>region1</code>, and then find the region that contains it) and store all the values into another map.</li>
+<li>Then we loop through the food chain of <code>region2</code>, and check whether the <code>region1</code> food chain map contains any values. If so, return the value.</li>
+</ul>
+<hr>
+<p>I know that the whole explanation before is very vague and confusing, so I am going to explain this whole thing using an example:</p>
+<p>So, to start off, we can have a map called <code>m</code> to store all the regions and their direct ancestor (I am calling the region that contains the region a direct ancestor)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">input</span>:
+
+<span style="color:#a6e22e">regions</span> = [[<span style="color:#e6db74">&#34;Earth&#34;</span>,<span style="color:#e6db74">&#34;North America&#34;</span>,<span style="color:#e6db74">&#34;South America&#34;</span>],
+[<span style="color:#e6db74">&#34;North America&#34;</span>,<span style="color:#e6db74">&#34;United States&#34;</span>,<span style="color:#e6db74">&#34;Canada&#34;</span>],
+[<span style="color:#e6db74">&#34;United States&#34;</span>,<span style="color:#e6db74">&#34;New York&#34;</span>,<span style="color:#e6db74">&#34;Boston&#34;</span>],
+[<span style="color:#e6db74">&#34;Canada&#34;</span>,<span style="color:#e6db74">&#34;Ontario&#34;</span>,<span style="color:#e6db74">&#34;Quebec&#34;</span>],
+[<span style="color:#e6db74">&#34;South America&#34;</span>,<span style="color:#e6db74">&#34;Brazil&#34;</span>]],
+<span style="color:#a6e22e">region1</span> = <span style="color:#e6db74">&#34;Quebec&#34;</span>,
+<span style="color:#a6e22e">region2</span> = <span style="color:#e6db74">&#34;New York&#34;</span>
+</code></pre></div><p>We can now add the region and its direct ancestor to <code>m</code>. For example, the first region:</p>
+<p><code>[&quot;Earth&quot;,&quot;North America&quot;,&quot;South America&quot;]</code></p>
+<p>Since <code>&quot;Earth&quot;</code> contains <code>&quot;North America&quot;</code>, and <code>&quot;South America&quot;</code> we can add them to <code>m</code>:</p>
+<p><code>m = [ &quot;North America&quot; : &quot;Earth&quot;, &quot;South America&quot; : &quot;Earth&quot; ]</code></p>
+<p>If we do this to all the regions we get:</p>
+<p><code>m = [ &quot;North America&quot; : &quot;Earth&quot;, &quot;South America&quot; : &quot;Earth&quot;, &quot;United States&quot; : &quot;North America&quot;, &quot;Canada&quot; : &quot;North America&quot;, &quot;New York&quot; : &quot;United States&quot;, &quot;Boston&quot; : &quot;United States&quot;, &quot;Ontario&quot; : &quot;Canada&quot;, &quot;Quebec&quot; : &quot;Canada&quot;, &quot;Brazil&quot; : &quot;South America&quot; ]</code></p>
+<p>Note that this wouldn&rsquo;t work if the problem statement didn&rsquo;t say:</p>
+<blockquote>
+<p>If you are given regions <code>r1</code>, <code>r2</code>, and <code>r3</code> such that <code>r1</code> includes <code>r3</code>, it is guaranteed there is no <code>r2</code> such that <code>r2</code> includes <code>r3</code>.</p>
+</blockquote>
+<p>You might not understand what this means. If so, it says that one region can&rsquo;t exist in two regions, and that one region will only be there in one or no regions.</p>
+<p>Continuing with our example, we get to the following two parts of the input <code>region1</code>, and <code>region2</code>.</p>
+<p>We also have to make another map (I am using this map as a set because Golang doesn&rsquo;t have sets) to store all the ancestors of <code>region1</code>. We call this <code>m2</code>.</p>
+<p>Now we can add <code>region1</code> to <code>m2</code>. Then we can make <code>region1</code> equal <code>m[region1]</code> to find our next ancestor. And keep doing this until we don&rsquo;t have an ancestor for <code>region1</code>.</p>
+<p>And the last thing that we have to do is loop through the ancestors of <code>region2</code>, and check whether <code>m2</code> contains any of <code>region2</code>s ancestors. If so, return the ancestor.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">findSmallestRegion</span>(<span style="color:#a6e22e">regions</span> [][]<span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">region1</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">region2</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+    <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>] <span style="color:#66d9ef">string</span>)
+    <span style="color:#a6e22e">m2</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>] <span style="color:#66d9ef">bool</span>)
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">region</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">regions</span> {
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">region</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+            <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">region</span>[<span style="color:#a6e22e">i</span>]] = <span style="color:#a6e22e">region</span>[<span style="color:#ae81ff">0</span>]
+        }
+    }
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">region1</span>] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span> {
+        <span style="color:#a6e22e">m2</span>[<span style="color:#a6e22e">region1</span>] = <span style="color:#66d9ef">true</span>
+        <span style="color:#a6e22e">region1</span> = <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">region1</span>]
+    }
+    <span style="color:#a6e22e">m2</span>[<span style="color:#a6e22e">region1</span>] = <span style="color:#66d9ef">true</span>
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">region2</span>] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">m2</span>[<span style="color:#a6e22e">region2</span>] { 
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">region2</span> 
+        }
+        <span style="color:#a6e22e">region2</span> = <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">region2</span>]
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">region2</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 2027</title><link>https://nathannaveen.dev/posts/leetcode-2027/</link><pubDate>Thu, 28 Oct 2021 15:58:28 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2027/</guid><description>2027. Minimum Moves to Convert String
+The idea of this solution is if we are on a 'X' we can move the index up by three and add one to res.
+An example could be:
+input: s = &amp;quot;XXOXXXOOOXOXOXX&amp;quot; (I tried to capture as many edge cases as I could in this test case)
+We can start with our index i = 0
+s[i] == 'X', so we can skip the next two values (Skip the values at indexes 1 and 2 because according to the problem we have made s[0] = 'O', s[1] = 'O', s[2] = 'O'.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/minimum-moves-to-convert-string/">2027. Minimum Moves to Convert String</a></p>
+<p>The idea of this solution is if we are on a <code>'X'</code> we can move the index up by three and add one to <code>res</code>.</p>
+<p>An example could be:</p>
+<p><code>input: s = &quot;XXOXXXOOOXOXOXX&quot;</code> <em>(I tried to capture as many edge cases as I could in this test case)</em></p>
+<p>We can start with our index <code>i = 0</code></p>
+<p><img src="https://i.imgur.com/veKMehQ.png" alt=""></p>
+<p><code>s[i] == 'X'</code>, so we can skip the next two values (Skip the values at indexes <code>1</code> and <code>2</code> because according to the problem we have made <code>s[0] = 'O', s[1] = 'O', s[2] = 'O'</code>. We don&rsquo;t actually change the values because there is no need) and add one to <code>res</code>. So now <code>i = 3</code>, <code>res = 1</code>.</p>
+<p><img src="https://i.imgur.com/Kym8Qw1.png" alt=""></p>
+<p><code>s[i] == 'X'</code>, so we can do the same thing as the previous <code>3</code> values, and skip the next two values. Now we are at <code>i = 6</code>, <code>res = 2</code></p>
+<p><img src="https://i.imgur.com/G0FoLNM.png" alt=""></p>
+<p><code>s[i], s[i + 1]</code>, and <code>s[i + 2]</code> are all <code>'O'</code>, so I am just going to skip them.</p>
+<p><img src="https://i.imgur.com/ViDnPbB.png" alt=""></p>
+<p><code>s[i] == 'X'</code>, so we can skip the next two values, and add one to <code>res</code>. <code>i == 12</code>, <code>res = 3</code>.</p>
+<p><img src="https://i.imgur.com/DU17fi0.png" alt=""></p>
+<p><code>s[i] == 'O'</code>, so <code>i++</code> and continue. <code>i = 13</code>, <code>res = 3</code></p>
+<p><img src="https://i.imgur.com/iw6okPi.png" alt=""></p>
+<p><code>s[i] == 'X'</code>, so we can skip the next two values, <code>i = 15</code>, <code>res = 4</code></p>
+<p>But now <code>i &gt;= len(s)</code>, so we can break the loop and return <code>res</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">minimumMoves</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">s</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;X&#39;</span> {
+            <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>
+            <span style="color:#a6e22e">res</span><span style="color:#f92672">++</span>
+        }
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 2028</title><link>https://nathannaveen.dev/posts/leetcode-2028/</link><pubDate>Thu, 28 Oct 2021 15:58:20 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2028/</guid><description>2028. Find Missing Observations
+This solution aims to find the missing sum and then distribute it among n values.
+The idea of the first part (Finding the missing sum) is first to find the sum of the m numbers given to us in rolls.
+Then since the mean will always be mean = sum / (n + m) (the sum of elements divided by the number of elements), we know that the number of elements will always be n + m.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-missing-observations/">2028. Find Missing Observations</a></p>
+<p>This solution aims to find the missing sum and then distribute it among <code>n</code> values.</p>
+<hr>
+<p>The idea of the first part (Finding the missing sum) is first to find the sum of the <code>m</code> numbers given to us in <code>rolls</code>.</p>
+<p>Then since the mean will always be <code>mean = sum / (n + m)</code> (the sum of elements divided by the number of elements), we know that the number of elements will always be <code>n + m</code>. So the total number of elements will be <code>(n + m) * mean</code>. And the sum of the missing elements will be <code>(n + m) * mean - sum</code> (Works because of PEMDAS).</p>
+<hr>
+<p>Now the part in-between is for returning an empty array.</p>
+<p>We return an empty array if <code>missing &gt; n * 6</code>. This checks whether there is a greater missing sum than <code>n * 6</code>. <code>n * 6</code> because <code>6</code> is the max number on a dice, and <code>n</code> is the max number of unobserved rolls.</p>
+<p>We also return an empty array if <code>missing &lt; n</code>. This is because there are not enough in the missing sum to fill up <code>n</code> dices. This is because a dice can only have values from <code>1</code> to <code>6</code>, meaning we can&rsquo;t have dice with the value <code>0</code>.</p>
+<hr>
+<p>Now to distribute <code>missing</code> between <code>n</code> values.</p>
+<p>Since we want at least <code>1</code> in each dice value, we can find the value of each dice by doing:</p>
+<pre tabindex="0"><code>res[i] = int(math.Min(float64(6), float64(missing - (n - 1 - i))))
+missing -= res[i]
+</code></pre><p>We find the min between <code>6</code>, and <code>missing - (n - 1 - i)</code>.</p>
+<p>The <code>6</code> is because it is the maximum value of dice.</p>
+<p>The <code>(n - 1 - i)</code> in <code>missing - (n - 1 - i)</code> is for finding the max value we can have at <code>res[i]</code> so that we have at least <code>1</code> for <code>res[i + 1], res[i + 2], res[i + 3] ... res[n - 1]</code>.</p>
+<p><code>i</code> is the current dice we are on. Since <code>i</code> is zero-indexed we can do <code>(n - (i + 1))</code>, but this simplifies to <code>n - i - 1</code> because of the distributive property. And since <code>n</code> is the number of total missing dice, if we do <code>n - i - 1</code>, we get the remaining number of dice, and with that a value of <code>1</code> per remaining dice.</p>
+<p>And if we do <code>missing - (n - 1 - i)</code>, we get the maximum value we can give to a dice.</p>
+<p>Then the <code>missing -= res[i]</code> part removes the missing value from <code>missing</code>.</p>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">missingRolls</span>(<span style="color:#a6e22e">rolls</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">mean</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">n</span>)
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">roll</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">rolls</span> { 
+        <span style="color:#75715e">// finding sum
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">roll</span>
+    }
+    
+    <span style="color:#a6e22e">missing</span> <span style="color:#f92672">:=</span> (len(<span style="color:#a6e22e">rolls</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">mean</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">sum</span>
+    
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">missing</span> &gt; <span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">missing</span> &lt; <span style="color:#a6e22e">n</span> {
+        <span style="color:#75715e">// should return empty array
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> []<span style="color:#66d9ef">int</span>{}
+    }
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#75715e">// distribute the missing
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">res</span>[<span style="color:#a6e22e">i</span>] = int(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Min</span>(float64(<span style="color:#ae81ff">6</span>), float64(<span style="color:#a6e22e">missing</span> <span style="color:#f92672">-</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">i</span>))))
+        <span style="color:#a6e22e">missing</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">res</span>[<span style="color:#a6e22e">i</span>]
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 200</title><link>https://nathannaveen.dev/posts/leetcode-200/</link><pubDate>Thu, 28 Oct 2021 15:58:14 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-200/</guid><description>200. Number of Islands
+The idea of this solution can be portrayed in its most basic idea by the following image:
+var doneAlready = make(map[[2]int] bool) func numIslands(grid [][]byte) int { res := 0 doneAlready = make(map[[2]int] bool) for i := 0; i &amp;lt; len(grid); i++ { for j := 0; j &amp;lt; len(grid[0]); j++ { if helper(grid, i, j) { res++ } } } return res } func helper(grid [][]byte, i, j int) bool { temp := [2]int{i, j} if i &amp;lt; 0 || i &amp;gt;= len(grid) || j &amp;lt; 0 || j &amp;gt;= len(grid[0]) || doneAlready[temp] || grid[i][j] == &amp;#39;0&amp;#39; { return false } doneAlready[temp] = true helper(grid, i - 1, j) helper(grid, i + 1, j) helper(grid, i, j - 1) helper(grid, i, j + 1) return true } This is a variation of my Max Area of Island solution:</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/number-of-islands/">200. Number of Islands</a></p>
+<p>The idea of this solution can be portrayed in its <em><strong>most basic</strong></em> idea by the following image:</p>
+<p><img src="https://i.imgur.com/jcYOE5j.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">doneAlready</span> = make(<span style="color:#66d9ef">map</span>[[<span style="color:#ae81ff">2</span>]<span style="color:#66d9ef">int</span>] <span style="color:#66d9ef">bool</span>)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">numIslands</span>(<span style="color:#a6e22e">grid</span> [][]<span style="color:#66d9ef">byte</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#a6e22e">doneAlready</span> = make(<span style="color:#66d9ef">map</span>[[<span style="color:#ae81ff">2</span>]<span style="color:#66d9ef">int</span>] <span style="color:#66d9ef">bool</span>)
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">grid</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">grid</span>[<span style="color:#ae81ff">0</span>]); <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span>) {
+                <span style="color:#a6e22e">res</span><span style="color:#f92672">++</span>
+            }
+        }
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span> [][]<span style="color:#66d9ef">byte</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    
+    <span style="color:#a6e22e">temp</span> <span style="color:#f92672">:=</span> [<span style="color:#ae81ff">2</span>]<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span>}
+    
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> len(<span style="color:#a6e22e">grid</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">j</span> &lt; <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">&gt;=</span> len(<span style="color:#a6e22e">grid</span>[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">||</span> 
+        <span style="color:#a6e22e">doneAlready</span>[<span style="color:#a6e22e">temp</span>] <span style="color:#f92672">||</span> <span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span> {
+        
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+    }
+    
+    <span style="color:#a6e22e">doneAlready</span>[<span style="color:#a6e22e">temp</span>] = <span style="color:#66d9ef">true</span>
+    
+    <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">j</span>)
+    <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">j</span>)
+    <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+    <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+}
+</code></pre></div><p><strong>This is a variation of my Max Area of Island solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">doneAlready</span> = make(<span style="color:#66d9ef">map</span>[[<span style="color:#ae81ff">2</span>]<span style="color:#66d9ef">int</span>] <span style="color:#66d9ef">bool</span>)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">numIslands</span>(<span style="color:#a6e22e">grid</span> [][]<span style="color:#66d9ef">byte</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#a6e22e">doneAlready</span> = make(<span style="color:#66d9ef">map</span>[[<span style="color:#ae81ff">2</span>]<span style="color:#66d9ef">int</span>] <span style="color:#66d9ef">bool</span>)
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">grid</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> &lt; len(<span style="color:#a6e22e">grid</span>[<span style="color:#ae81ff">0</span>]); <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+                <span style="color:#a6e22e">res</span><span style="color:#f92672">++</span>
+            }
+        }
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span> [][]<span style="color:#66d9ef">byte</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    
+    <span style="color:#75715e">/* 
+</span><span style="color:#75715e">    This part is for finding the area of the island, 
+</span><span style="color:#75715e">    but we can just check whether the area of the island 
+</span><span style="color:#75715e">    is greater than 0, if so we know there is an island.
+</span><span style="color:#75715e">    
+</span><span style="color:#75715e">    This is based off of Leetcode 695
+</span><span style="color:#75715e">    */</span>
+    
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> len(<span style="color:#a6e22e">grid</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">j</span> &lt; <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">&gt;=</span> len(<span style="color:#a6e22e">grid</span>[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">||</span> 
+        <span style="color:#a6e22e">doneAlready</span>[<span style="color:#a6e22e">point</span>{ <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> }] <span style="color:#f92672">||</span> <span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span> {
+        
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+    }
+    
+    <span style="color:#a6e22e">doneAlready</span>[<span style="color:#a6e22e">point</span>{ <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> }] = <span style="color:#66d9ef">true</span>
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">j</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">j</span>) <span style="color:#f92672">+</span> 
+        <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">helper</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1428</title><link>https://nathannaveen.dev/posts/leetcode-1428/</link><pubDate>Thu, 28 Oct 2021 15:58:02 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1428/</guid><description>1428. Leftmost Column with at Least a One
+This solution uses the fact that all rows are sorted. So, all the ones in every row will be at the end.
+Basically, to not call binaryMatrix.Get(i, j) too many times. We can&amp;rsquo;t loop through all values of the matrix.
+Since 1 &amp;lt;= rows, cols &amp;lt;= 100 the max number of elements in the matrix is 100 * 100, 10000. And the problem says that the max number of calls to binaryMatrix.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/leftmost-column-with-at-least-a-one/">1428. Leftmost Column with at Least a One</a></p>
+<p>This solution uses the fact that all rows are sorted. So, all the ones in every row will be at the end.</p>
+<p>Basically, to not call <code>binaryMatrix.Get(i, j)</code> too many times. We can&rsquo;t loop through all values of the matrix.</p>
+<p>Since <code>1 &lt;= rows, cols &lt;= 100</code> the max number of elements in the matrix is <code>100 * 100, 10000</code>. And the problem says that the max number of calls to <code>binaryMatrix.Get(i, j)</code> is <code>1000</code>.</p>
+<p>We could start with the approach of looping through every column in every row, starting at the end column and working down until we hit the first <code>0</code>. Like in the following image:</p>
+<p><img src="https://i.imgur.com/QXwBecO.png" alt=""></p>
+<p>But if we had a <code>100*100</code> matrix of ones up to the one before the last column, we would have to call <code>binaryMatrix.Get(i, j)</code> a lot more than <code>1000</code> times.</p>
+<hr>
+<p>But if we did a solution where we didn&rsquo;t have to loop through every <code>1</code>, we could get a smaller amount of calls to <code>binaryMatrix.Get()</code>.</p>
+<p>So, I got a solution to loop through the matrix starting at the top row right-most column. We can loop through the following conditions:</p>
+<ul>
+<li>If the element on the left of our current position is <code>0</code>, we can move our position down.</li>
+<li>Else if the element on the left is a <code>1</code>, we can move our position left.</li>
+</ul>
+<p>Then we can return the left-most index.</p>
+<p>If you don&rsquo;t understand, the following image might help:</p>
+<p><img src="https://i.imgur.com/6zctkTP.png" alt=""></p>
+<hr>
+<p>Now we can talk about our worst-case scenario considering <code>binaryMatrix.Get()</code>. Our worst-case scenario is a matrix of <code>100 * 100</code> filled with ones for the last <code>len(matrix) - 1</code> rows. Like the following image except as a <code>100 * 100</code> matrix, instead of a <code>4 * 4</code>:</p>
+<p><img src="https://i.imgur.com/d76itjZ.png" alt=""></p>
+<p>Note: I consider this the worst-case solution instead of the full matrix of ones because someone&rsquo;s code could check whether the number of ones is equal to the dimensions and, if so, just return. I also haven&rsquo;t made the bottom row all ones because someone might just loop from bottom to top.</p>
+<p>If we solved it with the first solution, we would be getting <code>99 * 100 = 9900</code> calls to <code>binaryMatrix.Get()</code>.</p>
+<p>But if we use the second solution to do this, we will get <code>100 + 98 = 198</code> instead of <code>9900</code>. If you don&rsquo;t understand, here is a scaled-down version:</p>
+<p><img src="https://i.imgur.com/uQdLbVM.png" alt=""></p>
+<hr>
+<p><strong>The Code:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">leftMostColumnWithOne</span>(<span style="color:#a6e22e">binaryMatrix</span> <span style="color:#a6e22e">BinaryMatrix</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">d</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">binaryMatrix</span>.<span style="color:#a6e22e">Dimensions</span>()
+    <span style="color:#a6e22e">first</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">d</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">found</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">false</span>
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">d</span>[<span style="color:#ae81ff">0</span>]; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">first</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">--</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">binaryMatrix</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> { <span style="color:#66d9ef">break</span> } <span style="color:#75715e">// move down a row
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">first</span> = <span style="color:#a6e22e">j</span> <span style="color:#75715e">// move left by a column
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">found</span> = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// checking whether there is a 1 in the whole matrix
+</span><span style="color:#75715e"></span>        }
+    }
+    <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">found</span> { <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">first</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 684</title><link>https://nathannaveen.dev/posts/leetcode-684/</link><pubDate>Thu, 28 Oct 2021 15:57:56 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-684/</guid><description>684. Redundant Connection
+The idea of this solution is to use union find to connect all the edges together, then in the Union() function if edge[0] parent equals edge[1] parent we have a redundant connection.
+Note that I modified the average union find for this problem.
+type unionFind struct { parent []int n int } func (this *unionFind) Find(x int) int { if x != this.parent[x] { this.parent[x] = this.Find(this.parent[x]) return this.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/redundant-connection/">684. Redundant Connection</a></p>
+<p>The idea of this solution is to use union find to connect all the edges together, then in the <code>Union()</code> function if <code>edge[0]</code> parent equals <code>edge[1]</code> parent we have a redundant connection.</p>
+<p>Note that I modified the average union find for this problem.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">unionFind</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">parent</span> []<span style="color:#66d9ef">int</span>
+    <span style="color:#a6e22e">n</span>      <span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">this</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">unionFind</span>) <span style="color:#a6e22e">Find</span>(<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">parent</span>[<span style="color:#a6e22e">x</span>] {
+        <span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">parent</span>[<span style="color:#a6e22e">x</span>] = <span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">parent</span>[<span style="color:#a6e22e">x</span>])
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">parent</span>[<span style="color:#a6e22e">x</span>]
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">this</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">unionFind</span>) <span style="color:#a6e22e">Union</span>(<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#a6e22e">temp1</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#a6e22e">x</span>)
+    <span style="color:#a6e22e">temp2</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#a6e22e">y</span>)
+
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">temp1</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">temp2</span> {
+        <span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">n</span><span style="color:#f92672">--</span>
+        <span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">parent</span>[<span style="color:#a6e22e">temp1</span>] = <span style="color:#a6e22e">temp2</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+    } <span style="color:#66d9ef">else</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span> <span style="color:#75715e">// This signifies there is a redundant connection
+</span><span style="color:#75715e"></span>    }
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">findRedundantConnection</span>(<span style="color:#a6e22e">edges</span> [][]<span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{}
+    
+    <span style="color:#a6e22e">u</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">unionFind</span>{ make([]<span style="color:#66d9ef">int</span>, len(<span style="color:#a6e22e">edges</span>)), len(<span style="color:#a6e22e">edges</span>) }
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">edges</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+        <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">parent</span>[<span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">i</span>
+    }
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">edge</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">edges</span> {
+        <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Union</span>(<span style="color:#a6e22e">edge</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">edge</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) { <span style="color:#75715e">// checking for connections
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">res</span> = <span style="color:#a6e22e">edge</span>
+        }
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 2046</title><link>https://nathannaveen.dev/posts/leetcode-2046/</link><pubDate>Thu, 28 Oct 2021 15:57:20 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2046/</guid><description>2046. Sort Linked List Already Sorted Using Absolute Values
+The idea of this solution is to check whether the current value is smaller than 0. If so, we can remove it from its current position, add it to the beginning of the list, and make that the new beginning.
+This solution works because the absolute value of -1 will always be smaller than the absolute value of -5, but -1 is greater than -5.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/sort-linked-list-already-sorted-using-absolute-values/">2046. Sort Linked List Already Sorted Using Absolute Values</a></p>
+<p>The idea of this solution is to check whether the current value is smaller than <code>0</code>. If so, we can remove it from its current position, add it to the beginning of the list, and make that the new beginning.</p>
+<p>This solution works because the absolute value of <code>-1</code> will always be smaller than the absolute value of <code>-5</code>, but <code>-1</code> is greater than <code>-5</code>. So if we have the linked list <code>[-1, -5]</code>, we can go through the linked list from the <code>0</code> index to the end, find the greatest valued negative numbers, and add them to the beginning before the smaller negative numbers.</p>
+<p>The idea of this solution can be shown using the following image:</p>
+<p><img src="https://i.imgur.com/oAIJZZy.jpg" alt=""></p>
+<ul>
+<li>Step one is initializing the <code>start, prev</code>, and <code>cur</code> variables.
+<ul>
+<li><code>start</code> is the very beginning of the linked list. In this example, <code>0</code> is the head. Notice how <code>start</code> is always the beginning of the linked list while the head isn&rsquo;t always.</li>
+<li><code>cur</code> is the current value we are on. We can initialize it at position <code>1</code> (<strong>0 Indexed</strong>) because if position <code>0</code> is negative, it is the greatest negative number, and we don&rsquo;t have to worry. And if the value at position <code>0</code> is positive, it is the smallest positive value, and all the negative values that we add before it will always be smaller.</li>
+<li><code>prev</code> is always the node before <code>cur</code> so we can check whether <code>cur.Val</code> is negative and remove the node from the linked list.</li>
+</ul>
+</li>
+<li>In step 2, we have moved <code>prev</code> and <code>cur</code> up by one node.</li>
+<li>In step three, we move <code>prev</code> and <code>cur</code> up by one more node.</li>
+<li>In step 4, we can see that cur is negative. So we can remove it from the list and add another <code>ListNode</code> with the same value to the beginning. We make <code>start</code> equal to this new <code>ListNode</code> because that is the new start of the linked list.</li>
+<li>In step 5, we can see that cur is negative, so we can do the same thing as step 4.</li>
+<li>In step 6, we move <code>cur</code> and <code>prev</code> up by a node, but <code>cur == nil</code>, so we break out of the loop and return <code>start</code>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sortLinkedList</span>(<span style="color:#a6e22e">head</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ListNode</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">ListNode</span> {
+    <span style="color:#a6e22e">cur</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">head</span>.<span style="color:#a6e22e">Next</span>
+    <span style="color:#a6e22e">prev</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">head</span>
+    <span style="color:#a6e22e">start</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">head</span>
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">cur</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cur</span>.<span style="color:#a6e22e">Val</span> &lt; <span style="color:#ae81ff">0</span> {
+            <span style="color:#a6e22e">start</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">ListNode</span>{ <span style="color:#a6e22e">cur</span>.<span style="color:#a6e22e">Val</span>, <span style="color:#a6e22e">start</span> }
+            <span style="color:#a6e22e">cur</span> = <span style="color:#a6e22e">cur</span>.<span style="color:#a6e22e">Next</span>
+            <span style="color:#a6e22e">prev</span>.<span style="color:#a6e22e">Next</span> = <span style="color:#a6e22e">prev</span>.<span style="color:#a6e22e">Next</span>.<span style="color:#a6e22e">Next</span>
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">prev</span> = <span style="color:#a6e22e">prev</span>.<span style="color:#a6e22e">Next</span>
+            <span style="color:#a6e22e">cur</span> = <span style="color:#a6e22e">cur</span>.<span style="color:#a6e22e">Next</span>
+        }
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">start</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 319</title><link>https://nathannaveen.dev/posts/leetcode-319/</link><pubDate>Thu, 28 Oct 2021 15:56:46 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-319/</guid><description>319. Bulb Switcher
+Note: If you don&amp;rsquo;t understand this problem, think of it as something similar to Seive of Eratosthenes.
+At first I didn&amp;rsquo;t understand how to go about this problem, so I drew it out. I made a graph that might be easier to understand than my drawing:
+In this graph the numbers represent what round we are on (Y-axis = what round we are on). And the bulbs represent each bulb (X-axis = what bulb we are on).</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/bulb-switcher/">319. Bulb Switcher</a></p>
+<p>Note: If you don&rsquo;t understand this problem, think of it as something similar to <em>Seive of Eratosthenes</em>.</p>
+<p>At first I didn&rsquo;t understand how to go about this problem, so I drew it out. I made a graph that might be easier to understand than my drawing:</p>
+<p><img src="https://i.imgur.com/MZP1ibF.png" alt=""></p>
+<ul>
+<li>In this graph the numbers represent what round we are on (Y-axis = what round we are on).</li>
+<li>And the bulbs represent each bulb (X-axis = what bulb we are on).</li>
+<li>The yellow highlights represent the bulb being on.</li>
+<li>While the empty boxes in the graph represent the bulb being off.</li>
+</ul>
+<p>If we do this for many different <code>n</code> we can see a pattern:</p>
+<p><img src="https://i.imgur.com/GcFJxKr.png" alt=""></p>
+<ul>
+<li>In each of the example I only show the end result to save space.</li>
+<li>The numbers are to show the round, and bulb number.</li>
+<li>The highlights represent the bulbs that are on</li>
+<li>I went through a much more excessive messy list of examples, but have shortened it for this this solution.</li>
+</ul>
+<p><strong>The Explanation:</strong></p>
+<p>If you notice, the only bulbs that end up on are the squares because squares are the only numbers that have an odd number of non-repeating divisors.</p>
+<ul>
+<li>The divisors of <code>36</code> are <code>1, 6, 6, 36</code>, and the non-repeating divisors are <code>1, 6, 36</code>.</li>
+<li>The divisors of <code>9</code> are <code>1, 3, 3, 9</code>, and the non-repeating divisors are <code>1, 3, 9</code>.</li>
+<li>The divisors of <code>12</code> (Not a square) are <code>1, 3, 4, 12</code>.</li>
+<li>The divisors of <code>26</code> (Not a square) are <code>1, 2, 13, 26</code>.</li>
+<li>The divisors of <code>13</code> (Not a square) are <code>1, 13</code>.</li>
+</ul>
+<p>As you can see, the primes have an odd number of non-repeating divisors, while non-primes have an even number of non-repeating divisors.</p>
+<p>Since squares have an odd number of non-repeating divisors, they will toggle an odd number of times and end up lit up.</p>
+<ul>
+<li><code>1</code> toggles at <code>1</code> and is always lit up.</li>
+<li><code>4</code> is first toggled at <code>1</code>, then <code>2</code>, and then <code>4</code>.</li>
+<li><code>9</code> is first toggled at <code>1</code>, then <code>3</code>, and then <code>9</code> again.</li>
+<li><code>16</code> is first toggled at <code>1</code>, then <code>2</code>, <code>4</code>, <code>8</code>, and <code>16</code>.</li>
+</ul>
+<hr>
+<p>If you don&rsquo;t understand how we are toggling <code>1</code>, it is based on the problem statement:</p>
+<blockquote>
+<p>There are n bulbs that are initially off. You first turn on all the bulbs, then you turn off every second bulb.</p>
+</blockquote>
+<p>When they say, &ldquo;You first turn on all the bulbs,&rdquo; they mean to toggle on all the bulbs from the first round.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bulbSwitch</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">return</span> int(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Sqrt</span>(float64(<span style="color:#a6e22e">n</span>)))
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 1804</title><link>https://nathannaveen.dev/posts/leetcode-1804/</link><pubDate>Tue, 17 Aug 2021 12:33:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1804/</guid><description>1804. Implement Trie II (Prefix Tree)
 The idea of this solution can be shown using the following image:
 type Node struct { m map[rune] *Node isEndCounter int starts int } type Trie struct { node *Node } func Constructor() Trie { return Trie{node: &amp;amp;Node{make(map[rune] *Node), 0, 0}} } func (this *Trie) Insert(word string) { root := this.node root.starts++ for _, s := range word { if root.m[s] == nil { root.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/implement-trie-ii-prefix-tree/">1804. Implement Trie II (Prefix Tree)</a></p>
 <p>The idea of this solution can be shown using the following image:</p>
@@ -417,7 +1032,7 @@ y ^ | | | +--------&amp;gt; x The idea of the solution can be shown using the fo
 The Code:
 type key struct { x int y int } func minArea(image [][]byte, x int, y int) int { stack := []key{ key{ y, x } } minX, maxX := 101, 0 minY, maxY := 101, 0 for len(stack) !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/smallest-rectangle-enclosing-black-pixels/">302. Smallest Rectangle Enclosing Black Pixels</a></p>
 <p><em>Note: I think that the <code>x</code> and <code>y</code> coordinates are wrong in the problem because, in a graph, the axis are:</em></p>
-<pre><code>y ^
+<pre tabindex="0"><code>y ^
   |
   |
   |
@@ -493,7 +1108,7 @@ We add all the parents and children to a map in the format of map[parent] []chil
 </ul>
 <p><strong>Iterative</strong></p>
 <p><em>If you don&rsquo;t understand <code>stack = append(stack, m[pop]...)</code>, it is basically doing:</em></p>
-<pre><code>for _, i := range m[pop] {
+<pre tabindex="0"><code>for _, i := range m[pop] {
     stack = append(stack, i)
 }
 </code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">killProcess</span>(<span style="color:#a6e22e">pid</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">ppid</span> []<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">kill</span> <span style="color:#66d9ef">int</span>) []<span style="color:#66d9ef">int</span> {
@@ -1905,7 +2520,7 @@ func isSumEqual(firstWord string, secondWord string, targetWord string) bool { f
 <ul>
 <li>Just like in the first solution, we loop through each word, but this time we keep of making <code>sum, sum2, or res</code> equal <code>int(letter - 'a') + sum * 10</code> (In the previous we say <code>sum * 10</code>, but <code>sum</code> can be substituted for <code>sum2, or res</code>). The fundamental idea of this is getting each number and then adding it to the <code>sum * 10</code>. This is basically:</li>
 </ul>
-<pre><code>sum += int(letter - 'a')
+<pre tabindex="0"><code>sum += int(letter - 'a')
 sum *= 10
 </code></pre><p><strong>The Second Code:</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">isSumEqual</span>(<span style="color:#a6e22e">firstWord</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">secondWord</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">targetWord</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
@@ -1936,7 +2551,7 @@ If the last bit of c is 1: a can be either 1 if b is 1 or b is 0, or 0 if b is 1
 <p>Here is an example of what we do in the code:</p>
 <p><code>input: a = 19, b = 6, and c = 27</code></p>
 <p>If we show the numbers in a binary representation we get:</p>
-<pre><code>a = 1 0 0 1 1
+<pre tabindex="0"><code>a = 1 0 0 1 1
 b = 0 0 1 1 0
 -------------
 c = 1 1 0 1 1
@@ -4621,7 +5236,7 @@ The problem asks us to find a point on the grid that is the smallest distance to
 <p><img src="https://i.imgur.com/dW8q8xG.jpg" alt=""></p>
 <p>Where the lines signify absolute value.</p>
 <p>For example, the example input given by the problem statement in Leetcode is:</p>
-<pre><code>[
+<pre tabindex="0"><code>[
 [1,0,0,0,1],
 [0,0,0,0,0],
 [0,0,1,0,0]
@@ -4746,7 +5361,7 @@ We are first given a sorted array of positive integers called nums and an intege
 <li>We have to determine whether <code>nums</code> can be split into disjoint <em>(disjoint means not together because the prefix dis is not and joint means together. Thus, the definition of disjoint is not together)</em> sequences of at least <code>K</code>&lsquo;th length.</li>
 </ul>
 <p>You might be confused by the example which the problem gives on Leetcode:</p>
-<pre><code>Input: nums = [1,2,2,3,3,4,4], K = 3
+<pre tabindex="0"><code>Input: nums = [1,2,2,3,3,4,4], K = 3
 Output: true
 Explanation: 
 The array can be divided into the two subsequences [1,2,3,4] and [2,3,4]
@@ -5270,7 +5885,7 @@ input: &amp;quot;leetcode&amp;quot; expected output: &amp;quot;ltcd&amp;quot; We
 <p>The second approach is better because we keep on using the same string. We remake the string every time there is a vowel by going around the vowel.</p>
 <p>This can be shown with some images:</p>
 <p>We can have:</p>
-<pre><code>input: &quot;leetcode&quot;
+<pre tabindex="0"><code>input: &quot;leetcode&quot;
 expected output: &quot;ltcd&quot;
 </code></pre><blockquote>
 <p>We can fast forward to our first vowel, <code>'e'</code>.</p>
@@ -5326,7 +5941,7 @@ The problem asks us to make a board of letters:
 <p><em>I have to admit the code might look daunting but it is actualy not that complicated after I explain it to you.</em></p>
 <p><strong>What the Problem is asking:</strong></p>
 <p>The problem asks us to make a board of letters:</p>
-<pre><code>[
+<pre tabindex="0"><code>[
 [a, b, c, d, e]
 [f, g, h, i, j]
 [k, l, m, n, o]
@@ -5345,7 +5960,7 @@ The problem asks us to make a board of letters:
 <li>reach the letter we add a <code>!</code> to the result</li>
 </ul>
 <p>We can show this with the following example:</p>
-<pre><code>input: 
+<pre tabindex="0"><code>input: 
 
     target = &quot;leet&quot;
 
@@ -5448,7 +6063,7 @@ What the problem is asking:
 The problem says that it will give a string with the letters &amp;quot;L&amp;quot;, &amp;quot;R&amp;quot; and &amp;quot;G&amp;quot; to command a robot. &amp;quot;L&amp;quot; means to turn left 90 degrees, &amp;quot;R&amp;quot; means to turn right 90 degrees, and &amp;quot;G&amp;quot; means to go forward one unit. The problem says to return true if the robot can continue in that pattern forever and keep going in a circle.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/robot-bounded-in-circle/">1041. Robot Bounded In Circle</a></p>
 <p><strong>What the problem is asking:</strong></p>
 <p>The problem says that it will give a string with the letters <code> &quot;L&quot;, &quot;R&quot;</code> and <code>&quot;G&quot;</code> to command a robot. <code>&quot;L&quot;</code> means to turn left 90 degrees, <code>&quot;R&quot;</code> means to turn right 90 degrees, and <code>&quot;G&quot;</code> means to go forward one unit. The problem says to return <code>true</code> if the robot can continue in that pattern forever and keep going in a circle. This can be shown with the following example:</p>
-<pre><code>input := &quot;GL&quot;
+<pre tabindex="0"><code>input := &quot;GL&quot;
 expected output := true
 </code></pre><p>I have depicted how this example works with the following picture:</p>
 <p><img src="https://i.imgur.com/qZFauur.jpg" alt=""></p>
@@ -5540,7 +6155,7 @@ for _, ints := range frequency { if words[ints[0]] == word { contains = true int
 <p>This solution first adds the words to an array called <code>frequency</code> and sorts <code>frequency</code> after that, return the <code>k</code> most frequency words.</p>
 <p><strong>Adding to the array <code>Frequency</code>:</strong></p>
 <p>You might be confused when we do this part:</p>
-<pre><code>for _, ints := range frequency {
+<pre tabindex="0"><code>for _, ints := range frequency {
     if words[ints[0]] == word {
         contains = true
         ints[1]++
@@ -5647,7 +6262,7 @@ First, we find the length of the linked list Next, we iterate through the linked
 <p>We get the <code>kth</code> node from the end by iterating a counter <code>i</code> through <code>0</code> to <code>lengthOfLinkedList - k</code>, <code>lengthOfLinkedList - k</code> gets the length of the linked list and then subtracts <code>k</code> from it, so we get the ending <code>kth</code> node.</p>
 <p>We get the <code>kth</code> node by just iterating through <code>0</code> to <code>k - 1</code>. We do <code>k - 1</code> because we do <code>first = first.Next</code> which makes it the next value.</p>
 <p>Then we switch the two values by just assigning them to each other if you don&rsquo;t understand <code>second.Val, first.Val = first.Val, second.Val</code> it is basically:</p>
-<pre><code>temp := second.Val
+<pre tabindex="0"><code>temp := second.Val
 
 second.Val = first.Val
 first.Val = temp
@@ -5695,19 +6310,19 @@ Before we continue you might be confused about why we switch 2 and 1 even though
 <blockquote>
 <p>Before we continue you might be confused about why we switch <code>2</code> and <code>1</code> even though <code>i = 1</code> and <code>j = 1</code>. This can be shown with the example array <code>[3, 2, 1] </code> we can pretend that <code>3, 2, 1</code> is diagonal:</p>
 </blockquote>
-<pre><code>3
+<pre tabindex="0"><code>3
  2
   1
 </code></pre><p>When we switch <code>3</code> and <code>2</code></p>
-<pre><code>2
+<pre tabindex="0"><code>2
  3
   1
 </code></pre><p>Then when we switch <code>3</code> and <code>1</code></p>
-<pre><code>2
+<pre tabindex="0"><code>2
  1
   3
 </code></pre><p>This is not sorted, so we have to switch <code>1</code> and <code>2</code></p>
-<pre><code>1
+<pre tabindex="0"><code>1
  2
   3
 </code></pre><p><img src="https://i.imgur.com/hmdt5Jx.jpg" alt=""></p>
@@ -5759,7 +6374,7 @@ func hasAllCodes(s string, k int) bool { m := make(map[string]int) for i := 0; i
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
 }
 </code></pre></div><p><em>By using bit maniplation we can simplify the code, left shifting is basicly multiplying by <code>2</code>. This can be shown using the following:</em></p>
-<pre><code>2^0 = 1    1 &lt;&lt; 0 = 1
+<pre tabindex="0"><code>2^0 = 1    1 &lt;&lt; 0 = 1
 
 2^1 = 2    1 &lt;&lt; 1 = 2
 
@@ -5797,14 +6412,14 @@ As you can see, the circle and the rectangle do not overlap, and this can be sho
 <p><strong>How It Works:</strong></p>
 <p>Now that we have covered the main idea of this function, we can get into the details.</p>
 <p><strong>The first part is:</strong></p>
-<pre><code>if x_center &lt; x2 &amp;&amp; x_center &gt; x1 &amp;&amp; y_center &lt; y2 &amp;&amp; y_center &gt; y1 {
+<pre tabindex="0"><code>if x_center &lt; x2 &amp;&amp; x_center &gt; x1 &amp;&amp; y_center &lt; y2 &amp;&amp; y_center &gt; y1 {
     return true
 }
 </code></pre><p>The part above is for if the circle inside the square. Such as like:</p>
 <p><img src="https://i.imgur.com/ChoNOLK.jpg" alt=""></p>
 <p>As you can see, the circle radius is smaller than the distance of the closest edge and the center of the circle. We know that the circle and the rectangle overlap, but the computer thinks that they don&rsquo;t overlap because the <code>distance from the center of the circle to the edge of the rectangle &gt; radius</code>, so we have to make sure that this is counted as an overlap. We check whether this is overlap by checking whether the center of the circle is between the two x&rsquo;s and between the two y&rsquo;s.</p>
 <p><strong>The next part:</strong></p>
-<pre><code>if ((y1 &lt;= y_center+radius &amp;&amp; y1 &gt;= y_center) ||
+<pre tabindex="0"><code>if ((y1 &lt;= y_center+radius &amp;&amp; y1 &gt;= y_center) ||
     (y2 &gt;= y_center-radius &amp;&amp; y2 &lt;= y_center)) &amp;&amp; x_center &gt;= x1 &amp;&amp;
     x_center &lt;= x2 {
     
@@ -5830,7 +6445,7 @@ As you can see, the circle and the rectangle do not overlap, and this can be sho
 <p>The <code>y</code> parts work, <code>y2 &gt;= y_center - radius</code>, which equals <code>4 &gt;= 5 - 2</code> and when simplifyed <code>4 &gt;= 3</code>. But the <code>x</code> parts don&rsquo;t work because the equations are <code>x_center &gt;= x1</code> and <code>x_center &lt;= x2</code>, and when we put in our numbers we get <code>13 &gt;= 5</code> but when we put in the numbers into the second equation, <code>13 &gt; 10</code> while we want <code>x_center &lt;= x2</code>. So we know that the shapes don&rsquo;t overlap.</p>
 <p>It also checks whether <code>y1 &gt;= y_center</code> and <code>y2 &lt;= y_center</code> because we want to make sure that we don&rsquo;t <code>return true</code> for extra test cases.</p>
 <p><strong>The Next Part:</strong></p>
-<pre><code>if y_center &lt;= y2 &amp;&amp; y_center &gt;= y1 &amp;&amp; ((x_center-radius &lt;= x2 &amp;&amp; 
+<pre tabindex="0"><code>if y_center &lt;= y2 &amp;&amp; y_center &gt;= y1 &amp;&amp; ((x_center-radius &lt;= x2 &amp;&amp; 
     x_center &gt;= x2) || (x_center+radius &gt;= x1 &amp;&amp; x_center &lt;= x1)) {
     
     return true
@@ -5846,7 +6461,7 @@ As you can see, the circle and the rectangle do not overlap, and this can be sho
 <p>The <code>y</code> part is the same as the last image, so we know that the <code>y</code> part overlaps. So we can see that the <code>y</code> part overlaps. We can use the formula <code>x_center + radius &gt;= x1 &amp;&amp; x_center &lt;= x1</code>. <code>x_center = 3</code> and the <code>radius  = 2</code>. So when we input the numbers into the variables, <code>3 + 2 &gt;= 4</code> when simplifyed <code>5 &gt;= 4</code>, <code>x1 = 4</code>. The next equation is <code>3 &lt;= 4</code>.</p>
 <p>As we can see <code>x_center+radius &gt;= x1 &amp;&amp; x_center &lt;= x1</code> is for if the circle is on the right of the rectangle. And <code>x_center-radius &lt;= x2 &amp;&amp; x_center &gt;= x2</code> is for if the circle is on the left of the rectangle.</p>
 <p><strong>The last part:</strong></p>
-<pre><code>if powerOfTwo(x_center-x1)+powerOfTwo(y_center-y1) &lt;= 
+<pre tabindex="0"><code>if powerOfTwo(x_center-x1)+powerOfTwo(y_center-y1) &lt;= 
     powerOfTwo(radius) {
     
     return true
@@ -5854,7 +6469,7 @@ As you can see, the circle and the rectangle do not overlap, and this can be sho
 </code></pre><p>The idea of <code>powerOfTwo(x_center-x1)+powerOfTwo(y_center-y1) &lt;= powerOfTwo(radius)</code> is basicly pythagoras theorem, <code>a^2 + b^2 = c^2</code>. <code>a^2 + b^2 = c^2</code>, and this is basicly <code>(x_center - x1)^2 + (y_center - y1)^2 = radius^2</code>.</p>
 <p>The distance formula is <code>d = sqrt((x1 - x2)^2 + (y1 - y2)^2)</code>, though for this problem we don&rsquo;t need the <code>sqrt</code> so we the equation can be <code>d = (x1 - x2)^2 + (y1 - y2)^2)</code>, so we can continue to use <code>(x_center - x1)^2 + (y_center - y1)^2 = radius^2</code>.</p>
 <p>All of the following are similar except for different points, <code>x1, x2, y1, y2, x_center, y_center</code>.</p>
-<pre><code>powerOfTwo(x_center-x1)+powerOfTwo(y_center-y2) &lt;= powerOfTwo(radius)
+<pre tabindex="0"><code>powerOfTwo(x_center-x1)+powerOfTwo(y_center-y2) &lt;= powerOfTwo(radius)
 
 powerOfTwo(x_center-x2)+powerOfTwo(y_center-y1) &lt;= powerOfTwo(radius)
 
@@ -6037,13 +6652,13 @@ This is kind of hard to understand, so I am going to explain it. A contiguous se
 <p>Given a binary string <code>s</code> without leading zeros, return <code>true</code> if <code>s</code> contains at most one contiguous segment of ones. Otherwise, return <code>false</code>.</p>
 </blockquote>
 <p>This is kind of hard to understand, so I am going to explain it. A contiguous segment of ones looks like:</p>
-<pre><code>111000
+<pre tabindex="0"><code>111000
 100
 10
 1
 11110000
 </code></pre><p>And some of the ones that are not contiguous are:</p>
-<pre><code>101
+<pre tabindex="0"><code>101
 1001
 111001
 10011
@@ -6179,7 +6794,7 @@ This can be simplifyed by taking out the square root. We can take out the square
 </code></pre></div>]]></content></item><item><title>Leetcode 1773</title><link>https://nathannaveen.dev/posts/leetcode-1773/</link><pubDate>Sat, 06 Mar 2021 19:06:10 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1773/</guid><description>1773. Count Items Matching a Rule
 The idea of this solution is pretty simple. We know that the array items has only 3 items. The first one is the ruleKey = &amp;quot;type&amp;quot; the next one is ruleKey = &amp;quot;color&amp;quot;, and the next one is ruleKey = &amp;quot;name&amp;quot;. We just have to set a index of each item to either 0, 1 or 2. Then just loop over each item and check whether the item[index] == ruleValue.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/count-items-matching-a-rule/">1773. Count Items Matching a Rule</a></p>
 <p>The idea of this solution is pretty simple. We know that the array <code>items</code> has only <code>3</code> items. The first one is the <code>ruleKey = &quot;type&quot;</code> the next one is <code>ruleKey = &quot;color&quot;</code>, and the next one is <code>ruleKey = &quot;name&quot;</code>. We just have to set a index of each item to either <code>0, 1</code> or <code>2</code>. Then just loop over each item and check whether the <code>item[index] == ruleValue</code>.</p>
-<pre><code>func countMatches(items [][]string, ruleKey string, ruleValue string) int {
+<pre tabindex="0"><code>func countMatches(items [][]string, ruleKey string, ruleValue string) int {
 	res := 0
 	index := 0
 	if ruleKey == &quot;color&quot; {
@@ -6302,7 +6917,7 @@ When we do the equation (D - B) * (C - A) we are basicly doing width * length.</
 }
 </code></pre></div>]]></content></item><item><title>Leetcode 908</title><link>https://nathannaveen.dev/posts/leetcode-908/</link><pubDate>Thu, 04 Mar 2021 15:47:37 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-908/</guid><description>908. Smallest Range I
 func smallestRangeI(A []int, K int) int { max, min := A[0], A[0] for _, i := range A { if i &amp;gt; max {max = i} if i &amp;lt; min {min = i} } if max-min-2*K &amp;gt; 0 { return max - min - 2 * K } return 0 }</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/smallest-range-i/">908. Smallest Range I</a></p>
-<pre><code>func smallestRangeI(A []int, K int) int {
+<pre tabindex="0"><code>func smallestRangeI(A []int, K int) int {
 	max, min := A[0], A[0]
 
 	for _, i := range A {
@@ -6378,7 +6993,7 @@ The matrix array has a size of [number of different elemtnets][2] because we nee
 }
 </code></pre></div>]]></content></item><item><title>Leetcode 833</title><link>https://nathannaveen.dev/posts/leetcode-833/</link><pubDate>Thu, 04 Mar 2021 10:24:54 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-833/</guid><description>833. Find And Replace in String
 func findReplaceString(S string, indexes []int, sources []string, targets []string) string { res := &amp;quot;&amp;quot; for i := 0; i &amp;lt; len(S); i++ { index := 0 // this is the index that is used for indexes, sources, and targets for i2, i3 := range indexes { if i3 == i { index = i2 // we do this because the indexes are not sorted } } if index &amp;lt; len(indexes) &amp;amp;&amp;amp; i == indexes[index] { currentString := sources[index] isSubstring := true for i2 := range currentString { // checking whether the whole substring is equal if string(S[i+i2]) !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-and-replace-in-string/">833. Find And Replace in String</a></p>
-<pre><code>func findReplaceString(S string, indexes []int, sources []string, targets []string) string {
+<pre tabindex="0"><code>func findReplaceString(S string, indexes []int, sources []string, targets []string) string {
 	res := &quot;&quot;
 
 	for i := 0; i &lt; len(S); i++ {
@@ -6421,7 +7036,7 @@ This is the sort:
 for i := 1; i &amp;lt; len(arr); i++ { if i &amp;gt;= 1 &amp;amp;&amp;amp; ((arr[i-1][0] &amp;gt; arr[i][0]) || (arr[i-1][0] == arr[i][0] &amp;amp;&amp;amp; arr[i-1][1] &amp;lt; arr[i][1])) { arr[i], arr[i-1] = arr[i-1], arr[i] i -= 2 } } The idea of it is to start at the second item (first if 0 indexed) and then check whether the frequency of the number before the current is greater than the frequency of the current number.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/sort-array-by-increasing-frequency/">1636. Sort Array by Increasing Frequency</a></p>
 <p>The main idea of both the solutions is to add all the numbers to a matrix of lengths <code>[len(nums)][2]</code> and then sort each frequency of numbers by the max frequency. Suppose two values have the same frequency sort them by the value in descending order. After they are sorted, add all the values back to <code>nums</code> and return <code>nums</code>.</p>
 <p><strong>This is the sort:</strong></p>
-<pre><code>for i := 1; i &lt; len(arr); i++ {
+<pre tabindex="0"><code>for i := 1; i &lt; len(arr); i++ {
     if i &gt;= 1 &amp;&amp; ((arr[i-1][0] &gt; arr[i][0]) || 
     (arr[i-1][0] == arr[i][0] &amp;&amp; arr[i-1][1] &lt; arr[i][1])) {
         arr[i], arr[i-1] = arr[i-1], arr[i]
@@ -6435,7 +7050,7 @@ for i := 1; i &amp;lt; len(arr); i++ { if i &amp;gt;= 1 &amp;amp;&amp;amp; ((arr
 <img src="https://i.imgur.com/FFnnfj8.jpg" alt=""></p>
 <p>The second code has better space complexity because, in the first solution, we use a <code>map</code> of size <code>len(nums)</code> and an <code>array</code> of size <code>[len(nums)][2]</code>. In the second solution, we just use an <code>array</code> of size <code>[len(nums)][2]</code>.</p>
 <p><strong>Code One:</strong></p>
-<pre><code>func frequencySort(nums []int) []int {
+<pre tabindex="0"><code>func frequencySort(nums []int) []int {
     m := make(map[int]int)
     arr := [][]int{}
     counter := 0
@@ -6465,7 +7080,7 @@ for i := 1; i &amp;lt; len(arr); i++ { if i &amp;gt;= 1 &amp;amp;&amp;amp; ((arr
     return nums
 }
 </code></pre><p><strong>Code Two:</strong></p>
-<pre><code>func frequencySort(nums []int) []int {
+<pre tabindex="0"><code>func frequencySort(nums []int) []int {
     arr := [][]int{}
     counter := 0
 
@@ -6507,7 +7122,7 @@ The idea of this solution is to iterate through arr1 and then inside each iterat
 There is a abs function because math.Abs takes longer. When using math.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-the-distance-value-between-two-arrays/">1385. Find the Distance Value Between Two Arrays</a></p>
 <p>The idea of this solution is to iterate through <code>arr1</code> and then inside each iteration iterate through <code>arr2</code>. If the absolute value of <code>arr1[i] - arr2[j]</code> is smaller than or equal to <code>d</code>, we know that <code>arr1[i]</code> can&rsquo;t be added to the resulting counter, so we can just <code>break</code> from the loop.</p>
 <p>There is a abs function because <code>math.Abs</code> takes longer. When using <code>math.Abs</code> we have to make <code>float64(arr1[i] - arr2[j])</code>, and then make the <code>int(math.Abs)</code>.</p>
-<pre><code>func findTheDistanceValue(arr1 []int, arr2 []int, d int) int {
+<pre tabindex="0"><code>func findTheDistanceValue(arr1 []int, arr2 []int, d int) int {
     res := 0
     shouldAdd := true
     for i := 0; i &lt; len(arr1); i++ {
@@ -6532,7 +7147,7 @@ func abs(n int) int {
 The idea of this solution is to add every number in the array nums to another array called temp. Next we go through the array temp and check whether the number of a certain number is equal to 2, if it is then we know that it is the repeated number. If it is not 2 but it is 0 we know that it is the skiped number.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/set-mismatch/">645. Set Mismatch</a></p>
 <p>The idea of this solution is to add every number in the array <code>nums</code> to another array called <code>temp</code>. Next we go through the array temp and check whether the number of a certain number is equal to <code>2</code>, if it is then we know that it is the repeated number. If it is not <code>2</code> but it is <code>0</code> we know that it is the skiped number. We know that there is always a duplicate number, so if we found the duplicate but not the value that is skiped we return the duplicate and the duplicate plus one, because if the skiped is not inside the array we have to return the next number.</p>
 <p><code>temp</code> has <code>10001</code> values because the constraints of the problem say <code>2 &lt;= nums.length &lt;= 10^4, 1 &lt;= nums[i] &lt;= 10^4</code>, since <code>10^4</code> equals <code>10000</code> and the constraints say <code>nums.length &lt;= 10^4</code> we have to do <code>10^4 + 1 = 10000 + 1 = 10001</code>.</p>
-<pre><code>func findErrorNums(nums []int) []int {
+<pre tabindex="0"><code>func findErrorNums(nums []int) []int {
     sort.Ints(nums)
     double, skip := 0, 0
     temp := make([]int, 10001)
@@ -6557,7 +7172,7 @@ The idea of this solution is to add every number in the array nums to another ar
 Both of the solutions use a two pointer approche. The first solution is slower than the second solution because it checks an extra if statment inside the loop, while the second solution checks it outside of the loop.
 func searchRange(nums []int, target int) []int { left := 0 right := len(nums) - 1 for left &amp;lt; right { if nums[left] !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/">34. Find First and Last Position of Element in Sorted Array</a></p>
 <p>Both of the solutions use a two pointer approche. The first solution is slower than the second solution because it checks an extra <code>if</code> statment inside the loop, while the second solution checks it outside of the loop.</p>
-<pre><code>func searchRange(nums []int, target int) []int {
+<pre tabindex="0"><code>func searchRange(nums []int, target int) []int {
     left := 0
     right := len(nums) - 1
 
@@ -6579,7 +7194,7 @@ func searchRange(nums []int, target int) []int { left := 0 right := len(nums) - 
 
     return []int{-1, -1}
 }
-</code></pre><pre><code>func searchRange(nums []int, target int) []int {
+</code></pre><pre tabindex="0"><code>func searchRange(nums []int, target int) []int {
     left := 0
     right := len(nums) - 1
 
@@ -6607,7 +7222,7 @@ When the two arrays are combined the new array would be [1, 2, 3, 4] and the two
 <code>expected output: 2.5</code></p>
 <p>When the two arrays are combined the new array would be <code>[1, 2, 3, 4]</code> and the two middle numbers are <code>2</code>, and <code>3</code>. When <code>2</code> and <code>3</code> are added together we get <code>5</code>, and <code>5</code> divided by <code>2</code> is <code>2.5</code>.</p>
 <p>If the number of values of <code>nums1</code> is odd, the median is the middle number.</p>
-<pre><code>func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+<pre tabindex="0"><code>func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
     nums1 = append(nums1, nums2...)
     sort.Ints(nums1)
 
@@ -6619,7 +7234,7 @@ When the two arrays are combined the new array would be [1, 2, 3, 4] and the two
 }
 </code></pre>]]></content></item><item><title>Leetcode 647</title><link>https://nathannaveen.dev/posts/leetcode-647/</link><pubDate>Mon, 01 Mar 2021 09:27:16 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-647/</guid><description>647. Palindromic Substrings
 func countSubstrings(s string) int { res := 0 for i := 0; i &amp;lt; len(s); i++ { for j := 0; j &amp;lt;= len(s)-i; j++ { if s[j:j+i] != &amp;quot;&amp;quot; &amp;amp;&amp;amp; isPalindromic(s[j:j+i]) { res++ } } } if isPalindromic(s) { res++ } return res } func isPalindromic(s string) bool { left, right := 0, len(s)-1 for left &amp;lt;= right { if s[left] != s[right] { return false } left++ right-- } return true }</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/palindromic-substrings/">647. Palindromic Substrings</a></p>
-<pre><code>func countSubstrings(s string) int {
+<pre tabindex="0"><code>func countSubstrings(s string) int {
     res := 0
     for i := 0; i &lt; len(s); i++ {
         for j := 0; j &lt;= len(s)-i; j++ {
@@ -6659,7 +7274,7 @@ In the first example the substring abc starts at the 0&amp;lsquo;th index and en
 </blockquote>
 <p>If you have noticed in both the examples the repeated substring has to start at the <code>0</code>&lsquo;th index and has to end at a following index.</p>
 <p>The way my code checks whether it is a substring that repeats through out is it adds that substring to a empty string as many times as it fits in the string. Then it checks whether the new string is equal to <code>s</code>. If it is then <code>return true</code>. If it is never equal then <code>return false</code>.</p>
-<pre><code>func repeatedSubstringPattern(s string) bool {
+<pre tabindex="0"><code>func repeatedSubstringPattern(s string) bool {
 	for i := 0; i &lt; len(s); i++ {
 		end := len(s)
 		str := &quot;&quot;
@@ -6680,7 +7295,7 @@ In this solution we dont have to check whether the palindrome substring is great
 func longestPalindrome(s string) string { max := &amp;quot;&amp;quot; for i := 0; i &amp;lt; len(s); i++ { for j := 0; j &amp;lt;= len(s)-i; j++ { if isPalindromic(s[j : j + i]) { max = s[j : j + i] // getting the substring } } } if isPalindromic(s) { max = s } return max } func isPalindromic(s string) bool { left, right := 0, len(s) - 1 for left &amp;lt; right { if s[left] !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/longest-palindromic-substring/">5. Longest Palindromic Substring</a></p>
 <p>In this solution we dont have to check whether the palindrome substring is greater than the max length substring because the length of the substring will always be greater than or equal to the length of the current max substring. This can be show in an image:</p>
 <p><img src="https://i.imgur.com/k9YUTYG.jpg" alt=""></p>
-<pre><code>func longestPalindrome(s string) string {
+<pre tabindex="0"><code>func longestPalindrome(s string) string {
 	max := &quot;&quot;
 	for i := 0; i &lt; len(s); i++ {
 		for j := 0; j &lt;= len(s)-i; j++ {
@@ -6711,7 +7326,7 @@ func isPalindromic(s string) bool {
 The idea of this solution is to loop through 1...N and then make the string by adding the bytes to a string called s. Then check if S contains the reversed string of the bytes. The string s is reversed by a helper function.
 func queryString(S string, N int) bool { for i := 1; i &amp;lt;= N; i++ { s := &amp;quot;&amp;quot; n := i for n &amp;gt; 0 { if n &amp;amp; 1 == 1 { s += &amp;quot;1&amp;quot; } else { s += &amp;quot;0&amp;quot; } n &amp;gt;&amp;gt;= 1 } if !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/binary-string-with-substrings-representing-1-to-n/">1016. Binary String With Substrings Representing 1 To N</a></p>
 <p>The idea of this solution is to loop through <code>1...N</code> and then make the string by adding the bytes to a string called <code>s</code>. Then check if <code>S</code> contains the reversed string of the bytes. The string <code>s</code> is reversed by a helper function.</p>
-<pre><code>func queryString(S string, N int) bool {
+<pre tabindex="0"><code>func queryString(S string, N int) bool {
     for i := 1; i &lt;= N; i++ {
         s := &quot;&quot;
         n := i
@@ -6740,7 +7355,7 @@ func reverse(s string) string {
     return res
 }
 </code></pre><p>This solution is pretty much the same as the first solution but this solution doesn&rsquo;t use a outside function to reverse.</p>
-<pre><code>func queryString(S string, N int) bool {
+<pre tabindex="0"><code>func queryString(S string, N int) bool {
     for i := 1; i &lt;= N; i++ {
         s := &quot;&quot;
         n := i
@@ -6762,7 +7377,7 @@ func reverse(s string) string {
 </code></pre>]]></content></item><item><title>Leetcode 946</title><link>https://nathannaveen.dev/posts/leetcode-946/</link><pubDate>Fri, 26 Feb 2021 10:59:38 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-946/</guid><description>The idea of this solution is to append the pushed value to the stack. If peeked value is equal to the poped value then pop it off the stack, keep poping off the peeked value if it is equal to the poped value. This can be show in an image
 func validateStackSequences(pushed []int, popped []int) bool { stack := []int{} popCounter := 0 for i := 0; i &amp;lt; len(pushed); i++ { stack = append(stack, pushed[i]) for len(stack) !</description><content type="html"><![CDATA[<p>The idea of this solution is to append the pushed value to the stack. If peeked value is equal to the poped value then pop it off the stack, keep poping off the peeked value if it is equal to the poped value. This can be show in an image</p>
 <p><img src="https://i.imgur.com/ovNR5Oy.jpg" alt=""></p>
-<pre><code>func validateStackSequences(pushed []int, popped []int) bool {
+<pre tabindex="0"><code>func validateStackSequences(pushed []int, popped []int) bool {
     stack := []int{}
     popCounter := 0
     for i := 0; i &lt; len(pushed); i++ {
@@ -6783,7 +7398,7 @@ The idea of this solution is to add all the numbers to a map and then check whet
 We return the array from the first position to the end because when we make the array it comes out with a 0 at the zeroth index. For example a input array could be [4,3,2,7,8,2,3,1].</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/">448. Find All Numbers Disappeared in an Array</a></p>
 <p>The idea of this solution is to add all the numbers to a map and then check whether the map doesn&rsquo;t contain a number. If it doesn&rsquo;t contain then add it to the array <code>arr</code>.</p>
 <p>We return the array from the first position to the end because when we make the array it comes out with a <code>0</code> at the zeroth index. For example a input array could be <code>[4,3,2,7,8,2,3,1]</code>. If we just returned <code>arr</code> then we would get <code>[0, 5, 6]</code> instead of <code>[5, 6]</code>. This can also be fixed by making <code>i</code> in the second loop start at <code>1</code> instead of <code>0</code>.</p>
-<pre><code>func findDisappearedNumbers(nums []int) []int {
+<pre tabindex="0"><code>func findDisappearedNumbers(nums []int) []int {
 
     m := make(map[int]int)
     arr := []int{}
@@ -6802,11 +7417,11 @@ We return the array from the first position to the end because when we make the 
 </code></pre>]]></content></item><item><title>Leetcode 1704</title><link>https://nathannaveen.dev/posts/leetcode-1704/</link><pubDate>Thu, 25 Feb 2021 20:22:25 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1704/</guid><description>The idea of this solution is to first make the input string lowercase, and then add 1 to an integer array at the index of every letter, a = 0, b = 1, c = 2.... First we add to the array called first, then starting at a certain index start adding it to second.
 After that, add the number of vowel that have occured. The code does this by doing</description><content type="html"><![CDATA[<p>The idea of this solution is to first make the input string lowercase, and then add <code>1</code> to an integer array at the index of every letter, <code>a = 0, b = 1, c = 2...</code>. First we add to the array called <code>first</code>, then starting at a certain index start adding it to <code>second</code>.</p>
 <p>After that, add the number of vowel that have occured. The code does this by doing</p>
-<pre><code>firstCounter += first[0] + first[4] + first[8] + first[14] + first[20]
+<pre tabindex="0"><code>firstCounter += first[0] + first[4] + first[8] + first[14] + first[20]
 secondCounter += second[0] + second[4] + second[8] + second[14] + second[20]
 </code></pre><p>You might be wondering why the code is adding from <code>first</code> and <code>second</code> at the indices <code>0, 4, 8, 14, 20</code>. It is because the ascii values of <code>'a', 'e', 'i', 'o', 'u'</code> are <code>97, 101, 105, 111, 117</code>, and when they get the indices of <code>a = 0, b = 1, c = 2...</code> it is bascily subtracting <code>97</code> from each of them, so <code>97 - 97 = 0, 101 - 97 = 4, 105 - 97 = 8, 111 - 97 = 14, 117 - 97 = 20</code>.</p>
 <p>All of this can be show with a example:</p>
-<pre><code>input = &quot;TacosAreCool&quot;
+<pre tabindex="0"><code>input = &quot;TacosAreCool&quot;
 output = true
 </code></pre><p>First off we have to make the input lower case so it becomes <code>&quot;tacosarecool&quot;</code>.</p>
 <p>Next we can add all the characters from to their appropriate arrays.</p>
@@ -6816,7 +7431,7 @@ output = true
 <p><img src="https://i.imgur.com/DEf68sC.jpg" alt=""></p>
 <p>The number of vowels for <code>tacosa</code> is <code>3</code> because there are two <code>a</code>&rsquo;s and one <code>o</code>. The number of vowels for <code>recool</code> is <code>3</code> as well, because there is one <code>e</code> and two <code>o</code>&rsquo;s.</p>
 <p>Since both <code>tacosa</code> and <code>recool</code> both have the same amount of vowels we return <code>true</code>.</p>
-<pre><code>func halvesAreAlike(s string) bool {
+<pre tabindex="0"><code>func halvesAreAlike(s string) bool {
     first, second := make([]int, 26), make([]int, 26)
     firstCounter, secondCounter := 0, 0
     s = strings.ToLower(s)
@@ -6837,11 +7452,11 @@ output = true
 The idea of this solution is pretty simple, first split text by space. We have to split it manualy and not use a inbuild function because the text can contain multiple spaces inbetween words, and we have to count spaces. This can be show in an example:
 input = &amp;quot; this is a sentence &amp;quot; inbuiltSplit = [&amp;quot;&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;this&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;is&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;sentence&amp;quot;, &amp;quot;&amp;quot;] The Code:</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/rearrange-spaces-between-words/">1592. Rearrange Spaces Between Words</a></p>
 <p>The idea of this solution is pretty simple, first split <code>text</code> by space. We have to split it manualy and not use a inbuild function because the text can contain multiple spaces inbetween words, and we have to count spaces. This can be show in an example:</p>
-<pre><code>input = &quot;  this   is  a sentence &quot;
+<pre tabindex="0"><code>input = &quot;  this   is  a sentence &quot;
 
 inbuiltSplit = [&quot;&quot;, &quot;&quot;, &quot;this&quot;, &quot;&quot;, &quot;&quot;, &quot;is&quot;, &quot;&quot;, &quot;a&quot;, &quot;sentence&quot;, &quot;&quot;]
 </code></pre><p><strong>The Code:</strong></p>
-<pre><code>func reorderSpaces(text string) string {
+<pre tabindex="0"><code>func reorderSpaces(text string) string {
     spaceCounter := 0
     arr := []string{}
     str := &quot;&quot;
@@ -6885,7 +7500,7 @@ inbuiltSplit = [&quot;&quot;, &quot;&quot;, &quot;this&quot;, &quot;&quot;, &quo
 The idea of this solution is to iterate through the tree, and add all the values to a map. Then get all the max values of the map and add them to the result array.
 func findMode(root *TreeNode) []int { max := 0 m := make(map[int]int) res := []int{} stack := []*TreeNode{} stack = append(stack, root) for len(stack) != 0 { pop := stack[len(stack)-1] stack = stack[:len(stack)-1] if pop !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-mode-in-binary-search-tree">501. Find Mode in Binary Search Tree</a></p>
 <p>The idea of this solution is to iterate through the tree, and add all the values to a map. Then get all the max values of the map and add them to the result array.</p>
-<pre><code>func findMode(root *TreeNode) []int {
+<pre tabindex="0"><code>func findMode(root *TreeNode) []int {
     max := 0
     m := make(map[int]int)
     res := []int{}
@@ -6916,7 +7531,7 @@ func findMode(root *TreeNode) []int { max := 0 m := make(map[int]int) res := []i
 The idea of this solution is pretty simple. First loop through the word with the greater length. Then check whether the length of the word is greater than the current characters index, if so then add the character to the result.
 func mergeAlternately(word1 string, word2 string) string { res := &amp;quot;&amp;quot; for i := 0; i &amp;lt; int(math.Max(float64(len(word1)), float64(len(word2)))); i++ { if i &amp;lt; len(word1) { res += string(word1[i]) } if i &amp;lt; len(word2) { res += string(word2[i]) } } return res }</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/merge-strings-alternately/">1768. Merge Strings Alternately</a></p>
 <p>The idea of this solution is pretty simple. First loop through the word with the greater length. Then check whether the length of the word is greater than the current characters index, if so then add the character to the result.</p>
-<pre><code>func mergeAlternately(word1 string, word2 string) string {
+<pre tabindex="0"><code>func mergeAlternately(word1 string, word2 string) string {
     res := &quot;&quot;
 
     for i := 0; i &lt; int(math.Max(float64(len(word1)), float64(len(word2)))); i++ {
@@ -6936,7 +7551,7 @@ If you didn&amp;rsquo;t understand the explanation this can be shown using the c
 <p>The idea of this solution is to loop over the <code>nums</code> array until all the values are <code>-1</code>. The reason they all will become negative one is, whenever a item is used the value will become <code>-1</code> so the code knows to not use that number again.</p>
 <p><strong>If you didn&rsquo;t understand the explanation this can be shown using the code on the bottom, an example and some pictures:</strong>
 <em>By the way sorry if my handwriting is messy</em></p>
-<pre><code>input = [1, 2, 4, 3, 4, 5, 6, 3], k = 4
+<pre tabindex="0"><code>input = [1, 2, 4, 3, 4, 5, 6, 3], k = 4
 expected output = true
 </code></pre><p>This is for getting the first consecutive sequence:
 <img src="https://assets.leetcode.com/users/images/cfc0f0b7-8ffc-4ab0-8b83-143691f75526_1614179878.874795.png" alt="image"></p>
@@ -6944,7 +7559,7 @@ expected output = true
 <img src="https://assets.leetcode.com/users/images/eb4d3251-f7a8-4fe4-a3d2-ee89a0cc4e42_1614180843.1899865.png" alt="image"></p>
 <p>Since we found two consecutive sequences we can return <code>true</code>.</p>
 <hr>
-<pre><code>func isPossibleDivide(nums []int, k int) bool {
+<pre tabindex="0"><code>func isPossibleDivide(nums []int, k int) bool {
 	if len(nums)%k != 0 {
 		return false
 	}
@@ -6977,7 +7592,7 @@ expected output = true
 func containsPattern(arr []int, m int, k int) bool { counter := 0 for i := 0; i &amp;lt; len(arr) - m; i++ { if arr[i] != arr[i+m] { counter = 0 } else { counter++ } if counter == (k-1)*m { return true } } return false }</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/detect-pattern-of-length-m-repeated-k-or-more-times/">1566. Detect Pattern of Length M Repeated K or More Times</a>
 The idea of this can be show by this image</p>
 <p><img src="https://i.imgur.com/XEPQ2YV.jpg" alt=""></p>
-<pre><code>func containsPattern(arr []int, m int, k int) bool {
+<pre tabindex="0"><code>func containsPattern(arr []int, m int, k int) bool {
     counter := 0
 
     for i := 0; i &lt; len(arr) - m; i++ {
@@ -7006,7 +7621,7 @@ In the problem it asks us to &amp;ldquo;return the largest perimeter of a triang
 <p><img src="https://i.imgur.com/LRxVW4L.jpg" alt="">
 <img src="https://i.imgur.com/H1ySPp7.jpg" alt=""></p>
 <p><em>The two images above are not proper triangles because the length of the two smaller sides are smaller than <code>7</code> and won&rsquo;t be able to form a triangle.</em></p>
-<pre><code>func largestPerimeter(A []int) int {
+<pre tabindex="0"><code>func largestPerimeter(A []int) int {
     sort.Ints(A)
     for i := len(A) - 1; i &gt;= 2; i-- {
         if A[i] &lt; A[i - 1] + A[i - 2] {
@@ -7020,7 +7635,7 @@ The idea of this solution is to get the number odd numbers from 0 to high, and t
 high: 7 low : 3 The odd numbers from 0 to high (7). There are 4 odd numbers from 0 to 7. The odd numbers from 0 to low - 1 (2).</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/">1523. Count Odd Numbers in an Interval Range</a></p>
 <p>The idea of this solution is to get the number odd numbers from <code>0</code> to <code>high</code>, and then subtract the number of odd numbers from <code>0</code> to <code>low - 1</code>. The idea can be shown by an example:</p>
 <hr>
-<pre><code>high: 7
+<pre tabindex="0"><code>high: 7
 low : 3
 </code></pre><p><img src="https://assets.leetcode.com/users/images/2ca6929e-c01e-491f-9505-85dc303d779a_1614122599.638341.png" alt="image"></p>
 <ul>
@@ -7032,7 +7647,7 @@ low : 3
 </ul>
 <p>The number of odd numbers would be <code>4 - 1 = 3</code>. Three odd numbers.</p>
 <hr>
-<pre><code>func countOdds(low int, high int) int {
+<pre tabindex="0"><code>func countOdds(low int, high int) int {
 	return (high + 1)/2 - low / 2
 }
 </code></pre>]]></content></item><item><title>Leetcode 1637</title><link>https://nathannaveen.dev/posts/leetcode-1637/</link><pubDate>Wed, 24 Feb 2021 16:52:08 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1637/</guid><description>1637. Widest Vertical Area Between Two Points Containing No Points
@@ -7041,7 +7656,7 @@ points = {x, y} The idea of this solution is to ignore the y part of points beca
 </code></pre>
 <p>The idea of this solution is to ignore the <code>y</code> part of <code>points</code> because the vertical area is the made of vertical lines. Vertical lines are made up off one <code>x</code> value for every <code>y</code> value. An example could be the line <code>x = 3</code>, this is a vertical line at the x value <code>3</code>.</p>
 <p>The code first puts all the <code>x</code> points in the array <code>xPoints</code>. Then it sorts <code>xPoints</code> so all the <code>x</code>&rsquo;s are ready to use a sliding window approche of size two to find the greatest distance between all the two points. This can be show with this picture:</p>
-<pre><code>input: [[8, 7], [9, 9], [7, 4], [9, 7]]
+<pre tabindex="0"><code>input: [[8, 7], [9, 9], [7, 4], [9, 7]]
 output: 1
 </code></pre><p><img src="https://assets.leetcode.com/users/images/84ee2492-0703-4617-a38e-6691b4bcc3ea_1614125888.3422618.png" alt="image"></p>
 <ul>
@@ -7050,7 +7665,7 @@ output: 1
 <li>Use a sliding window to find the max difference each <code>x</code> value.</li>
 </ul>
 <hr>
-<pre><code>func maxWidthOfVerticalArea(points [][]int) int {
+<pre tabindex="0"><code>func maxWidthOfVerticalArea(points [][]int) int {
 	xPoints := []int{}
 	for _, point := range points {
 		xPoints = append(xPoints, point[0])

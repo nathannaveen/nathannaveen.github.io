@@ -77,7 +77,7 @@ If you didn&rsquo;t understand the explanation this can be shown using the code 
 <p>The idea of this solution is to loop over the <code>nums</code> array until all the values are <code>-1</code>. The reason they all will become negative one is, whenever a item is used the value will become <code>-1</code> so the code knows to not use that number again.</p>
 <p><strong>If you didn&rsquo;t understand the explanation this can be shown using the code on the bottom, an example and some pictures:</strong>
 <em>By the way sorry if my handwriting is messy</em></p>
-<pre><code>input = [1, 2, 4, 3, 4, 5, 6, 3], k = 4
+<pre tabindex=0><code>input = [1, 2, 4, 3, 4, 5, 6, 3], k = 4
 expected output = true
 </code></pre><p>This is for getting the first consecutive sequence:
 <img src=https://assets.leetcode.com/users/images/cfc0f0b7-8ffc-4ab0-8b83-143691f75526_1614179878.874795.png alt=image></p>
@@ -85,7 +85,7 @@ expected output = true
 <img src=https://assets.leetcode.com/users/images/eb4d3251-f7a8-4fe4-a3d2-ee89a0cc4e42_1614180843.1899865.png alt=image></p>
 <p>Since we found two consecutive sequences we can return <code>true</code>.</p>
 <hr>
-<pre><code>func isPossibleDivide(nums []int, k int) bool {
+<pre tabindex=0><code>func isPossibleDivide(nums []int, k int) bool {
 	if len(nums)%k != 0 {
 		return false
 	}

@@ -71,7 +71,7 @@ One minute
 <div class=post-content>
 <p><a href=https://leetcode.com/problems/count-items-matching-a-rule/>1773. Count Items Matching a Rule</a></p>
 <p>The idea of this solution is pretty simple. We know that the array <code>items</code> has only <code>3</code> items. The first one is the <code>ruleKey = "type"</code> the next one is <code>ruleKey = "color"</code>, and the next one is <code>ruleKey = "name"</code>. We just have to set a index of each item to either <code>0, 1</code> or <code>2</code>. Then just loop over each item and check whether the <code>item[index] == ruleValue</code>.</p>
-<pre><code>func countMatches(items [][]string, ruleKey string, ruleValue string) int {
+<pre tabindex=0><code>func countMatches(items [][]string, ruleKey string, ruleValue string) int {
 	res := 0
 	index := 0
 	if ruleKey == &quot;color&quot; {

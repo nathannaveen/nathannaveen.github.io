@@ -75,11 +75,11 @@ input = &#34; this is a sentence &#34; inbuiltSplit = [&#34;&#34;, &#34;&#34;, &
 <div class=post-content>
 <p><a href=https://leetcode.com/problems/rearrange-spaces-between-words/>1592. Rearrange Spaces Between Words</a></p>
 <p>The idea of this solution is pretty simple, first split <code>text</code> by space. We have to split it manualy and not use a inbuild function because the text can contain multiple spaces inbetween words, and we have to count spaces. This can be show in an example:</p>
-<pre><code>input = &quot;  this   is  a sentence &quot;
+<pre tabindex=0><code>input = &quot;  this   is  a sentence &quot;
 
 inbuiltSplit = [&quot;&quot;, &quot;&quot;, &quot;this&quot;, &quot;&quot;, &quot;&quot;, &quot;is&quot;, &quot;&quot;, &quot;a&quot;, &quot;sentence&quot;, &quot;&quot;]
 </code></pre><p><strong>The Code:</strong></p>
-<pre><code>func reorderSpaces(text string) string {
+<pre tabindex=0><code>func reorderSpaces(text string) string {
     spaceCounter := 0
     arr := []string{}
     str := &quot;&quot;

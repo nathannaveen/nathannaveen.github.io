@@ -80,7 +80,7 @@ for i := 1; i < len(arr); i++ { if i >= 1 && ((arr[i-1][0] > arr[i][0]) || (arr[
 <p><a href=https://leetcode.com/problems/sort-array-by-increasing-frequency/>1636. Sort Array by Increasing Frequency</a></p>
 <p>The main idea of both the solutions is to add all the numbers to a matrix of lengths <code>[len(nums)][2]</code> and then sort each frequency of numbers by the max frequency. Suppose two values have the same frequency sort them by the value in descending order. After they are sorted, add all the values back to <code>nums</code> and return <code>nums</code>.</p>
 <p><strong>This is the sort:</strong></p>
-<pre><code>for i := 1; i &lt; len(arr); i++ {
+<pre tabindex=0><code>for i := 1; i &lt; len(arr); i++ {
     if i &gt;= 1 &amp;&amp; ((arr[i-1][0] &gt; arr[i][0]) || 
     (arr[i-1][0] == arr[i][0] &amp;&amp; arr[i-1][1] &lt; arr[i][1])) {
         arr[i], arr[i-1] = arr[i-1], arr[i]
@@ -94,7 +94,7 @@ for i := 1; i < len(arr); i++ { if i >= 1 && ((arr[i-1][0] > arr[i][0]) || (arr[
 <img src=https://i.imgur.com/FFnnfj8.jpg alt></p>
 <p>The second code has better space complexity because, in the first solution, we use a <code>map</code> of size <code>len(nums)</code> and an <code>array</code> of size <code>[len(nums)][2]</code>. In the second solution, we just use an <code>array</code> of size <code>[len(nums)][2]</code>.</p>
 <p><strong>Code One:</strong></p>
-<pre><code>func frequencySort(nums []int) []int {
+<pre tabindex=0><code>func frequencySort(nums []int) []int {
     m := make(map[int]int)
     arr := [][]int{}
     counter := 0
@@ -124,7 +124,7 @@ for i := 1; i < len(arr); i++ { if i >= 1 && ((arr[i-1][0] > arr[i][0]) || (arr[
     return nums
 }
 </code></pre><p><strong>Code Two:</strong></p>
-<pre><code>func frequencySort(nums []int) []int {
+<pre tabindex=0><code>func frequencySort(nums []int) []int {
     arr := [][]int{}
     counter := 0
 

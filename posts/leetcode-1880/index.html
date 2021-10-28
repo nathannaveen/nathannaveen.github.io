@@ -101,7 +101,7 @@ func isSumEqual(firstWord string, secondWord string, targetWord string) bool { f
 <ul>
 <li>Just like in the first solution, we loop through each word, but this time we keep of making <code>sum, sum2, or res</code> equal <code>int(letter - 'a') + sum * 10</code> (In the previous we say <code>sum * 10</code>, but <code>sum</code> can be substituted for <code>sum2, or res</code>). The fundamental idea of this is getting each number and then adding it to the <code>sum * 10</code>. This is basically:</li>
 </ul>
-<pre><code>sum += int(letter - 'a')
+<pre tabindex=0><code>sum += int(letter - 'a')
 sum *= 10
 </code></pre><p><strong>The Second Code:</strong></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>isSumEqual</span>(<span style=color:#a6e22e>firstWord</span> <span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>secondWord</span> <span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>targetWord</span> <span style=color:#66d9ef>string</span>) <span style=color:#66d9ef>bool</span> {
