@@ -60,6 +60,6 @@ url  = "https://github.com/nathan-415"
     name       = "posts"
     url        = "/posts"
   [[menu.main]]
-    identifier = "adventOfCode"
+    identifier = "advent of code"
     name       = "adventOfCode"
     url        = "/adventOfCode"
