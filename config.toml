@@ -62,4 +62,4 @@ url  = "https://github.com/nathan-415"
   [[menu.main]]
     identifier = "advent of code-2021"
     name       = "adventOfCode-2021"
-    url        = "/adventOfCode"
+    url        = "/adventOfCode-2021"
