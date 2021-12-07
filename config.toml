@@ -57,7 +57,7 @@ url  = "https://github.com/nathan-415"
   # And you can even create generic menu
   [[menu.main]]
     identifier = "blog"
-    name       = "posts"
+    name       = "leetcode posts"
     url        = "/posts"
   [[menu.main]]
     identifier = "advent of code-2021"
