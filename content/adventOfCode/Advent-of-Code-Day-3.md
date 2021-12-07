@@ -1,10 +1,13 @@
 ---
-title: "Advent of code day 3"
+title: "Advent of code day 3 2021"
 date: 2021-12-07T14:43:35-06:00
 toc: false
 images:
 tags: [Advent Of Code, golang]
 ---
+
+[Advent Of Code Day 3 2021](https://adventofcode.com/2021/day/3)
+
 ## Part One
 
 The first solution is pretty simple, so I just brute forced it.
