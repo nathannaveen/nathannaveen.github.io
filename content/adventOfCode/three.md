@@ -1,6 +1,6 @@
 ---
-title: "Day 3"
-date: 2021-11-10T09:57:49-11:00
+title: "Advent Of Code Day 3"
+date: 2021-12-07T14:43:35-06:00
 toc: false
 images:
 tags: [Advent Of Code, golang]
