@@ -1,6 +1,6 @@
 ---
 title: "Advent of Code Day 8 2021"
-date: 2050
+date: 2050-12-08T19:09:29-06:00
 toc: false
 images:
 tags: [Advent Of Code, golang]
