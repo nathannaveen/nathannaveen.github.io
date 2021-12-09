@@ -1,0 +1,338 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=author content>
+<meta name=description content="Day 8 Puzzle
+func oneDay8() { file, err := os.Open(&amp;#34;input8.txt&amp;#34;) // opening the file  if err != nil { panic(err) } defer file.Close() scanner := bufio.NewScanner(file) res := 0 for scanner.Scan() { temp := scanner.Text() // getting the line  arr := strings.Split(temp, &amp;#34; | &amp;#34;) words := strings.Split(arr[1], &amp;#34; &amp;#34;) for _, s := range words { if len(s) == 2 || len(s) == 4 || len(s) == 3 || len(s) == 7 { res++ } } } fmt.">
+<meta name=keywords content=",Advent Of Code,golang">
+<meta name=robots content="noodp">
+<meta name=theme-color content>
+<link rel=canonical href=https://nathannaveen.dev/adventofcode/advent-of-code-day-8/>
+<title>
+Advent of Code Day 8 2021 :: nathan naveen — my blog
+</title>
+<link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
+<link rel=stylesheet href=/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<link rel=mask-icon href=/safari-pinned-tab.svg color>
+<link rel="shortcut icon" href=/favicon.ico>
+<meta name=msapplication-TileColor content>
+<meta name=theme-color content>
+<meta itemprop=name content="Advent of Code Day 8 2021">
+<meta itemprop=description content="Day 8 Puzzle
+func oneDay8() { file, err := os.Open(&#34;input8.txt&#34;) // opening the file  if err != nil { panic(err) } defer file.Close() scanner := bufio.NewScanner(file) res := 0 for scanner.Scan() { temp := scanner.Text() // getting the line  arr := strings.Split(temp, &#34; | &#34;) words := strings.Split(arr[1], &#34; &#34;) for _, s := range words { if len(s) == 2 || len(s) == 4 || len(s) == 3 || len(s) == 7 { res++ } } } fmt."><meta itemprop=datePublished content="1970-01-01T00:00:00+00:00">
+<meta itemprop=dateModified content="1970-01-01T00:00:00+00:00">
+<meta itemprop=wordCount content="1146"><meta itemprop=image content="https://nathannaveen.dev">
+<meta itemprop=keywords content="Advent Of Code,golang,">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://nathannaveen.dev">
+<meta name=twitter:title content="Advent of Code Day 8 2021">
+<meta name=twitter:description content="Day 8 Puzzle
+func oneDay8() { file, err := os.Open(&#34;input8.txt&#34;) // opening the file  if err != nil { panic(err) } defer file.Close() scanner := bufio.NewScanner(file) res := 0 for scanner.Scan() { temp := scanner.Text() // getting the line  arr := strings.Split(temp, &#34; | &#34;) words := strings.Split(arr[1], &#34; &#34;) for _, s := range words { if len(s) == 2 || len(s) == 4 || len(s) == 3 || len(s) == 7 { res++ } } } fmt.">
+<meta property="og:title" content="Advent of Code Day 8 2021">
+<meta property="og:description" content="Day 8 Puzzle
+func oneDay8() { file, err := os.Open(&#34;input8.txt&#34;) // opening the file  if err != nil { panic(err) } defer file.Close() scanner := bufio.NewScanner(file) res := 0 for scanner.Scan() { temp := scanner.Text() // getting the line  arr := strings.Split(temp, &#34; | &#34;) words := strings.Split(arr[1], &#34; &#34;) for _, s := range words { if len(s) == 2 || len(s) == 4 || len(s) == 3 || len(s) == 7 { res++ } } } fmt.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nathannaveen.dev/adventofcode/advent-of-code-day-8/"><meta property="og:image" content="https://nathannaveen.dev"><meta property="article:section" content="adventOfCode">
+<meta property="article:published_time" content="1970-01-01T00:00:00+00:00">
+<meta property="article:modified_time" content="1970-01-01T00:00:00+00:00"><meta property="og:site_name" content="nathan naveen">
+<meta property="article:published_time" content="1970-01-01 00:00:00 +0000 UTC">
+</head>
+<body>
+<div class=container>
+<header class=header>
+<span class=header__inner>
+<a href=/ style=text-decoration:none>
+<div class=logo>
+<span class=logo__mark>></span>
+<span class=logo__text>cd /home</span>
+<span class=logo__cursor>
+</span>
+</div>
+</a>
+<span class=header__right>
+<nav class=menu>
+<ul class=menu__inner><li><a href=/adventofcode>advent of code</a></li><li><a href=/posts>leetcode posts</a></li>
+</ul>
+</nav>
+<span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span>
+</span>
+</span>
+</header>
+<div class=content>
+<main class=post>
+<div class=post-info>
+</p>
+</div>
+<article>
+<h2 class=post-title><a href=https://nathannaveen.dev/adventofcode/advent-of-code-day-8/>Advent of Code Day 8 2021</a></h2>
+<div class=post-content>
+<p><a href=https://adventofcode.com/2021/day/8>Day 8 Puzzle</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>oneDay8</span>() {
+    <span style=color:#a6e22e>file</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>os</span>.<span style=color:#a6e22e>Open</span>(<span style=color:#e6db74>&#34;input8.txt&#34;</span>) <span style=color:#75715e>// opening the file
+</span><span style=color:#75715e></span>
+    <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+        panic(<span style=color:#a6e22e>err</span>)
+    }
+    <span style=color:#66d9ef>defer</span> <span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>Close</span>()
+
+    <span style=color:#a6e22e>scanner</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>bufio</span>.<span style=color:#a6e22e>NewScanner</span>(<span style=color:#a6e22e>file</span>)
+    <span style=color:#a6e22e>res</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>
+
+    <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>scanner</span>.<span style=color:#a6e22e>Scan</span>() {
+        <span style=color:#a6e22e>temp</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>scanner</span>.<span style=color:#a6e22e>Text</span>() <span style=color:#75715e>// getting the line
+</span><span style=color:#75715e></span>        <span style=color:#a6e22e>arr</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>temp</span>, <span style=color:#e6db74>&#34; | &#34;</span>)
+        <span style=color:#a6e22e>words</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>arr</span>[<span style=color:#ae81ff>1</span>], <span style=color:#e6db74>&#34; &#34;</span>)
+
+        <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>s</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>words</span> {
+            <span style=color:#66d9ef>if</span> len(<span style=color:#a6e22e>s</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>||</span> len(<span style=color:#a6e22e>s</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>||</span> len(<span style=color:#a6e22e>s</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>3</span> <span style=color:#f92672>||</span> len(<span style=color:#a6e22e>s</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>7</span> {
+                <span style=color:#a6e22e>res</span><span style=color:#f92672>++</span>
+            }
+        }
+    }
+    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>res</span>)
+}
+</code></pre></div><p>The idea of the second solution is to use the numbers <code>1</code>, <code>4</code>, <code>7</code>, and <code>8</code> to find the other numbers.</p>
+<p>First we can find out how many LED strips are used to make each number (Note that the number of LED strips is the length of the mixed up number):</p>
+<p><code>0</code> → <code>6</code> led strips</p>
+<p><code>1</code> → <code>2</code> led strips</p>
+<p><code>2</code> → <code>5</code> led strips</p>
+<p><code>3</code> → <code>5</code> led strips</p>
+<p><code>4</code> → <code>4</code> led strips</p>
+<p><code>5</code> → <code>5</code> led strips</p>
+<p><code>6</code> → <code>6</code> led strips</p>
+<p><code>7</code> → <code>3</code> led strips</p>
+<p><code>8</code> → <code>7</code> led strips</p>
+<p><code>9</code> → <code>6</code> led strips</p>
+<p>Now we can group them together:</p>
+<p><code>1</code>, <code>4</code>, <code>7</code>, and <code>8</code> all have a unique number of LED strips, so we can easily identify them.</p>
+<p><code>2</code>, <code>3</code>, and <code>5</code> all have <code>5</code> led strips.</p>
+<p><code>0</code>, <code>6</code>, and <code>9</code> all have <code>6</code> led strips.</p>
+<p>We don&rsquo;t know which LED&rsquo;s are which, so we have to use <code>1</code>, <code>4</code>, <code>7</code>, and <code>8</code> to find out which are which.</p>
+<p>We can start off with <code>0</code>, <code>6</code>, and <code>9</code>:</p>
+<p><img src=https://i.imgur.com/oYi2dw8.jpg alt></p>
+<ul>
+<li>Step one shows which numbers we are going to be overlapping.</li>
+<li>The first line of step two shows the overlapped numbers.</li>
+<li>And the second line of step two shows which lines the 4 is not overlapping.</li>
+<li>Since the last set of LED&rsquo;s is the only number with a unique number of non-overlapping lines we know that that set of LED&rsquo;s is a <code>9</code>.</li>
+<li>Next we can overlap the remaining two sets of LED&rsquo;s with two ones.</li>
+<li>We can see that both of the new sets have unique number of overlaps, so we can find out their numbers.</li>
+</ul>
+<p>The same can be done for <code>2</code>, <code>3</code>, and <code>5</code>:</p>
+<p><img src=https://i.imgur.com/fkVOnbl.jpg alt></p>
+<p>That was the idea of the solution, the actual solution is very similar, but has its differences.</p>
+<p>The main difference is we temporarily skip numbers while we have not found the <code>1</code> and the <code>4</code> because we only know what number it is by using them.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>twoDay8</span>() {
+    <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>_</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>ioutil</span>.<span style=color:#a6e22e>ReadFile</span>(<span style=color:#e6db74>&#34;input8.txt&#34;</span>)
+    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>h</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(string(<span style=color:#a6e22e>b</span>), <span style=color:#e6db74>&#34;\n&#34;</span>)
+
+    <span style=color:#a6e22e>res</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>
+
+    <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>temp</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>h</span> {
+        <span style=color:#a6e22e>after</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>temp</span>, <span style=color:#e6db74>&#34; | &#34;</span>)[<span style=color:#ae81ff>1</span>], <span style=color:#e6db74>&#34; &#34;</span>)
+        <span style=color:#a6e22e>before</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>temp</span>, <span style=color:#e6db74>&#34; | &#34;</span>)[<span style=color:#ae81ff>0</span>], <span style=color:#e6db74>&#34; &#34;</span>)
+        <span style=color:#a6e22e>jumbledNumber</span> <span style=color:#f92672>:=</span> make(<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>int</span>] <span style=color:#66d9ef>string</span>)
+        <span style=color:#a6e22e>properNumber</span> <span style=color:#f92672>:=</span> make(<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>] <span style=color:#66d9ef>int</span>)
+        <span style=color:#75715e>// jumbledNumber = number : mixed up numbers (used to find the number in O(1) time)
+</span><span style=color:#75715e></span>        <span style=color:#75715e>// properNumber = mixed up number : number (used for finding the mixed up number in O(1) time)
+</span><span style=color:#75715e></span>        <span style=color:#a6e22e>num</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>
+        <span style=color:#a6e22e>arr</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>string</span>{}
+
+        <span style=color:#a6e22e>lengthFiveOrSix</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>a</span> <span style=color:#66d9ef>string</span>) {
+            <span style=color:#a6e22e>fourCounter</span>, <span style=color:#a6e22e>oneCounter</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>
+            <span style=color:#a6e22e>four</span>, <span style=color:#a6e22e>one</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>4</span>], <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>1</span>]
+            <span style=color:#a6e22e>newA</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>a</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+            <span style=color:#a6e22e>sort</span>.<span style=color:#a6e22e>Strings</span>(<span style=color:#a6e22e>newA</span>)
+            <span style=color:#a6e22e>a</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Join</span>(<span style=color:#a6e22e>newA</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+
+            <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> &lt; len(<span style=color:#a6e22e>a</span>); <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span> {
+                <span style=color:#66d9ef>if</span> !<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Contains</span>(<span style=color:#a6e22e>four</span>, string(<span style=color:#a6e22e>a</span>[<span style=color:#a6e22e>i</span>])) {
+                    <span style=color:#a6e22e>fourCounter</span><span style=color:#f92672>++</span>
+                }
+                <span style=color:#66d9ef>if</span> !<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Contains</span>(<span style=color:#a6e22e>one</span>, string(<span style=color:#a6e22e>a</span>[<span style=color:#a6e22e>i</span>])) {
+                    <span style=color:#a6e22e>oneCounter</span><span style=color:#f92672>++</span>
+                }
+            }
+
+            <span style=color:#66d9ef>if</span> len(<span style=color:#a6e22e>a</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>5</span> {
+                <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>fourCounter</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>3</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>2</span>] = <span style=color:#a6e22e>a</span>; <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>2</span>
+                } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>oneCounter</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>3</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>3</span>] = <span style=color:#a6e22e>a</span>; <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>3</span>
+                } <span style=color:#66d9ef>else</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>5</span>] = <span style=color:#a6e22e>a</span>; <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>5</span>
+                }
+            } <span style=color:#66d9ef>else</span> { <span style=color:#75715e>// len(a) == 6
+</span><span style=color:#75715e></span>                <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>fourCounter</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>9</span>] = <span style=color:#a6e22e>a</span>; <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>9</span>
+                } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>oneCounter</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>5</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>6</span>] = <span style=color:#a6e22e>a</span>; <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>6</span>
+                } <span style=color:#66d9ef>else</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>0</span>] = <span style=color:#a6e22e>a</span>; <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>0</span>
+                }
+            }
+        }
+
+        <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>a</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>before</span> {
+            <span style=color:#a6e22e>newA</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>a</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+            <span style=color:#a6e22e>sort</span>.<span style=color:#a6e22e>Strings</span>(<span style=color:#a6e22e>newA</span>)
+            <span style=color:#a6e22e>a</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Join</span>(<span style=color:#a6e22e>newA</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+            <span style=color:#66d9ef>switch</span> len(<span style=color:#a6e22e>a</span>) {
+            <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>2</span>:
+                <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>1</span>] = <span style=color:#a6e22e>a</span>; <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>1</span>
+            <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>3</span>:
+                <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>7</span>] = <span style=color:#a6e22e>a</span>; <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>7</span>
+            <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>4</span>:
+                <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>4</span>] = <span style=color:#a6e22e>a</span>; <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>4</span>
+            <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>7</span>:
+                <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>8</span>] = <span style=color:#a6e22e>a</span>; <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>8</span>
+            <span style=color:#66d9ef>default</span>: <span style=color:#75715e>// if the length is 5 or 6
+</span><span style=color:#75715e></span>                <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>4</span>] <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span> {
+                    <span style=color:#a6e22e>lengthFiveOrSix</span>(<span style=color:#a6e22e>a</span>)
+                } <span style=color:#66d9ef>else</span> {
+                    <span style=color:#75715e>// we need the 1 and 4 to find out the actual number,
+</span><span style=color:#75715e></span>                    <span style=color:#75715e>// so skip for now
+</span><span style=color:#75715e></span>                    <span style=color:#a6e22e>arr</span> = append(<span style=color:#a6e22e>arr</span>, <span style=color:#a6e22e>a</span>)
+                }
+            }
+        }
+
+        <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>a</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>arr</span> { <span style=color:#75715e>// Do all the skipped numbers
+</span><span style=color:#75715e></span>            <span style=color:#a6e22e>lengthFiveOrSix</span>(<span style=color:#a6e22e>a</span>)
+        }
+
+        <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>a</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>after</span> {
+            <span style=color:#a6e22e>newA</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>a</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+            <span style=color:#a6e22e>sort</span>.<span style=color:#a6e22e>Strings</span>(<span style=color:#a6e22e>newA</span>)
+            <span style=color:#a6e22e>a</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Join</span>(<span style=color:#a6e22e>newA</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+
+            <span style=color:#a6e22e>num</span> = (<span style=color:#a6e22e>num</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>10</span>) <span style=color:#f92672>+</span> <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>]
+        }
+        <span style=color:#a6e22e>res</span> <span style=color:#f92672>+=</span> <span style=color:#a6e22e>num</span>
+    }
+
+    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>res</span>)
+}
+</code></pre></div><p>We can do it another way without skipping, though this way might take a little longer. If we sort the sets of LED&rsquo;s by the number of LED&rsquo;s we can find the <code>1</code> and <code>4</code> first, because they both have the smallest number of LED&rsquo;s.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>twoDay8</span>() {
+    <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>_</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>ioutil</span>.<span style=color:#a6e22e>ReadFile</span>(<span style=color:#e6db74>&#34;input8.txt&#34;</span>)
+    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>h</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(string(<span style=color:#a6e22e>b</span>), <span style=color:#e6db74>&#34;\n&#34;</span>)
+
+    <span style=color:#a6e22e>res</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>
+
+    <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>temp</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>h</span> {
+        <span style=color:#a6e22e>after</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>temp</span>, <span style=color:#e6db74>&#34; | &#34;</span>)[<span style=color:#ae81ff>1</span>], <span style=color:#e6db74>&#34; &#34;</span>)
+        <span style=color:#a6e22e>before</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>temp</span>, <span style=color:#e6db74>&#34; | &#34;</span>)[<span style=color:#ae81ff>0</span>], <span style=color:#e6db74>&#34; &#34;</span>)
+        <span style=color:#a6e22e>jumbledNumber</span> <span style=color:#f92672>:=</span> make(<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>int</span>]<span style=color:#66d9ef>string</span>)
+        <span style=color:#a6e22e>properNumber</span> <span style=color:#f92672>:=</span> make(<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>)
+        <span style=color:#75715e>// jumbledNumber = number : mixed up numbers (used to find the number in O(1) time)
+</span><span style=color:#75715e></span>        <span style=color:#75715e>// properNumber = mixed up number : number (used for finding the mixed up number in O(1) time)
+</span><span style=color:#75715e></span>        <span style=color:#a6e22e>num</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>
+
+        <span style=color:#a6e22e>lengthFiveOrSix</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>a</span> <span style=color:#66d9ef>string</span>) {
+            <span style=color:#a6e22e>fourCounter</span>, <span style=color:#a6e22e>oneCounter</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>
+            <span style=color:#a6e22e>four</span>, <span style=color:#a6e22e>one</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>4</span>], <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>1</span>]
+            <span style=color:#a6e22e>newA</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>a</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+            <span style=color:#a6e22e>sort</span>.<span style=color:#a6e22e>Strings</span>(<span style=color:#a6e22e>newA</span>)
+            <span style=color:#a6e22e>a</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Join</span>(<span style=color:#a6e22e>newA</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+
+            <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> &lt; len(<span style=color:#a6e22e>a</span>); <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span> {
+                <span style=color:#66d9ef>if</span> !<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Contains</span>(<span style=color:#a6e22e>four</span>, string(<span style=color:#a6e22e>a</span>[<span style=color:#a6e22e>i</span>])) {
+                    <span style=color:#a6e22e>fourCounter</span><span style=color:#f92672>++</span>
+                }
+                <span style=color:#66d9ef>if</span> !<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Contains</span>(<span style=color:#a6e22e>one</span>, string(<span style=color:#a6e22e>a</span>[<span style=color:#a6e22e>i</span>])) {
+                    <span style=color:#a6e22e>oneCounter</span><span style=color:#f92672>++</span>
+                }
+            }
+
+            <span style=color:#66d9ef>if</span> len(<span style=color:#a6e22e>a</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>5</span> {
+                <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>fourCounter</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>3</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>2</span>] = <span style=color:#a6e22e>a</span>
+                    <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>2</span>
+                } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>oneCounter</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>3</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>3</span>] = <span style=color:#a6e22e>a</span>
+                    <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>3</span>
+                } <span style=color:#66d9ef>else</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>5</span>] = <span style=color:#a6e22e>a</span>
+                    <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>5</span>
+                }
+            } <span style=color:#66d9ef>else</span> { <span style=color:#75715e>// len(a) == 6
+</span><span style=color:#75715e></span>                <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>fourCounter</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>9</span>] = <span style=color:#a6e22e>a</span>
+                    <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>9</span>
+                } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>oneCounter</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>5</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>6</span>] = <span style=color:#a6e22e>a</span>
+                    <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>6</span>
+                } <span style=color:#66d9ef>else</span> {
+                    <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>0</span>] = <span style=color:#a6e22e>a</span>
+                    <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>0</span>
+                }
+            }
+        }
+
+        <span style=color:#a6e22e>sort</span>.<span style=color:#a6e22e>Slice</span>(<span style=color:#a6e22e>before</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span> <span style=color:#66d9ef>int</span>) <span style=color:#66d9ef>bool</span> { <span style=color:#75715e>// sort by number of LED&#39;s to get rid of the skipping
+</span><span style=color:#75715e></span>            <span style=color:#66d9ef>return</span> len(<span style=color:#a6e22e>before</span>[<span style=color:#a6e22e>i</span>]) &lt; len(<span style=color:#a6e22e>before</span>[<span style=color:#a6e22e>j</span>])
+        })
+
+        <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>a</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>before</span> {
+            <span style=color:#a6e22e>newA</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>a</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+            <span style=color:#a6e22e>sort</span>.<span style=color:#a6e22e>Strings</span>(<span style=color:#a6e22e>newA</span>)
+            <span style=color:#a6e22e>a</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Join</span>(<span style=color:#a6e22e>newA</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+            <span style=color:#66d9ef>switch</span> len(<span style=color:#a6e22e>a</span>) {
+            <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>2</span>:
+                <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>1</span>] = <span style=color:#a6e22e>a</span>
+                <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>1</span>
+            <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>3</span>:
+                <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>7</span>] = <span style=color:#a6e22e>a</span>
+                <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>7</span>
+            <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>4</span>:
+                <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>4</span>] = <span style=color:#a6e22e>a</span>
+                <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>4</span>
+            <span style=color:#66d9ef>case</span> <span style=color:#ae81ff>7</span>:
+                <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>8</span>] = <span style=color:#a6e22e>a</span>
+                <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>] = <span style=color:#ae81ff>8</span>
+            <span style=color:#66d9ef>default</span>: <span style=color:#75715e>// if the length is 5 or 6
+</span><span style=color:#75715e></span>                <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>4</span>] <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>jumbledNumber</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span> {
+                    <span style=color:#a6e22e>lengthFiveOrSix</span>(<span style=color:#a6e22e>a</span>)
+                }
+            }
+        }
+
+        <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>a</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>after</span> {
+            <span style=color:#a6e22e>newA</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(<span style=color:#a6e22e>a</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+            <span style=color:#a6e22e>sort</span>.<span style=color:#a6e22e>Strings</span>(<span style=color:#a6e22e>newA</span>)
+            <span style=color:#a6e22e>a</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Join</span>(<span style=color:#a6e22e>newA</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+
+            <span style=color:#a6e22e>num</span> = (<span style=color:#a6e22e>num</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>10</span>) <span style=color:#f92672>+</span> <span style=color:#a6e22e>properNumber</span>[<span style=color:#a6e22e>a</span>]
+        }
+        <span style=color:#a6e22e>res</span> <span style=color:#f92672>+=</span> <span style=color:#a6e22e>num</span>
+    }
+
+    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>res</span>)
+}
+
+</code></pre></div>
+</div>
+</article>
+<hr>
+<div class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg>
+<span class=tag><a href=https://nathannaveen.dev/tags/advent-of-code/>Advent Of Code</a></span>
+<span class=tag><a href=https://nathannaveen.dev/tags/golang/>golang</a></span>
+</p>
+</div>
+</main>
+</div>
+<footer class=footer>
+</footer>
+</div>
+<script type=text/javascript src=/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+</body>
+</html>
