@@ -1,5 +1,6 @@
 ---
 title: "Advent of code day 3 2021"
+date: 2021-12-07T14:43:35-06:00
 toc: false
 images:
 tags: [Advent Of Code, golang]
