@@ -1,0 +1,208 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=author content>
+<meta name=description content="Day 9 puzzle
+Part One I think that the first part of day 9 was pretty easy, just check every values and whether it is smaller than all the adjacent values. If so add that value plus 1 to res.
+func oneDay9() { input, _ := ioutil.ReadFile(&amp;#34;input9.txt&amp;#34;) var arr = strings.Split(string(input), &amp;#34;\n&amp;#34;) res := 0 i, j := 0, 0 isLow := func(y, x int) bool { // I put this function inside twoDay9()  // because then I wouldn&amp;#39;t have to parse i, j, and arr which would make it really messy.">
+<meta name=keywords content=",Advent Of Code,golang">
+<meta name=robots content="noodp">
+<meta name=theme-color content>
+<link rel=canonical href=https://nathannaveen.dev/adventofcode/advent-of-code-day-9/>
+<title>
+Advent of code day 9 2021 :: nathan naveen — my blog
+</title>
+<link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
+<link rel=stylesheet href=/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<link rel=mask-icon href=/safari-pinned-tab.svg color>
+<link rel="shortcut icon" href=/favicon.ico>
+<meta name=msapplication-TileColor content>
+<meta name=theme-color content>
+<meta itemprop=name content="Advent of code day 9 2021">
+<meta itemprop=description content="Day 9 puzzle
+Part One I think that the first part of day 9 was pretty easy, just check every values and whether it is smaller than all the adjacent values. If so add that value plus 1 to res.
+func oneDay9() { input, _ := ioutil.ReadFile(&#34;input9.txt&#34;) var arr = strings.Split(string(input), &#34;\n&#34;) res := 0 i, j := 0, 0 isLow := func(y, x int) bool { // I put this function inside twoDay9()  // because then I wouldn't have to parse i, j, and arr which would make it really messy.">
+<meta itemprop=wordCount content="588"><meta itemprop=image content="https://nathannaveen.dev">
+<meta itemprop=keywords content="Advent Of Code,golang,">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://nathannaveen.dev">
+<meta name=twitter:title content="Advent of code day 9 2021">
+<meta name=twitter:description content="Day 9 puzzle
+Part One I think that the first part of day 9 was pretty easy, just check every values and whether it is smaller than all the adjacent values. If so add that value plus 1 to res.
+func oneDay9() { input, _ := ioutil.ReadFile(&#34;input9.txt&#34;) var arr = strings.Split(string(input), &#34;\n&#34;) res := 0 i, j := 0, 0 isLow := func(y, x int) bool { // I put this function inside twoDay9()  // because then I wouldn't have to parse i, j, and arr which would make it really messy.">
+<meta property="og:title" content="Advent of code day 9 2021">
+<meta property="og:description" content="Day 9 puzzle
+Part One I think that the first part of day 9 was pretty easy, just check every values and whether it is smaller than all the adjacent values. If so add that value plus 1 to res.
+func oneDay9() { input, _ := ioutil.ReadFile(&#34;input9.txt&#34;) var arr = strings.Split(string(input), &#34;\n&#34;) res := 0 i, j := 0, 0 isLow := func(y, x int) bool { // I put this function inside twoDay9()  // because then I wouldn't have to parse i, j, and arr which would make it really messy.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nathannaveen.dev/adventofcode/advent-of-code-day-9/"><meta property="og:image" content="https://nathannaveen.dev"><meta property="article:section" content="adventOfCode">
+<meta property="og:site_name" content="nathan naveen">
+</head>
+<body>
+<div class=container>
+<header class=header>
+<span class=header__inner>
+<a href=/ style=text-decoration:none>
+<div class=logo>
+<span class=logo__mark>></span>
+<span class=logo__text>cd /home</span>
+<span class=logo__cursor>
+</span>
+</div>
+</a>
+<span class=header__right>
+<nav class=menu>
+<ul class=menu__inner><li><a href=/adventofcode>advent of code</a></li><li><a href=/posts>leetcode posts</a></li>
+</ul>
+</nav>
+<span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span>
+</span>
+</span>
+</header>
+<div class=content>
+<main class=post>
+<div class=post-info>
+</p>
+</div>
+<article>
+<h2 class=post-title><a href=https://nathannaveen.dev/adventofcode/advent-of-code-day-9/>Advent of code day 9 2021</a></h2>
+<div class=post-content>
+<p><a href=https://adventofcode.com/2021/day/9>Day 9 puzzle</a></p>
+<h2 id=part-one>Part One</h2>
+<p>I think that the first part of day 9 was pretty easy, just check every values and whether it is smaller than all the adjacent values. If so add that value plus <code>1</code> to <code>res</code>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>oneDay9</span>() {
+    <span style=color:#a6e22e>input</span>, <span style=color:#a6e22e>_</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>ioutil</span>.<span style=color:#a6e22e>ReadFile</span>(<span style=color:#e6db74>&#34;input9.txt&#34;</span>)
+    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>arr</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(string(<span style=color:#a6e22e>input</span>), <span style=color:#e6db74>&#34;\n&#34;</span>)
+
+    <span style=color:#a6e22e>res</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>
+    <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>
+
+    <span style=color:#a6e22e>isLow</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>x</span> <span style=color:#66d9ef>int</span>) <span style=color:#66d9ef>bool</span> {
+        <span style=color:#75715e>// I put this function inside twoDay9()
+</span><span style=color:#75715e></span>        <span style=color:#75715e>// because then I wouldn&#39;t have to parse i, j, and arr which would make it really messy.
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>y</span> <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>y</span> &lt; len(<span style=color:#a6e22e>arr</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>x</span> &lt; len(<span style=color:#a6e22e>arr</span>[<span style=color:#ae81ff>0</span>]) {
+            <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>] &lt; <span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>y</span>][<span style=color:#a6e22e>x</span>]
+        }
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>
+    }
+
+    <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>i</span> = <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> &lt; len(<span style=color:#a6e22e>arr</span>); <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span> {
+        <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>j</span> = <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> &lt; len(<span style=color:#a6e22e>arr</span>[<span style=color:#ae81ff>0</span>]); <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span> {
+            <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>isLow</span>(<span style=color:#a6e22e>i</span><span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>j</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>isLow</span>(<span style=color:#a6e22e>i</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>j</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>isLow</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span><span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>isLow</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) {
+                <span style=color:#a6e22e>res</span> <span style=color:#f92672>+=</span> int(<span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>]<span style=color:#f92672>-</span><span style=color:#e6db74>&#39;0&#39;</span>) <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+            }
+        }
+    }
+
+    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>res</span>)
+}
+</code></pre></div><h2 id=part-two>Part Two</h2>
+<p>The idea of this solution is to use DFS (depth first search) to solve this problem.</p>
+<ul>
+<li>First we find all the low points and add their positions to a stack</li>
+<li>Then we start searching the adjacent positions for which values smoke can flow through.</li>
+<li>Now we can keep doing step two until we can&rsquo;t.</li>
+</ul>
+<p>This can be shown using the following image:</p>
+<p><img src=https://i.imgur.com/qpYAskg.jpg alt></p>
+<ul>
+<li>In the image above the first part shows the DFS, and the second part shows the places that smoke can&rsquo;t cross because they are the highest.</li>
+<li>In the first part of the image:
+<ul>
+<li>Reds shows the lowest point</li>
+<li>Oranges is the points that flow into red</li>
+<li>Greens are the parts that flow into orange</li>
+<li>Blues are the parts that flow into green</li>
+<li>Yellows are the parts that flow into blue</li>
+</ul>
+</li>
+</ul>
+<p>Note that this can also BFS (breath first search) by changing the stack into a queue.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>lowPos</span> <span style=color:#66d9ef>struct</span> {
+    <span style=color:#a6e22e>actual</span> <span style=color:#a6e22e>pos</span>
+    <span style=color:#a6e22e>start</span>  <span style=color:#a6e22e>pos</span> <span style=color:#75715e>// the low position that we started at
+</span><span style=color:#75715e></span>}
+
+<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>pos</span> <span style=color:#66d9ef>struct</span> {
+    <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span> <span style=color:#66d9ef>int</span>
+}
+
+<span style=color:#66d9ef>func</span> <span style=color:#a6e22e>twoDay9</span>() {
+    <span style=color:#a6e22e>input</span>, <span style=color:#a6e22e>_</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>ioutil</span>.<span style=color:#a6e22e>ReadFile</span>(<span style=color:#e6db74>&#34;input9.txt&#34;</span>)
+    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>arr</span> = <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Split</span>(string(<span style=color:#a6e22e>input</span>), <span style=color:#e6db74>&#34;\n&#34;</span>)
+
+    <span style=color:#a6e22e>stack</span> <span style=color:#f92672>:=</span> []<span style=color:#a6e22e>lowPos</span>{}
+    <span style=color:#a6e22e>m</span> <span style=color:#f92672>:=</span> make(<span style=color:#66d9ef>map</span>[<span style=color:#a6e22e>pos</span>]<span style=color:#66d9ef>int</span>) <span style=color:#75715e>// position : index in res
+</span><span style=color:#75715e></span>    <span style=color:#a6e22e>res</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{}         <span style=color:#75715e>// size of basin
+</span><span style=color:#75715e></span>    <span style=color:#a6e22e>visited</span> <span style=color:#f92672>:=</span> make(<span style=color:#66d9ef>map</span>[<span style=color:#a6e22e>pos</span>]<span style=color:#66d9ef>bool</span>)
+    <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>
+
+    <span style=color:#a6e22e>isLow</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>x</span> <span style=color:#66d9ef>int</span>) <span style=color:#66d9ef>bool</span> {
+        <span style=color:#75715e>// I put this function inside twoDay9()
+</span><span style=color:#75715e></span>        <span style=color:#75715e>// because then I wouldn&#39;t have to parse i, j, and arr which would make it really messy.
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>y</span> <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>y</span> &lt; len(<span style=color:#a6e22e>arr</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>x</span> &lt; len(<span style=color:#a6e22e>arr</span>[<span style=color:#ae81ff>0</span>]) {
+            <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>] &lt; <span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>y</span>][<span style=color:#a6e22e>x</span>]
+        }
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>
+    }
+
+    <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>i</span> = <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> &lt; len(<span style=color:#a6e22e>arr</span>); <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span> {
+        <span style=color:#66d9ef>for</span> <span style=color:#a6e22e>j</span> = <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>j</span> &lt; len(<span style=color:#a6e22e>arr</span>[<span style=color:#ae81ff>0</span>]); <span style=color:#a6e22e>j</span><span style=color:#f92672>++</span> {
+            <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>isLow</span>(<span style=color:#a6e22e>i</span><span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>j</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>isLow</span>(<span style=color:#a6e22e>i</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>j</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>isLow</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span><span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>isLow</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) {
+                <span style=color:#a6e22e>stack</span> = append(<span style=color:#a6e22e>stack</span>, <span style=color:#a6e22e>lowPos</span>{<span style=color:#a6e22e>pos</span>{<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>}, <span style=color:#a6e22e>pos</span>{<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>}})
+                <span style=color:#a6e22e>res</span> = append(<span style=color:#a6e22e>res</span>, <span style=color:#ae81ff>1</span>)
+                <span style=color:#a6e22e>m</span>[<span style=color:#a6e22e>pos</span>{<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>}] = len(<span style=color:#a6e22e>res</span>) <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>
+            }
+        }
+    }
+
+    <span style=color:#a6e22e>canFlow</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>, <span style=color:#a6e22e>val</span> <span style=color:#66d9ef>int</span>, <span style=color:#a6e22e>start</span> <span style=color:#a6e22e>pos</span>) {
+        <span style=color:#75715e>// This is for finding whether smoke can flow from one place to another.
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>i</span> &lt; len(<span style=color:#a6e22e>arr</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>j</span> &lt; len(<span style=color:#a6e22e>arr</span>[<span style=color:#ae81ff>0</span>]) <span style=color:#f92672>&amp;&amp;</span>
+            !<span style=color:#a6e22e>visited</span>[<span style=color:#a6e22e>pos</span>{<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>}] <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>] <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#39;9&#39;</span> <span style=color:#f92672>&amp;&amp;</span> int(<span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>]<span style=color:#f92672>-</span><span style=color:#e6db74>&#39;0&#39;</span>) &gt; <span style=color:#a6e22e>val</span> {
+            <span style=color:#a6e22e>visited</span>[<span style=color:#a6e22e>pos</span>{<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>}] = <span style=color:#66d9ef>true</span>
+            <span style=color:#a6e22e>res</span>[<span style=color:#a6e22e>m</span>[<span style=color:#a6e22e>start</span>]]<span style=color:#f92672>++</span>
+            <span style=color:#a6e22e>stack</span> = append(<span style=color:#a6e22e>stack</span>, <span style=color:#a6e22e>lowPos</span>{<span style=color:#a6e22e>pos</span>{<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>}, <span style=color:#a6e22e>start</span>})
+        }
+    }
+
+    <span style=color:#66d9ef>for</span> len(<span style=color:#a6e22e>stack</span>) <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span> {
+        <span style=color:#a6e22e>pop</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>stack</span>[len(<span style=color:#a6e22e>stack</span>)<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]
+        <span style=color:#a6e22e>stack</span> = <span style=color:#a6e22e>stack</span>[:len(<span style=color:#a6e22e>stack</span>)<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]
+        <span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span>, <span style=color:#a6e22e>start</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>pop</span>.<span style=color:#a6e22e>actual</span>.<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>pop</span>.<span style=color:#a6e22e>actual</span>.<span style=color:#a6e22e>j</span>, <span style=color:#a6e22e>pop</span>.<span style=color:#a6e22e>start</span>
+
+        <span style=color:#a6e22e>canFlow</span>(<span style=color:#a6e22e>i</span><span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>j</span>, int(<span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>]<span style=color:#f92672>-</span><span style=color:#e6db74>&#39;0&#39;</span>), <span style=color:#a6e22e>start</span>)
+        <span style=color:#a6e22e>canFlow</span>(<span style=color:#a6e22e>i</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>j</span>, int(<span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>]<span style=color:#f92672>-</span><span style=color:#e6db74>&#39;0&#39;</span>), <span style=color:#a6e22e>start</span>)
+        <span style=color:#a6e22e>canFlow</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span><span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>, int(<span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>]<span style=color:#f92672>-</span><span style=color:#e6db74>&#39;0&#39;</span>), <span style=color:#a6e22e>start</span>)
+        <span style=color:#a6e22e>canFlow</span>(<span style=color:#a6e22e>i</span>, <span style=color:#a6e22e>j</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, int(<span style=color:#a6e22e>arr</span>[<span style=color:#a6e22e>i</span>][<span style=color:#a6e22e>j</span>]<span style=color:#f92672>-</span><span style=color:#e6db74>&#39;0&#39;</span>), <span style=color:#a6e22e>start</span>)
+    }
+
+    <span style=color:#a6e22e>sort</span>.<span style=color:#a6e22e>Ints</span>(<span style=color:#a6e22e>res</span>)
+
+    <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>res</span>[len(<span style=color:#a6e22e>res</span>)<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>] <span style=color:#f92672>*</span> <span style=color:#a6e22e>res</span>[len(<span style=color:#a6e22e>res</span>)<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>] <span style=color:#f92672>*</span> <span style=color:#a6e22e>res</span>[len(<span style=color:#a6e22e>res</span>)<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>]) <span style=color:#75715e>// Last
+</span><span style=color:#75715e></span>}
+</code></pre></div>
+</div>
+</article>
+<hr>
+<div class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg>
+<span class=tag><a href=https://nathannaveen.dev/tags/advent-of-code/>Advent Of Code</a></span>
+<span class=tag><a href=https://nathannaveen.dev/tags/golang/>golang</a></span>
+</p>
+</div>
+</main>
+</div>
+<footer class=footer>
+</footer>
+</div>
+<script type=text/javascript src=/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+</body>
+</html>
