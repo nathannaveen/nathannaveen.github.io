@@ -11,7 +11,7 @@ func oneDay8() { file, err := os.Open(&amp;#34;input8.txt&amp;#34;) // opening t
 <meta name=theme-color content>
 <link rel=canonical href=https://nathannaveen.dev/adventofcode/advent-of-code-day-8/>
 <title>
-2021 Advent of Code Day 10 :: nathan naveen — my blog
+2021 Advent of Code Day 8 :: nathan naveen — my blog
 </title>
 <link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
 <link rel=stylesheet href=/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css>
@@ -23,17 +23,17 @@ func oneDay8() { file, err := os.Open(&amp;#34;input8.txt&amp;#34;) // opening t
 <link rel="shortcut icon" href=/favicon.ico>
 <meta name=msapplication-TileColor content>
 <meta name=theme-color content>
-<meta itemprop=name content="2021 Advent of Code Day 10">
+<meta itemprop=name content="2021 Advent of Code Day 8">
 <meta itemprop=description content="Day 8 Puzzle
 func oneDay8() { file, err := os.Open(&#34;input8.txt&#34;) // opening the file  if err != nil { panic(err) } defer file.Close() scanner := bufio.NewScanner(file) res := 0 for scanner.Scan() { temp := scanner.Text() // getting the line  arr := strings.Split(temp, &#34; | &#34;) words := strings.Split(arr[1], &#34; &#34;) for _, s := range words { if len(s) == 2 || len(s) == 4 || len(s) == 3 || len(s) == 7 { res++ } } } fmt.">
 <meta itemprop=wordCount content="1146"><meta itemprop=image content="https://nathannaveen.dev">
 <meta itemprop=keywords content="Advent Of Code,golang,">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nathannaveen.dev">
-<meta name=twitter:title content="2021 Advent of Code Day 10">
+<meta name=twitter:title content="2021 Advent of Code Day 8">
 <meta name=twitter:description content="Day 8 Puzzle
 func oneDay8() { file, err := os.Open(&#34;input8.txt&#34;) // opening the file  if err != nil { panic(err) } defer file.Close() scanner := bufio.NewScanner(file) res := 0 for scanner.Scan() { temp := scanner.Text() // getting the line  arr := strings.Split(temp, &#34; | &#34;) words := strings.Split(arr[1], &#34; &#34;) for _, s := range words { if len(s) == 2 || len(s) == 4 || len(s) == 3 || len(s) == 7 { res++ } } } fmt.">
-<meta property="og:title" content="2021 Advent of Code Day 10">
+<meta property="og:title" content="2021 Advent of Code Day 8">
 <meta property="og:description" content="Day 8 Puzzle
 func oneDay8() { file, err := os.Open(&#34;input8.txt&#34;) // opening the file  if err != nil { panic(err) } defer file.Close() scanner := bufio.NewScanner(file) res := 0 for scanner.Scan() { temp := scanner.Text() // getting the line  arr := strings.Split(temp, &#34; | &#34;) words := strings.Split(arr[1], &#34; &#34;) for _, s := range words { if len(s) == 2 || len(s) == 4 || len(s) == 3 || len(s) == 7 { res++ } } } fmt.">
 <meta property="og:type" content="article">
@@ -68,7 +68,7 @@ func oneDay8() { file, err := os.Open(&#34;input8.txt&#34;) // opening the file 
 </p>
 </div>
 <article>
-<h2 class=post-title><a href=https://nathannaveen.dev/adventofcode/advent-of-code-day-8/>2021 Advent of Code Day 10</a></h2>
+<h2 class=post-title><a href=https://nathannaveen.dev/adventofcode/advent-of-code-day-8/>2021 Advent of Code Day 8</a></h2>
 <div class=post-content>
 <p><a href=https://adventofcode.com/2021/day/8>Day 8 Puzzle</a></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>oneDay8</span>() {
