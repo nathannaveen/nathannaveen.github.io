@@ -1,5 +1,5 @@
 ---
-title: "2021 Advent of Code Day 8"
+title: "2021 Advent of Code Day 10"
 date: { .Date }
 toc: false
 images:
