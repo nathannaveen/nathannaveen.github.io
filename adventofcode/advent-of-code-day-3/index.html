@@ -12,7 +12,7 @@ func oneDay3() { file, err := os.Open(&amp;#34;input3.txt&amp;#34;) if err != ni
 <meta name=theme-color content>
 <link rel=canonical href=https://nathannaveen.dev/adventofcode/advent-of-code-day-3/>
 <title>
-Advent of code day 3 2021 :: nathan naveen — my blog
+2021 Advent of code day 3 :: nathan naveen — my blog
 </title>
 <link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
 <link rel=stylesheet href=/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css>
@@ -24,7 +24,7 @@ Advent of code day 3 2021 :: nathan naveen — my blog
 <link rel="shortcut icon" href=/favicon.ico>
 <meta name=msapplication-TileColor content>
 <meta name=theme-color content>
-<meta itemprop=name content="Advent of code day 3 2021">
+<meta itemprop=name content="2021 Advent of code day 3">
 <meta itemprop=description content="Advent Of Code Day 3 2021
 Part One The first solution is pretty simple, so I just brute forced it.
 func oneDay3() { file, err := os.Open(&#34;input3.txt&#34;) if err != nil { panic(err) } defer file.Close() scanner := bufio.NewScanner(file) arr := make([]int, 12) gamma := 0 epsilon := 0 pos := 1 for scanner.Scan() { temp := scanner.Text() for i := 0; i < len(temp); i++ { if temp[i] == '1' { arr[i]++ } else { arr[i]-- } } } for i := len(arr) - 1; i >= 0; i-- { if arr[i] > 0 { gamma += pos } else { epsilon += pos } pos *= 2 } fmt.">
@@ -32,11 +32,11 @@ func oneDay3() { file, err := os.Open(&#34;input3.txt&#34;) if err != nil { pani
 <meta itemprop=keywords content="Advent Of Code,golang,">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nathannaveen.dev">
-<meta name=twitter:title content="Advent of code day 3 2021">
+<meta name=twitter:title content="2021 Advent of code day 3">
 <meta name=twitter:description content="Advent Of Code Day 3 2021
 Part One The first solution is pretty simple, so I just brute forced it.
 func oneDay3() { file, err := os.Open(&#34;input3.txt&#34;) if err != nil { panic(err) } defer file.Close() scanner := bufio.NewScanner(file) arr := make([]int, 12) gamma := 0 epsilon := 0 pos := 1 for scanner.Scan() { temp := scanner.Text() for i := 0; i < len(temp); i++ { if temp[i] == '1' { arr[i]++ } else { arr[i]-- } } } for i := len(arr) - 1; i >= 0; i-- { if arr[i] > 0 { gamma += pos } else { epsilon += pos } pos *= 2 } fmt.">
-<meta property="og:title" content="Advent of code day 3 2021">
+<meta property="og:title" content="2021 Advent of code day 3">
 <meta property="og:description" content="Advent Of Code Day 3 2021
 Part One The first solution is pretty simple, so I just brute forced it.
 func oneDay3() { file, err := os.Open(&#34;input3.txt&#34;) if err != nil { panic(err) } defer file.Close() scanner := bufio.NewScanner(file) arr := make([]int, 12) gamma := 0 epsilon := 0 pos := 1 for scanner.Scan() { temp := scanner.Text() for i := 0; i < len(temp); i++ { if temp[i] == '1' { arr[i]++ } else { arr[i]-- } } } for i := len(arr) - 1; i >= 0; i-- { if arr[i] > 0 { gamma += pos } else { epsilon += pos } pos *= 2 } fmt.">
@@ -72,7 +72,7 @@ func oneDay3() { file, err := os.Open(&#34;input3.txt&#34;) if err != nil { pani
 </p>
 </div>
 <article>
-<h2 class=post-title><a href=https://nathannaveen.dev/adventofcode/advent-of-code-day-3/>Advent of code day 3 2021</a></h2>
+<h2 class=post-title><a href=https://nathannaveen.dev/adventofcode/advent-of-code-day-3/>2021 Advent of code day 3</a></h2>
 <div class=post-content>
 <p><a href=https://adventofcode.com/2021/day/3>Advent Of Code Day 3 2021</a></p>
 <h2 id=part-one>Part One</h2>
