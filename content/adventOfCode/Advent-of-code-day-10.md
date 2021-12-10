@@ -2,7 +2,7 @@
 title: "2021 Advent of Code Day 10"
 date: { .Date }
 toc: false
-images:
+images: https://beny23.github.io/images/advent_of_code_title.jpg
 tags: [Advent Of Code, golang]
 ---
 
