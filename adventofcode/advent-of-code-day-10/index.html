@@ -13,7 +13,7 @@ func oneDay10() int { input, _ := ioutil.ReadFile(&amp;#34;input10.txt&amp;#34;)
 <meta name=theme-color content>
 <link rel=canonical href=https://nathannaveen.dev/adventofcode/advent-of-code-day-10/>
 <title>
-2021 Advent of Code Day 10 :: nathan naveen — my blog
+2021 Advent of code day 10 :: nathan naveen — my blog
 </title>
 <link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css rel=stylesheet type=text/css>
 <link rel=stylesheet href=/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css>
@@ -25,7 +25,7 @@ func oneDay10() int { input, _ := ioutil.ReadFile(&amp;#34;input10.txt&amp;#34;)
 <link rel="shortcut icon" href=/favicon.ico>
 <meta name=msapplication-TileColor content>
 <meta name=theme-color content>
-<meta itemprop=name content="2021 Advent of Code Day 10">
+<meta itemprop=name content="2021 Advent of code day 10">
 <meta itemprop=description content="Day 10 puzzle
 The idea of both solutions is to just use a stack.
 For the first part we just have to detect whether we have an incorrect line.
@@ -34,12 +34,12 @@ func oneDay10() int { input, _ := ioutil.ReadFile(&#34;input10.txt&#34;) var arr
 <meta itemprop=keywords content="Advent Of Code,golang,">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://nathannaveen.dev">
-<meta name=twitter:title content="2021 Advent of Code Day 10">
+<meta name=twitter:title content="2021 Advent of code day 10">
 <meta name=twitter:description content="Day 10 puzzle
 The idea of both solutions is to just use a stack.
 For the first part we just have to detect whether we have an incorrect line.
 func oneDay10() int { input, _ := ioutil.ReadFile(&#34;input10.txt&#34;) var arr = strings.Split(string(input), &#34;\n&#34;) res := 0 for _, line := range arr { stack := []string{} for i := 0; i < len(line); i++ { char := string(line[i]) if char == &#34;(&#34; || char == &#34;[&#34; || char == &#34;{&#34; || char == &#34;<&#34; { stack = append(stack, char) } else { pop := stack[len(stack)-1] stack = stack[:len(stack)-1] if char == &#34;)&#34; && pop !">
-<meta property="og:title" content="2021 Advent of Code Day 10">
+<meta property="og:title" content="2021 Advent of code day 10">
 <meta property="og:description" content="Day 10 puzzle
 The idea of both solutions is to just use a stack.
 For the first part we just have to detect whether we have an incorrect line.
@@ -76,7 +76,7 @@ func oneDay10() int { input, _ := ioutil.ReadFile(&#34;input10.txt&#34;) var arr
 </p>
 </div>
 <article>
-<h2 class=post-title><a href=https://nathannaveen.dev/adventofcode/advent-of-code-day-10/>2021 Advent of Code Day 10</a></h2>
+<h2 class=post-title><a href=https://nathannaveen.dev/adventofcode/advent-of-code-day-10/>2021 Advent of code day 10</a></h2>
 <div class=post-content>
 <p><a href=https://adventofcode.com/2021/day/10>Day 10 puzzle</a></p>
 <p>The idea of both solutions is to just use a stack.</p>
