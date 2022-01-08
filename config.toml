@@ -63,3 +63,7 @@ url  = "https://github.com/nathannaveen"
     identifier = "advent of code"
     name       = "advent of code"
     url        = "/adventOfCode"
+  [[menu.main]]
+    identifier = "yearly achievements"
+    name       = "yearly achievements"
+    url        = "/yearlyAchievements"
