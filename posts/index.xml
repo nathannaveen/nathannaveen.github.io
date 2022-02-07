@@ -43,6 +43,38 @@ If we want the minimum sum, we just have to add the two minimum numbers together
     
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">new1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">new2</span>
 }
+</code></pre></div>]]></content></item><item><title>Leetcode 23</title><link>https://nathannaveen.dev/posts/leetcode-23/</link><pubDate>Mon, 07 Feb 2022 10:21:53 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-23/</guid><description>23. Merge k Sorted Lists
+I think that the idea of this solution can be shown bellow:
+func mergeKLists(lists []*ListNode) *ListNode { res := &amp;amp;ListNode{} cur := res done := false for !done { done = true min := 10000 for _, list := range lists { if list != nil &amp;amp;&amp;amp; list.Val &amp;lt; min { min = list.Val done = false } } for i := range lists { if lists[i] !</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/merge-k-sorted-lists/">23. Merge k Sorted Lists</a></p>
+<p>I think that the idea of this solution can be shown bellow:</p>
+<p><img src="https://i.imgur.com/NEf5Pv9.gif" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">mergeKLists</span>(<span style="color:#a6e22e">lists</span> []<span style="color:#f92672">*</span><span style="color:#a6e22e">ListNode</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">ListNode</span> {
+    <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">ListNode</span>{}
+    <span style="color:#a6e22e">cur</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">res</span>
+    <span style="color:#a6e22e">done</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">false</span>
+    
+    <span style="color:#66d9ef">for</span> !<span style="color:#a6e22e">done</span> {
+        <span style="color:#a6e22e">done</span> = <span style="color:#66d9ef">true</span>
+        <span style="color:#a6e22e">min</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">10000</span>
+        
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">list</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">lists</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">list</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">Val</span> &lt; <span style="color:#a6e22e">min</span> {
+                <span style="color:#a6e22e">min</span> = <span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">Val</span>
+                <span style="color:#a6e22e">done</span> = <span style="color:#66d9ef">false</span>
+            }
+        }
+        
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">lists</span> {
+            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">lists</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">lists</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">Val</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">min</span> {
+                <span style="color:#a6e22e">cur</span>.<span style="color:#a6e22e">Next</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">ListNode</span>{ <span style="color:#a6e22e">Val</span>: <span style="color:#a6e22e">min</span> }
+                <span style="color:#a6e22e">cur</span> = <span style="color:#a6e22e">cur</span>.<span style="color:#a6e22e">Next</span>
+                <span style="color:#a6e22e">lists</span>[<span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">lists</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">Next</span>
+            }
+        }
+    }
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Next</span>
+}
 </code></pre></div>]]></content></item><item><title>Leetcode 490</title><link>https://nathannaveen.dev/posts/leetcode-490/</link><pubDate>Fri, 04 Feb 2022 12:12:59 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-490/</guid><description>490. The Maze
 The idea of this solution is to use BFS to find every path. And then if we find a path that leads to the destination we can return true.
 I made a gif that basicly gives an example of all paths from start. Note that this is the same example as the problem statment.
