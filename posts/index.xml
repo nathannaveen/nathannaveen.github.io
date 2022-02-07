@@ -1,4 +1,49 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Fri, 04 Feb 2022 12:12:59 -0600</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 490</title><link>https://nathannaveen.dev/posts/leetcode-490/</link><pubDate>Fri, 04 Feb 2022 12:12:59 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-490/</guid><description>490. The Maze
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Posts on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 07 Feb 2022 10:21:59 -0600</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 2160</title><link>https://nathannaveen.dev/posts/leetcode-2160/</link><pubDate>Mon, 07 Feb 2022 10:21:59 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2160/</guid><description>2160. Minimum Sum of Four Digit Number After Splitting Digits
+How This Solution Works: The idea of this solution is pretty simple and relies on the fact that the minimum number is made by making the biggest number the last digit and the smallest number the first. For example: If we use the digits [4, 6, 1, 3, 0, 9], the minimum number we can make is 013469.
+If we want the minimum sum, we just have to add the two minimum numbers together and get the minimum sum.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/minimum-sum-of-four-digit-number-after-splitting-digits/">2160. Minimum Sum of Four Digit Number After Splitting Digits</a></p>
+<h2 id="how-this-solution-works">How This Solution Works:</h2>
+<p>The idea of this solution is pretty simple and relies on the fact that the minimum number is made by making the biggest number the last digit and the smallest number the first. For example: If we use the digits <code>[4, 6, 1, 3, 0, 9]</code>, the minimum number we can make is <code>013469</code>.</p>
+<p>If we want the minimum sum, we just have to add the two minimum numbers together and get the minimum sum.</p>
+<p>So let us say that we have <code>num = 4009</code>. We have the digits <code>[0, 0, 4, 9]</code>. Then the two minimum numbers that we can make are <code>04</code>, and <code>09</code>.</p>
+<ul>
+<li>For <code>new1</code>, the tens digit can be the smallest digit, <code>0</code>.</li>
+<li>For <code>new2</code>, the tens digit can be the second smallest digit, <code>0</code>.</li>
+<li>For <code>new1</code>, the ones digit can be the third smallest digit, <code>4</code>.</li>
+<li>For <code>new2</code>, the ones digit can be the fourth smallest digit, <code>9</code>.</li>
+</ul>
+<hr>
+<h2 id="walk-through-the-code">Walk Through the Code:</h2>
+<ul>
+<li>We can first add all the digits into the <code>digits</code> array.</li>
+<li>Then we can sort <code>digits</code>.</li>
+<li>The we can do <code>new1 := digits[0] * 10 + digits[2]</code>. This is baisically:
+<ul>
+<li>We do <code>digits[0] * 10</code>. This basically = <code>Minimum number * 10</code>. We do the <code>* 10</code> because this is how we make <code>digits[0]</code> into the tens digit.</li>
+</ul>
+</li>
+<li>The we can do <code>new2 := digits[1] * 10 + digits[3]</code>. This is baisically:
+<ul>
+<li>We do <code>digits[1] * 10</code>. This basically = <code>Second minimum number * 10</code>. We do the <code>* 10</code> because this is how we make <code>digits[1]</code> into the tens digit.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">minimumSum</span>(<span style="color:#a6e22e">num</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#a6e22e">digits</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{}
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">num</span> &gt; <span style="color:#ae81ff">0</span> {
+        <span style="color:#a6e22e">digits</span> = append(<span style="color:#a6e22e">digits</span>, <span style="color:#a6e22e">num</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>)
+        <span style="color:#a6e22e">num</span> <span style="color:#f92672">/=</span> <span style="color:#ae81ff">10</span>
+    }
+    
+    <span style="color:#a6e22e">sort</span>.<span style="color:#a6e22e">Ints</span>(<span style="color:#a6e22e">digits</span>)
+    
+    <span style="color:#a6e22e">new1</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">digits</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">digits</span>[<span style="color:#ae81ff">2</span>]
+    <span style="color:#a6e22e">new2</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">digits</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">digits</span>[<span style="color:#ae81ff">3</span>]
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">new1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">new2</span>
+}
+</code></pre></div>]]></content></item><item><title>Leetcode 490</title><link>https://nathannaveen.dev/posts/leetcode-490/</link><pubDate>Fri, 04 Feb 2022 12:12:59 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-490/</guid><description>490. The Maze
 The idea of this solution is to use BFS to find every path. And then if we find a path that leads to the destination we can return true.
 I made a gif that basicly gives an example of all paths from start. Note that this is the same example as the problem statment.
 While in the gif we just see the paths, in the code we have to make the path, meaning that we have to make a path one move at a time.</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/the-maze/">490. The Maze</a></p>
