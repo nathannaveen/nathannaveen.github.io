@@ -59,11 +59,15 @@ url  = "https://github.com/nathannaveen"
     identifier = "blog"
     name       = "leetcode posts"
     url        = "/posts"
+#  [[menu.main]]
+#    identifier = "advent of code"
+#    name       = "advent of code"
+#    url        = "/adventOfCode"
+#  [[menu.main]]
+#    identifier = "yearly achievements"
+#    name       = "yearly achievements"
+#    url        = "/yearlyAchievements"
   [[menu.main]]
-    identifier = "advent of code"
-    name       = "advent of code"
-    url        = "/adventOfCode"
-  [[menu.main]]
-    identifier = "yearly achievements"
-    name       = "yearly achievements"
-    url        = "/yearlyAchievements"
+  identifier = "extra stuff"
+  name       = "extra stuff"
+  url        = "/extraStuff"
