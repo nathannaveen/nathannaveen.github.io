@@ -33,10 +33,13 @@ paginate     = 20
 name = "leetcode"
 url  = "https://leetcode.com/nathannaveen/"
 
-
 [[params.social]]
 name = "github"
 url  = "https://github.com/nathannaveen"
+
+[[params.social]]
+name = "codingame"
+url  = "https://www.codingame.com/profile/0de21d71db989ac4f407813c32bccfea0415684"
 
 [languages]
   [languages.en]
@@ -59,14 +62,6 @@ url  = "https://github.com/nathannaveen"
     identifier = "blog"
     name       = "leetcode posts"
     url        = "/posts"
-#  [[menu.main]]
-#    identifier = "advent of code"
-#    name       = "advent of code"
-#    url        = "/adventOfCode"
-#  [[menu.main]]
-#    identifier = "yearly achievements"
-#    name       = "yearly achievements"
-#    url        = "/yearlyAchievements"
   [[menu.main]]
   identifier = "kitchenSink"
   name       = "kitchen sink"
