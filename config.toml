@@ -70,4 +70,4 @@ url  = "https://github.com/nathannaveen"
   [[menu.main]]
   identifier = "kitchenSink"
   name       = "kitchen sink"
-  url        = "/kitchenSink"
+  url        = "/sink"
