@@ -37,6 +37,10 @@ url  = "https://leetcode.com/nathannaveen/"
 name = "github"
 url  = "https://github.com/nathannaveen"
 
+[[params.social]]
+name = "codingame"
+url  = "https://www.codingame.com/profile/0de21d71db989ac4f407813c32bccfea0415684"
+
 [languages]
   [languages.en]
     title = "nathan naveen"
@@ -59,6 +63,10 @@ url  = "https://github.com/nathannaveen"
     name       = "leetcode posts"
     url        = "/posts"
   [[menu.main]]
-  identifier = "kitchenSink"
-  name       = "kitchen sink"
-  url        = "/sink"
+    identifier = "kitchenSink"
+    name       = "kitchen sink"
+    url        = "/sink"
+  [[menu.main]]
+    identifier = "resume"
+    name       = "resume"
+    url        = "/resume"
