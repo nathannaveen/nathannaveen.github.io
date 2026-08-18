@@ -1,5 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>bit manipulation on nathan naveen</title><link>https://nathannaveen.dev/tags/bit-manipulation/</link><description>Recent content in bit manipulation on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 16 Jun 2021 11:19:38 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/tags/bit-manipulation/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1318</title><link>https://nathannaveen.dev/posts/leetcode-1318/</link><pubDate>Wed, 16 Jun 2021 11:19:38 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1318/</guid><description>1318. Minimum Flips to Make a OR b Equal to c
-The idea of this solution is pretty simple because getting a || b == c means that:
-If the last bit of c is 1: a can be either 1 if b is 1 or b is 0, or 0 if b is 1 Else if the last bit of c is 0: a and b have to be 0 because 0 || 0 == 0 is the only case which == 0.</description></item><item><title>Leetcode 1016</title><link>https://nathannaveen.dev/posts/leetcode-1016/</link><pubDate>Fri, 26 Feb 2021 13:58:32 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1016/</guid><description>1016. Binary String With Substrings Representing 1 To N
-The idea of this solution is to loop through 1...N and then make the string by adding the bytes to a string called s. Then check if S contains the reversed string of the bytes. The string s is reversed by a helper function.
-func queryString(S string, N int) bool { for i := 1; i &amp;lt;= N; i++ { s := &amp;#34;&amp;#34; n := i for n &amp;gt; 0 { if n &amp;amp; 1 == 1 { s += &amp;#34;1&amp;#34; } else { s += &amp;#34;0&amp;#34; } n &amp;gt;&amp;gt;= 1 } if !</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bit Manipulation on nathan naveen</title><link>https://nathannaveen.dev/tags/bit-manipulation/</link><description>Recent content in Bit Manipulation on nathan naveen</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Wed, 16 Jun 2021 11:19:38 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/tags/bit-manipulation/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1318</title><link>https://nathannaveen.dev/posts/leetcode-1318/</link><pubDate>Wed, 16 Jun 2021 11:19:38 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1318/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/"&gt;1318. Minimum Flips to Make a OR b Equal to c&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The idea of this solution is pretty simple because getting &lt;code&gt;a || b == c&lt;/code&gt; means that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the last bit of &lt;code&gt;c&lt;/code&gt; is &lt;code&gt;1&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;a&lt;/code&gt; can be either &lt;code&gt;1&lt;/code&gt; if &lt;code&gt;b&lt;/code&gt; is &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;b&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt;, or &lt;code&gt;0&lt;/code&gt; if &lt;code&gt;b&lt;/code&gt; is &lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Else if the last bit of &lt;code&gt;c&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; have to be &lt;code&gt;0&lt;/code&gt; because &lt;code&gt;0 || 0 == 0&lt;/code&gt; is the only case which &lt;code&gt;== 0&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here is an example of what we do in the code:&lt;/p&gt;</description></item><item><title>Leetcode 1016</title><link>https://nathannaveen.dev/posts/leetcode-1016/</link><pubDate>Fri, 26 Feb 2021 13:58:32 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1016/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/binary-string-with-substrings-representing-1-to-n/"&gt;1016. Binary String With Substrings Representing 1 To N&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The idea of this solution is to loop through &lt;code&gt;1...N&lt;/code&gt; and then make the string by adding the bytes to a string called &lt;code&gt;s&lt;/code&gt;. Then check if &lt;code&gt;S&lt;/code&gt; contains the reversed string of the bytes. The string &lt;code&gt;s&lt;/code&gt; is reversed by a helper function.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;func queryString(S string, N int) bool {
+ for i := 1; i &amp;lt;= N; i++ {
+ s := &amp;#34;&amp;#34;
+ n := i
+
+ for n &amp;gt; 0 {
+ if n &amp;amp; 1 == 1 {
+ s += &amp;#34;1&amp;#34;
+ } else {
+ s += &amp;#34;0&amp;#34;
+ }
+ n &amp;gt;&amp;gt;= 1
+ }
+ if !strings.Contains(S, reverse(s)) {
+ return false
+ }
+ }
+ return true
+}
+
+func reverse(s string) string {
+ res := &amp;#34;&amp;#34;
+
+ for _, i := range s {
+ res = string(i) + res
+ }
+ return res
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This solution is pretty much the same as the first solution but this solution doesn&amp;rsquo;t use a outside function to reverse.&lt;/p&gt;</description></item></channel></rss>

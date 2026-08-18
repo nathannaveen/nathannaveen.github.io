@@ -1,14 +1,171 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>substrings on nathan naveen</title><link>https://nathannaveen.dev/tags/substrings/</link><description>Recent content in substrings on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 19 Jan 2022 13:01:07 -0600</lastBuildDate><atom:link href="https://nathannaveen.dev/tags/substrings/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 2083</title><link>https://nathannaveen.dev/posts/leetcode-2083/</link><pubDate>Wed, 19 Jan 2022 13:01:07 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2083/</guid><description>2083. Substrings That Begin and End With the Same Letter
-func numberOfSubstrings(s string) int64 { m := make(map[rune] int) res := int64(0) for _, letter := range s { m[letter]++ res += int64(m[letter]) } return res } The second solution is the fun solution. We can find the number of substrings, the beginning, and the end in the same letter. To show how this is done, we can take an example of &amp;quot;aaaaaa&amp;quot;:</description></item><item><title>Leetcode 1100</title><link>https://nathannaveen.dev/posts/leetcode-1100/</link><pubDate>Fri, 16 Apr 2021 10:48:46 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1100/</guid><description>1100. Find K-Length Substrings With No Repeated Characters
-The Idea Of This Solution:
-This solution aims to use a counter called counter to count the number of duplicates. Also, when counter == 0, the substring has no duplicates.
-How This Solution Works:
-First, we make the variables counter, res, and m. counter is the duplicate counter, res is the resulting number of substrings that have unique characters, and m is a map that is used to find out whether a character is a duplicate.</description></item><item><title>Leetcode 1071</title><link>https://nathannaveen.dev/posts/leetcode-1071/</link><pubDate>Fri, 09 Apr 2021 10:56:57 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1071/</guid><description>1071. Greatest Common Divisor of Strings The idea of this solution is actually pretty simple. But before we go into the problem, we have to know that a string with a common factor has a prefix (the definition of a prefix is the beginning characters of a string, a prefix can be any length) that is repeated throughout the string. This can be shown using some examples:
-&amp;quot;abcdabcdabcd&amp;quot; we know that the repeated substring is &amp;quot;abcd&amp;quot;, and we can see that &amp;quot;abcd&amp;quot; is a prefix.</description></item><item><title>Leetcode 833</title><link>https://nathannaveen.dev/posts/leetcode-833/</link><pubDate>Thu, 04 Mar 2021 10:24:54 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-833/</guid><description>833. Find And Replace in String
-func findReplaceString(S string, indexes []int, sources []string, targets []string) string { res := &amp;#34;&amp;#34; for i := 0; i &amp;lt; len(S); i++ { index := 0 // this is the index that is used for indexes, sources, and targets for i2, i3 := range indexes { if i3 == i { index = i2 // we do this because the indexes are not sorted } } if index &amp;lt; len(indexes) &amp;amp;&amp;amp; i == indexes[index] { currentString := sources[index] isSubstring := true for i2 := range currentString { // checking whether the whole substring is equal if string(S[i+i2]) !</description></item><item><title>Leetcode 647</title><link>https://nathannaveen.dev/posts/leetcode-647/</link><pubDate>Mon, 01 Mar 2021 09:27:16 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-647/</guid><description>647. Palindromic Substrings
-func countSubstrings(s string) int { res := 0 for i := 0; i &amp;lt; len(s); i++ { for j := 0; j &amp;lt;= len(s)-i; j++ { if s[j:j+i] != &amp;#34;&amp;#34; &amp;amp;&amp;amp; isPalindromic(s[j:j+i]) { res++ } } } if isPalindromic(s) { res++ } return res } func isPalindromic(s string) bool { left, right := 0, len(s)-1 for left &amp;lt;= right { if s[left] != s[right] { return false } left++ right-- } return true }</description></item><item><title>Leetcode 459</title><link>https://nathannaveen.dev/posts/leetcode-459/</link><pubDate>Sun, 28 Feb 2021 14:46:05 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-459/</guid><description>459. Repeated Substring Pattern
-The idea of this solution is any substring that is repeated throughout the string s has to start at the 0&amp;lsquo;th index and end at another index, such as the 3&amp;lsquo;ed. This can be shown by using a image.
-In both the examples the substrings that are repeated are green.
-In the first example the substring abc starts at the 0&amp;lsquo;th index and ends at the 2&amp;rsquo;d index.</description></item><item><title>Leetcode 5</title><link>https://nathannaveen.dev/posts/leetcode-5/</link><pubDate>Sun, 28 Feb 2021 11:41:58 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-5/</guid><description>5. Longest Palindromic Substring
-In this solution we dont have to check whether the palindrome substring is greater than the max length substring because the length of the substring will always be greater than or equal to the length of the current max substring. This can be show in an image:
-func longestPalindrome(s string) string { max := &amp;#34;&amp;#34; for i := 0; i &amp;lt; len(s); i++ { for j := 0; j &amp;lt;= len(s)-i; j++ { if isPalindromic(s[j : j + i]) { max = s[j : j + i] // getting the substring } } } if isPalindromic(s) { max = s } return max } func isPalindromic(s string) bool { left, right := 0, len(s) - 1 for left &amp;lt; right { if s[left] !</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Substrings on nathan naveen</title><link>https://nathannaveen.dev/tags/substrings/</link><description>Recent content in Substrings on nathan naveen</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Wed, 19 Jan 2022 13:01:07 -0600</lastBuildDate><atom:link href="https://nathannaveen.dev/tags/substrings/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 2083</title><link>https://nathannaveen.dev/posts/leetcode-2083/</link><pubDate>Wed, 19 Jan 2022 13:01:07 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2083/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/substrings-that-begin-and-end-with-the-same-letter/"&gt;2083. Substrings That Begin and End With the Same Letter&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;numberOfSubstrings&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;int64&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;m&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; make(&lt;span style="color:#66d9ef"&gt;map&lt;/span&gt;[&lt;span style="color:#66d9ef"&gt;rune&lt;/span&gt;] &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; int64(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;letter&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;range&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;m&lt;/span&gt;[&lt;span style="color:#a6e22e"&gt;letter&lt;/span&gt;]&lt;span style="color:#f92672"&gt;++&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt; &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; int64(&lt;span style="color:#a6e22e"&gt;m&lt;/span&gt;[&lt;span style="color:#a6e22e"&gt;letter&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The second solution is the fun solution. We can find the number of substrings, the beginning, and the end in the same letter. To show how this is done, we can take an example of &lt;code&gt;&amp;quot;aaaaaa&amp;quot;&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/H5jFMVU.jpg" alt=""&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Note that in this image, I am only pointing to the start and end letter of the substring.&lt;/li&gt;
+&lt;li&gt;As you can see in the image, we can get a certain number of substrings in a string of 6 letters:
+&lt;ul&gt;
+&lt;li&gt;We can get &lt;code&gt;1&lt;/code&gt; substring of length &lt;code&gt;6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;We can get &lt;code&gt;2&lt;/code&gt; substrings of length &lt;code&gt;5&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;We can get &lt;code&gt;3&lt;/code&gt; substrings of length &lt;code&gt;4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;We can get &lt;code&gt;4&lt;/code&gt; substrings of length &lt;code&gt;3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;We can get &lt;code&gt;5&lt;/code&gt; substrings of length &lt;code&gt;2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;We can get &lt;code&gt;6&lt;/code&gt; substrings of length &lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Now if we add all the substrings together we get &lt;code&gt;1 + 2 + 3 + 4 + 5 + 6 = 21&lt;/code&gt;. This is equal to the sum of the first &lt;code&gt;6&lt;/code&gt; numbers. The equation for the sum of the first &lt;code&gt;n&lt;/code&gt; numbers is &lt;code&gt;(n * (n + 1)) / 2&lt;/code&gt;, so if we make &lt;code&gt;n = 6&lt;/code&gt; then &lt;code&gt;(6 * (6 + 1)) / 2 = (6 * 7) / 2 = 42 / 2 = 21&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;numberOfSubstrings&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;int64&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;m&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; make(&lt;span style="color:#66d9ef"&gt;map&lt;/span&gt;[&lt;span style="color:#66d9ef"&gt;rune&lt;/span&gt;] &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; int64(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;letter&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;range&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;m&lt;/span&gt;[&lt;span style="color:#a6e22e"&gt;letter&lt;/span&gt;]&lt;span style="color:#f92672"&gt;++&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;_&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;val&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;range&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;m&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt; &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; int64((&lt;span style="color:#a6e22e"&gt;val&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; (&lt;span style="color:#a6e22e"&gt;val&lt;/span&gt; &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)) &lt;span style="color:#f92672"&gt;/&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 1100</title><link>https://nathannaveen.dev/posts/leetcode-1100/</link><pubDate>Fri, 16 Apr 2021 10:48:46 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1100/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/find-k-length-substrings-with-no-repeated-characters/"&gt;1100. Find K-Length Substrings With No Repeated Characters&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Idea Of This Solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This solution aims to use a counter called &lt;code&gt;counter&lt;/code&gt; to count the number of duplicates. Also, when &lt;code&gt;counter == 0&lt;/code&gt;, the substring has no duplicates.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How This Solution Works:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;First, we make the variables &lt;code&gt;counter&lt;/code&gt;, &lt;code&gt;res&lt;/code&gt;, and &lt;code&gt;m&lt;/code&gt;. &lt;code&gt;counter&lt;/code&gt; is the duplicate counter, &lt;code&gt;res&lt;/code&gt; is the resulting number of substrings that have unique characters, and &lt;code&gt;m&lt;/code&gt; is a map that is used to find out whether a character is a duplicate.&lt;/li&gt;
+&lt;li&gt;Then we loop from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;K - 1&lt;/code&gt;.
+&lt;ul&gt;
+&lt;li&gt;Inside that loop, we add one to &lt;code&gt;m[S[i]]&lt;/code&gt; (We are adding one to the character counter).&lt;/li&gt;
+&lt;li&gt;After adding one to &lt;code&gt;m[S[i]]&lt;/code&gt; we can check whether &lt;code&gt;m[S[i]] == 2&lt;/code&gt; (We are checking whether there is a duplicate). If &lt;code&gt;m[S[i]] == 2&lt;/code&gt; we have to add one to &lt;code&gt;counter&lt;/code&gt; because &lt;code&gt;counter&lt;/code&gt; counts the number of duplicates.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;After we have done the first &lt;code&gt;K&lt;/code&gt; elements, we can check whether &lt;code&gt;counter == 0&lt;/code&gt;. If so, we can add one to &lt;code&gt;res&lt;/code&gt;. If &lt;code&gt;counter == 0&lt;/code&gt;, we know that there are no duplicates.&lt;/li&gt;
+&lt;li&gt;Then we can loop from &lt;code&gt;K&lt;/code&gt; to &lt;code&gt;len(S)&lt;/code&gt;.
+&lt;ul&gt;
+&lt;li&gt;Inside that loop, we remove the first element of the substring from &lt;code&gt;m&lt;/code&gt;, and then we check whether &lt;code&gt;m[first letter of substring] == 1&lt;/code&gt;. If so, we can subtract &lt;code&gt;1&lt;/code&gt; from &lt;code&gt;counter&lt;/code&gt; because when the frequency of a letter is &lt;code&gt;1&lt;/code&gt;, we know that it is not a duplicate.&lt;/li&gt;
+&lt;li&gt;Next, we make the letter after the end of the substring the new end of the substring and add &lt;code&gt;1&lt;/code&gt; to &lt;code&gt;m[S[i]]&lt;/code&gt;. If &lt;code&gt;m[S[i]] == 2&lt;/code&gt; we know that there is a duplicate so we add &lt;code&gt;1&lt;/code&gt; to &lt;code&gt;counter&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;After adding and subtracting from &lt;code&gt;counter&lt;/code&gt;, we can check whether &lt;code&gt;counter == 0&lt;/code&gt;. We do this because if &lt;code&gt;counter == 0&lt;/code&gt;, there are no duplicates. So if &lt;code&gt;counter == 0&lt;/code&gt; we can add &lt;code&gt;1&lt;/code&gt; to &lt;code&gt;res&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;The Code:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Leetcode 1071</title><link>https://nathannaveen.dev/posts/leetcode-1071/</link><pubDate>Fri, 09 Apr 2021 10:56:57 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1071/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/greatest-common-divisor-of-strings/"&gt;1071. Greatest Common Divisor of Strings
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The idea of this solution is actually pretty simple. But before we go into the problem, we have to know that a string with a common factor has a prefix (the definition of a prefix is the beginning characters of a string, a prefix can be any length) that is repeated throughout the string. This can be shown using some examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;abcdabcdabcd&amp;quot;&lt;/code&gt; we know that the repeated substring is &lt;code&gt;&amp;quot;abcd&amp;quot;&lt;/code&gt;, and we can see that &lt;code&gt;&amp;quot;abcd&amp;quot;&lt;/code&gt; is a prefix.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;abcabcabcabc&amp;quot;&lt;/code&gt; we can see that &lt;code&gt;&amp;quot;abc&amp;quot;&lt;/code&gt; is the repeated substring, and we can see that &lt;code&gt;&amp;quot;abc&amp;quot;&lt;/code&gt; is the prefix.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So the idea of this solution is:&lt;/p&gt;</description></item><item><title>Leetcode 833</title><link>https://nathannaveen.dev/posts/leetcode-833/</link><pubDate>Thu, 04 Mar 2021 10:24:54 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-833/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/find-and-replace-in-string/"&gt;833. Find And Replace in String&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;func findReplaceString(S string, indexes []int, sources []string, targets []string) string {
+	res := &amp;#34;&amp;#34;
+
+	for i := 0; i &amp;lt; len(S); i++ {
+		index := 0 // this is the index that is used for indexes, sources, and targets
+
+		for i2, i3 := range indexes {
+			if i3 == i {
+				index = i2 // we do this because the indexes are not sorted
+			}
+		}
+
+		if index &amp;lt; len(indexes) &amp;amp;&amp;amp; i == indexes[index] {
+			currentString := sources[index]
+			isSubstring := true
+			for i2 := range currentString { // checking whether the whole substring is equal
+				if string(S[i+i2]) != string(currentString[i2]) { 
+					isSubstring = false
+					break
+				}
+			}
+
+			if isSubstring {
+				res += targets[index]
+				i += len(currentString) - 1 // we have to add to i because we dont want to repeat characters
+			} else {
+				res += string(S[i]) // if there is not a whole substring just add the character
+			}
+			index++
+		} else {
+			res += string(S[i]) // if there is no index in indexes that works for the current index
+		}
+	}
+
+	return res
+}
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Leetcode 647</title><link>https://nathannaveen.dev/posts/leetcode-647/</link><pubDate>Mon, 01 Mar 2021 09:27:16 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-647/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/palindromic-substrings/"&gt;647. Palindromic Substrings&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;func countSubstrings(s string) int {
+ res := 0
+ for i := 0; i &amp;lt; len(s); i++ {
+ for j := 0; j &amp;lt;= len(s)-i; j++ {
+ if s[j:j+i] != &amp;#34;&amp;#34; &amp;amp;&amp;amp; isPalindromic(s[j:j+i]) {
+ res++
+ }
+ }
+ }
+ if isPalindromic(s) {
+ res++
+ }
+ return res
+}
+
+func isPalindromic(s string) bool {
+ left, right := 0, len(s)-1
+
+ for left &amp;lt;= right {
+ if s[left] != s[right] {
+ return false
+ }
+ left++
+ right--
+ }
+ return true
+}
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Leetcode 459</title><link>https://nathannaveen.dev/posts/leetcode-459/</link><pubDate>Sun, 28 Feb 2021 14:46:05 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-459/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/repeated-substring-pattern/"&gt;459. Repeated Substring Pattern&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The idea of this solution is any substring that is repeated throughout the string &lt;code&gt;s&lt;/code&gt; has to start at the &lt;code&gt;0&lt;/code&gt;&amp;lsquo;th index and end at another index, such as the &lt;code&gt;3&lt;/code&gt;&amp;lsquo;ed. This can be shown by using a image.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/JB4X253.jpg" alt=""&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In both the examples the substrings that are repeated are green.&lt;/p&gt;
+&lt;p&gt;In the first example the substring &lt;code&gt;abc&lt;/code&gt; starts at the &lt;code&gt;0&lt;/code&gt;&amp;lsquo;th index and ends at the &lt;code&gt;2&lt;/code&gt;&amp;rsquo;d index.&lt;/p&gt;</description></item><item><title>Leetcode 5</title><link>https://nathannaveen.dev/posts/leetcode-5/</link><pubDate>Sun, 28 Feb 2021 11:41:58 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-5/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/longest-palindromic-substring/"&gt;5. Longest Palindromic Substring&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this solution we dont have to check whether the palindrome substring is greater than the max length substring because the length of the substring will always be greater than or equal to the length of the current max substring. This can be show in an image:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/k9YUTYG.jpg" alt=""&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;func longestPalindrome(s string) string {
+	max := &amp;#34;&amp;#34;
+	for i := 0; i &amp;lt; len(s); i++ {
+		for j := 0; j &amp;lt;= len(s)-i; j++ {
+			if isPalindromic(s[j : j + i]) {
+				max = s[j : j + i] // getting the substring
+			}
+		}
+	}
+	if isPalindromic(s) {
+		max = s
+	}
+	return max
+}
+
+func isPalindromic(s string) bool {
+	left, right := 0, len(s) - 1
+
+	for left &amp;lt; right {
+		if s[left] != s[right] {
+			return false
+		}
+		left++
+		right--
+	}
+	return true
+}
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

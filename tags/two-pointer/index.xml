@@ -1,5 +1,70 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>two pointer on nathan naveen</title><link>https://nathannaveen.dev/tags/two-pointer/</link><description>Recent content in two pointer on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 09 Mar 2021 21:04:18 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/tags/two-pointer/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1750</title><link>https://nathannaveen.dev/posts/leetcode-1750/</link><pubDate>Tue, 09 Mar 2021 21:04:18 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1750/</guid><description>1750. Minimum Length of String After Deleting Similar Ends
-The idea of this solution is pretty simple, so it can be shown with this image:
-func minimumLength(s string) int { for len(s) &amp;gt; 1 &amp;amp;&amp;amp; s[0] == s[len(s)-1] { end := s[len(s)-1] lenS := len(s) for i := 0; i &amp;lt; lenS; i++ { if s[len(s)-1] != s[0] { s = s[:len(s)-i-1] break } } lenS = len(s) for i := 0; i &amp;lt; lenS; i++ { if s[0] !</description></item><item><title>Leetcode 34</title><link>https://nathannaveen.dev/posts/leetcode-34/</link><pubDate>Tue, 02 Mar 2021 11:27:12 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-34/</guid><description>34. Find First and Last Position of Element in Sorted Array
-Both of the solutions use a two pointer approche. The first solution is slower than the second solution because it checks an extra if statment inside the loop, while the second solution checks it outside of the loop.
-func searchRange(nums []int, target int) []int { left := 0 right := len(nums) - 1 for left &amp;lt; right { if nums[left] !</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Two Pointer on nathan naveen</title><link>https://nathannaveen.dev/tags/two-pointer/</link><description>Recent content in Two Pointer on nathan naveen</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Tue, 09 Mar 2021 21:04:18 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/tags/two-pointer/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1750</title><link>https://nathannaveen.dev/posts/leetcode-1750/</link><pubDate>Tue, 09 Mar 2021 21:04:18 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1750/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends/"&gt;1750. Minimum Length of String After Deleting Similar Ends&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The idea of this solution is pretty simple, so it can be shown with this image:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/QAmU64G.jpg" alt=""&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;minimumLength&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; len(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;) &amp;gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;[len(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;)&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;end&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;[len(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;)&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;lenS&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; len(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;; &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt; &amp;lt; &lt;span style="color:#a6e22e"&gt;lenS&lt;/span&gt;; &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt;&lt;span style="color:#f92672"&gt;++&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;[len(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;)&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt; = &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;[:len(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;)&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;i&lt;/span&gt;&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;break&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;lenS&lt;/span&gt; = len(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;; &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt; &amp;lt; &lt;span style="color:#a6e22e"&gt;lenS&lt;/span&gt;; &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt;&lt;span style="color:#f92672"&gt;++&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;end&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt; = &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;i&lt;/span&gt;&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;break&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; len(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 34</title><link>https://nathannaveen.dev/posts/leetcode-34/</link><pubDate>Tue, 02 Mar 2021 11:27:12 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-34/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/"&gt;34. Find First and Last Position of Element in Sorted Array&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Both of the solutions use a two pointer approche. The first solution is slower than the second solution because it checks an extra &lt;code&gt;if&lt;/code&gt; statment inside the loop, while the second solution checks it outside of the loop.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;func searchRange(nums []int, target int) []int {
+ left := 0
+ right := len(nums) - 1
+
+ for left &amp;lt; right {
+ if nums[left] != target {
+ left++
+ }
+ if nums[right] != target {
+ right--
+ }
+ if nums[left] == target &amp;amp;&amp;amp; nums[right] == target {
+ return []int{left, right}
+ }
+ }
+
+ if len(nums) &amp;gt; 0 &amp;amp;&amp;amp; nums[left] == target &amp;amp;&amp;amp; nums[right] == target {
+ return []int{left, right}
+ }
+
+ return []int{-1, -1}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;func searchRange(nums []int, target int) []int {
+ left := 0
+ right := len(nums) - 1
+
+ for (left &amp;lt; right) &amp;amp;&amp;amp; (nums[left] != target || nums[right] != target) {
+ if nums[left] != target {
+ left++
+ }
+ if nums[right] != target {
+ right--
+ }
+ }
+
+ if len(nums) &amp;gt; 0 &amp;amp;&amp;amp; nums[left] == target &amp;amp;&amp;amp; nums[right] == target {
+ return []int{left, right}
+ }
+
+ return []int{-1, -1}
+}
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>
