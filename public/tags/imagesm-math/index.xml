@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Imagesm Math on nathan naveen</title>
+    <link>https://nathannaveen.dev/tags/imagesm-math/</link>
+    <description>Recent content in Imagesm Math on nathan naveen</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 17 Aug 2021 12:31:12 -0500</lastBuildDate>
+    <atom:link href="https://nathannaveen.dev/tags/imagesm-math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leetcode 1954</title>
+      <link>https://nathannaveen.dev/posts/leetcode-1954/</link>
+      <pubDate>Tue, 17 Aug 2021 12:31:12 -0500</pubDate>
+      <guid>https://nathannaveen.dev/posts/leetcode-1954/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/minimum-garden-perimeter-to-collect-enough-apples/&#34;&gt;1954. Minimum Garden Perimeter to Collect Enough Apples&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;For this solution, I will try to explain it with an image.&lt;/p&gt;&#xA;&lt;p&gt;I have drawn a picture to explain how this solution works. I have drawn a &lt;code&gt;2 x 2&lt;/code&gt; and a &lt;code&gt;4 x 4&lt;/code&gt; square. I will explain the reason for this later. And I have given each position a letter instead of coordinate so I can give a map with each letter and coordinate.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+body {
+  background-color: #fff;
+  background-image: url("/img/sky-pixel.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  image-rendering: pixelated;
+}
+
+html[data-theme="light"] .header,
+html[data-theme="light"] .menu {
+  background: transparent;
+}
+
+body .container {
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bit Manipulation on nathan naveen</title>
+    <link>https://nathannaveen.dev/tags/bit-manipulation/</link>
+    <description>Recent content in Bit Manipulation on nathan naveen</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Wed, 16 Jun 2021 11:19:38 -0500</lastBuildDate>
+    <atom:link href="https://nathannaveen.dev/tags/bit-manipulation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leetcode 1318</title>
+      <link>https://nathannaveen.dev/posts/leetcode-1318/</link>
+      <pubDate>Wed, 16 Jun 2021 11:19:38 -0500</pubDate>
+      <guid>https://nathannaveen.dev/posts/leetcode-1318/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/&#34;&gt;1318. Minimum Flips to Make a OR b Equal to c&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;The idea of this solution is pretty simple because getting &lt;code&gt;a || b == c&lt;/code&gt; means that:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;If the last bit of &lt;code&gt;c&lt;/code&gt; is &lt;code&gt;1&lt;/code&gt;:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;a&lt;/code&gt; can be either &lt;code&gt;1&lt;/code&gt; if &lt;code&gt;b&lt;/code&gt; is &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;b&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt;, or &lt;code&gt;0&lt;/code&gt; if &lt;code&gt;b&lt;/code&gt; is &lt;code&gt;1&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Else if the last bit of &lt;code&gt;c&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt;:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; have to be &lt;code&gt;0&lt;/code&gt; because &lt;code&gt;0 || 0 == 0&lt;/code&gt; is the only case which &lt;code&gt;== 0&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Here is an example of what we do in the code:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Leetcode 1016</title>
+      <link>https://nathannaveen.dev/posts/leetcode-1016/</link>
+      <pubDate>Fri, 26 Feb 2021 13:58:32 -0500</pubDate>
+      <guid>https://nathannaveen.dev/posts/leetcode-1016/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/binary-string-with-substrings-representing-1-to-n/&#34;&gt;1016. Binary String With Substrings Representing 1 To N&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;The idea of this solution is to loop through &lt;code&gt;1...N&lt;/code&gt; and then make the string by adding the bytes to a string called &lt;code&gt;s&lt;/code&gt;. Then check if &lt;code&gt;S&lt;/code&gt; contains the reversed string of the bytes. The string &lt;code&gt;s&lt;/code&gt; is reversed by a helper function.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;func queryString(S string, N int) bool {&#xA;    for i := 1; i &amp;lt;= N; i++ {&#xA;        s := &amp;#34;&amp;#34;&#xA;        n := i&#xA;&#xA;        for n &amp;gt; 0 {&#xA;            if n &amp;amp; 1 == 1 {&#xA;                s += &amp;#34;1&amp;#34;&#xA;            } else {&#xA;                s += &amp;#34;0&amp;#34;&#xA;            }&#xA;            n &amp;gt;&amp;gt;= 1&#xA;        }&#xA;        if !strings.Contains(S, reverse(s)) {&#xA;            return false&#xA;        }&#xA;    }&#xA;    return true&#xA;}&#xA;&#xA;func reverse(s string) string {&#xA;    res := &amp;#34;&amp;#34;&#xA;&#xA;    for _, i := range s {&#xA;        res = string(i) + res&#xA;    }&#xA;    return res&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This solution is pretty much the same as the first solution but this solution doesn&amp;rsquo;t use a outside function to reverse.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

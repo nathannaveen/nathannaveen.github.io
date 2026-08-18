@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Image on nathan naveen</title>
+    <link>https://nathannaveen.dev/tags/image/</link>
+    <description>Recent content in Image on nathan naveen</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 28 Oct 2021 15:59:00 -0500</lastBuildDate>
+    <atom:link href="https://nathannaveen.dev/tags/image/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leetcode 598</title>
+      <link>https://nathannaveen.dev/posts/leetcode-598/</link>
+      <pubDate>Thu, 28 Oct 2021 15:59:00 -0500</pubDate>
+      <guid>https://nathannaveen.dev/posts/leetcode-598/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/range-addition-ii/&#34;&gt;598. Range Addition II&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;The idea of this solution is pretty simple, the positions with the max value will be in the sub-matrix of range &lt;code&gt;0 to minimum y pos&lt;/code&gt;, and &lt;code&gt;0 to minimum x pos&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;If you don&amp;rsquo;t understand look at the example bellow:&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;input: m = 6, n = 5, ops = [[4, 3], [2, 6], [3, 5]]&lt;/code&gt; &lt;em&gt;(Note: They give the input &lt;code&gt;1-indexed&lt;/code&gt;, instead of &lt;code&gt;0-indexed&lt;/code&gt;)&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/Nz4lmSJ.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

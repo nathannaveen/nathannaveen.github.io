@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}" data-theme="light">
+    <head>
+        {{ partial "head.html" . }}
+    </head>
+
+    <body{{ if .IsHome }} class="home"{{ end }}>
+        <div class="container">
+            {{ if .IsHome }}
+            <div class="hero">
+                {{ partial "header.html" . }}
+                <div class="content">
+                    {{ block "main" . }}{{ end }}
+                </div>
+            </div>
+            {{ else }}
+                {{ partial "header.html" . }}
+                <div class="content">
+                    {{ block "main" . }}{{ end }}
+                </div>
+            {{ end }}
+
+            {{ block "footer" . }}
+                {{ partial "footer.html" . }}
+            {{ end }}
+        </div>
+
+        {{ partial "javascript.html" . }}
+    </body>
+</html>

@@ -2,16 +2,15 @@ baseurl      = "https://nathannaveen.dev"
 title        = "My Blog"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
-paginate     = 20
+
+[pagination]
+  pagerSize = 20
 
 [params]
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
-
-  # Subtitle for home
-  homeSubtitle = "A simple and beautiful blog"
 
   # Set disableReadOtherPosts to true in order to hide the links to other posts.
   disableReadOtherPosts = false
@@ -23,6 +22,8 @@ paginate     = 20
   description = "Nathan Naveens blog"
   keywords = "homepage, blog"
   images = [""]
+  themeColor = "#fafafa"
+  customCSS = ["/css/custom.css"]
 
 [taxonomies]
     category = "blog"
@@ -60,13 +61,11 @@ url  = "https://www.codingame.com/profile/0de21d71db989ac4f407813c32bccfea041568
   # And you can even create generic menu
   [[menu.main]]
     identifier = "blog"
-    name       = "leetcode posts"
+    name       = "Blog"
     url        = "/posts"
+    weight     = 1
   [[menu.main]]
-    identifier = "kitchenSink"
-    name       = "kitchen sink"
-    url        = "/sink"
-  [[menu.main]]
-    identifier = "resume"
-    name       = "resume"
-    url        = "/resume"
+    identifier = "about"
+    name       = "About"
+    url        = "/about"
+    weight     = 2
