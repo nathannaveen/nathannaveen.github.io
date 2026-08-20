@@ -15,9 +15,11 @@
   align-items: center;
 }
 
-.menu__github svg {
+.menu__github svg,
+.menu__github img {
   width: 1.5rem;
   height: 1.5rem;
+  display: block;
   fill: currentColor;
 }
 

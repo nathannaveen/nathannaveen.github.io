@@ -12,7 +12,7 @@
         {{- end }}
         <li class="menu__github">
             <a href="https://github.com/nathannaveen" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
-                {{ readFile "static/img/logo-github.svg" | safeHTML }}
+                <img src="{{ "img/logo-github.svg" | relURL }}" alt="" width="24" height="24">
             </a>
         </li>
 
