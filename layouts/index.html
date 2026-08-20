@@ -10,15 +10,6 @@
             <h1 class="hero-title">
                 {{- substr $title 0 $endStart -}}<span class="hero-title-end">{{ substr $title $endStart }}<span class="hero-character-slot"><img class="hero-character" src="/img/hero-character.png" alt=""></span></span>
             </h1>
-            {{- with .Site.Params.homeSubtitle }}
-                <p>{{.}}</p>
-            {{- end }}
-
-            {{- with .Site.Params.social }}
-                <div>
-                    {{ partial "social-icons.html" . }}
-                </div>
-            {{- end }}
         </div>
     </main>
 {{ end }}

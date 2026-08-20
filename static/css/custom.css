@@ -10,6 +10,17 @@
   margin-right: 0;
 }
 
+.menu__github a {
+  display: flex;
+  align-items: center;
+}
+
+.menu__github svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: currentColor;
+}
+
 .header__inner {
   width: 100%;
   max-width: 1000px;

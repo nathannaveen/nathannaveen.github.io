@@ -1,0 +1,34 @@
+<nav class="menu">
+    <ul class="menu__inner">
+        {{- $currentPage := . -}}
+        {{ range .Site.Menus.main -}}
+            <li>
+                {{- if or (strings.HasPrefix .URL "http://") (strings.HasPrefix .URL "https://") }}
+                <a href="{{ .URL }}" target="_blank" rel="noopener">{{ .Name }}</a>
+                {{- else }}
+                <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                {{- end }}
+            </li>
+        {{- end }}
+        <li class="menu__github">
+            <a href="https://github.com/nathannaveen" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+                {{ readFile "static/img/logo-github.svg" | safeHTML }}
+            </a>
+        </li>
+
+        {{- if .Site.Params.EnableGlobalLanguageMenu }}
+        <div class="submenu">
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">{{ .Language }}</a>
+                <div class="dropdown-content">
+                    {{ if .Site.IsMultiLingual }}
+                        {{ range $.Translations }}
+                            <a title="{{ .Language }}" href="{{ .Permalink }}">{{ .Language }}</a>
+                        {{ end }}
+                    {{ end }}
+                </div>
+            </li>
+        </div>
+        {{- end }}
+    </ul>
+</nav>
