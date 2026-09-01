@@ -1,4 +1,77 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Blog on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Thu, 03 Mar 2022 15:29:34 -0600</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 2189</title><link>https://nathannaveen.dev/posts/leetcode-2189/</link><pubDate>Thu, 03 Mar 2022 15:29:34 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2189/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/number-of-ways-to-build-house-of-cards/"&gt;2189. Number of Ways to Build House of Cards&lt;/a&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on nathan naveen</title><link>https://nathannaveen.dev/posts/</link><description>Recent content in Blog on nathan naveen</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Tue, 01 Sep 2026 08:30:00 -0500</lastBuildDate><atom:link href="https://nathannaveen.dev/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Optimizing eBPF Policies for Speed and Space (Not AI Gen)</title><link>https://nathannaveen.dev/posts/optimizing-ebpf-policies-for-speed-and-space/</link><pubDate>Tue, 01 Sep 2026 08:30:00 -0500</pubDate><guid>https://nathannaveen.dev/posts/optimizing-ebpf-policies-for-speed-and-space/</guid><description>&lt;p&gt;When writing our eBPF code, my brother and I wanted our policies to be extremely fast and space efficient, and we also wanted processes to inherit policies (while still being fast and space efficient). This blog post explains what we did to make our eBPF code fast.&lt;/p&gt;
+&lt;p&gt;This blog post is kind of long and dense, so to not keep you (the reader) on a weird cliffhanger, the short answer is “bitmasks”! I’m also pretty sure that my writing “bitmasks” just made the cliffhanger worse ;)&lt;/p&gt;</description><content type="html"><![CDATA[<p>When writing our eBPF code, my brother and I wanted our policies to be extremely fast and space efficient, and we also wanted processes to inherit policies (while still being fast and space efficient). This blog post explains what we did to make our eBPF code fast.</p>
+<p>This blog post is kind of long and dense, so to not keep you (the reader) on a weird cliffhanger, the short answer is “bitmasks”! I’m also pretty sure that my writing “bitmasks” just made the cliffhanger worse ;)</p>
+<p>Also, our code is open source, so you can find everything we talk about in this blog post at <a href="https://github.com/bomfather/agent">https://github.com/bomfather/agent</a>.</p>
+<h1 id="an-explanation-of-the-problem-we-are-trying-to-solve">An Explanation of the Problem We Are Trying To Solve</h1>
+<p>I think the easiest way to understand this problem is with an example:</p>
+<p>Imagine we are trying to send a couple of files (<code>test1</code> and <code>file1</code>) to a couple of servers, <code>1.1.1.1</code> and <code>1.1.1.2</code>. We also have two executables, <code>sendTestData.sh</code> and <code>sendFileData.sh</code>, both of which utilize <code>curl</code> to send the data up.</p>
+<p><img src="/img/BMBlogNoPolicy.jpeg" alt="test1 flows through sendTestData.sh into curl to 1.1.1.1, and file1 flows through sendFileData.sh into curl to 1.1.1.2"></p>
+<p>If the files and the server are protected resources, the policy would have to state that <code>sendTestData.sh</code> can access <code>test1</code>, and <code>sendFileData.sh</code> can access <code>file1</code>. And since <code>curl</code> has to read the contents of the files and send them to specific IPs, it can access <code>test1</code>, <code>file1</code>, and the IPs.</p>
+<p><img src="/img/BMBlogBasicPolicy.jpeg" alt="curl’s policy includes 1.1.1.1, test1, 1.1.1.2, and file1 because both scripts call it"></p>
+<p>But now we have a problem: if <code>curl</code> has access to <code>test1</code> and <code>file1</code> and access to the server&rsquo;s IPs, a malicious process could call <code>curl</code> with a file of its choosing and send it up.</p>
+<h1 id="an-overview-of-what-the-inheritance-should-do">An Overview of What the Inheritance Should Do</h1>
+<p>So how do we prevent curl from accessing the files by default, but still allow it to read them so it can send them to their respective IPs?</p>
+<p>Drum roll, please… Policy inheritance!</p>
+<p>So, the policies for <code>sendTestData.sh</code> and <code>sendFileData.sh</code> would have access to their respective files and IPs. curl wouldn’t have permission to access the files or the IPs. Then, when <code>sendTestData.sh</code> or <code>sendFileData.sh</code> calls the child process, curl gains access to the parent&rsquo;s policy.</p>
+<p>In our example, the policy would look like this: <code>sendTestData.sh</code> has access to <code>test1</code> and <code>1.1.1.1</code>, <code>sendFileData.sh</code> has access to <code>file1</code> and <code>1.1.1.2</code>, and <code>curl</code> has no access. Then, if we wanted to send <code>file1</code> up to the server, we would call <code>sendFileData.sh</code>, and it would call its child process, <code>curl</code>. But during this run, the policy for <code>curl</code> would change because it inherits <code>sendFileData.sh</code>’s policy. So, <code>curl</code> would now have access to <code>1.1.1.2</code> and <code>file1</code>, so that it can read <code>file1</code> and send the data to the server.</p>
+<p><img src="/img/BMBlogInheritance.jpeg" alt="curl inherits the parent policy, so the child policy includes 1.1.1.2 and file1"></p>
+<p>This idea has a nice side effect: since we don’t need to write policies for all child executables, the policy file is much smaller and easier to manage.</p>
+<p>Additionally, note that we don’t want to replace a child&rsquo;s policy with the parent&rsquo;s policy; instead, we want to merge them. I know that this example isn’t the best to represent merging two policies, but bear with me…</p>
+<h1 id="now-how-can-we-make-this-work">Now, how can we Make This Work?</h1>
+<p>So, this is cool… But how can we do the inheritance without taking up a crazy amount of time? Generally, merging policies takes time because we have to combine two maps. And that is where bitmasks come into the picture!</p>
+<h2 id="how-we-store-our-bitmasks">How We Store Our Bitmasks</h2>
+<p>To explain how the bitmasks work, I think it is easier to start by understanding how we pass them around.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> bitmask_array {
+</span></span><span style="display:flex;"><span>    u32 words[BITMASK_WORDS];
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> access_control {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> bitmask_array read;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> bitmask_array write;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> bitmask_array execute;
+</span></span><span style="display:flex;"><span>    u32 gpu;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> bitmask_array ip_egress;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> bitmask_array ip_exclusive_owner;
+</span></span><span style="display:flex;"><span>    u32 output_openats;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><code>access_control</code> is a struct with multiple bitmasks based on the type of access. So, for an executable, the resources it can read are stored in the read bitmask, the resources it can write to are stored in the write bitmask, etc.</p>
+<p>We use the struct <code>bitmask_array</code> as our bitmasks instead of just a u32 because <code>bitmask_array</code> is multiple u32s put together, so we can store 32 ids, 64 ids, 96 ids, etc.</p>
+<h2 id="how-the-bitmasks-work">How the Bitmasks work</h2>
+<p>Each directory/resource in the policy gets an ID, and then that ID is stored in a bit in the bitmask.</p>
+<p>For example, we have a policy that says, “this executable can read and write to <code>/data</code>, and it can write to <code>/tmp/out</code>.” Once we have this policy, the userspace code can assign IDs to these two directories; in this example, <code>/data</code> can have ID 3, and <code>/tmp/out</code> can have ID 5.</p>
+<p>So, we set bit 3 in the read and write bitmasks so we know that the executable can read and write to <code>/data</code>. We can also set bit 5 in the write bitmask so we know we can write to <code>/tmp/out</code>.</p>
+<pre tabindex="0"><code>read  = [0, 0, 1, 0, 0, 0, 0, 0, ...]
+         1  2  3  4  5  6  7  8
+
+write = [0, 0, 1, 0, 1, 0, 0, 0, ...]
+         1  2  3  4  5  6  7  8
+</code></pre><p>Then, once we have created the bitmasks in userspace, we can load them in the kernel.</p>
+<p>Next, when a process has a policy, the eBPF code copies the <code>access_control</code> into the process’s task local storage. Since <code>access_control</code> is attached to the task local storage, the process always has its permission with it, so we don’t need any map lookups to get its policy.</p>
+<p>Once we have the policy, checking whether an action is allowed isn’t too complicated; if the resource is protected, we just have to check whether the bit for the resource the executable is trying to access is set:</p>
+<pre tabindex="0"><code>allowed = (mask.words[id / 32] &amp; (1u &lt;&lt; (id % 32))) != 0;
+</code></pre><h2 id="the-inheritance-with-bitmasks">The Inheritance With Bitmasks</h2>
+<p>And we have finally gotten to the part that required all of this buildup! How do we do policy inheritance with bitmasks so that it’s very time and space efficient?</p>
+<p>Well, with bitmasks, it is actually pretty simple. We just have to bitwise OR the parent bitmasks and the child bitmasks.</p>
+<pre tabindex="0"><code>Parent:
+read  = [0, 1, 0, 0, 0, 0, 0, 0, ...]
+         1  2  3  4  5  6  7  8
+Child:
+read  = [0, 0, 0, 0, 1, 1, 0, 0, ...]
+         1  2  3  4  5  6  7  8
+
+Bitwise OR them both together:
+read  = [0, 1, 0, 0, 1, 1, 0, 0, ...]
+         1  2  3  4  5  6  7  8
+</code></pre><p>Since policy inheritance is a set union problem, and the fastest way to do a set union is with a bitwise OR. So, this is literally the fastest way to do policy inheritance.</p>
+<h2 id="even-without-inheritance-its-better-to-use-bitmasks">Even Without Inheritance, It&rsquo;s Better to Use Bitmasks</h2>
+<p>Even if we don’t care about policy inheritance, I think that using bitmasks is probably the best way to store policies in eBPF.</p>
+<p>The next best option is to assign each directory an ID in userspace, then have an array of IDs for each process in the kernel. But I feel that this is just worse than using bitmasks. Each ID stored would be a u32, so each would be 4 bytes. So, if we wanted to store 20 IDs for a process, it would be around 80 bytes. Using bitmasks is almost always more space efficient because 4 bytes allow 32 IDs, 8 bytes allow 64 IDs, etc.</p>
+<p>Additionally, bitmasks are faster than this option because we can check whether a specific ID is allowed. With an array, we would have to loop through it to check whether the ID is in the allow list.</p>
+<p>I know that someone out there reading this blog post is thinking, “Why not just use a map with IDs instead of an array so that we have O(1) lookups?” Well, the issue is that adding an element to a map isn’t 4 bytes for the u32 because the kernel needs to store the key, value, and pointers, so we are just adding more space.</p>
+<p>Additionally, I know there are a couple of other ways to store policies, and most of them have their own benefits, but I personally feel that using bitmasks is a good middle ground for storing policies in a fast and space efficient manner.</p>
+<h1 id="final-thoughts">Final Thoughts</h1>
+<p>I spent most of my time and energy writing the meat of this blog post, so I don’t really have a proper conclusion to this write up, but I guess I can say that I thought bitmasks for policy inheritance were really cool, so I decided to write this blog post! Anyways… Thanks for reading!</p>
+]]></content></item><item><title>Leetcode 2189</title><link>https://nathannaveen.dev/posts/leetcode-2189/</link><pubDate>Thu, 03 Mar 2022 15:29:34 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2189/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/number-of-ways-to-build-house-of-cards/"&gt;2189. Number of Ways to Build House of Cards&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I recommend looking at the non-memoized solution instead of the solution with dp to understand the main idea because it is a lot cleaner.&lt;/p&gt;
 &lt;p&gt;In the image below, we can see three different colored triangles and two lines on the side colored yellow. This is to depict how I can place my triangles. I find the number of triangles I can make, and then I use two of my cards to make the yellow lines.&lt;/p&gt;</description><content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/number-of-ways-to-build-house-of-cards/">2189. Number of Ways to Build House of Cards</a></p>
 <p>I recommend looking at the non-memoized solution instead of the solution with dp to understand the main idea because it is a lot cleaner.</p>

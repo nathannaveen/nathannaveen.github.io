@@ -28,6 +28,93 @@
   max-width: 1000px;
 }
 
+.post-content h1 {
+  font-size: 2rem;
+}
+
+@media (max-width: 684px) {
+  .post-content h1 {
+    font-size: 1.75rem;
+  }
+}
+
+.post-content pre:not([class*="language-"]) {
+  color: #f8f8f2;
+  background-color: #272822;
+  border-radius: 0.5em;
+  border: 0.3em solid hsl(0, 0%, 33%);
+  box-shadow: 1px 1px 0.5em black inset;
+  padding: 1em;
+}
+
+.post-content pre:not([class*="language-"]) code {
+  color: #f8f8f2;
+}
+
+.post-content a[href^="http://"]:not([href*="nathannaveen.dev"]):not([href*="localhost"]),
+.post-content a[href^="https://"]:not([href*="nathannaveen.dev"]):not([href*="localhost"]) {
+  color: #2563eb !important;
+}
+
+.post-content a[href^="http://"]:not([href*="nathannaveen.dev"]):not([href*="localhost"]):visited,
+.post-content a[href^="https://"]:not([href*="nathannaveen.dev"]):not([href*="localhost"]):visited {
+  color: #2563eb !important;
+}
+
+.post-info--top p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.post-meta-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.post-meta-right {
+  margin-left: auto;
+}
+
+.posts .pagination__buttons {
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.posts .pagination__buttons .button {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: none;
+  min-width: auto;
+}
+
+.posts .pagination__buttons .button a {
+  padding: 0;
+}
+
+.posts .pagination__buttons .button.current a {
+  pointer-events: none;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.posts .pagination__buttons .button:not(.current) a {
+  text-decoration: none;
+}
+
+.posts .pagination__buttons .button:not(.current) a:hover {
+  text-decoration: underline;
+}
+
+.posts .pagination__ellipsis {
+  color: #777;
+  user-select: none;
+}
+
 body.home .container {
   justify-content: stretch;
 }
