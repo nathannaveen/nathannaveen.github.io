@@ -1,0 +1,88 @@
+{{ if gt .Paginator.TotalPages 1 }}
+{{ $paginator := .Paginator }}
+{{ $current := $paginator.PageNumber }}
+{{ $total := $paginator.TotalPages }}
+{{ $start := 2 }}
+{{ $end := sub $total 1 }}
+
+{{ if le $current 3 }}
+    {{ $end = 4 }}
+    {{ if gt $end (sub $total 1) }}
+        {{ $end = sub $total 1 }}
+    {{ end }}
+{{ else if ge $current (sub $total 2) }}
+    {{ $start = sub $total 3 }}
+    {{ if lt $start 2 }}
+        {{ $start = 2 }}
+    {{ end }}
+{{ else }}
+    {{ $start = sub $current 1 }}
+    {{ $end = add $current 1 }}
+{{ end }}
+
+<div class="pagination">
+    <div class="pagination__buttons">
+        {{ if $paginator.HasPrev }}
+            <span class="button previous">
+                <a href="{{ $paginator.Prev.URL }}" aria-label="Previous page">
+                    <span class="button__icon">←</span>
+                </a>
+            </span>
+        {{ end }}
+
+        <span class="button{{ if eq $current 1 }} current{{ end }}">
+            {{ if eq $current 1 }}
+                <a aria-current="page">1</a>
+            {{ else }}
+                <a href="{{ (index $paginator.Pagers 0).URL }}" aria-label="Page 1">
+                    <span class="button__text">1</span>
+                </a>
+            {{ end }}
+        </span>
+
+        {{ if gt $start 2 }}
+            <span class="pagination__ellipsis" aria-hidden="true">...</span>
+        {{ end }}
+
+        {{ if ge $end $start }}
+            {{ range seq $start $end }}
+                {{ $pageNumber := . }}
+                {{ $pager := index $paginator.Pagers (sub $pageNumber 1) }}
+                <span class="button{{ if eq $pageNumber $current }} current{{ end }}">
+                    {{ if eq $pageNumber $current }}
+                        <a aria-current="page">{{ $pageNumber }}</a>
+                    {{ else }}
+                        <a href="{{ $pager.URL }}" aria-label="Page {{ $pageNumber }}">
+                            <span class="button__text">{{ $pageNumber }}</span>
+                        </a>
+                    {{ end }}
+                </span>
+            {{ end }}
+        {{ end }}
+
+        {{ if lt $end (sub $total 1) }}
+            <span class="pagination__ellipsis" aria-hidden="true">...</span>
+        {{ end }}
+
+        {{ if gt $total 1 }}
+            <span class="button{{ if eq $current $total }} current{{ end }}">
+                {{ if eq $current $total }}
+                    <a aria-current="page">{{ $total }}</a>
+                {{ else }}
+                    <a href="{{ (index $paginator.Pagers (sub $total 1)).URL }}" aria-label="Page {{ $total }}">
+                        <span class="button__text">{{ $total }}</span>
+                    </a>
+                {{ end }}
+            </span>
+        {{ end }}
+
+        {{ if $paginator.HasNext }}
+            <span class="button next">
+                <a href="{{ $paginator.Next.URL }}" aria-label="Next page">
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
