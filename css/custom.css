@@ -1,3 +1,7 @@
+html {
+  scrollbar-gutter: stable;
+}
+
 .menu__inner {
   gap: 2.5rem;
 }
