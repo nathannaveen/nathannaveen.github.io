@@ -11,7 +11,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The second solution is the fun solution. We can find the number of substrings, the beginning, and the end in the same letter. To show how this is done, we can take an example of &lt;code&gt;&amp;quot;aaaaaa&amp;quot;&lt;/code&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/H5jFMVU.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/H5jFMVU.jpg" alt=""&gt;
 &lt;ul&gt;
 &lt;li&gt;Note that in this image, I am only pointing to the start and end letter of the substring.&lt;/li&gt;
 &lt;li&gt;As you can see in the image, we can get a certain number of substrings in a string of 6 letters:
@@ -135,12 +135,12 @@ func isPalindromic(s string) bool {
 }
 &lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Leetcode 459</title><link>https://nathannaveen.dev/posts/leetcode-459/</link><pubDate>Sun, 28 Feb 2021 14:46:05 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-459/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/repeated-substring-pattern/"&gt;459. Repeated Substring Pattern&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is any substring that is repeated throughout the string &lt;code&gt;s&lt;/code&gt; has to start at the &lt;code&gt;0&lt;/code&gt;&amp;lsquo;th index and end at another index, such as the &lt;code&gt;3&lt;/code&gt;&amp;lsquo;ed. This can be shown by using a image.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/JB4X253.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/JB4X253.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;In both the examples the substrings that are repeated are green.&lt;/p&gt;
 &lt;p&gt;In the first example the substring &lt;code&gt;abc&lt;/code&gt; starts at the &lt;code&gt;0&lt;/code&gt;&amp;lsquo;th index and ends at the &lt;code&gt;2&lt;/code&gt;&amp;rsquo;d index.&lt;/p&gt;</description></item><item><title>Leetcode 5</title><link>https://nathannaveen.dev/posts/leetcode-5/</link><pubDate>Sun, 28 Feb 2021 11:41:58 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-5/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/longest-palindromic-substring/"&gt;5. Longest Palindromic Substring&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In this solution we dont have to check whether the palindrome substring is greater than the max length substring because the length of the substring will always be greater than or equal to the length of the current max substring. This can be show in an image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/k9YUTYG.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/k9YUTYG.jpg" alt=""&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;func longestPalindrome(s string) string {
 	max := &amp;#34;&amp;#34;
 	for i := 0; i &amp;lt; len(s); i++ {

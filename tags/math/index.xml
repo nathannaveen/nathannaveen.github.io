@@ -77,7 +77,8 @@
 &lt;p&gt;The idea of this solution is pretty simple, the positions with the max value will be in the sub-matrix of range &lt;code&gt;0 to minimum y pos&lt;/code&gt;, and &lt;code&gt;0 to minimum x pos&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;If you don&amp;rsquo;t understand look at the example bellow:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;input: m = 6, n = 5, ops = [[4, 3], [2, 6], [3, 5]]&lt;/code&gt; &lt;em&gt;(Note: They give the input &lt;code&gt;1-indexed&lt;/code&gt;, instead of &lt;code&gt;0-indexed&lt;/code&gt;)&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/Nz4lmSJ.png" alt=""&gt;&lt;/p&gt;</description></item><item><title>Leetcode 2006</title><link>https://nathannaveen.dev/posts/leetcode-2006/</link><pubDate>Thu, 28 Oct 2021 15:58:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2006/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/"&gt;2006. Count Number of Pairs With Absolute Difference K&lt;/a&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/Nz4lmSJ.png" alt=""&gt;
+&lt;p&gt;As you can see, all rectangles top left corner is &lt;code&gt;(0, 0)&lt;/code&gt; (I added an orange dot at &lt;code&gt;(0, 0)&lt;/code&gt;). And the sub-matrix that has the maximum values is surrounded by the yellow dotted line.&lt;/p&gt;</description></item><item><title>Leetcode 2006</title><link>https://nathannaveen.dev/posts/leetcode-2006/</link><pubDate>Thu, 28 Oct 2021 15:58:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2006/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/"&gt;2006. Count Number of Pairs With Absolute Difference K&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The main idea of this solution is &lt;code&gt;nums[i] + k = nums[j]&lt;/code&gt; and &lt;code&gt;nums[i] - k = nums[j]&lt;/code&gt;, if you don&amp;rsquo;t understand:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;|nums[i] - nums[j| = k&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Now if we took off the absolute value sign we get 2 equations:&lt;/p&gt;
@@ -112,7 +113,7 @@ nums[i] + k = nums[j]
 &lt;p&gt;Then since the mean will always be &lt;code&gt;mean = sum / (n + m)&lt;/code&gt; (the sum of elements divided by the number of elements), we know that the number of elements will always be &lt;code&gt;n + m&lt;/code&gt;. So the total number of elements will be &lt;code&gt;(n + m) * mean&lt;/code&gt;. And the sum of the missing elements will be &lt;code&gt;(n + m) * mean - sum&lt;/code&gt; (Works because of PEMDAS).&lt;/p&gt;</description></item><item><title>Leetcode 319</title><link>https://nathannaveen.dev/posts/leetcode-319/</link><pubDate>Thu, 28 Oct 2021 15:56:46 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-319/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/bulb-switcher/"&gt;319. Bulb Switcher&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Note: If you don&amp;rsquo;t understand this problem, think of it as something similar to &lt;em&gt;Seive of Eratosthenes&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;At first I didn&amp;rsquo;t understand how to go about this problem, so I drew it out. I made a graph that might be easier to understand than my drawing:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/MZP1ibF.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/MZP1ibF.png" alt=""&gt;
 &lt;ul&gt;
 &lt;li&gt;In this graph the numbers represent what round we are on (Y-axis = what round we are on).&lt;/li&gt;
 &lt;li&gt;And the bulbs represent each bulb (X-axis = what bulb we are on).&lt;/li&gt;
@@ -149,7 +150,7 @@ nums[i] + k = nums[j]
 &lt;p&gt;For an example let us use:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;input: s = &amp;quot;hvmhoasabayzzzzzd&amp;quot;, k = 1&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Leetcode 888</title><link>https://nathannaveen.dev/posts/leetcode-888/</link><pubDate>Tue, 17 Aug 2021 12:30:29 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-888/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/fair-candy-swap/"&gt;888. Fair Candy Swap&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution can be shown using the following image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/xhn1h9B.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/xhn1h9B.png" alt=""&gt;
 &lt;p&gt;&lt;strong&gt;The Code:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;fairCandySwap&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;A&lt;/span&gt; []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;B&lt;/span&gt; []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;) []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;alice&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;bob&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
@@ -181,7 +182,7 @@ nums[i] + k = nums[j]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Technically we could do the following code and solve the problem, but that isn&amp;rsquo;t the idea of the problem because Golang takes care of test cases when &lt;code&gt;n&lt;/code&gt; is negative.&lt;/p&gt;</description></item><item><title>Leetcode 504</title><link>https://nathannaveen.dev/posts/leetcode-504/</link><pubDate>Tue, 06 Jul 2021 18:25:01 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-504/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/base-7/"&gt;504. Base 7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The main idea of both solutions is to convert the number to base seven. To convert a number to base &lt;code&gt;7&lt;/code&gt; we can do something similar to converting to &lt;code&gt;base 2, 3, 4&lt;/code&gt; and so on. So if you know how to convert a number to another base you can just scroll down to the code and skip the example image.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/mEZHtJs.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/mEZHtJs.jpg" alt=""&gt;
 &lt;p&gt;&lt;strong&gt;Using Math, and then returning &lt;code&gt;string(res)&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Leetcode 1828</title><link>https://nathannaveen.dev/posts/leetcode-1828/</link><pubDate>Wed, 16 Jun 2021 11:22:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1828/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/queries-on-number-of-points-inside-a-circle/"&gt;1828. Queries on Number of Points Inside a Circle&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is to:&lt;/p&gt;
 &lt;p&gt;loop through the &lt;code&gt;queries&lt;/code&gt; and then a nested loop to go through &lt;code&gt;points&lt;/code&gt;.&lt;/p&gt;
@@ -206,20 +207,25 @@ nums[i] + k = nums[j]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 1874</title><link>https://nathannaveen.dev/posts/leetcode-1874/</link><pubDate>Wed, 16 Jun 2021 11:22:12 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1874/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/minimize-product-sum-of-two-arrays/"&gt;1874. Minimize Product Sum of Two Arrays&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of both solutions is pretty much the same: The smallest number multiplied by the greatest number always makes the smallest sum. If you don&amp;rsquo;t understand, look at the following image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/WKnSS11.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/WKnSS11.jpg" alt=""&gt;
 &lt;p&gt;In the image above, the top array is sorted in non-decreasing order, and the bottom array is sorted in non-increasing order. So when we multiply &lt;code&gt;nums1[i]&lt;/code&gt; and &lt;code&gt;nums2[i]&lt;/code&gt; together, we get the minimum product, and when we sum the products up, we get the minimum sum.&lt;/p&gt;</description></item><item><title>Leetcode 1403</title><link>https://nathannaveen.dev/posts/leetcode-1403/</link><pubDate>Wed, 16 Jun 2021 11:22:07 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1403/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/minimum-subsequence-in-non-increasing-order/"&gt;1403. Minimum Subsequence in Non-Increasing Order&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is pretty simple, we first sort &lt;code&gt;nums&lt;/code&gt; in non-increasing order and then find the sum of &lt;code&gt;nums&lt;/code&gt;. After that, we can loop through &lt;code&gt;nums&lt;/code&gt; and subtract the greatest numbers in &lt;code&gt;nums&lt;/code&gt; from the total sum and add the greatest numbers in &lt;code&gt;nums&lt;/code&gt; to a different sum. And then, we append the &lt;code&gt;num&lt;/code&gt; to &lt;code&gt;res&lt;/code&gt; (the resulting function). If the other sum is greater than the total sum, we can break out of the loop and return &lt;code&gt;res&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Leetcode 1689</title><link>https://nathannaveen.dev/posts/leetcode-1689/</link><pubDate>Wed, 16 Jun 2021 11:21:37 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1689/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/"&gt;1689. Partitioning Into Minimum Number Of Deci-Binary Numbers&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is that the max digit in &lt;code&gt;n&lt;/code&gt; will be the result. But you might be wondering why this works.&lt;/p&gt;
-&lt;p&gt;This works because the max digit can only be made by adding the max digit number of &lt;code&gt;1&lt;/code&gt;&amp;rsquo;s. If you don&amp;rsquo;t understand, look at the following image: &lt;img src="https://i.imgur.com/yqqbNtu.jpg" alt=""&gt; The first image is an example, and the second example is for anyone who doesn&amp;rsquo;t understand the first example.&lt;/p&gt;</description></item><item><title>Leetcode 36</title><link>https://nathannaveen.dev/posts/leetcode-36/</link><pubDate>Mon, 17 May 2021 09:32:30 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-36/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/valid-sudoku/"&gt;36. Valid Sudoku&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This works because the max digit can only be made by adding the max digit number of &lt;code&gt;1&lt;/code&gt;&amp;rsquo;s. If you don&amp;rsquo;t understand, look at the following image: &lt;img src="https://i.imgur.com/yqqbNtu.jpg" alt=""&gt;
+ The first image is an example, and the second example is for anyone who doesn&amp;rsquo;t understand the first example.&lt;/p&gt;</description></item><item><title>Leetcode 36</title><link>https://nathannaveen.dev/posts/leetcode-36/</link><pubDate>Mon, 17 May 2021 09:32:30 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-36/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/valid-sudoku/"&gt;36. Valid Sudoku&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The main idea of this solution is to find the rows, columns, and squares of the numbers. By squares, I mean the nine squares in the board:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/E4LLg2d.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/E4LLg2d.jpg" alt=""&gt;
 &lt;p&gt;The code goes through every position, and if the value is not a &lt;code&gt;&amp;quot;.&amp;quot;&lt;/code&gt;, we check whether the row, column, or square contains the number. If so, we can return false.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;How to Calculate The Rows And Columns&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;We check whether the row or column contains the number by using primes. We assign every row and column a prime number:&lt;/p&gt;</description></item><item><title>Leetcode 1232</title><link>https://nathannaveen.dev/posts/leetcode-1232/</link><pubDate>Sun, 25 Apr 2021 21:15:52 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1232/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/check-if-it-is-a-straight-line/"&gt;1232. Check If It Is a Straight Line&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is we use &lt;code&gt;3&lt;/code&gt; points to find whether two slopes are equal. We can use the equation:&lt;img src="https://assets.leetcode.com/users/images/b1a5e6f1-79e2-48fd-9595-97bbc4e799b5_1619403108.4592967.jpeg" alt="image"&gt;
+
 where &lt;code&gt;x0, x1, x2, y0, y1, y2&lt;/code&gt; are all coordinates: &lt;img src="https://assets.leetcode.com/users/images/436b4e59-b158-4901-b2fb-4865f2a5ab6a_1619403125.7176585.jpeg" alt="image"&gt;
+
 You might not understand the equation, so we can multiply divide both sides by &lt;code&gt;(x1 - x0)&lt;/code&gt; and &lt;code&gt;(x2 - x1)&lt;/code&gt; and we can get: &lt;img src="https://assets.leetcode.com/users/images/a9321f76-d54f-4003-bed0-b772c0a5867f_1619403157.863461.jpeg" alt="image"&gt;
+
 The equation above is based off of a familar slope equation: &lt;img src="https://assets.leetcode.com/users/images/a9f5ac94-57c1-476b-8747-e67e32b34b13_1619403182.6362567.jpeg" alt="image"&gt;
+
 The reason we are doing the original equation instead of the where we have divided both sides by &lt;code&gt;(x1 - x0)&lt;/code&gt; and &lt;code&gt;(x2 - x1)&lt;/code&gt; is we don&amp;rsquo;t have to worry about dividing by &lt;code&gt;0&lt;/code&gt; such as when we divide both sides by &lt;code&gt;(x1 - x0)&lt;/code&gt; and &lt;code&gt;(x2 - x1)&lt;/code&gt; but &lt;code&gt;(x1 - x0) = 0&lt;/code&gt; or &lt;code&gt;(x2 - x1) = 0&lt;/code&gt; we have to contumplate what to do.&lt;/p&gt;</description></item><item><title>Leetcode 748</title><link>https://nathannaveen.dev/posts/leetcode-748/</link><pubDate>Sun, 25 Apr 2021 11:08:04 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-748/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/shortest-completing-word/"&gt;Shortest Completing Word&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Here is how I got to this solution. I couldn&amp;rsquo;t think of any way to solve this problem without doing a naive solution, so I looked at the discussion and saw &lt;a href="https://leetcode.com/problems/shortest-completing-word/discuss/158110/Java-6ms-beats-100-PRIME-NUMBERS"&gt;jmcelvenny&amp;rsquo;s solution&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The idea of this solution is:&lt;/p&gt;
@@ -266,7 +272,8 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;li&gt;While iterating through &lt;code&gt;numRows&lt;/code&gt; we have to make an array called &lt;code&gt;temp&lt;/code&gt;. It is going to be our current row.&lt;/li&gt;
 &lt;li&gt;We make &lt;code&gt;temp[0]&lt;/code&gt; and &lt;code&gt;temp[len(temp)]&lt;/code&gt; equal to &lt;code&gt;1&lt;/code&gt; so we get the outer &lt;code&gt;1&lt;/code&gt;&amp;rsquo;s.&lt;/li&gt;
 &lt;li&gt;Then we loop through the middle elements (basically excluding the outside &lt;code&gt;1&lt;/code&gt;&amp;rsquo;s)&lt;/li&gt;
-&lt;li&gt;We have to make every &lt;code&gt;temp[j]&lt;/code&gt; equal to the previous rows &lt;code&gt;previous rows[j - 1] + previous rows[j]&lt;/code&gt;. We do &lt;code&gt;j - 1&lt;/code&gt; and &lt;code&gt;j&lt;/code&gt;. If you don&amp;rsquo;t understand, why look at the image below: &lt;img src="https://i.imgur.com/KLtNp7P.png" alt=""&gt;&lt;/li&gt;
+&lt;li&gt;We have to make every &lt;code&gt;temp[j]&lt;/code&gt; equal to the previous rows &lt;code&gt;previous rows[j - 1] + previous rows[j]&lt;/code&gt;. We do &lt;code&gt;j - 1&lt;/code&gt; and &lt;code&gt;j&lt;/code&gt;. If you don&amp;rsquo;t understand, why look at the image below: &lt;img src="https://i.imgur.com/KLtNp7P.png" alt=""&gt;
+&lt;/li&gt;
 &lt;li&gt;Then we append &lt;code&gt;temp&lt;/code&gt; to &lt;code&gt;res&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;After iterating, we can return &lt;code&gt;res&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
@@ -276,11 +283,11 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;p&gt;The problem gives us an array where &lt;code&gt;arr[i] = (2 * i) + 1&lt;/code&gt;, you could make an array where every &lt;code&gt;arr[i] = (2 * i) + 1&lt;/code&gt; but I am just going to tell you that this plots a sequence of odd integers. Bascily &lt;code&gt;arr[1, 3, 5 ... nth odd number]&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Leetcode 892</title><link>https://nathannaveen.dev/posts/leetcode-892/</link><pubDate>Fri, 09 Apr 2021 10:56:50 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-892/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/surface-area-of-3d-shapes/"&gt;892. Surface Area of 3D Shapes&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The Idea Of This Solution:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This solution uses the fact that each stack of cubes surface area is the equation &lt;code&gt;2 + 4 * v&lt;/code&gt;. This works because each cube has &lt;code&gt;6&lt;/code&gt; sides. This can be shown using some images:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/jVZR9I5.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/jVZR9I5.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;We can see that each cube has &lt;code&gt;6&lt;/code&gt; planes. There are &lt;code&gt;4&lt;/code&gt; sides, &lt;code&gt;1&lt;/code&gt; top, and &lt;code&gt;1&lt;/code&gt; bottom.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/9Vt9RPI.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/9Vt9RPI.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Now, as we can see, there are &lt;code&gt;10&lt;/code&gt; units of surface area while the other one only had &lt;code&gt;6&lt;/code&gt;, there are &lt;code&gt;8&lt;/code&gt; sides, &lt;code&gt;1&lt;/code&gt; top, and &lt;code&gt;1&lt;/code&gt; bottom.&lt;/p&gt;</description></item><item><title>Leetcode 874</title><link>https://nathannaveen.dev/posts/leetcode-874/</link><pubDate>Wed, 07 Apr 2021 12:36:17 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-874/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/walking-robot-simulation/"&gt;874. Walking Robot Simulation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Warning: This solution is pretty annoying.&lt;/p&gt;
@@ -297,7 +304,7 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;p&gt;We can find the maximum area slice by finding the maximum vertical length between each horizontal portion and the maximum horizontal length between each slice and then multiplying them together to get the maximum area.&lt;/p&gt;</description></item><item><title>Leetcode 1118</title><link>https://nathannaveen.dev/posts/leetcode-1118/</link><pubDate>Thu, 01 Apr 2021 13:15:33 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1118/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/number-of-days-in-a-month/"&gt;1118. Number of Days in a Month&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To start, I wouldn&amp;rsquo;t say that this is a good interview problem because it is not an algorithmic problem.&lt;/p&gt;
 &lt;p&gt;The months and the number of days in each month can be shown in the table below:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/cBmSB5Y.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/cBmSB5Y.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;In February, it can be either &lt;code&gt;28&lt;/code&gt; days or &lt;code&gt;29&lt;/code&gt; days. &lt;code&gt;28&lt;/code&gt; days in a regular year and &lt;code&gt;29&lt;/code&gt; days in a leap year.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -413,7 +420,7 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;p&gt;&lt;strong&gt;The Main Idea&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is to find the distance from the middle of the circle to the edge of a rectangle, and if the distance is smaller than or equal to the radius, we know that the rectangle overlaps with the circle.&lt;/p&gt;
 &lt;p&gt;If you don&amp;rsquo;t understand, look at the following images:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/VlNe79P.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/VlNe79P.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;As you can see, the circle and the rectangle do not overlap, and this can be shown by the distance between the center of the circle and the closest edge of the rectangle. The length is &lt;code&gt;√8 = 2.82842712474619&lt;/code&gt;, &lt;code&gt;2.82842712474619&lt;/code&gt; is greater than the radius of &lt;code&gt;1&lt;/code&gt;, so we know that the circle and the rectangle don&amp;rsquo;t overlap.&lt;/p&gt;</description></item><item><title>Leetcode 836</title><link>https://nathannaveen.dev/posts/leetcode-836/</link><pubDate>Wed, 10 Mar 2021 12:10:01 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-836/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/rectangle-overlap/"&gt;836. Rectangle Overlap&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This solution is pretty similar to my other solution &lt;a href="https://nathannaveen.dev/posts/leetcode-223/"&gt;Leetcode: 223&lt;/a&gt; This is the part in the other solution which I based this solution on:&lt;/p&gt;
@@ -428,7 +435,7 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The idea of this solution can be shown using some images:&lt;/p&gt;</description></item><item><title>Leetcode 973</title><link>https://nathannaveen.dev/posts/leetcode-973/</link><pubDate>Sun, 07 Mar 2021 10:43:03 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-973/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/k-closest-points-to-origin/"&gt;973. K Closest Points to Origin&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The New Distance Formula:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The Euclidean Distance Formula equals (I have drawn this in a picture because the symbols don&amp;rsquo;t aline up when writen up in text)&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/krhq25z.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/krhq25z.jpg" alt=""&gt;
 &lt;p&gt;This can be simplifyed by taking out the square root. We can take out the square root because we are not finding the minimum distance but the point with the minimum distance, and the distance doesn&amp;rsquo;t need to be square rooted. The distance not needing to be square rooted can be shown by doing an experiment, for example let us take the square root of 10 and the square root of 8, we know that the square root of 10 will allways be greater than the square root of 8. We also know that 10 will always be greater than 8. Try this with any two positive numbers. &lt;em&gt;Note: I said positve numbers because any square number is positive.&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Leetcode 1779</title><link>https://nathannaveen.dev/posts/leetcode-1779/</link><pubDate>Sat, 06 Mar 2021 19:05:54 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1779/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/"&gt;1779. Find Nearest Point That Has the Same X or Y Coordinate&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;What The Problem Is Asking:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This problem asks you to find the smallest Manhattan distance from a given point to a matrix array of points called &lt;code&gt;points&lt;/code&gt;.&lt;/p&gt;
@@ -436,9 +443,9 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;p&gt;The main idea of this solution is to find the area of each indivigual rectangle and then add them together. After that subtract the overlap of both of them.&lt;/p&gt;
 &lt;p&gt;If you don&amp;rsquo;t understand the &lt;code&gt;ABCDRectangle&lt;/code&gt; and the &lt;code&gt;EFGHRectangle&lt;/code&gt; then look at the following images:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;We can have the example:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/St26i3w.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/St26i3w.jpg" alt=""&gt;
 &lt;p&gt;Let us start of with the &lt;code&gt;ABCDRectangle&lt;/code&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/Td0G3vB.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/Td0G3vB.jpg" alt=""&gt;
 &lt;p&gt;When we do the equation &lt;code&gt;(D - B) * (C - A)&lt;/code&gt; we are basicly doing &lt;code&gt;width * length&lt;/code&gt;. The &lt;code&gt;width&lt;/code&gt; is &lt;code&gt;(D - B)&lt;/code&gt;. This can be show by using the image above where &lt;code&gt;A = -4, B = 2, C = 4, D = 5&lt;/code&gt;. When we do &lt;code&gt;(D - B)&lt;/code&gt; it equal &lt;code&gt;(5 - 2) = 3&lt;/code&gt;. So we know that the rectangle has a width of &lt;code&gt;3&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Leetcode 908</title><link>https://nathannaveen.dev/posts/leetcode-908/</link><pubDate>Thu, 04 Mar 2021 15:47:37 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-908/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/smallest-range-i/"&gt;908. Smallest Range I&lt;/a&gt;&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;func smallestRangeI(A []int, K int) int {
 	max, min := A[0], A[0]
@@ -466,11 +473,11 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;hr&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;high: 7
 low : 3
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src="https://assets.leetcode.com/users/images/2ca6929e-c01e-491f-9505-85dc303d779a_1614122599.638341.png" alt="image"&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;img src="https://assets.leetcode.com/users/images/2ca6929e-c01e-491f-9505-85dc303d779a_1614122599.638341.png" alt="image"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;The odd numbers from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;high&lt;/code&gt; (&lt;code&gt;7&lt;/code&gt;).&lt;/em&gt; There are &lt;code&gt;4&lt;/code&gt; odd numbers from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;7&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="https://assets.leetcode.com/users/images/0b5c316a-d1ed-426a-889f-2741c8b861f4_1614122953.1401534.png" alt="image"&gt;&lt;/p&gt;
+&lt;img src="https://assets.leetcode.com/users/images/0b5c316a-d1ed-426a-889f-2741c8b861f4_1614122953.1401534.png" alt="image"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;The odd numbers from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;low - 1&lt;/code&gt; (&lt;code&gt;2&lt;/code&gt;).&lt;/em&gt; There is &lt;code&gt;1&lt;/code&gt; odd numbers from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;2&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;

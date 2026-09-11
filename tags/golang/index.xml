@@ -16,10 +16,10 @@
 &lt;h2 id="the-base-idea-of-this-solution"&gt;The Base Idea of This Solution:&lt;/h2&gt;
 &lt;p&gt;I would say that this solution is like a line sweep solution.&lt;/p&gt;
 &lt;p&gt;This solution uses the fact that if an empty place separates two stones, they will be next to each other when the box is rotated. This is just like in the example input:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/HGdCvu3.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/HGdCvu3.png" alt=""&gt;
 &lt;p&gt;So this solution just moves all the stones together until we hit the end of the box or an obstacle.&lt;/p&gt;</description></item><item><title>Leetcode 784</title><link>https://nathannaveen.dev/posts/leetcode-784/</link><pubDate>Thu, 03 Mar 2022 15:29:05 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-784/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/letter-case-permutation/"&gt;784. Letter Case Permutation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is pretty simple, we can basically construct a tree.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/T1cx58n.gif" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/T1cx58n.gif" alt=""&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;letterCasePermutation&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;) []&lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;helper&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
@@ -139,7 +139,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 42</title><link>https://nathannaveen.dev/posts/leetcode-42/</link><pubDate>Tue, 08 Feb 2022 20:06:54 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-42/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/trapping-rain-water/"&gt;42. Trapping Rain Water&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I got the idea of this solution from &lt;a href="https://leetcode.com/problems/trapping-rain-water/discuss/17395/A-different-O%28n%29-approach-easy-to-understand-and-simple-code"&gt;qddpx&amp;rsquo;s solution&lt;/a&gt;. I thought that it was an ingenious solution, so I decided to explain it.&lt;/p&gt;
 &lt;p&gt;I think that this solution will be easier to understand if you first understand what the code is doing, so I decided to make a GIF about this.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/aMo2GxQ.gif" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/aMo2GxQ.gif" alt=""&gt;
 &lt;p&gt;We loop through &lt;code&gt;height&lt;/code&gt; 3 different times:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The first time we loop through &lt;code&gt;height&lt;/code&gt;, we loop from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;len(height)&lt;/code&gt; and make each value in a new array called &lt;code&gt;lToR&lt;/code&gt; (left to right) the maximum value that we have reached so far in &lt;code&gt;height&lt;/code&gt;.&lt;/li&gt;
@@ -151,7 +151,7 @@
 &lt;p&gt;The idea of this solution is pretty simple and relies on the fact that the minimum number is made by making the biggest number the last digit and the smallest number the first. For example: If we use the digits &lt;code&gt;[4, 6, 1, 3, 0, 9]&lt;/code&gt;, the minimum number we can make is &lt;code&gt;013469&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;If we want the minimum sum, we just have to add the two minimum numbers together and get the minimum sum.&lt;/p&gt;</description></item><item><title>Leetcode 23</title><link>https://nathannaveen.dev/posts/leetcode-23/</link><pubDate>Mon, 07 Feb 2022 10:21:53 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-23/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/merge-k-sorted-lists/"&gt;23. Merge k Sorted Lists&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I think that the idea of this solution can be shown bellow:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/NEf5Pv9.gif" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/NEf5Pv9.gif" alt=""&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;mergeKLists&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;lists&lt;/span&gt; []&lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;ListNode&lt;/span&gt;) &lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;ListNode&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;ListNode&lt;/span&gt;{}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;cur&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;
@@ -182,10 +182,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 490</title><link>https://nathannaveen.dev/posts/leetcode-490/</link><pubDate>Fri, 04 Feb 2022 12:12:59 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-490/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/the-maze/"&gt;490. The Maze&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is to use BFS to find every path. And then if we find a path that leads to the destination we can return &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;I made a gif that basicly gives an example of all paths from start. Note that this is the same example as the problem statment.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/Dq6Pei6.gif" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/Dq6Pei6.gif" alt=""&gt;
 &lt;p&gt;While in the gif we just see the paths, in the code we have to make the path, meaning that we have to make a path one move at a time.&lt;/p&gt;</description></item><item><title>Leetcode 1102</title><link>https://nathannaveen.dev/posts/leetcode-1102/</link><pubDate>Fri, 04 Feb 2022 12:12:46 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1102/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/path-with-maximum-minimum-value/"&gt;1102. Path With Maximum Minimum Value&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This solution uses a max heap to keep track of all the paths, and which path we can go on to get the maximum minimum value.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/3Osyk1S.gif" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/3Osyk1S.gif" alt=""&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;type&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;key&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;p&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;pos&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;min&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;
@@ -247,7 +247,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 2155</title><link>https://nathannaveen.dev/posts/leetcode-2155/</link><pubDate>Fri, 04 Feb 2022 12:12:40 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2155/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/all-divisions-with-the-highest-score-of-a-binary-array/"&gt;2155. All Divisions With the Highest Score of a Binary Array&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is to loop through &lt;code&gt;nums&lt;/code&gt; and add one to a zero count if we have a zero, and subtract one from a one counter if it is a one. This can be shown using an illustration:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/ymBAmcM.gif" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/ymBAmcM.gif" alt=""&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;maxScoreIndices&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;nums&lt;/span&gt; []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;) []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;numZeros&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;numOnes&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
@@ -346,9 +346,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="solution-2"&gt;Solution 2:&lt;/h3&gt;
 &lt;p&gt;The second solution uses the fact that in &lt;code&gt;&amp;quot;leetcode&amp;quot;&lt;/code&gt; and &lt;code&gt;&amp;quot;Leetcode&amp;quot;&lt;/code&gt; there is a common &lt;code&gt;&amp;quot;eetcode&amp;quot;&lt;/code&gt;. This means that whatever the first letter is, if the remaining part of the word is lowercase we know that all the letters in &lt;code&gt;word&lt;/code&gt; are lowercase, or the first letter is the only letter that is upper case.&lt;/p&gt;</description></item><item><title>Leetcode 2128</title><link>https://nathannaveen.dev/posts/leetcode-2128/</link><pubDate>Wed, 19 Jan 2022 13:01:56 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2128/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/remove-all-ones-with-row-and-column-flips/"&gt;2128. Remove All Ones With Row and Column Flips&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution can be shown using the following image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/eP4CU9w.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/eP4CU9w.jpg" alt=""&gt;
 &lt;blockquote&gt;
-&lt;p&gt;As we can see if a row is equal to the inverse of the first row we know that we can flip it to be equal to the first row. And if the row is equal to the first row we don&amp;rsquo;t need to flip it at all.&lt;/p&gt;</description></item><item><title>Leetcode 1926</title><link>https://nathannaveen.dev/posts/leetcode-1926/</link><pubDate>Wed, 19 Jan 2022 13:01:49 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1926/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/"&gt;1926. Nearest Exit from Entrance in Maze&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As we can see if a row is equal to the inverse of the first row we know that we can flip it to be equal to the first row. And if the row is equal to the first row we don&amp;rsquo;t need to flip it at all.&lt;/p&gt;
+&lt;p&gt;Then if all the rows are equal we can just flip the columns that need flipping.&lt;/p&gt;</description></item><item><title>Leetcode 1926</title><link>https://nathannaveen.dev/posts/leetcode-1926/</link><pubDate>Wed, 19 Jan 2022 13:01:49 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1926/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/"&gt;1926. Nearest Exit from Entrance in Maze&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I decided to try a solution that is similar to Dijkstra&amp;rsquo;s. Even though the positions are not weighted, we can make the distance the weight, so the nodes farther away from the start have a higher weight than the closer ones. All in all, we have to find the node on the edge with the smallest weight.&lt;/p&gt;
 &lt;p&gt;This can be shown using the following image:&lt;/p&gt;</description></item><item><title>Leetcode 2124</title><link>https://nathannaveen.dev/posts/leetcode-2124/</link><pubDate>Wed, 19 Jan 2022 13:01:42 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2124/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/"&gt;2124. Check if All A&amp;rsquo;s Appears Before All B&amp;rsquo;s&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of my solution is pretty simple. If the sorted version of &lt;code&gt;s&lt;/code&gt; equals the non sorted version of &lt;code&gt;s&lt;/code&gt; we know that every &lt;code&gt;&amp;quot;a&amp;quot;&lt;/code&gt; comes before every &lt;code&gt;&amp;quot;b&amp;quot;&lt;/code&gt;. Some examples could be:&lt;/p&gt;
@@ -365,7 +366,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 2095</title><link>https://nathannaveen.dev/posts/leetcode-2095/</link><pubDate>Wed, 19 Jan 2022 13:01:36 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2095/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/"&gt;2095. Delete the Middle Node of a Linked List&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is to use three-pointers, like in the following example:&lt;/p&gt;
 &lt;p&gt;Remember that the &lt;code&gt;hare&lt;/code&gt; will always go up two values, while &lt;code&gt;prev&lt;/code&gt; and &lt;code&gt;turtle&lt;/code&gt; will only go up one.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/GCh5KZK.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/GCh5KZK.png" alt=""&gt;
 &lt;p&gt;The hare has reached the end, so we can stop moving the &lt;code&gt;hare&lt;/code&gt;, &lt;code&gt;turtle&lt;/code&gt;, and &lt;code&gt;prev&lt;/code&gt;. Now, we have to remove the turtles position by doing &lt;code&gt;prev.Next = prev.Next.Next&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Leetcode 2119</title><link>https://nathannaveen.dev/posts/leetcode-2119/</link><pubDate>Wed, 19 Jan 2022 13:01:31 -0600</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2119/</guid><description>&lt;p&gt;The idea of this solution is that any number that has a &lt;code&gt;0&lt;/code&gt; at the end will result in a different number after reversed twice.&lt;/p&gt;
 &lt;p&gt;This is shown using the numbers:&lt;/p&gt;
 &lt;ul&gt;
@@ -391,7 +392,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The second solution is the fun solution. We can find the number of substrings, the beginning, and the end in the same letter. To show how this is done, we can take an example of &lt;code&gt;&amp;quot;aaaaaa&amp;quot;&lt;/code&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/H5jFMVU.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/H5jFMVU.jpg" alt=""&gt;
 &lt;ul&gt;
 &lt;li&gt;Note that in this image, I am only pointing to the start and end letter of the substring.&lt;/li&gt;
 &lt;li&gt;As you can see in the image, we can get a certain number of substrings in a string of 6 letters:
@@ -893,7 +894,8 @@ I think simplifying would help with the explanation, so:&lt;/p&gt;</description>
 &lt;p&gt;The idea of this solution is pretty simple, the positions with the max value will be in the sub-matrix of range &lt;code&gt;0 to minimum y pos&lt;/code&gt;, and &lt;code&gt;0 to minimum x pos&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;If you don&amp;rsquo;t understand look at the example bellow:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;input: m = 6, n = 5, ops = [[4, 3], [2, 6], [3, 5]]&lt;/code&gt; &lt;em&gt;(Note: They give the input &lt;code&gt;1-indexed&lt;/code&gt;, instead of &lt;code&gt;0-indexed&lt;/code&gt;)&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/Nz4lmSJ.png" alt=""&gt;&lt;/p&gt;</description></item><item><title>Leetcode 2006</title><link>https://nathannaveen.dev/posts/leetcode-2006/</link><pubDate>Thu, 28 Oct 2021 15:58:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2006/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/"&gt;2006. Count Number of Pairs With Absolute Difference K&lt;/a&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/Nz4lmSJ.png" alt=""&gt;
+&lt;p&gt;As you can see, all rectangles top left corner is &lt;code&gt;(0, 0)&lt;/code&gt; (I added an orange dot at &lt;code&gt;(0, 0)&lt;/code&gt;). And the sub-matrix that has the maximum values is surrounded by the yellow dotted line.&lt;/p&gt;</description></item><item><title>Leetcode 2006</title><link>https://nathannaveen.dev/posts/leetcode-2006/</link><pubDate>Thu, 28 Oct 2021 15:58:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2006/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/"&gt;2006. Count Number of Pairs With Absolute Difference K&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The main idea of this solution is &lt;code&gt;nums[i] + k = nums[j]&lt;/code&gt; and &lt;code&gt;nums[i] - k = nums[j]&lt;/code&gt;, if you don&amp;rsquo;t understand:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;|nums[i] - nums[j| = k&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Now if we took off the absolute value sign we get 2 equations:&lt;/p&gt;
@@ -934,14 +936,14 @@ nums[i] + k = nums[j]
 &lt;p&gt;An example could be:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;input: s = &amp;quot;XXOXXXOOOXOXOXX&amp;quot;&lt;/code&gt; &lt;em&gt;(I tried to capture as many edge cases as I could in this test case)&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;We can start with our index &lt;code&gt;i = 0&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/veKMehQ.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/veKMehQ.png" alt=""&gt;
 &lt;p&gt;&lt;code&gt;s[i] == 'X'&lt;/code&gt;, so we can skip the next two values (Skip the values at indexes &lt;code&gt;1&lt;/code&gt; and &lt;code&gt;2&lt;/code&gt; because according to the problem we have made &lt;code&gt;s[0] = 'O', s[1] = 'O', s[2] = 'O'&lt;/code&gt;. We don&amp;rsquo;t actually change the values because there is no need) and add one to &lt;code&gt;res&lt;/code&gt;. So now &lt;code&gt;i = 3&lt;/code&gt;, &lt;code&gt;res = 1&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Leetcode 2028</title><link>https://nathannaveen.dev/posts/leetcode-2028/</link><pubDate>Thu, 28 Oct 2021 15:58:20 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-2028/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/find-missing-observations/"&gt;2028. Find Missing Observations&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This solution aims to find the missing sum and then distribute it among &lt;code&gt;n&lt;/code&gt; values.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;The idea of the first part (Finding the missing sum) is first to find the sum of the &lt;code&gt;m&lt;/code&gt; numbers given to us in &lt;code&gt;rolls&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Then since the mean will always be &lt;code&gt;mean = sum / (n + m)&lt;/code&gt; (the sum of elements divided by the number of elements), we know that the number of elements will always be &lt;code&gt;n + m&lt;/code&gt;. So the total number of elements will be &lt;code&gt;(n + m) * mean&lt;/code&gt;. And the sum of the missing elements will be &lt;code&gt;(n + m) * mean - sum&lt;/code&gt; (Works because of PEMDAS).&lt;/p&gt;</description></item><item><title>Leetcode 200</title><link>https://nathannaveen.dev/posts/leetcode-200/</link><pubDate>Thu, 28 Oct 2021 15:58:14 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-200/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/number-of-islands/"&gt;200. Number of Islands&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution can be portrayed in its &lt;em&gt;&lt;strong&gt;most basic&lt;/strong&gt;&lt;/em&gt; idea by the following image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/jcYOE5j.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/jcYOE5j.png" alt=""&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;var&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;doneAlready&lt;/span&gt; = make(&lt;span style="color:#66d9ef"&gt;map&lt;/span&gt;[[&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;]&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;] &lt;span style="color:#66d9ef"&gt;bool&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;numIslands&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;grid&lt;/span&gt; [][]&lt;span style="color:#66d9ef"&gt;byte&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
@@ -1033,7 +1035,7 @@ nums[i] + k = nums[j]
 &lt;p&gt;This solution works because the absolute value of &lt;code&gt;-1&lt;/code&gt; will always be smaller than the absolute value of &lt;code&gt;-5&lt;/code&gt;, but &lt;code&gt;-1&lt;/code&gt; is greater than &lt;code&gt;-5&lt;/code&gt;. So if we have the linked list &lt;code&gt;[-1, -5]&lt;/code&gt;, we can go through the linked list from the &lt;code&gt;0&lt;/code&gt; index to the end, find the greatest valued negative numbers, and add them to the beginning before the smaller negative numbers.&lt;/p&gt;</description></item><item><title>Leetcode 319</title><link>https://nathannaveen.dev/posts/leetcode-319/</link><pubDate>Thu, 28 Oct 2021 15:56:46 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-319/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/bulb-switcher/"&gt;319. Bulb Switcher&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Note: If you don&amp;rsquo;t understand this problem, think of it as something similar to &lt;em&gt;Seive of Eratosthenes&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;At first I didn&amp;rsquo;t understand how to go about this problem, so I drew it out. I made a graph that might be easier to understand than my drawing:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/MZP1ibF.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/MZP1ibF.png" alt=""&gt;
 &lt;ul&gt;
 &lt;li&gt;In this graph the numbers represent what round we are on (Y-axis = what round we are on).&lt;/li&gt;
 &lt;li&gt;And the bulbs represent each bulb (X-axis = what bulb we are on).&lt;/li&gt;
@@ -1042,7 +1044,7 @@ nums[i] + k = nums[j]
 &lt;/ul&gt;
 &lt;p&gt;If we do this for many different &lt;code&gt;n&lt;/code&gt; we can see a pattern:&lt;/p&gt;</description></item><item><title>Leetcode 1804</title><link>https://nathannaveen.dev/posts/leetcode-1804/</link><pubDate>Tue, 17 Aug 2021 12:33:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1804/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/implement-trie-ii-prefix-tree/"&gt;1804. Implement Trie II (Prefix Tree)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution can be shown using the following image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/HQr5JdP.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/HQr5JdP.png" alt=""&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;type&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Node&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;m&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;map&lt;/span&gt;[&lt;span style="color:#66d9ef"&gt;rune&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;Node&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;isEndCounter&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;
@@ -1192,7 +1194,7 @@ nums[i] + k = nums[j]
  +--------&amp;gt;
  x
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The idea of the solution can be shown using the following image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/xbVbiBX.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/xbVbiBX.png" alt=""&gt;
 &lt;p&gt;&lt;strong&gt;The Code:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;type&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;key&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;x&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;
@@ -1260,7 +1262,7 @@ nums[i] + k = nums[j]
 &lt;p&gt;&lt;strong&gt;Iterative&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;If you don&amp;rsquo;t understand &lt;code&gt;stack = append(stack, m[pop]...)&lt;/code&gt;, it is basically doing:&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Leetcode 888</title><link>https://nathannaveen.dev/posts/leetcode-888/</link><pubDate>Tue, 17 Aug 2021 12:30:29 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-888/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/fair-candy-swap/"&gt;888. Fair Candy Swap&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution can be shown using the following image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/xhn1h9B.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/xhn1h9B.png" alt=""&gt;
 &lt;p&gt;&lt;strong&gt;The Code:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;fairCandySwap&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;A&lt;/span&gt; []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;B&lt;/span&gt; []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;) []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;alice&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;bob&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
@@ -1462,7 +1464,7 @@ nums[i] + k = nums[j]
 &lt;li&gt;Then check whether the cycle all starts from one position. (I will also come back to this later)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;For this solution, I am going to explain how it works using an example:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/8rU2sDU.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/8rU2sDU.jpg" alt=""&gt;
 &lt;p&gt;If you look at the problem, you might see this example already there, I picked this example because we know the answer:&lt;/p&gt;</description></item><item><title>Leetcode 759</title><link>https://nathannaveen.dev/posts/leetcode-759/</link><pubDate>Tue, 06 Jul 2021 18:25:36 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-759/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/employee-free-time/"&gt;759. Employee Free Time&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is pretty simple:&lt;/p&gt;
 &lt;ul&gt;
@@ -1548,7 +1550,7 @@ nums[i] + k = nums[j]
 &lt;/blockquote&gt;
 &lt;p&gt;So using that, we can make a variable (Which I called &lt;code&gt;k&lt;/code&gt;) and store the position of the last position of the value that is greater than or equal to &lt;code&gt;t - 3000&lt;/code&gt;. Then when we add a &lt;code&gt;t&lt;/code&gt; to an array, and we can keep adding to &lt;code&gt;k&lt;/code&gt; so we find the number of recent calls/&lt;/p&gt;</description></item><item><title>Leetcode 61</title><link>https://nathannaveen.dev/posts/leetcode-61/</link><pubDate>Tue, 06 Jul 2021 18:25:10 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-61/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/rotate-list/"&gt;61. Rotate List&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is pretty simple, and I will explain it using this image below:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/vbdeDXI.png" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/vbdeDXI.png" alt=""&gt;
 &lt;p&gt;&lt;em&gt;Note: Before we get into what this picture represents, I want you to know that we already know the length of the linked list because the first loop in the code is for finding the length.&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The image above is from the problem description and is showing the input and output as:&lt;/li&gt;
@@ -1556,10 +1558,10 @@ nums[i] + k = nums[j]
 &lt;p&gt;&lt;code&gt;Input: head = [1,2,3,4,5], k = 2&lt;/code&gt;
 &lt;code&gt;Output: [4,5,1,2,3]&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Leetcode 504</title><link>https://nathannaveen.dev/posts/leetcode-504/</link><pubDate>Tue, 06 Jul 2021 18:25:01 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-504/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/base-7/"&gt;504. Base 7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The main idea of both solutions is to convert the number to base seven. To convert a number to base &lt;code&gt;7&lt;/code&gt; we can do something similar to converting to &lt;code&gt;base 2, 3, 4&lt;/code&gt; and so on. So if you know how to convert a number to another base you can just scroll down to the code and skip the example image.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/mEZHtJs.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/mEZHtJs.jpg" alt=""&gt;
 &lt;p&gt;&lt;strong&gt;Using Math, and then returning &lt;code&gt;string(res)&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Leetcode 1669</title><link>https://nathannaveen.dev/posts/leetcode-1669/</link><pubDate>Tue, 06 Jul 2021 18:24:53 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1669/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/merge-in-between-linked-lists/"&gt;1669. Merge In Between Linked Lists&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution can be explained with a simple image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/vfhZz0X.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/vfhZz0X.jpg" alt=""&gt;
 &lt;ul&gt;
 &lt;li&gt;In image 1 we can see the input of &lt;code&gt;list1 = [0, 1, 2, 3, 4, 5]&lt;/code&gt;, &lt;code&gt;list2 = [10, 11, 12]&lt;/code&gt;, &lt;code&gt;a = 3&lt;/code&gt;, and &lt;code&gt;b = 4&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;We can iterate through &lt;code&gt;list2&lt;/code&gt; and store the beginning and end of the list.&lt;/li&gt;
@@ -1708,9 +1710,9 @@ expected output: &lt;code&gt;false&lt;/code&gt;&lt;/p&gt;</description></item><i
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 48</title><link>https://nathannaveen.dev/posts/leetcode-48/</link><pubDate>Wed, 16 Jun 2021 11:22:22 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-48/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/rotate-image/"&gt;48. Rotate Image&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is first to flip the matrix, so it is upside down, and then transpose the matrix. If you don&amp;rsquo;t understand, look at the following images:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/9ZfliIg.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/9ZfliIg.jpg" alt=""&gt;
 &lt;p&gt;We flip the matrix by fliping the top and bottom &lt;code&gt;len(matrix) / 2&lt;/code&gt; rows, like in this image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/VWu6zok.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/VWu6zok.jpg" alt=""&gt;
 &lt;p&gt;And transposing the matrix is basically making &lt;code&gt;matrix[i][j] = matrix[j][i]&lt;/code&gt;, and the flips should only flip from yellow to the blue, or blue to yellow in the following image:&lt;/p&gt;</description></item><item><title>Leetcode 484</title><link>https://nathannaveen.dev/posts/leetcode-484/</link><pubDate>Wed, 16 Jun 2021 11:22:18 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-484/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/find-permutation/"&gt;484. Find Permutation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is to:&lt;/p&gt;
 &lt;ul&gt;
@@ -1720,7 +1722,7 @@ expected output: &lt;code&gt;false&lt;/code&gt;&lt;/p&gt;</description></item><i
 &lt;/ul&gt;
 &lt;p&gt;You might be wondering why we reverse sets of &lt;code&gt;'D'&lt;/code&gt;&amp;rsquo;s instead of just reversing every &lt;code&gt;'D'&lt;/code&gt;, it can be shown using an image:&lt;/p&gt;</description></item><item><title>Leetcode 1874</title><link>https://nathannaveen.dev/posts/leetcode-1874/</link><pubDate>Wed, 16 Jun 2021 11:22:12 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1874/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/minimize-product-sum-of-two-arrays/"&gt;1874. Minimize Product Sum of Two Arrays&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of both solutions is pretty much the same: The smallest number multiplied by the greatest number always makes the smallest sum. If you don&amp;rsquo;t understand, look at the following image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/WKnSS11.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/WKnSS11.jpg" alt=""&gt;
 &lt;p&gt;In the image above, the top array is sorted in non-decreasing order, and the bottom array is sorted in non-increasing order. So when we multiply &lt;code&gt;nums1[i]&lt;/code&gt; and &lt;code&gt;nums2[i]&lt;/code&gt; together, we get the minimum product, and when we sum the products up, we get the minimum sum.&lt;/p&gt;</description></item><item><title>Leetcode 1403</title><link>https://nathannaveen.dev/posts/leetcode-1403/</link><pubDate>Wed, 16 Jun 2021 11:22:07 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1403/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/minimum-subsequence-in-non-increasing-order/"&gt;1403. Minimum Subsequence in Non-Increasing Order&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is pretty simple, we first sort &lt;code&gt;nums&lt;/code&gt; in non-increasing order and then find the sum of &lt;code&gt;nums&lt;/code&gt;. After that, we can loop through &lt;code&gt;nums&lt;/code&gt; and subtract the greatest numbers in &lt;code&gt;nums&lt;/code&gt; from the total sum and add the greatest numbers in &lt;code&gt;nums&lt;/code&gt; to a different sum. And then, we append the &lt;code&gt;num&lt;/code&gt; to &lt;code&gt;res&lt;/code&gt; (the resulting function). If the other sum is greater than the total sum, we can break out of the loop and return &lt;code&gt;res&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Leetcode 944</title><link>https://nathannaveen.dev/posts/leetcode-944/</link><pubDate>Wed, 16 Jun 2021 11:21:55 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-944/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/delete-columns-to-make-sorted/"&gt;944. Delete Columns to Make Sorted&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This solution loops through every column, and then if the previous letter in the column is greater than the current letter, we know that this column can be removed.&lt;/p&gt;
@@ -1738,11 +1740,12 @@ expected output: &lt;code&gt;false&lt;/code&gt;&lt;/p&gt;</description></item><i
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 1689</title><link>https://nathannaveen.dev/posts/leetcode-1689/</link><pubDate>Wed, 16 Jun 2021 11:21:37 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1689/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/"&gt;1689. Partitioning Into Minimum Number Of Deci-Binary Numbers&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is that the max digit in &lt;code&gt;n&lt;/code&gt; will be the result. But you might be wondering why this works.&lt;/p&gt;
-&lt;p&gt;This works because the max digit can only be made by adding the max digit number of &lt;code&gt;1&lt;/code&gt;&amp;rsquo;s. If you don&amp;rsquo;t understand, look at the following image: &lt;img src="https://i.imgur.com/yqqbNtu.jpg" alt=""&gt; The first image is an example, and the second example is for anyone who doesn&amp;rsquo;t understand the first example.&lt;/p&gt;</description></item><item><title>Leetcode 1605</title><link>https://nathannaveen.dev/posts/leetcode-1605/</link><pubDate>Wed, 16 Jun 2021 11:21:28 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1605/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/find-valid-matrix-given-row-and-column-sums/"&gt;1605. Find Valid Matrix Given Row and Column Sums&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This works because the max digit can only be made by adding the max digit number of &lt;code&gt;1&lt;/code&gt;&amp;rsquo;s. If you don&amp;rsquo;t understand, look at the following image: &lt;img src="https://i.imgur.com/yqqbNtu.jpg" alt=""&gt;
+ The first image is an example, and the second example is for anyone who doesn&amp;rsquo;t understand the first example.&lt;/p&gt;</description></item><item><title>Leetcode 1605</title><link>https://nathannaveen.dev/posts/leetcode-1605/</link><pubDate>Wed, 16 Jun 2021 11:21:28 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1605/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/find-valid-matrix-given-row-and-column-sums/"&gt;1605. Find Valid Matrix Given Row and Column Sums&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is pretty simple:&lt;/p&gt;
 &lt;p&gt;We loop through &lt;code&gt;len(rowSum)&lt;/code&gt;, and &lt;code&gt;len(colSum)&lt;/code&gt;. We find the minimum for &lt;code&gt;colSum[j]&lt;/code&gt;, and &lt;code&gt;rowSum[i]&lt;/code&gt;, making the resulting matrix have the minimum. After that, we subtract the minimum from both &lt;code&gt;colSum[j]&lt;/code&gt;, and &lt;code&gt;rowSum[i]&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Here is an image example to help with the explanation:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/MJQGppC.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/MJQGppC.jpg" alt=""&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;restoreMatrix&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;rowSum&lt;/span&gt; []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;colSum&lt;/span&gt; []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;) [][]&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	&lt;span style="color:#a6e22e"&gt;res&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; make([][]&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, len(&lt;span style="color:#a6e22e"&gt;rowSum&lt;/span&gt;))
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -1768,7 +1771,8 @@ expected output: &lt;code&gt;false&lt;/code&gt;&lt;/p&gt;</description></item><i
 &lt;p&gt;sort &lt;code&gt;people&lt;/code&gt;&amp;rsquo;s height in non-decreasing order, and when two people have the same height, we sort their &lt;code&gt;k&lt;/code&gt;th place in non-increasing order.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;And then we add the following person to the resulting array in the &lt;code&gt;kth&lt;/code&gt; vacant position (zero-indexed), like in this image: &lt;img src="https://i.imgur.com/Yfh5FzY.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;And then we add the following person to the resulting array in the &lt;code&gt;kth&lt;/code&gt; vacant position (zero-indexed), like in this image: &lt;img src="https://i.imgur.com/Yfh5FzY.jpg" alt=""&gt;
+&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;As you can see in row &lt;code&gt;1&lt;/code&gt;, &lt;code&gt;k = 4&lt;/code&gt;, so we add the person of height &lt;code&gt;4&lt;/code&gt; into res at position &lt;code&gt;4&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Then we can see that in row &lt;code&gt;2&lt;/code&gt; &lt;code&gt;k = 2&lt;/code&gt;, so we add the second person to position &lt;code&gt;2&lt;/code&gt;.&lt;/li&gt;
@@ -1928,7 +1932,7 @@ and when we sort, it becomes &lt;code&gt;words = [&amp;quot;k&amp;quot;,&amp;quo
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 36</title><link>https://nathannaveen.dev/posts/leetcode-36/</link><pubDate>Mon, 17 May 2021 09:32:30 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-36/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/valid-sudoku/"&gt;36. Valid Sudoku&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The main idea of this solution is to find the rows, columns, and squares of the numbers. By squares, I mean the nine squares in the board:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/E4LLg2d.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/E4LLg2d.jpg" alt=""&gt;
 &lt;p&gt;The code goes through every position, and if the value is not a &lt;code&gt;&amp;quot;.&amp;quot;&lt;/code&gt;, we check whether the row, column, or square contains the number. If so, we can return false.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;How to Calculate The Rows And Columns&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;We check whether the row or column contains the number by using primes. We assign every row and column a prime number:&lt;/p&gt;</description></item><item><title>Leetcode 958</title><link>https://nathannaveen.dev/posts/leetcode-958/</link><pubDate>Wed, 05 May 2021 15:45:43 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-958/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/check-completeness-of-a-binary-tree/"&gt;958. Check Completeness of a Binary Tree&lt;/a&gt;&lt;/p&gt;
@@ -1938,8 +1942,10 @@ and when we sort, it becomes &lt;code&gt;words = [&amp;quot;k&amp;quot;,&amp;quo
 &lt;li&gt;If there is no next row, all the nodes have to be to the left.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;If you have already looked at the code, you might have seen that we check whether there is a next row by checking whether &lt;code&gt;queue[0].Left != nil&lt;/code&gt;. You might think what if &lt;code&gt;queue[0].Right != nil&lt;/code&gt; while &lt;code&gt;queue[0].Left == nil&lt;/code&gt;. This will work because if &lt;code&gt;queue[0].Right != nil&lt;/code&gt; and &lt;code&gt;queue[0].Left == nil&lt;/code&gt; we know that the row is not full if there is a next row, and if there is no next row, we know that not all nodes are to the left.&lt;/p&gt;</description></item><item><title>Leetcode 1572</title><link>https://nathannaveen.dev/posts/leetcode-1572/</link><pubDate>Wed, 05 May 2021 15:45:36 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1572/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/matrix-diagonal-sum/"&gt;1572. Matrix Diagonal Sum&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The idea of the first solution is to add all the values in the diagonals, and if &lt;code&gt;len(mat)&lt;/code&gt; is odd, we can subtract the middle element from &lt;code&gt;res&lt;/code&gt;. You might be able to understand this solution a little more with two example images: &lt;img src="https://i.imgur.com/H0DfIpU.jpg" alt=""&gt;&lt;/p&gt;
-&lt;p&gt;The idea of the second solution is to find two positions in the array (Where a position is in the format &lt;code&gt;(x, y)&lt;/code&gt;) which are on diagonals and are equal. Suppose we find those two positions, we don&amp;rsquo;t need to add the value at that position twice. If you don&amp;rsquo;t understand, look at the example image: &lt;img src="https://i.imgur.com/x98WvIl.jpg" alt=""&gt; You might be wondering why the code only compares &lt;code&gt;i&lt;/code&gt;, and &lt;code&gt;len(mat) - i - 1&lt;/code&gt;. The &lt;code&gt;len(mat) - i - 1&lt;/code&gt; is all the points on the pinkish reddish line going from the top right to the bottom left, and &lt;code&gt;i&lt;/code&gt; is all the points on the orange line that goes from the top left to the bottom right. You also might be wondering why the code doesn&amp;rsquo;t check the whole position and only &lt;code&gt;i, len(mat) - i - 1&lt;/code&gt;. It is because every time we compare two two elements they are on the same row, so the code doesn&amp;rsquo;t need to check for the row, but if the code did it would be &lt;code&gt;if i != len(mat) - i - 1 &amp;amp;&amp;amp; i == i&lt;/code&gt; (where &lt;code&gt;i&lt;/code&gt; is also the row), instead of just &lt;code&gt;if i != len(mat) - i - 1&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Leetcode 103</title><link>https://nathannaveen.dev/posts/leetcode-103/</link><pubDate>Mon, 03 May 2021 10:26:05 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-103/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/"&gt;103. Binary Tree Zigzag Level Order Traversal
+&lt;p&gt;The idea of the first solution is to add all the values in the diagonals, and if &lt;code&gt;len(mat)&lt;/code&gt; is odd, we can subtract the middle element from &lt;code&gt;res&lt;/code&gt;. You might be able to understand this solution a little more with two example images: &lt;img src="https://i.imgur.com/H0DfIpU.jpg" alt=""&gt;
+&lt;/p&gt;
+&lt;p&gt;The idea of the second solution is to find two positions in the array (Where a position is in the format &lt;code&gt;(x, y)&lt;/code&gt;) which are on diagonals and are equal. Suppose we find those two positions, we don&amp;rsquo;t need to add the value at that position twice. If you don&amp;rsquo;t understand, look at the example image: &lt;img src="https://i.imgur.com/x98WvIl.jpg" alt=""&gt;
+ You might be wondering why the code only compares &lt;code&gt;i&lt;/code&gt;, and &lt;code&gt;len(mat) - i - 1&lt;/code&gt;. The &lt;code&gt;len(mat) - i - 1&lt;/code&gt; is all the points on the pinkish reddish line going from the top right to the bottom left, and &lt;code&gt;i&lt;/code&gt; is all the points on the orange line that goes from the top left to the bottom right. You also might be wondering why the code doesn&amp;rsquo;t check the whole position and only &lt;code&gt;i, len(mat) - i - 1&lt;/code&gt;. It is because every time we compare two two elements they are on the same row, so the code doesn&amp;rsquo;t need to check for the row, but if the code did it would be &lt;code&gt;if i != len(mat) - i - 1 &amp;amp;&amp;amp; i == i&lt;/code&gt; (where &lt;code&gt;i&lt;/code&gt; is also the row), instead of just &lt;code&gt;if i != len(mat) - i - 1&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Leetcode 103</title><link>https://nathannaveen.dev/posts/leetcode-103/</link><pubDate>Mon, 03 May 2021 10:26:05 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-103/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/"&gt;103. Binary Tree Zigzag Level Order Traversal
 &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is to use BFS and a variable called &lt;code&gt;fromRight&lt;/code&gt;. The &lt;code&gt;fromRight&lt;/code&gt; checks whether the current row needs to be traversed from the right. If it does, we prepend all the nodes to &lt;code&gt;temp&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;zigzagLevelOrder&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;root&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;TreeNode&lt;/span&gt;) [][]&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
@@ -2183,14 +2189,19 @@ and when we sort, it becomes &lt;code&gt;words = [&amp;quot;k&amp;quot;,&amp;quo
 &lt;p&gt;This solution is relatively straightforward. All it does is if &lt;code&gt;n&lt;/code&gt; is odd, we can return &lt;code&gt;n&lt;/code&gt; numbers of &lt;code&gt;'a'&lt;/code&gt;, but if &lt;code&gt;n&lt;/code&gt; is even, we can return a count of &lt;code&gt;n - 1&lt;/code&gt;, &lt;code&gt;'a'&lt;/code&gt;&amp;rsquo;s plus one &lt;code&gt;'b'&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;You might be wondering why we are doing &lt;code&gt;n&lt;/code&gt; number of &lt;code&gt;a&lt;/code&gt;&amp;rsquo;s for when &lt;code&gt;n&lt;/code&gt; is odd and &lt;code&gt;n - 1&lt;/code&gt; number of &lt;code&gt;a&lt;/code&gt;&amp;rsquo;s and a &lt;code&gt;b&lt;/code&gt; for when &lt;code&gt;n&lt;/code&gt; is even. When &lt;code&gt;n&lt;/code&gt; is odd, we can add an odd number of &lt;code&gt;a&lt;/code&gt;&amp;rsquo;s and finish the string. If &lt;code&gt;n&lt;/code&gt; is even, we can add an odd number of &lt;code&gt;a&lt;/code&gt;&amp;rsquo;s, but the number of letters is &lt;code&gt;n - 1&lt;/code&gt;, so we can add one more &lt;code&gt;b&lt;/code&gt; to finish the job.&lt;/p&gt;</description></item><item><title>Leetcode 1232</title><link>https://nathannaveen.dev/posts/leetcode-1232/</link><pubDate>Sun, 25 Apr 2021 21:15:52 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1232/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/check-if-it-is-a-straight-line/"&gt;1232. Check If It Is a Straight Line&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is we use &lt;code&gt;3&lt;/code&gt; points to find whether two slopes are equal. We can use the equation:&lt;img src="https://assets.leetcode.com/users/images/b1a5e6f1-79e2-48fd-9595-97bbc4e799b5_1619403108.4592967.jpeg" alt="image"&gt;
+
 where &lt;code&gt;x0, x1, x2, y0, y1, y2&lt;/code&gt; are all coordinates: &lt;img src="https://assets.leetcode.com/users/images/436b4e59-b158-4901-b2fb-4865f2a5ab6a_1619403125.7176585.jpeg" alt="image"&gt;
+
 You might not understand the equation, so we can multiply divide both sides by &lt;code&gt;(x1 - x0)&lt;/code&gt; and &lt;code&gt;(x2 - x1)&lt;/code&gt; and we can get: &lt;img src="https://assets.leetcode.com/users/images/a9321f76-d54f-4003-bed0-b772c0a5867f_1619403157.863461.jpeg" alt="image"&gt;
+
 The equation above is based off of a familar slope equation: &lt;img src="https://assets.leetcode.com/users/images/a9f5ac94-57c1-476b-8747-e67e32b34b13_1619403182.6362567.jpeg" alt="image"&gt;
+
 The reason we are doing the original equation instead of the where we have divided both sides by &lt;code&gt;(x1 - x0)&lt;/code&gt; and &lt;code&gt;(x2 - x1)&lt;/code&gt; is we don&amp;rsquo;t have to worry about dividing by &lt;code&gt;0&lt;/code&gt; such as when we divide both sides by &lt;code&gt;(x1 - x0)&lt;/code&gt; and &lt;code&gt;(x2 - x1)&lt;/code&gt; but &lt;code&gt;(x1 - x0) = 0&lt;/code&gt; or &lt;code&gt;(x2 - x1) = 0&lt;/code&gt; we have to contumplate what to do.&lt;/p&gt;</description></item><item><title>Leetcode 1564</title><link>https://nathannaveen.dev/posts/leetcode-1564/</link><pubDate>Sun, 25 Apr 2021 18:43:09 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1564/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/put-boxes-into-the-warehouse-i/"&gt;1564. Put Boxes Into the Warehouse I&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;We sort &lt;code&gt;boxes&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Then, we make an array called &lt;code&gt;minimums&lt;/code&gt;, and put the minimum values of &lt;code&gt;warehouse&lt;/code&gt; from left to right into the array. If you don&amp;rsquo;t understand, look at the following images: &lt;img src="https://i.imgur.com/O8cQYXz.jpg" alt=""&gt;&lt;/li&gt;
+&lt;li&gt;Then, we make an array called &lt;code&gt;minimums&lt;/code&gt;, and put the minimum values of &lt;code&gt;warehouse&lt;/code&gt; from left to right into the array. If you don&amp;rsquo;t understand, look at the following images: &lt;img src="https://i.imgur.com/O8cQYXz.jpg" alt=""&gt;
+&lt;/li&gt;
 &lt;li&gt;Then we can just look from &lt;code&gt;len(minimums) - 1&lt;/code&gt; to &lt;code&gt;0&lt;/code&gt; and check whether &lt;code&gt;minimums[i] &amp;gt;= boxes[boxCounter]&lt;/code&gt; we can go to the next box, other wise we continue going through the loop until &lt;code&gt;minimums[i] &amp;gt;= boxes[boxCounter]&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Then we can return &lt;code&gt;boxCounter&lt;/code&gt; because &lt;code&gt;boxCounter = the number of boxes we have boxes we have fitted in&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
@@ -2391,7 +2402,8 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;li&gt;While iterating through &lt;code&gt;numRows&lt;/code&gt; we have to make an array called &lt;code&gt;temp&lt;/code&gt;. It is going to be our current row.&lt;/li&gt;
 &lt;li&gt;We make &lt;code&gt;temp[0]&lt;/code&gt; and &lt;code&gt;temp[len(temp)]&lt;/code&gt; equal to &lt;code&gt;1&lt;/code&gt; so we get the outer &lt;code&gt;1&lt;/code&gt;&amp;rsquo;s.&lt;/li&gt;
 &lt;li&gt;Then we loop through the middle elements (basically excluding the outside &lt;code&gt;1&lt;/code&gt;&amp;rsquo;s)&lt;/li&gt;
-&lt;li&gt;We have to make every &lt;code&gt;temp[j]&lt;/code&gt; equal to the previous rows &lt;code&gt;previous rows[j - 1] + previous rows[j]&lt;/code&gt;. We do &lt;code&gt;j - 1&lt;/code&gt; and &lt;code&gt;j&lt;/code&gt;. If you don&amp;rsquo;t understand, why look at the image below: &lt;img src="https://i.imgur.com/KLtNp7P.png" alt=""&gt;&lt;/li&gt;
+&lt;li&gt;We have to make every &lt;code&gt;temp[j]&lt;/code&gt; equal to the previous rows &lt;code&gt;previous rows[j - 1] + previous rows[j]&lt;/code&gt;. We do &lt;code&gt;j - 1&lt;/code&gt; and &lt;code&gt;j&lt;/code&gt;. If you don&amp;rsquo;t understand, why look at the image below: &lt;img src="https://i.imgur.com/KLtNp7P.png" alt=""&gt;
+&lt;/li&gt;
 &lt;li&gt;Then we append &lt;code&gt;temp&lt;/code&gt; to &lt;code&gt;res&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;After iterating, we can return &lt;code&gt;res&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
@@ -2496,11 +2508,11 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;p&gt;So the idea of this solution is:&lt;/p&gt;</description></item><item><title>Leetcode 892</title><link>https://nathannaveen.dev/posts/leetcode-892/</link><pubDate>Fri, 09 Apr 2021 10:56:50 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-892/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/surface-area-of-3d-shapes/"&gt;892. Surface Area of 3D Shapes&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The Idea Of This Solution:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This solution uses the fact that each stack of cubes surface area is the equation &lt;code&gt;2 + 4 * v&lt;/code&gt;. This works because each cube has &lt;code&gt;6&lt;/code&gt; sides. This can be shown using some images:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/jVZR9I5.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/jVZR9I5.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;We can see that each cube has &lt;code&gt;6&lt;/code&gt; planes. There are &lt;code&gt;4&lt;/code&gt; sides, &lt;code&gt;1&lt;/code&gt; top, and &lt;code&gt;1&lt;/code&gt; bottom.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/9Vt9RPI.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/9Vt9RPI.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Now, as we can see, there are &lt;code&gt;10&lt;/code&gt; units of surface area while the other one only had &lt;code&gt;6&lt;/code&gt;, there are &lt;code&gt;8&lt;/code&gt; sides, &lt;code&gt;1&lt;/code&gt; top, and &lt;code&gt;1&lt;/code&gt; bottom.&lt;/p&gt;</description></item><item><title>Leetcode 1272</title><link>https://nathannaveen.dev/posts/leetcode-1272/</link><pubDate>Wed, 07 Apr 2021 12:36:27 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1272/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/remove-interval/"&gt;1272. Remove Interval&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;What This Code Is Doing:&lt;/strong&gt;&lt;/p&gt;
@@ -2553,7 +2565,7 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;p&gt;&lt;strong&gt;The Code:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Leetcode 1118</title><link>https://nathannaveen.dev/posts/leetcode-1118/</link><pubDate>Thu, 01 Apr 2021 13:15:33 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1118/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/number-of-days-in-a-month/"&gt;1118. Number of Days in a Month&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To start, I wouldn&amp;rsquo;t say that this is a good interview problem because it is not an algorithmic problem.&lt;/p&gt;
 &lt;p&gt;The months and the number of days in each month can be shown in the table below:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/cBmSB5Y.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/cBmSB5Y.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;In February, it can be either &lt;code&gt;28&lt;/code&gt; days or &lt;code&gt;29&lt;/code&gt; days. &lt;code&gt;28&lt;/code&gt; days in a regular year and &lt;code&gt;29&lt;/code&gt; days in a leap year.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2728,7 +2740,7 @@ The reason we are doing the original equation instead of the where we have divid
 &lt;/ul&gt;
 &lt;p&gt;We can ignore the part where there is neither a left or a right node.&lt;/p&gt;</description></item><item><title>Leetcode 270</title><link>https://nathannaveen.dev/posts/leetcode-270/</link><pubDate>Thu, 18 Mar 2021 14:10:52 -0400</pubDate><guid>https://nathannaveen.dev/posts/leetcode-270/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/closest-binary-search-tree-value/"&gt;270. Closest Binary Search Tree Value&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is pretty simple. We have to iterate through the tree and then find the absolute minimum difference between the target and the value from the tree. &lt;em&gt;(Keep in mind that we want everything to be a float64, so then we get proper comparisons)&lt;/em&gt;. This can be shown with the equation:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/W0DvaCc.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/W0DvaCc.jpg" alt=""&gt;
 &lt;p&gt;&lt;strong&gt;The Code:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;closestValue&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;root&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;TreeNode&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;target&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;float64&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;stack&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; []&lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;TreeNode&lt;/span&gt;{&lt;span style="color:#a6e22e"&gt;root&lt;/span&gt;}
@@ -2814,7 +2826,7 @@ expected output: &amp;#34;ltcd&amp;#34;
 &lt;/ul&gt;
 &lt;p&gt;Finding the length of the linked list is pretty simple. Just get a counter. In this problem, it is &lt;code&gt;lengthOfLinkedList&lt;/code&gt;, then iterate through the linked list and add one to the counter every iteration.&lt;/p&gt;</description></item><item><title>Leetcode 1329</title><link>https://nathannaveen.dev/posts/leetcode-1329/</link><pubDate>Sat, 13 Mar 2021 10:42:03 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1329/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/sort-the-matrix-diagonally/"&gt;1329. Sort the Matrix Diagonally&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is kind of hard to explain so I will show it with the following images:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/aoRkExV.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/aoRkExV.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;i = len(mat)&lt;/code&gt;, and &lt;code&gt;j = len(mat[0])&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2824,7 +2836,7 @@ expected output: &amp;#34;ltcd&amp;#34;
 &lt;blockquote&gt;
 &lt;p&gt;the diagonal lines are in red&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/vfJAh1L.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/vfJAh1L.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Before we continue you might be confused about why we switch &lt;code&gt;2&lt;/code&gt; and &lt;code&gt;1&lt;/code&gt; even though &lt;code&gt;i = 1&lt;/code&gt; and &lt;code&gt;j = 1&lt;/code&gt;. This can be shown with the example array &lt;code&gt;[3, 2, 1] &lt;/code&gt; we can pretend that &lt;code&gt;3, 2, 1&lt;/code&gt; is diagonal:&lt;/p&gt;</description></item><item><title>Leetcode 1461</title><link>https://nathannaveen.dev/posts/leetcode-1461/</link><pubDate>Fri, 12 Mar 2021 12:03:46 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1461/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/"&gt;1461. Check If a String Contains All Binary Codes of Size K&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is to make a sliding window and add all the substrings os size &lt;code&gt;k&lt;/code&gt; to a map, if the maps length is equal to &lt;code&gt;2^k&lt;/code&gt; return &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
@@ -2850,7 +2862,7 @@ expected output: &amp;#34;ltcd&amp;#34;
 &lt;p&gt;&lt;strong&gt;The Main Idea&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is to find the distance from the middle of the circle to the edge of a rectangle, and if the distance is smaller than or equal to the radius, we know that the rectangle overlaps with the circle.&lt;/p&gt;
 &lt;p&gt;If you don&amp;rsquo;t understand, look at the following images:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/VlNe79P.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/VlNe79P.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;As you can see, the circle and the rectangle do not overlap, and this can be shown by the distance between the center of the circle and the closest edge of the rectangle. The length is &lt;code&gt;√8 = 2.82842712474619&lt;/code&gt;, &lt;code&gt;2.82842712474619&lt;/code&gt; is greater than the radius of &lt;code&gt;1&lt;/code&gt;, so we know that the circle and the rectangle don&amp;rsquo;t overlap.&lt;/p&gt;</description></item><item><title>Leetcode 836</title><link>https://nathannaveen.dev/posts/leetcode-836/</link><pubDate>Wed, 10 Mar 2021 12:10:01 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-836/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/rectangle-overlap/"&gt;836. Rectangle Overlap&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This solution is pretty similar to my other solution &lt;a href="https://nathannaveen.dev/posts/leetcode-223/"&gt;Leetcode: 223&lt;/a&gt; This is the part in the other solution which I based this solution on:&lt;/p&gt;
@@ -2864,7 +2876,7 @@ expected output: &amp;#34;ltcd&amp;#34;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The idea of this solution can be shown using some images:&lt;/p&gt;</description></item><item><title>Leetcode 1750</title><link>https://nathannaveen.dev/posts/leetcode-1750/</link><pubDate>Tue, 09 Mar 2021 21:04:18 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1750/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends/"&gt;1750. Minimum Length of String After Deleting Similar Ends&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is pretty simple, so it can be shown with this image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/QAmU64G.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/QAmU64G.jpg" alt=""&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;minimumLength&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; len(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;) &amp;gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;[len(&lt;span style="color:#a6e22e"&gt;s&lt;/span&gt;)&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] {
@@ -2905,7 +2917,7 @@ expected output: &amp;#34;ltcd&amp;#34;
 &lt;p&gt;When we are doing this problem, the main thing to look at is that it says &amp;ldquo;subsequences,&amp;rdquo; not &amp;ldquo;substrings,&amp;rdquo; and that there are only two letters &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;The difference between &amp;ldquo;substrings&amp;rdquo; and &amp;ldquo;subsequences&amp;rdquo; is substrings are consecutive letters, while subsequences doesn&amp;rsquo;t have to be consecutive.&lt;/p&gt;</description></item><item><title>Leetcode 915</title><link>https://nathannaveen.dev/posts/leetcode-915/</link><pubDate>Mon, 08 Mar 2021 08:20:50 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-915/</guid><description>&lt;p&gt;The idea of this solution is to find the max of the left and then check whether the max is always smaller than all the rights. If it is smaller than all of them return the index &lt;strong&gt;(1 indexed)&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;This can be shown with a picture:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/ZzXwU7p.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/ZzXwU7p.jpg" alt=""&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;func&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;partitionDisjoint&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;A&lt;/span&gt; []&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;max&lt;/span&gt; &lt;span style="color:#f92672"&gt;:=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;A&lt;/span&gt;[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -2931,7 +2943,7 @@ expected output: &amp;#34;ltcd&amp;#34;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Leetcode 973</title><link>https://nathannaveen.dev/posts/leetcode-973/</link><pubDate>Sun, 07 Mar 2021 10:43:03 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-973/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/k-closest-points-to-origin/"&gt;973. K Closest Points to Origin&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The New Distance Formula:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The Euclidean Distance Formula equals (I have drawn this in a picture because the symbols don&amp;rsquo;t aline up when writen up in text)&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/krhq25z.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/krhq25z.jpg" alt=""&gt;
 &lt;p&gt;This can be simplifyed by taking out the square root. We can take out the square root because we are not finding the minimum distance but the point with the minimum distance, and the distance doesn&amp;rsquo;t need to be square rooted. The distance not needing to be square rooted can be shown by doing an experiment, for example let us take the square root of 10 and the square root of 8, we know that the square root of 10 will allways be greater than the square root of 8. We also know that 10 will always be greater than 8. Try this with any two positive numbers. &lt;em&gt;Note: I said positve numbers because any square number is positive.&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Leetcode 1773</title><link>https://nathannaveen.dev/posts/leetcode-1773/</link><pubDate>Sat, 06 Mar 2021 19:06:10 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1773/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/count-items-matching-a-rule/"&gt;1773. Count Items Matching a Rule&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is pretty simple. We know that the array &lt;code&gt;items&lt;/code&gt; has only &lt;code&gt;3&lt;/code&gt; items. The first one is the &lt;code&gt;ruleKey = &amp;quot;type&amp;quot;&lt;/code&gt; the next one is &lt;code&gt;ruleKey = &amp;quot;color&amp;quot;&lt;/code&gt;, and the next one is &lt;code&gt;ruleKey = &amp;quot;name&amp;quot;&lt;/code&gt;. We just have to set a index of each item to either &lt;code&gt;0, 1&lt;/code&gt; or &lt;code&gt;2&lt;/code&gt;. Then just loop over each item and check whether the &lt;code&gt;item[index] == ruleValue&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Leetcode 1779</title><link>https://nathannaveen.dev/posts/leetcode-1779/</link><pubDate>Sat, 06 Mar 2021 19:05:54 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1779/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/"&gt;1779. Find Nearest Point That Has the Same X or Y Coordinate&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;What The Problem Is Asking:&lt;/strong&gt;&lt;/p&gt;
@@ -2940,9 +2952,9 @@ expected output: &amp;#34;ltcd&amp;#34;
 &lt;p&gt;The main idea of this solution is to find the area of each indivigual rectangle and then add them together. After that subtract the overlap of both of them.&lt;/p&gt;
 &lt;p&gt;If you don&amp;rsquo;t understand the &lt;code&gt;ABCDRectangle&lt;/code&gt; and the &lt;code&gt;EFGHRectangle&lt;/code&gt; then look at the following images:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;We can have the example:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/St26i3w.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/St26i3w.jpg" alt=""&gt;
 &lt;p&gt;Let us start of with the &lt;code&gt;ABCDRectangle&lt;/code&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/Td0G3vB.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/Td0G3vB.jpg" alt=""&gt;
 &lt;p&gt;When we do the equation &lt;code&gt;(D - B) * (C - A)&lt;/code&gt; we are basicly doing &lt;code&gt;width * length&lt;/code&gt;. The &lt;code&gt;width&lt;/code&gt; is &lt;code&gt;(D - B)&lt;/code&gt;. This can be show by using the image above where &lt;code&gt;A = -4, B = 2, C = 4, D = 5&lt;/code&gt;. When we do &lt;code&gt;(D - B)&lt;/code&gt; it equal &lt;code&gt;(5 - 2) = 3&lt;/code&gt;. So we know that the rectangle has a width of &lt;code&gt;3&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Leetcode 908</title><link>https://nathannaveen.dev/posts/leetcode-908/</link><pubDate>Thu, 04 Mar 2021 15:47:37 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-908/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/smallest-range-i/"&gt;908. Smallest Range I&lt;/a&gt;&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;func smallestRangeI(A []int, K int) int {
 	max, min := A[0], A[0]
@@ -3086,12 +3098,12 @@ func isPalindromic(s string) bool {
 }
 &lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Leetcode 459</title><link>https://nathannaveen.dev/posts/leetcode-459/</link><pubDate>Sun, 28 Feb 2021 14:46:05 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-459/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/repeated-substring-pattern/"&gt;459. Repeated Substring Pattern&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The idea of this solution is any substring that is repeated throughout the string &lt;code&gt;s&lt;/code&gt; has to start at the &lt;code&gt;0&lt;/code&gt;&amp;lsquo;th index and end at another index, such as the &lt;code&gt;3&lt;/code&gt;&amp;lsquo;ed. This can be shown by using a image.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/JB4X253.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/JB4X253.jpg" alt=""&gt;
 &lt;blockquote&gt;
 &lt;p&gt;In both the examples the substrings that are repeated are green.&lt;/p&gt;
 &lt;p&gt;In the first example the substring &lt;code&gt;abc&lt;/code&gt; starts at the &lt;code&gt;0&lt;/code&gt;&amp;lsquo;th index and ends at the &lt;code&gt;2&lt;/code&gt;&amp;rsquo;d index.&lt;/p&gt;</description></item><item><title>Leetcode 5</title><link>https://nathannaveen.dev/posts/leetcode-5/</link><pubDate>Sun, 28 Feb 2021 11:41:58 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-5/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/longest-palindromic-substring/"&gt;5. Longest Palindromic Substring&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In this solution we dont have to check whether the palindrome substring is greater than the max length substring because the length of the substring will always be greater than or equal to the length of the current max substring. This can be show in an image:&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/k9YUTYG.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/k9YUTYG.jpg" alt=""&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;func longestPalindrome(s string) string {
 	max := &amp;#34;&amp;#34;
 	for i := 0; i &amp;lt; len(s); i++ {
@@ -3150,7 +3162,7 @@ func reverse(s string) string {
  return res
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This solution is pretty much the same as the first solution but this solution doesn&amp;rsquo;t use a outside function to reverse.&lt;/p&gt;</description></item><item><title>Leetcode 946</title><link>https://nathannaveen.dev/posts/leetcode-946/</link><pubDate>Fri, 26 Feb 2021 10:59:38 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-946/</guid><description>&lt;p&gt;The idea of this solution is to append the pushed value to the stack. If peeked value is equal to the poped value then pop it off the stack, keep poping off the peeked value if it is equal to the poped value. This can be show in an image&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/ovNR5Oy.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/ovNR5Oy.jpg" alt=""&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;func validateStackSequences(pushed []int, popped []int) bool {
  stack := []int{}
  popCounter := 0
@@ -3225,7 +3237,7 @@ inbuiltSplit = [&amp;#34;&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;this&amp;#34;, 
 &lt;p&gt;&lt;strong&gt;If you didn&amp;rsquo;t understand the explanation this can be shown using the code on the bottom, an example and some pictures:&lt;/strong&gt;
 &lt;em&gt;By the way sorry if my handwriting is messy&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Leetcode 1566</title><link>https://nathannaveen.dev/posts/leetcode-1566/</link><pubDate>Thu, 25 Feb 2021 15:46:57 -0500</pubDate><guid>https://nathannaveen.dev/posts/leetcode-1566/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.com/problems/detect-pattern-of-length-m-repeated-k-or-more-times/"&gt;1566. Detect Pattern of Length M Repeated K or More Times&lt;/a&gt;
 The idea of this can be show by this image&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://i.imgur.com/XEPQ2YV.jpg" alt=""&gt;&lt;/p&gt;
+&lt;img src="https://i.imgur.com/XEPQ2YV.jpg" alt=""&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;func containsPattern(arr []int, m int, k int) bool {
  counter := 0
 
@@ -3250,11 +3262,11 @@ The idea of this can be show by this image&lt;/p&gt;
 &lt;hr&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;high: 7
 low : 3
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src="https://assets.leetcode.com/users/images/2ca6929e-c01e-491f-9505-85dc303d779a_1614122599.638341.png" alt="image"&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;img src="https://assets.leetcode.com/users/images/2ca6929e-c01e-491f-9505-85dc303d779a_1614122599.638341.png" alt="image"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;The odd numbers from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;high&lt;/code&gt; (&lt;code&gt;7&lt;/code&gt;).&lt;/em&gt; There are &lt;code&gt;4&lt;/code&gt; odd numbers from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;7&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="https://assets.leetcode.com/users/images/0b5c316a-d1ed-426a-889f-2741c8b861f4_1614122953.1401534.png" alt="image"&gt;&lt;/p&gt;
+&lt;img src="https://assets.leetcode.com/users/images/0b5c316a-d1ed-426a-889f-2741c8b861f4_1614122953.1401534.png" alt="image"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;The odd numbers from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;low - 1&lt;/code&gt; (&lt;code&gt;2&lt;/code&gt;).&lt;/em&gt; There is &lt;code&gt;1&lt;/code&gt; odd numbers from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;2&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
