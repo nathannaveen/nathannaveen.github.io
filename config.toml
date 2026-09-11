@@ -25,6 +25,14 @@ theme        = "hello-friend-ng"
   themeColor = "#fafafa"
   customCSS = ["/css/custom.css"]
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      wrapStandAloneImageWithinParagraph = false
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true
+
 [taxonomies]
     category = "blog"
     tag      = "tags"

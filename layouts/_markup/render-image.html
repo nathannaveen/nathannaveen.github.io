@@ -1,0 +1,12 @@
+{{- $alt := .PlainText -}}
+{{- $src := .Destination | safeURL -}}
+{{- $width := "" -}}
+{{- with .Attributes.width -}}
+  {{- $width = string . -}}
+  {{- if not (or (strings.Contains $width "%") (strings.Contains $width "px") (strings.Contains $width "em") (strings.Contains $width "rem")) -}}
+    {{- $width = printf "%spx" $width -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $src }}" alt="{{ $alt }}"
+  {{- with .Title }} title="{{ . }}"{{ end -}}
+  {{- with $width }} style="width: {{ . }}; max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;"{{ end -}}>
