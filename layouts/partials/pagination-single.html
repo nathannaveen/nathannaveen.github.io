@@ -1,27 +1,18 @@
 {{ if and (not $.Site.Params.DisableReadOtherPosts) (or .NextInSection .PrevInSection) }}
-    <div class="pagination">
-        <div class="pagination__title">
-            <span class="pagination__title-h">{{ .Site.Params.ReadOtherPosts }}</span>
-            <hr />
-        </div>
-
+    <div class="pagination pagination--post">
         <div class="pagination__buttons">
-            {{ if .NextInSection }}
-            <span class="button previous">
-                <a href="{{ .NextInSection.RelPermalink }}">
-                    <span class="button__icon">←</span>
-                    <span class="button__text">{{ .NextInSection.Title }}</span>
-                </a>
-            </span>
+            {{ if .PrevInSection }}
+            <a class="post-nav__link post-nav__link--prev" href="{{ .PrevInSection.RelPermalink }}">
+                <span class="post-nav__label">Previous</span>
+                <span class="post-nav__title">{{ .PrevInSection.Title }}</span>
+            </a>
             {{ end }}
 
-            {{ if .PrevInSection }}
-            <span class="button next">
-                <a href="{{ .PrevInSection.RelPermalink }}">
-                    <span class="button__text">{{ .PrevInSection.Title }}</span>
-                    <span class="button__icon">→</span>
-                </a>
-            </span>
+            {{ if .NextInSection }}
+            <a class="post-nav__link post-nav__link--next" href="{{ .NextInSection.RelPermalink }}">
+                <span class="post-nav__label">Next</span>
+                <span class="post-nav__title">{{ .NextInSection.Title }}</span>
+            </a>
             {{ end }}
         </div>
     </div>
