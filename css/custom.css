@@ -2,6 +2,44 @@ html {
   scrollbar-gutter: stable;
 }
 
+:root {
+  --font-sans: "Suisse Intl", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body,
+button,
+input,
+select,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.menu,
+.content,
+.post,
+.posts,
+.footer,
+.hero,
+.pagination__buttons .button a {
+  font-family: var(--font-sans);
+}
+
+body {
+  font-size: 17.3px;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
 .menu__inner {
   gap: 2.5rem;
 }
@@ -68,19 +106,73 @@ html {
 .post-info--top p {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 0.5rem;
   flex-wrap: wrap;
+  margin: 0;
 }
 
-.post-meta-left {
+.post-meta-date,
+.post-meta-translations {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
 }
 
-.post-meta-right {
-  margin-left: auto;
+.post-meta-date {
+  font-size: 0.9rem;
+}
+
+.pagination--post {
+  margin-top: 3rem;
+}
+
+.pagination--post .pagination__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.post-nav__link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-nav__label {
+  color: #777;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.post-nav__title {
+  display: block;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: inherit;
+  white-space: normal;
+}
+
+.post-nav__link:hover .post-nav__title {
+  text-decoration: underline;
+}
+
+.post-nav__link--next {
+  text-align: right;
+}
+
+@media (max-width: 684px) {
+  .pagination--post .pagination__buttons {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .post-nav__link--next {
+    text-align: left;
+  }
 }
 
 .posts .pagination__buttons {
