@@ -50,7 +50,7 @@ So instead, we decided to use an `inode` based cache. Our cache key has three fi
 
 We can’t cache the `inode` by itself because inode numbers are unique to a specific mount tree (so if a policy covers multiple mount trees, inodes could overlap). The mount ID helps us identify which mounted tree we observed the file through. The mount namespace ID also prevents us from using cached entries in a different namespace.
 
-The cache value has two parts: an `access_index` and a cache state. We store our policies as bitmasks for space efficiency, and the `access_index` is the bit position for the path policy (https://nathannaveen.dev/posts/optimizing-ebpf-policies-for-speed-and-space/).
+The cache value has two parts: an `access_index` and a cache state. We store our policies as bitmasks for space efficiency, and the `access_index` is the bit position for the path policy (https://nathannaveen.dev/posts/optimizing-ebpf-policies-for-speed-and-space/ ).
 
 So, our cache, along with the keys and values, looks something like this:
 
