@@ -24,6 +24,7 @@ theme        = "hello-friend-ng"
   images = [""]
   themeColor = "#fafafa"
   customCSS = ["/css/custom.css"]
+  customJS = ["/js/image-zoom.js"]
 
 [markup]
   [markup.goldmark]
