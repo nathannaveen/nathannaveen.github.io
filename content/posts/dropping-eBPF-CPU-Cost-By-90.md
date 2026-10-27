@@ -86,7 +86,7 @@ Now with the cache, our flow looks something like this:
 3. If there is a hit, we can enforce the file open based on the cached result. 
 4. If there is a miss, we can do the slow path and store the result in the cache.
 
-![On a cache hit, file open builds an inode cache key and goes straight to allow or deny. On a miss, it walks parent dentries, merges the policy, stores the result, then allows or denies.](/img/BMBlogDiagram.jpeg)
+![On a cache hit, file open builds an inode cache key and goes straight to allow or deny. On a miss, it walks parent dentries, merges the policy, stores the result, then allows or denies.](/img/blog/dropping-eBPF-CPU-Cost-By-90/BMBlogDiagram.jpeg)
 {width="500"}
 
 # Performance Changes
@@ -97,11 +97,11 @@ In the flamegraphs below, we can see that with the cache, the expense from path 
 
 **Before (without cache):**
 
-![Kernel flamegraph without the inode cache, with tail_call_security_check, is_restricted_filepath, and path_check_callback dominating the stack.](/img/kernel-flamegraph-no-cache-annotated.svg)
+![Kernel flamegraph without the inode cache, with tail_call_security_check, is_restricted_filepath, and path_check_callback dominating the stack.](/img/blog/dropping-eBPF-CPU-Cost-By-90/kernel-flamegraph-no-cache-annotated.svg)
 
 **After (with cache):**
 
-![Kernel flamegraph with the inode cache, where path traversal cost has mostly disappeared after the first lookup.](/img/kernel-flamegraph-cache-annotated.svg)
+![Kernel flamegraph with the inode cache, where path traversal cost has mostly disappeared after the first lookup.](/img/blog/dropping-eBPF-CPU-Cost-By-90/kernel-flamegraph-cache-annotated.svg)
 
 We profiled the kernel CPU with `perf` using the `cycles:k` event. This measures kernel side CPU cost during file opens.
 

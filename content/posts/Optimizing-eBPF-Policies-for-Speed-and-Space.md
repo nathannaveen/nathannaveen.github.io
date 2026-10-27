@@ -18,11 +18,11 @@ I think the easiest way to understand this problem is with an example:
 
 Imagine we are trying to send a couple of files (`test1` and `file1`) to a couple of servers, `1.1.1.1` and `1.1.1.2`. We also have two executables, `sendTestData.sh` and `sendFileData.sh`, both of which utilize `curl` to send the data up.
 
-![test1 flows through sendTestData.sh into curl to 1.1.1.1, and file1 flows through sendFileData.sh into curl to 1.1.1.2](/img/BMBlogNoPolicy.jpeg)
+![test1 flows through sendTestData.sh into curl to 1.1.1.1, and file1 flows through sendFileData.sh into curl to 1.1.1.2](/img/blog/Optimizing-eBPF-Policies-for-Speed-and-Space/BMBlogNoPolicy.jpeg)
 
 If the files and the server are protected resources, the policy would have to state that `sendTestData.sh` can access `test1`, and `sendFileData.sh` can access `file1`. And since `curl` has to read the contents of the files and send them to specific IPs, it can access `test1`, `file1`, and the IPs.
 
-![curl's policy includes 1.1.1.1, test1, 1.1.1.2, and file1 because both scripts call it](/img/BMBlogBasicPolicy.jpeg)
+![curl's policy includes 1.1.1.1, test1, 1.1.1.2, and file1 because both scripts call it](/img/blog/Optimizing-eBPF-Policies-for-Speed-and-Space/BMBlogBasicPolicy.jpeg)
 
 But now we have a problem: if `curl` has access to `test1` and `file1` and access to the server's IPs, a malicious process could call `curl` with a file of its choosing and send it up.
 
@@ -36,7 +36,7 @@ So, the policies for `sendTestData.sh` and `sendFileData.sh` would have access t
 
 In our example, the policy would look like this: `sendTestData.sh` has access to `test1` and `1.1.1.1`, `sendFileData.sh` has access to `file1` and `1.1.1.2`, and `curl` has no access. Then, if we wanted to send `file1` up to the server, we would call `sendFileData.sh`, and it would call its child process, `curl`. But during this run, the policy for `curl` would change because it inherits `sendFileData.sh`’s policy. So, `curl` would now have access to `1.1.1.2` and `file1`, so that it can read `file1` and send the data to the server.
 
-![curl inherits the parent policy, so the child policy includes 1.1.1.2 and file1](/img/BMBlogInheritance.jpeg)
+![curl inherits the parent policy, so the child policy includes 1.1.1.2 and file1](/img/blog/Optimizing-eBPF-Policies-for-Speed-and-Space/BMBlogInheritance.jpeg)
 
 This idea has a nice side effect: since we don’t need to write policies for all child executables, the policy file is much smaller and easier to manage.
 
